@@ -31,5 +31,6 @@ module.exports = {
       },
       displayAllHeaders: true, // 显示所有页面的标题链接
       activeHeaderLinks: true,// 显示活动的标题链接
-    }
+    },
+    base: '/life-doc/'
 }
