@@ -1,3 +1,5 @@
+import { navbar, sidebar } from './configs'
+
 module.exports = {
   lang: 'zh-CH',
   title: '文文的文档',
@@ -10,32 +12,21 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     logoDark : null,
-    navbar: [
-      { text: '首页', link: '/' },
-      { text: 'Java', link: '/java/' },
-      { text: 'MySQL', link: '/mysql/' },
-      { text: 'Redis', link: '/redis/' },
-      { text: 'RabbitMQ', link: '/rabbitmq/', target:'_blank' },
-    ],
-    sidebar: {
-      '/java/': [
-        '',
-        'java',
-        'spring',
-      ],
-      '/mysql/': [
-        '',
-      ],
-      '/redis/': [
-        '',
-      ],
-      '/rabbitmq/': [
-        '',
-      ]
+    locales: {
+      '/': {
+        // navbar
+        navbar: navbar.zh,
+
+        // sidebar
+        sidebar: sidebar.zh,
+
+        // page meta
+        editLinkText: 'Edit this page on GitHub',
+      },
     },
     displayAllHeaders: true, // 显示所有页面的标题链接
     activeHeaderLinks: true,// 显示活动的标题链接
   },
   base: '/life-doc/',
-  repo : 'https://github.com/wenleiwang/life-doc.git'
+  repo : 'https://github.com/wenleiwang/life-doc.git',
 }
