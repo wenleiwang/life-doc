@@ -1,8 +1,3 @@
----
-# date: 2021-01-03
-# permalinkPattern: :year/:month/:day/:slug.html
----
-
 # java基础a
 
  

@@ -4,16 +4,16 @@ export const zh: SidebarConfig = {
   '/java/': [
     {
       text:'Java基础',
-      // collapsible: true,
+      collapsible: true,
       children :[
-        '/java/jababse/javabase.md',
-        '/java/jababse/java_bianliang.md',
-        '/java/jababse/java_condition.md',
+        '/java/base/javabasee.md',
+        '/java/base/javabianliang.md',
+        '/java/base/javacondition.md',
       ]
     },
     {
       text:'Spring',
-      // collapsible: true,
+      collapsible: true,
       children :[
         '/java/spring/spring.md',
         '/java/spring/springioc.md',
@@ -22,10 +22,16 @@ export const zh: SidebarConfig = {
     },
   ],
   '/mysql/': [
-    '',
+    ''
   ],
   '/redis/': [
-    '',
+    {
+      text:'Redis基础',
+      collapsible: true,
+      children :[
+        '/redis/base/resume.md',
+      ]
+    },
   ],
   '/rabbitmq/': [
     '',
