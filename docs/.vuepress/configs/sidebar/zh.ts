@@ -30,6 +30,7 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/redis/base/resume.md',
+        '/redis/base/usestring.md'
       ]
     },
   ],

@@ -1,3 +1,7 @@
+---
+next : '/redis/base/usestring.md'
+---
+
 # Redis环境搭建
 
 ## 0.前期准备
