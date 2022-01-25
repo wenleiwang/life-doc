@@ -9,6 +9,7 @@ export const zh: SidebarConfig = {
         '/java/base/javabasee.md',
         '/java/base/javabianliang.md',
         '/java/base/javacondition.md',
+        '/java/base/security.md',
       ]
     },
     {
@@ -19,6 +20,7 @@ export const zh: SidebarConfig = {
         '/java/spring/springbootstart.md',
         '/java/spring/springioc.md',
         '/java/spring/springaop.md',
+        '/java/spring/springevent.md',
       ]
     },
     {
