@@ -16,6 +16,7 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/java/spring/spring.md',
+        '/java/spring/springbootstart.md',
         '/java/spring/springioc.md',
         '/java/spring/springaop.md',
       ]
