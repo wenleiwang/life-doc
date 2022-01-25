@@ -21,6 +21,13 @@ export const zh: SidebarConfig = {
         '/java/spring/springaop.md',
       ]
     },
+    {
+      text:'Utils',
+      collapsible: true,
+      children :[
+        '/java/utils/json/jackson.md',
+      ]
+    },
   ],
   '/mysql/': [
     ''
