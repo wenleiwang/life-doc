@@ -241,3 +241,6 @@ public ConfigurableApplicationContext run(String... args) {
     return context;
 }
 ```
+
+#### refreshContext(context);解析
+[refreshContext(context);](./springboot_refreshContext.md)
