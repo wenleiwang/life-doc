@@ -205,11 +205,21 @@ public ConfigurableApplicationContext run(String... args) {
     Collection<SpringBootExceptionReporter> exceptionReporters = new ArrayList<>();
     // 配置无头属性,给System设置java.awt.headless=true的Property值
     configureHeadlessProperty();
-    // springboot启动的几个主要过程的监听通知都是通过他来进行回调
+    // springboot启动的几个主要过程的监听通知都是通过他来进行回调，
+    // 这里就一个Linstener是EventPublishingRunListener类
     SpringApplicationRunListeners listeners = getRunListeners(args);
+    // listeners是1个，内部getApplicationListeners()又有4个
+    // 分别是：LoggingApplicationListeners、BackgroundPreinitializer、DelegationgApplicationListener、LiquibaseServiceLocatorApplicationListener
+    // 属于ApplicationStartingEvent类型执行onApplicationStartingEvent()方法
+    // LoggingApplicationListeners:检测并返回正在使用的日志系统。 支持 Logback 和 Java 日志记录。
+    // BackgroundPreinitializer(这里判断条件都未成立):指示 Spring Boot 如何运行预初始化的系统属性。 当该属性设置为true时，不会发生预初始化，并且每个项目都会根据需要在前台进行初始化。 
+    //                                          当该属性为false （默认）时，预初始化在后台的单独线程中运行。
+    // DelegationgApplicationListener(这里判断条件都未成立):ApplicationListener委托给在 context.listener.classes 环境属性下指定的其他侦听器。
+    // LiquibaseServiceLocatorApplicationListener: 这里没有加载到 liquibase.servicelocator.CustomResolverServiceLocator 类 就没有满足判断条件
     listeners.starting();
     try {
         ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+        // 准备环境，获取或常见默认的运行环境 new StandardServletEnvironment();
         ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);
         configureIgnoreBeanInfo(environment);
         Banner printedBanner = printBanner(environment);
@@ -242,5 +252,62 @@ public ConfigurableApplicationContext run(String... args) {
 }
 ```
 
+默认的运行环境
+
+![](./img/springbootstart/2022-02-01-20-17-22.png)
+
+### 准备环境解释
+`ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);`
+点击进入了解
+```java
+private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners,
+        ApplicationArguments applicationArguments) {
+    // Create and configure the environment
+    // 创建和配置环境在，这里是SERVLET所以会 new StandardServletEnvironment(); 对象
+    ConfigurableEnvironment environment = getOrCreateEnvironment();
+    // 1. 配置应用转换服务ApplicationConversionService.sharedInstance = new ApplicationConversionService();
+    // 把对象放入environment的conversionService成员变量
+    // 2. configurePropertySources()方法没有走入判断
+    // 3. configureProfiles()方法，配置此应用程序环境中哪些配置文件处于活动状态（或默认情况下处于活动状态）。 
+    // 在配置文件处理期间，可以通过spring.profiles.active属性激活其他配置文件。
+    configureEnvironment(environment, applicationArguments.getSourceArgs());
+    ConfigurationPropertySources.attach(environment);
+    listeners.environmentPrepared(environment);
+    bindToSpringApplication(environment);
+    if (!this.isCustomEnvironment) {
+        environment = new EnvironmentConverter(getClassLoader()).convertEnvironmentIfNecessary(environment,
+                deduceEnvironmentClass());
+    }
+    ConfigurationPropertySources.attach(environment);
+    return environment;
+}
+```
+
+#### 执行监听器
+`listeners.environmentPrepared(environment);`这步的解析
+![](./img/springbootstart/2022-02-04-01-54-15.png)
+
+就像上面starting()一样从下面11个监听器中选出。
+![](./img/springbootstart/2022-02-04-01-42-37.png)
+
+判断条件看注释说：
+确定给定的侦听器是否支持给定的事件。默认实现检测SmartApplicationListener和GenericApplicationListener接口。
+在标准ApplicationListener的情况下，将使用GenericApplicationListenerAdapter来内省目标侦听器的通用声明类型。
+看下代码
+```java
+// supports：支持的意思
+protected boolean supportsEvent(
+        ApplicationListener<?> listener, ResolvableType eventType, @Nullable Class<?> sourceType) {
+    // 指定listener是否是GenericApplicationListener类型，不是使用适配器转换
+    GenericApplicationListener smartListener = (listener instanceof GenericApplicationListener ?
+            (GenericApplicationListener) listener : new GenericApplicationListenerAdapter(listener));
+    // 
+    return (smartListener.supportsEventType(eventType) && smartListener.supportsSourceType(sourceType));
+}
+```
+完成过滤后剩余7个监听器
+![](./img/springbootstart/2022-02-04-02-03-08.png)
+
+
 #### refreshContext(context);解析
-[refreshContext(context);](./springboot_refreshContext.md)
+[refreshContext(context);](./springboot_refreshContext.md) 
