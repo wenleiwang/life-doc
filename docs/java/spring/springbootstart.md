@@ -1,6 +1,6 @@
 
 # SpringBoot Start
-## SpringBoot对Bean的管理
+
 Java的启动从main开始
 ```java
 @SpringBootApplication
@@ -44,7 +44,7 @@ public static ConfigurableApplicationContext run(Class<?>[] primarySources,
 }
 ```
 
-### 先来看SpringApplication的构造函数
+## 先来看SpringApplication的构造函数
 从上面代码可以看到这里分了2步。一SpringApplication的构造函数，二调用run方法
 ```java
 /**
@@ -67,8 +67,10 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
     // 推断 Web 应用程序类型
     this.webApplicationType = deduceWebApplicationType();
     //设置将应用于 Spring ApplicationContextInitializer的ApplicationContext 。
+    // 拿到SPI方式配置的ApplicationContextInitializer上下文初始化器
     setInitializers((Collection) getSpringFactoriesInstances(
             ApplicationContextInitializer.class));
+    // 给字段listeners赋值：拿到SPI方式配置的ApplicationListener应用监听器
     setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
     // 推导出main应用的类。通过调用栈得到包含main的类反射后返回回来
     this.mainApplicationClass = deduceMainApplicationClass();
@@ -85,21 +87,37 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 *   该应用程序应作为基于 servlet 的 Web 应用程序运行，并应启动嵌入式 servlet Web 服务器
 */
 private WebApplicationType deduceWebApplicationType() {
-    if (ClassUtils.isPresent(REACTIVE_WEB_ENVIRONMENT_CLASS, null)
-            && !ClassUtils.isPresent(MVC_WEB_ENVIRONMENT_CLASS, null)
-            && !ClassUtils.isPresent(JERSEY_WEB_ENVIRONMENT_CLASS, null)) {
-        return WebApplicationType.REACTIVE;
-    }
-    for (String className : WEB_ENVIRONMENT_CLASSES) {
-        if (!ClassUtils.isPresent(className, null)) {
-            return WebApplicationType.NONE;
+    try {
+        StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
+        for (StackTraceElement stackTraceElement : stackTrace) {
+            if ("main".equals(stackTraceElement.getMethodName())) {
+                return Class.forName(stackTraceElement.getClassName());
+            }
         }
     }
-    return WebApplicationType.SERVLET;
+    catch (ClassNotFoundException ex) {
+        // Swallow and continue
+    }
+    return null;
 }
 ```
-ApplicationContextInitalizer和ApplicationListener在spring-boot-autoconfigure-2.3.3.RELEASE.jar下
+这里使用SPI方式
+ApplicationContextInitalizer和ApplicationListener。这两个spring.factories里都有。
+
+在spring-boot-autoconfigure-2.3.3.RELEASE.jar下
+
 ![](./img/springbootstart/2022-01-25-14-09-31.png)
+
+在spring-boot-2.3.3.RELEASE.jar下
+
+![](./img/springbootstart/2022-02-08-15-01-21.png)
+
+蒙了这加载哪个，Spring是怎么做的呢？
+来验证下结果，上面两个文件里一个有10个，一个有1个，总计11个。看Spring最终有加载到内存有多少个我们把断点打在获取完的List上
+
+![](./img/springbootstart/2022-02-08-15-11-11.png)
+
+可以看见加载了11个。Spring会把所有spring.factories里解析出来的键值对都放在一个`Map<String,List<String>>`里
 ```yml
 # Initializers
 # 共享元数据读取器工厂上下文初始化器  和 条件评估报告记录监听器
@@ -185,7 +203,7 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
     }
 }
 ```
-### 再来看调用run方法
+## 再来看调用run方法
 从上面代码可以看到这里分了2步。一SpringApplication的构造函数，二调用run方法
 
 ```java
@@ -256,9 +274,9 @@ public ConfigurableApplicationContext run(String... args) {
 
 ![](./img/springbootstart/2022-02-01-20-17-22.png)
 
-### 准备环境解释
+### prepareEnvironment()
 `ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);`
-点击进入了解
+这一步是准备环境解释，点击进入了解
 ```java
 private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners,
         ApplicationArguments applicationArguments) {
@@ -272,6 +290,7 @@ private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners
     // 在配置文件处理期间，可以通过spring.profiles.active属性激活其他配置文件。
     configureEnvironment(environment, applicationArguments.getSourceArgs());
     ConfigurationPropertySources.attach(environment);
+    // 执行监听器
     listeners.environmentPrepared(environment);
     bindToSpringApplication(environment);
     if (!this.isCustomEnvironment) {
@@ -283,7 +302,7 @@ private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners
 }
 ```
 
-#### 执行监听器
+#### 上面执行监听器详情
 `listeners.environmentPrepared(environment);`这步的解析
 ![](./img/springbootstart/2022-02-04-01-54-15.png)
 
@@ -308,6 +327,162 @@ protected boolean supportsEvent(
 完成过滤后剩余7个监听器
 ![](./img/springbootstart/2022-02-04-02-03-08.png)
 
+* ConfigFileApplicationListener：@since 1.0.0。算是重要的一个监听器。
+* AnsiOutputApplicationListener：@since 1.2.0。让你的终端（可以是控制台、可以是日志文件）支持Ansi彩色输出，使其更具可读性。
+* LoggingApplicationListener：@since 2.0.0。根据Enviroment环境完成initialize()初始化动作：日志等级、日志格式模版等
+* 
 
-#### refreshContext(context);解析
+### configureIgnoreBeanInfo(environment)
+配置忽略Bean信息，点进去看详情
+```java
+public static final String IGNORE_BEANINFO_PROPERTY_NAME = "spring.beaninfo.ignore";
+
+private void configureIgnoreBeanInfo(ConfigurableEnvironment environment) {
+    // 系统配置中没有配置忽略Bean属性
+    if (System.getProperty(CachedIntrospectionResults.IGNORE_BEANINFO_PROPERTY_NAME) == null) {
+        // 从环境中取spring.beaninfo.ignore，如果没有设置默认为True
+        Boolean ignore = environment.getProperty("spring.beaninfo.ignore", Boolean.class, Boolean.TRUE);
+        // 设置忽略Bean属性为环境变量取出值
+        System.setProperty(CachedIntrospectionResults.IGNORE_BEANINFO_PROPERTY_NAME, ignore.toString());
+    }
+}
+```
+> Java中System：System类代表系统，系统级的很多属性和控制方法都放置在该类的内部。该类位于java.lang包
+
+### printBanner(environment)
+打印旗帜
+如果没有设置，就默认
+![](./img/springbootstart/2022-02-08-11-15-18.png)
+
+
+### createApplicationContext()
+创建应用上下文，点进去看详情
+```java
+public static final String DEFAULT_SERVLET_WEB_CONTEXT_CLASS = "org.springframework.boot."
+			+ "web.servlet.context.AnnotationConfigServletWebServerApplicationContext";
+/**
+    * 用于创建ApplicationContext策略方法。
+    * 默认情况下，此方法将在回退到合适的默认值之前尊重任何显式设置的应用程序上下文或应用程序上下文类
+    * @return the application context (not yet refreshed)
+    * @see #setApplicationContextClass(Class)
+    */
+protected ConfigurableApplicationContext createApplicationContext() {
+    Class<?> contextClass = this.applicationContextClass;
+    if (contextClass == null) {
+        try {
+            // 根据web应用类型反射创建不同的 ApplicationContext
+            switch (this.webApplicationType) {
+            case SERVLET:
+                // 我这里SpringBoot web启动走到了这里
+                // org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext
+                contextClass = Class.forName(DEFAULT_SERVLET_WEB_CONTEXT_CLASS);
+                break;
+            case REACTIVE:
+                contextClass = Class.forName(DEFAULT_REACTIVE_WEB_CONTEXT_CLASS);
+                break;
+            default:
+                contextClass = Class.forName(DEFAULT_CONTEXT_CLASS);
+            }
+        }
+        catch (ClassNotFoundException ex) {
+            throw new IllegalStateException(
+                    "Unable create a default ApplicationContext, please specify an ApplicationContextClass", ex);
+        }
+    }
+    return (ConfigurableApplicationContext) BeanUtils.instantiateClass(contextClass);
+}
+```
+
+#### AnnotationConfigServletWebServerApplicationContext类
+从这里就开始涉及到Spring IOC的知识
+
+先来用类图看下类之间的关系
+![](./img/springbootstart/2022-02-08-11-25-54.png)
+可以说是非常庞大，但不着急。
+从一个点入手逐渐了解
+
+### getSpringFactoriesInstances()
+```java
+// 异常记者
+Collection<SpringBootExceptionReporter> exceptionReporters = new ArrayList<>();
+// Spring Boot 异常报告器
+exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
+        new Class[] { ConfigurableApplicationContext.class }, context);
+```
+FailureAnalyzers是SpringBootExceptionReporter接口的唯一实现类
+
+![](./img/springbootstart/2022-02-08-16-57-37.png)
+
+### prepareContext()
+```java
+// 准备上下文
+prepareContext(context, environment, listeners, applicationArguments, printedBanner);
+```
+点进去看详情
+```java
+private void prepareContext(ConfigurableApplicationContext context, ConfigurableEnvironment environment,
+        SpringApplicationRunListeners listeners, ApplicationArguments applicationArguments, Banner printedBanner) {
+    // 设置环境变量
+    context.setEnvironment(environment);
+    // 应用任何相关的后期处理ApplicationContext 。 子类可以根据需要应用额外的处理。
+    postProcessApplicationContext(context);
+    // 在刷新之前将任何ApplicationContextInitializer到上下文。（应用初始化器）
+    applyInitializers(context);
+    // 各监听器完成动作后，ApplicationContext基本算是初步实例化完成，但是还剩下很重要的事没做。在下面
+    listeners.contextPrepared(context);
+    if (this.logStartupInfo) {
+        //调用以记录启动信息，子类可能会覆盖以添加额外的日志记录。
+        logStartupInfo(context.getParent() == null);
+        logStartupProfileInfo(context);
+    }
+    // Add boot specific singleton beans
+    ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+    beanFactory.registerSingleton("springApplicationArguments", applicationArguments);
+    if (printedBanner != null) {
+        beanFactory.registerSingleton("springBootBanner", printedBanner);
+    }
+    if (beanFactory instanceof DefaultListableBeanFactory) {
+        ((DefaultListableBeanFactory) beanFactory)
+                .setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding);
+    }
+    if (this.lazyInitialization) {
+        context.addBeanFactoryPostProcessor(new LazyInitializationBeanFactoryPostProcessor());
+    }
+    // Load the sources
+    Set<Object> sources = getAllSources();
+    Assert.notEmpty(sources, "Sources must not be empty");
+    load(context, sources.toArray(new Object[0]));
+    listeners.contextLoaded(context);
+}
+```
+#### applyInitializers(context)
+```java
+protected void applyInitializers(ConfigurableApplicationContext context) {
+    // 这就是在第一节SpringApplication的构造函数设置的7个Initializers
+    for (ApplicationContextInitializer initializer : getInitializers()) {
+        Class<?> requiredType = GenericTypeResolver.resolveTypeArgument(initializer.getClass(),
+                ApplicationContextInitializer.class);
+        Assert.isInstanceOf(requiredType, context, "Unable to call initializer.");
+        // 执行初始化类
+        initializer.initialize(context);
+    }
+}
+```
+#### listeners.contextPrepared(context)
+触发这个事件<span style="color: red">ApplicationContextInitializedEvent</span>
+![](./img/springbootstart/2022-02-08-17-48-09.png)
+
+他们进入后都没满足判断条件，无动作
+
+#### if (this.logStartupInfo)
+执行完成后在控制台打印两行
+```java
+// 启动信息：启动项目 用户 PID 启动类目录 项目路径
+2022-02-08 17:58:18.206  INFO 9328 --- [           main] l.LearnApplication                       : Starting LearnApplication on DESKTOP-M9HCL4H with PID 9328 (D:\learn\life\life-learn\target\classes started by fang.com in D:\learn\life)
+// 打印使用的配置文件环境
+2022-02-08 17:59:47.955  INFO 9328 --- [           main] l.LearnApplication                       : The following profiles are active: test
+```
+
+
+### refreshContext(context);解析
 [refreshContext(context);](./springboot_refreshContext.md) 
