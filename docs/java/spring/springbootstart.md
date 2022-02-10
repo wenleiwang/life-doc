@@ -304,9 +304,11 @@ private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners
 
 #### 上面执行监听器详情
 `listeners.environmentPrepared(environment);`这步的解析
+
 ![](./img/springbootstart/2022-02-04-01-54-15.png)
 
 就像上面starting()一样从下面11个监听器中选出。
+
 ![](./img/springbootstart/2022-02-04-01-42-37.png)
 
 判断条件看注释说：
@@ -325,6 +327,7 @@ protected boolean supportsEvent(
 }
 ```
 完成过滤后剩余7个监听器
+
 ![](./img/springbootstart/2022-02-04-02-03-08.png)
 
 * ConfigFileApplicationListener：@since 1.0.0。算是重要的一个监听器。
@@ -352,6 +355,7 @@ private void configureIgnoreBeanInfo(ConfigurableEnvironment environment) {
 ### printBanner(environment)
 打印旗帜
 如果没有设置，就默认
+
 ![](./img/springbootstart/2022-02-08-11-15-18.png)
 
 
@@ -392,12 +396,17 @@ protected ConfigurableApplicationContext createApplicationContext() {
     return (ConfigurableApplicationContext) BeanUtils.instantiateClass(contextClass);
 }
 ```
+在实例化时做了reader和scaner的初始化
+
+![](./img/springbootstart/2022-02-10-17-15-22.png)
 
 #### AnnotationConfigServletWebServerApplicationContext类
 从这里就开始涉及到Spring IOC的知识
 
 先来用类图看下类之间的关系
+
 ![](./img/springbootstart/2022-02-08-11-25-54.png)
+
 可以说是非常庞大，但不着急。
 从一个点入手逐渐了解
 
@@ -437,15 +446,22 @@ private void prepareContext(ConfigurableApplicationContext context, Configurable
     }
     // Add boot specific singleton beans
     ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+    // 注册springApplicationArguments Bean单例到Bean工厂里
     beanFactory.registerSingleton("springApplicationArguments", applicationArguments);
     if (printedBanner != null) {
+        // 注册 springBootBanner Bean单例到Bean工厂里
         beanFactory.registerSingleton("springBootBanner", printedBanner);
     }
     if (beanFactory instanceof DefaultListableBeanFactory) {
+        // 置是否应允许通过注册具有相同名称的不同定义来覆盖 bean 定义，自动替换前者。如果没有，将抛出异常。这也适用于覆盖别名。
         ((DefaultListableBeanFactory) beanFactory)
                 .setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding);
     }
+    // 若lazyInitialization = true延迟初始化
     if (this.lazyInitialization) {
+        // 那就向Bean工厂放一个：new LazyInitializationBeanFactoryPostProcessor()
+        // 该处理器的作用是：对所有的Bean延迟初始化，全部.setLazyInit(true);
+        // (通过LazyInitializationExcludeFilter接口指定的排除在外)
         context.addBeanFactoryPostProcessor(new LazyInitializationBeanFactoryPostProcessor());
     }
     // Load the sources
@@ -470,6 +486,7 @@ protected void applyInitializers(ConfigurableApplicationContext context) {
 ```
 #### listeners.contextPrepared(context)
 触发这个事件<span style="color: red">ApplicationContextInitializedEvent</span>
+
 ![](./img/springbootstart/2022-02-08-17-48-09.png)
 
 他们进入后都没满足判断条件，无动作
@@ -482,7 +499,135 @@ protected void applyInitializers(ConfigurableApplicationContext context) {
 // 打印使用的配置文件环境
 2022-02-08 17:59:47.955  INFO 9328 --- [           main] l.LearnApplication                       : The following profiles are active: test
 ```
+#### beanFactory.registerSingleton
+2get注册单例Bean，springApplicationArguments、springBootBanner。(就是说可以使用@Autowired注入)
 
+![](./img/springbootstart/2022-02-09-09-13-50.png)
+
+最终操作了Context里的4个变量
+```java
+synchronized (this.singletonObjects) {
+        this.singletonObjects.put(beanName, singletonObject);
+        this.singletonFactories.remove(beanName);
+        this.earlySingletonObjects.remove(beanName);
+        this.registeredSingletons.add(beanName);
+    }
+```
+
+#### 加载所有资源
+```java
+Set<Object> sources = getAllSources();
+load(context, sources.toArray(new Object[0]));
+```
+
+加载所有的资源，点进去看详情
+```java
+/**
+ * 翻译下注释：返回当run(String…)被调用时将被添加到ApplicationContext的所有源的不可变集合。
+ * 此方法将构造函数中指定的任何主源与显式设置的任何其他源组合在一起。
+ */
+public Set<Object> getAllSources() {
+    Set<Object> allSources = new LinkedHashSet<>();
+    if (!CollectionUtils.isEmpty(this.primarySources)) {
+        allSources.addAll(this.primarySources);
+    }
+    if (!CollectionUtils.isEmpty(this.sources)) {
+        allSources.addAll(this.sources);
+    }
+    return Collections.unmodifiableSet(allSources);
+}
+```
+这里就一条返回
+
+![](./img/springbootstart/2022-02-09-09-29-50.png)
+
+将 bean 加载到应用程序上下文中
+```java
+/**
+ *
+ * context 上下文
+ * sources 上面得到的集合
+ */
+protected void load(ApplicationContext context, Object[] sources) {
+    if (logger.isDebugEnabled()) {
+        logger.debug("Loading source " + StringUtils.arrayToCommaDelimitedString(sources));
+    }
+    // 创建Bean定义加载器
+    BeanDefinitionLoader loader = createBeanDefinitionLoader(getBeanDefinitionRegistry(context), sources);
+    if (this.beanNameGenerator != null) {
+        loader.setBeanNameGenerator(this.beanNameGenerator);
+    }
+    if (this.resourceLoader != null) {
+        loader.setResourceLoader(this.resourceLoader);
+    }
+    if (this.environment != null) {
+        loader.setEnvironment(this.environment);
+    }
+    loader.load();
+}
+```
+
+Bean定义加载器的构造方法
+```java
+BeanDefinitionLoader(BeanDefinitionRegistry registry, Object... sources) {
+    Assert.notNull(registry, "Registry must not be null");
+    Assert.notEmpty(sources, "Sources must not be empty");
+    this.sources = sources;
+    // 支持基于注解
+    this.annotatedReader = new AnnotatedBeanDefinitionReader(registry);
+    // 支持基于XML
+    this.xmlReader = new XmlBeanDefinitionReader(registry);
+    if (isGroovyPresent()) {
+        // 支持基于Groovy文件
+        this.groovyReader = new GroovyBeanDefinitionReader(registry);
+    }
+    // 支持基于classpath中
+    this.scanner = new ClassPathBeanDefinitionScanner(registry);
+    this.scanner.addExcludeFilter(new ClassExcludeFilter(sources));
+}
+```
+
+registry怎么获取？
+```java
+private BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext context) {
+    if (context instanceof BeanDefinitionRegistry) {
+        return (BeanDefinitionRegistry) context;
+    }
+    if (context instanceof AbstractApplicationContext) {
+        return (BeanDefinitionRegistry) ((AbstractApplicationContext) context).getBeanFactory();
+    }
+    throw new IllegalStateException("Could not locate BeanDefinitionRegistry");
+}
+```
+
+![](./img/springbootstart/2022-02-09-09-41-38.png)
+
+我们这里启动上下文是 AnnotationConfigServletWebServerApplicationContext 
+从类图上看是实现了BeanDefinitionRegistry 所以直接`(BeanDefinitionRegistry) context`
+
+#### listeners.contextLoaded(context)
+调用监听器<span style="color :red " >ApplicationPreparedEvent</span>
+
+![](./img/springbootstart/2022-02-09-10-32-44.png)
+
+* CloudFoundryVcapEnvironmentPostProcessor：
+* ConfigFileApplicationListener：向上下文注册一个new PropertySourceOrderingPostProcessor(context)。
+  它的作用是：Bean工厂结束后对环境里的属性源进行重排序（把名字叫defaultProperties的属性源放在最末位）
+* 该属性源是通过SpringApplication#setDefaultProperties API方式放进来的，一般不会使用到，留个印象即可
+* LoggingApplicationListener：因为这时已经有Bean工厂了嘛，所以它做的事是：向工厂内放入Bean
+  - “springBootLoggingSystem” -> loggingSystem
+  - “springBootLogFile” -> logFile
+  - “springBootLoggerGroups” -> loggerGroups
+* BackgroundPreinitializer：没有满足判断条件，无动作
+* RestartListener：Spring Cloud提供
+* DelegatingApplicationListener：没有满足判断条件，无动作
+
+
+<span style="color :green " >
+至此ApplicationContext初始化完成，该赋值的赋值了，Bean定义信息也已全部加载完成。但是，单例Bean还没有被实例化，web容器依旧还没启动。
+</span>
 
 ### refreshContext(context);解析
+重要
 [refreshContext(context);](./springboot_refreshContext.md) 
+
