@@ -292,9 +292,258 @@ protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactor
     }
 }
 ```
+这里注册了3个
+
+![](./img/springrefresh/2022-02-11-16-28-59.png)
+
+* SharedMetadataReaderFactoryContextInitializer$CachingetadataReaderFactoryPostProcessor
+在definition的propertyValues中添加 metadataReaderFactory ：org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
+后add到regularPostProcessors
+* ConfiguartionWarningsApplicationContextInitializer$ConfigurationWarningsPostProcessor
+根据Checks打印Warn在日志里。后add到regularPostProcessors
+* ConfigFileApplicationListener$PropertySourceOrderingPostProcessor
+直接add到regularPostProcessors
 
 ### 第5步：invokeBeanFactoryPostProcessors(beanFactory);
 Invoke factory processors registered as beans in the context.
+调用在context中注册为 bean 的工厂处理器。就是第4步注册的BeanFactoryPostProcess
+```java
+
+public static void invokeBeanFactoryPostProcessors(
+        ConfigurableListableBeanFactory beanFactory, List<BeanFactoryPostProcessor> beanFactoryPostProcessors) {
+
+    // 如果有的话，首先调用 BeanDefinitionRegistryPostProcessors
+    Set<String> processedBeans = new HashSet<>();
+
+    if (beanFactory instanceof BeanDefinitionRegistry) {
+        BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
+        List<BeanFactoryPostProcessor> regularPostProcessors = new ArrayList<>();
+        List<BeanDefinitionRegistryPostProcessor> registryProcessors = new ArrayList<>();
+
+        for (BeanFactoryPostProcessor postProcessor : beanFactoryPostProcessors) {
+            if (postProcessor instanceof BeanDefinitionRegistryPostProcessor) {
+                BeanDefinitionRegistryPostProcessor registryProcessor =
+                        (BeanDefinitionRegistryPostProcessor) postProcessor;
+                // 注册 metadataReaderFactory、
+                registryProcessor.postProcessBeanDefinitionRegistry(registry);
+                registryProcessors.add(registryProcessor);
+            }
+            else {
+                regularPostProcessors.add(postProcessor);
+            }
+        }
+
+        // Do not initialize FactoryBeans here: We need to leave all regular beans
+        // uninitialized to let the bean factory post-processors apply to them!
+        // Separate between BeanDefinitionRegistryPostProcessors that implement
+        // PriorityOrdered, Ordered, and the rest.
+        // 不要在此处初始化 FactoryBeans：我们需要让所有常规 bean 保持未初始化状态，以便 bean 工厂后处理器应用到它们！
+        // 将实现 PriorityOrdered、Ordered 和其余部分的 BeanDefinitionRegistryPostProcessor 分开。
+        List<BeanDefinitionRegistryPostProcessor> currentRegistryProcessors = new ArrayList<>();
+
+        // First, invoke the BeanDefinitionRegistryPostProcessors that implement PriorityOrdered.
+        // 首先，调用实现 PriorityOrdered(优先排序) 的 BeanDefinitionRegistryPostProcessor。
+        String[] postProcessorNames =
+                beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
+        for (String ppName : postProcessorNames) {
+            if (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) {
+                currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
+                processedBeans.add(ppName);
+            }
+        }
+        sortPostProcessors(currentRegistryProcessors, beanFactory);
+        registryProcessors.addAll(currentRegistryProcessors);
+        invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
+        currentRegistryProcessors.clear();
+
+        // Next, invoke the BeanDefinitionRegistryPostProcessors that implement Ordered.
+        postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
+        for (String ppName : postProcessorNames) {
+            if (!processedBeans.contains(ppName) && beanFactory.isTypeMatch(ppName, Ordered.class)) {
+                currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
+                processedBeans.add(ppName);
+            }
+        }
+        sortPostProcessors(currentRegistryProcessors, beanFactory);
+        registryProcessors.addAll(currentRegistryProcessors);
+        invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
+        currentRegistryProcessors.clear();
+
+        // Finally, invoke all other BeanDefinitionRegistryPostProcessors until no further ones appear.
+        boolean reiterate = true;
+        while (reiterate) {
+            reiterate = false;
+            postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
+            for (String ppName : postProcessorNames) {
+                if (!processedBeans.contains(ppName)) {
+                    currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
+                    processedBeans.add(ppName);
+                    reiterate = true;
+                }
+            }
+            sortPostProcessors(currentRegistryProcessors, beanFactory);
+            registryProcessors.addAll(currentRegistryProcessors);
+            invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
+            currentRegistryProcessors.clear();
+        }
+
+        // Now, invoke the postProcessBeanFactory callback of all processors handled so far.
+        invokeBeanFactoryPostProcessors(registryProcessors, beanFactory);
+        invokeBeanFactoryPostProcessors(regularPostProcessors, beanFactory);
+    }
+
+    else {
+        // Invoke factory processors registered with the context instance.
+        invokeBeanFactoryPostProcessors(beanFactoryPostProcessors, beanFactory);
+    }
+
+    // Do not initialize FactoryBeans here: We need to leave all regular beans
+    // uninitialized to let the bean factory post-processors apply to them!
+    String[] postProcessorNames =
+            beanFactory.getBeanNamesForType(BeanFactoryPostProcessor.class, true, false);
+
+    // Separate between BeanFactoryPostProcessors that implement PriorityOrdered,
+    // Ordered, and the rest.
+    List<BeanFactoryPostProcessor> priorityOrderedPostProcessors = new ArrayList<>();
+    List<String> orderedPostProcessorNames = new ArrayList<>();
+    List<String> nonOrderedPostProcessorNames = new ArrayList<>();
+    for (String ppName : postProcessorNames) {
+        if (processedBeans.contains(ppName)) {
+            // skip - already processed in first phase above
+        }
+        else if (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) {
+            priorityOrderedPostProcessors.add(beanFactory.getBean(ppName, BeanFactoryPostProcessor.class));
+        }
+        else if (beanFactory.isTypeMatch(ppName, Ordered.class)) {
+            orderedPostProcessorNames.add(ppName);
+        }
+        else {
+            nonOrderedPostProcessorNames.add(ppName);
+        }
+    }
+
+    // First, invoke the BeanFactoryPostProcessors that implement PriorityOrdered.
+    sortPostProcessors(priorityOrderedPostProcessors, beanFactory);
+    invokeBeanFactoryPostProcessors(priorityOrderedPostProcessors, beanFactory);
+
+    // Next, invoke the BeanFactoryPostProcessors that implement Ordered.
+    List<BeanFactoryPostProcessor> orderedPostProcessors = new ArrayList<>(orderedPostProcessorNames.size());
+    for (String postProcessorName : orderedPostProcessorNames) {
+        orderedPostProcessors.add(beanFactory.getBean(postProcessorName, BeanFactoryPostProcessor.class));
+    }
+    sortPostProcessors(orderedPostProcessors, beanFactory);
+    invokeBeanFactoryPostProcessors(orderedPostProcessors, beanFactory);
+
+    // Finally, invoke all other BeanFactoryPostProcessors.
+    List<BeanFactoryPostProcessor> nonOrderedPostProcessors = new ArrayList<>(nonOrderedPostProcessorNames.size());
+    for (String postProcessorName : nonOrderedPostProcessorNames) {
+        nonOrderedPostProcessors.add(beanFactory.getBean(postProcessorName, BeanFactoryPostProcessor.class));
+    }
+    invokeBeanFactoryPostProcessors(nonOrderedPostProcessors, beanFactory);
+
+    // Clear cached merged bean definitions since the post-processors might have
+    // modified the original metadata, e.g. replacing placeholders in values...
+    beanFactory.clearMetadataCache();
+}
+```
+
+
+SpringBoot使用GenericBeanDefinition类作为BeanDefinition的实现类，看下类之间关系
+
+![](./img/springrefresh/2022-02-11-16-22-05.png)
+
+#### 注册BeanDefinition
+```java
+public static final String BEAN_NAME = "org.springframework.boot.autoconfigure."
+			+ "internalCachingMetadataReaderFactory";
+registry.registerBeanDefinition(BEAN_NAME, definition)
+
+@Override
+public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition)
+        throws BeanDefinitionStoreException {
+
+    // org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
+    Assert.hasText(beanName, "Bean name must not be empty");
+    Assert.notNull(beanDefinition, "BeanDefinition must not be null");
+
+    if (beanDefinition instanceof AbstractBeanDefinition) {
+        try {
+            // 验证
+            ((AbstractBeanDefinition) beanDefinition).validate();
+        }
+        catch (BeanDefinitionValidationException ex) {
+            throw new BeanDefinitionStoreException(beanDefinition.getResourceDescription(), beanName,
+                    "Validation of bean definition failed", ex);
+        }
+    }
+
+    // 获取 执行定义，在创建上下文是赋值 没取到 internalCachingMetadataReaderFactory
+    BeanDefinition existingDefinition = this.beanDefinitionMap.get(beanName);
+    if (existingDefinition != null) {
+        if (!isAllowBeanDefinitionOverriding()) {
+            throw new BeanDefinitionOverrideException(beanName, beanDefinition, existingDefinition);
+        }
+        else if (existingDefinition.getRole() < beanDefinition.getRole()) {
+            // e.g. was ROLE_APPLICATION, now overriding with ROLE_SUPPORT or ROLE_INFRASTRUCTURE
+            if (logger.isInfoEnabled()) {
+                logger.info("Overriding user-defined bean definition for bean '" + beanName +
+                        "' with a framework-generated bean definition: replacing [" +
+                        existingDefinition + "] with [" + beanDefinition + "]");
+            }
+        }
+        else if (!beanDefinition.equals(existingDefinition)) {
+            if (logger.isDebugEnabled()) {
+                logger.debug("Overriding bean definition for bean '" + beanName +
+                        "' with a different definition: replacing [" + existingDefinition +
+                        "] with [" + beanDefinition + "]");
+            }
+        }
+        else {
+            if (logger.isTraceEnabled()) {
+                logger.trace("Overriding bean definition for bean '" + beanName +
+                        "' with an equivalent definition: replacing [" + existingDefinition +
+                        "] with [" + beanDefinition + "]");
+            }
+        }
+        this.beanDefinitionMap.put(beanName, beanDefinition);
+    }
+    else {
+        // 已创建的Bean不是空的
+        if (hasBeanCreationStarted()) {
+            // Cannot modify startup-time collection elements anymore (for stable iteration)
+            // 无法再修改启动时集合元素（用于稳定迭代）
+            synchronized (this.beanDefinitionMap) {
+                this.beanDefinitionMap.put(beanName, beanDefinition);
+                List<String> updatedDefinitions = new ArrayList<>(this.beanDefinitionNames.size() + 1);
+                updatedDefinitions.addAll(this.beanDefinitionNames);
+                updatedDefinitions.add(beanName);
+                this.beanDefinitionNames = updatedDefinitions;
+                removeManualSingletonName(beanName);
+            }
+        }
+        else {
+            // Still in startup registration phase
+            // 仍处于启动注册阶段
+            // 把 internalCachingMetadataReaderFactory 放进bean定义Map
+            this.beanDefinitionMap.put(beanName, beanDefinition);
+            // 添加名称
+            this.beanDefinitionNames.add(beanName);
+            removeManualSingletonName(beanName);
+        }
+        this.frozenBeanDefinitionNames = null;
+    }
+
+    if (existingDefinition != null || containsSingleton(beanName)) {
+        resetBeanDefinition(beanName);
+    }
+    else if (isConfigurationFrozen()) {
+        clearByTypeCache();
+    }
+}
+```
+
+
+
 
 ### 第6步：registerBeanPostProcessors(beanFactory);
 Register bean processors that intercept bean creation.
