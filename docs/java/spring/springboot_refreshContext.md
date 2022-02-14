@@ -205,6 +205,12 @@ protected final void refreshBeanFactory() throws IllegalStateException {
     this.beanFactory.setSerializationId(getId());
 }
 ```
+```java
+@Override
+public final ConfigurableListableBeanFactory getBeanFactory() {
+    return this.beanFactory;
+}
+```
 
 
 ### 第3步：prepareBeanFactory(beanFactory);
