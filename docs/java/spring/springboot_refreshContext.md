@@ -310,6 +310,8 @@ protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactor
 * ConfigFileApplicationListener$PropertySourceOrderingPostProcessor
 直接add到regularPostProcessors
 
+scanner、reader的判断条件在启动时没有走到，在当前环境下
+
 ### 第5步：invokeBeanFactoryPostProcessors(beanFactory);
 Invoke factory processors registered as beans in the context.
 调用在context中注册为 bean 的工厂处理器。就是第4步注册的BeanFactoryPostProcess
@@ -524,6 +526,7 @@ public void registerBeanDefinition(String beanName, BeanDefinition beanDefinitio
                 updatedDefinitions.addAll(this.beanDefinitionNames);
                 updatedDefinitions.add(beanName);
                 this.beanDefinitionNames = updatedDefinitions;
+                //删除手动单例名称
                 removeManualSingletonName(beanName);
             }
         }
