@@ -23,6 +23,8 @@ export const zh: SidebarConfig = {
         '/java/spring/springevent.md',
         '/java/spring/springboot_refreshContext.md',
         '/java/spring/springlogging.md',
+        '/java/spring/contentnegotiation.md',
+        '/java/spring/beandifition.md',
       ]
     },
     {

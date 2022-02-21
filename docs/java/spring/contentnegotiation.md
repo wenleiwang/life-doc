@@ -1,0 +1,70 @@
+# 内容协商协议 & Spring MVC内容协商
+
+百度词条：
+MIME：（多用途互联网邮件扩展类型）MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。它是一个互联网标准，扩展了电子邮件标准，使其能够支持：非ASCII字符文本；非文本格式附件（二进制、声音、图像等）；由多部分（multiple parts）组成的消息体；包含非ASCII字符的头信息（Header information）。
+这个标准被定义在RFC 2045、RFC 2046、RFC 2047、RFC 2048、RFC 2049等RFC中。 MIME改善了由RFC 822转变而来的RFC 2822，这些旧标准规定电子邮件标准并不允许在邮件消息中使用7位ASCII字符集以外的字符。正因如此，一些非英语字符消息和二进制文件，图像，声音等非文字消息原本都不能在电子邮件中传输(MIME可以)。MIME规定了用于表示各种各样的数据类型的符号化方法。 此外，在万维网中使用的HTTP协议中也使用了MIME的框架，标准被扩展为互联网媒体类型。
+每个MIME类型由两部分组成，前面是数据的大类别，例如声音audio、图象image等，后面定义具体的种类。
+七种大类别：
+video
+image
+application
+text
+audio
+multipart
+message
+常见的MIME类型(通用型)：
+超文本标记语言文本 .html text/html
+xml文档 .xml text/xml
+XHTML文档 .xhtml application/xhtml+xml
+普通文本 .txt text/plain
+RTF文本 .rtf application/rtf
+PDF文档 .pdf application/pdf
+Microsoft Word文件 .word application/msword
+PNG图像 .png image/png
+GIF图形 .gif image/gif
+JPEG图形 .jpeg,.jpg image/jpeg
+au声音文件 .au audio/basic
+MIDI音乐文件 mid,.midi audio/midi,audio/x-midi
+RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio
+MPEG文件 .mpg,.mpeg video/mpeg
+AVI文件 .avi video/x-msvideo
+GZIP文件 .gz application/x-gzip
+TAR文件 .tar application/x-tar
+任意的二进制数据 application/octet-stream
+
+服务器在发送真正的数据之前，就要先发送标志数据的MIME类型的信息，这个信息使用Content-type关键字进行定义，例如对于HTML文档，服务器将首先发送以下两行MIME标识信息,这个标识并不是真正的数据文件的一部分。
+Content-type: text/html
+
+注意，第二行为一个空行，这是必须的，使用这个空行的目的是将MIME信息与真正的数据内容分隔开。
+
+![详情](https://baike.baidu.com/item/MIME/2900607?fr=aladdin)
+
+HTTP内容协商协议
+（常用）客户端发请求时就指明需要的MIME们（比如Http头部的：Accept），服务端根据客户端指定的要求返回合适的形式，并且在响应头中做出说明（如：Content-Type）
+1. 若客户端要求的MIME类型服务端提供不了，那就406错误
+
+常用请求头、响应头
+请求头
+Accept：告诉服务端需要的MIME（一般是多个，比如text/plain，application/json等。*/*表示可以是任何MIME资源）
+Accept-Language：告诉服务端需要的语言（在中国默认是中文嘛，但浏览器一般都可以选择N多种语言，但是是否支持要看服务器是否可以协商）
+Accept-Charset：告诉服务端需要的字符集
+Accept-Encoding：告诉服务端需要的压缩方式（gzip,deflate,br）
+响应头
+Content-Type：告诉客户端响应的媒体类型（如application/json、text/html等）
+Content-Language：告诉客户端响应的语言
+Content-Charset：告诉客户端响应的字符集
+Content-Encoding：告诉客户端响应的压缩方式（gzip）
+
+报头Accept与Content-Type的区别
+有很多文章粗暴的解释：Accept属于请求头，Content-Type属于响应头，其实这是不准确的。
+在前后端分离开发成为主流的今天，你应该不乏见到前端的request请求上大都有Content-Type：application/json;charset=utf-8这个请求头，因此可见Content-Type并不仅仅是响应头。
+
+HTTP协议规范的格式如下四部分：
+
+＜request-line＞(请求消息行)
+＜headers＞(请求消息头)
+＜blank line＞(请求空白行)
+＜request-body＞(请求消息体)
+Content-Type指请求消息体的数据格式，因为请求和响应中都可以有消息体，所以它即可用在请求头，亦可用在响应头。
+
+## Spring MVC内容协商
