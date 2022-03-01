@@ -13,28 +13,24 @@ export const zh: SidebarConfig = {
       ]
     },
     {
-      text:'Spring',
-      collapsible: true,
-      children :[
-        '/java/spring/spring.md',
-        '/java/spring/springbootstart.md',
-        '/java/spring/springioc.md',
-        '/java/spring/springaop.md',
-        '/java/spring/springevent.md',
-        '/java/spring/springboot_refreshContext.md',
-        '/java/spring/springlogging.md','/java/spring/springdi.md',
-        '/java/spring/ComponentScanAnnotationParser.md',
-        '/java/spring/contentnegotiation.md',
-        '/java/spring/beandifition.md',
-      ]
-    },
-    {
       text:'Utils',
       collapsible: true,
       children :[
         '/java/utils/json/jackson.md',
       ]
     },
+  ],
+  '/spring/': [
+    '/spring/springbootstart.md',
+    '/spring/springioc.md',
+    '/spring/springaop.md',
+    '/spring/springevent.md',
+    '/spring/springboot_refreshContext.md',
+    '/spring/springlogging.md',
+    '/spring/springdi.md',
+    '/spring/ComponentScanAnnotationParser.md',
+    '/spring/contentnegotiation.md',
+    '/spring/beandifition.md',
   ],
   '/mysql/': [
     ''

@@ -241,17 +241,25 @@ public ConfigurableApplicationContext run(String... args) {
         ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);
         configureIgnoreBeanInfo(environment);
         Banner printedBanner = printBanner(environment);
+        // 创建 应用上下文
         context = createApplicationContext();
         exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
                 new Class[] { ConfigurableApplicationContext.class }, context);
+        // 处理上下文刷新前工作
         prepareContext(context, environment, listeners, applicationArguments, printedBanner);
+        // 刷新上下文
         refreshContext(context);
+        // 刷新上下文后调用的一些操作
         afterRefresh(context, applicationArguments);
+        // 记录一些任务停止时间的信息
         stopWatch.stop();
         if (this.logStartupInfo) {
+            // 打印任务计时的信息
             new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
         }
+        // 执行监听器
         listeners.started(context);
+        // 调用实现ApplicationRunner接口的Bean和实现CommandLineRunner接口的Bean
         callRunners(context, applicationArguments);
     }
     catch (Throwable ex) {
@@ -632,3 +640,41 @@ private BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext cont
 重要
 [refreshContext(context);](./springboot_refreshContext.md) 
 
+### afterRefresh(context, applicationArguments);
+在刷新上下文后调用。
+
+### stopWatch.stop();
+记录一些停止当前任务。
+```java
+public void stop() throws IllegalStateException {
+    if (this.currentTaskName == null) {
+        throw new IllegalStateException("Can't stop StopWatch: it's not running");
+    }
+    // 当前时间 - 任务开始时间 
+    long lastTime = System.nanoTime() - this.startTimeNanos;
+    // 任务总花费时间
+    this.totalTimeNanos += lastTime;
+    this.lastTaskInfo = new TaskInfo(this.currentTaskName, lastTime);
+    if (this.keepTaskList) {
+        this.taskList.add(this.lastTaskInfo);
+    }
+    ++this.taskCount;
+    this.currentTaskName = null;
+}
+```
+
+---
+至此Spring Boot的启动，读完~
+至于Spring Boot怎么跟Web联系起来的，在启动过程refresh()里有一个onRefresh()操作。
+```java
+protected void onRefresh() {
+    super.onRefresh();
+    try {
+        // 创建Web服务
+        createWebServer();
+    }
+    catch (Throwable ex) {
+        throw new ApplicationContextException("Unable to start web server", ex);
+    }
+}
+```
