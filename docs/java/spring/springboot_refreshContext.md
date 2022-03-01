@@ -1020,3 +1020,41 @@ public void preInstantiateSingletons() throws BeansException {
 
 ### 第12步：finishRefresh();
 Last step: publish corresponding event.
+最后一步：发布相应的事件
+```java
+protected void finishRefresh() {
+    // Clear context-level resource caches (such as ASM metadata from scanning).
+    // 清除上下文级别的资源缓存（例如扫描中的 ASM 元数据）。
+    // this.resourceCaches.clear();
+    clearResourceCaches();
+
+    // Initialize lifecycle processor for this context.
+    // 为此上下文初始化生命周期处理器。
+    initLifecycleProcessor();
+
+    // Propagate refresh to lifecycle processor first.
+    // 首先将刷新传播到生命周期处理器。
+    getLifecycleProcessor().onRefresh();
+
+    // Publish the final event.
+    // 发布最终事件。
+    publishEvent(new ContextRefreshedEvent(this));
+
+    // Participate in LiveBeansView MBean, if active.
+    // 参与 LiveBeansView MBean（如果处于活动状态）。
+    LiveBeansView.registerApplicationContext(this);
+}
+```
+
+### 第13步：resetCommonCaches();
+重置 Spring 核心中的常见自省缓存，因为我们可能不再需要单例 bean 的元数据......
+```java
+protected void resetCommonCaches() {
+    ReflectionUtils.clearCache();
+    AnnotationUtils.clearCache();
+    ResolvableType.clearCache();
+    CachedIntrospectionResults.clearClassLoader(getClassLoader());
+}
+```
+---
+至此，刷新上下文全部模板方法已经执行完毕~
