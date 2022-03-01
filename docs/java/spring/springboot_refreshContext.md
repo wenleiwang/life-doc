@@ -968,25 +968,30 @@ public void preInstantiateSingletons() throws BeansException {
         if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
             // 是工厂Bean
             if (isFactoryBean(beanName)) {
+                // 拼接&前缀
                 Object bean = getBean(FACTORY_BEAN_PREFIX + beanName);
                 if (bean instanceof FactoryBean) {
                     FactoryBean<?> factory = (FactoryBean<?>) bean;
                     boolean isEagerInit;
+                    // 系统安全接口不是空 且 工厂bean是SmartFactoryBean类型
                     if (System.getSecurityManager() != null && factory instanceof SmartFactoryBean) {
                         isEagerInit = AccessController.doPrivileged(
                                 (PrivilegedAction<Boolean>) ((SmartFactoryBean<?>) factory)::isEagerInit,
                                 getAccessControlContext());
                     }
                     else {
+                        // 是SmartFactoryBean 且 是急切初始化的 则为true
                         isEagerInit = (factory instanceof SmartFactoryBean &&
                                 ((SmartFactoryBean<?>) factory).isEagerInit());
                     }
                     if (isEagerInit) {
+                        // Spring DI 的一个入口
                         getBean(beanName);
                     }
                 }
             }
             else {
+                // Spring DI 的一个入口
                 getBean(beanName);
             }
         }
@@ -1010,6 +1015,8 @@ public void preInstantiateSingletons() throws BeansException {
     }
 }
 ```
+
+[点击这里看spring DI 过程](./springdi.md)
 
 ### 第12步：finishRefresh();
 Last step: publish corresponding event.

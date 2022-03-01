@@ -26,7 +26,14 @@ module.exports = {
     },
     displayAllHeaders: true, // 显示所有页面的标题链接
     activeHeaderLinks: true,// 显示活动的标题链接
+    sidebarDepth: 4
   },
   base: '/life-doc/',
   repo : 'https://github.com/wenleiwang/life-doc.git',
+  markdown:{
+    extractHeaders:{
+      level : [2,3,4] 
+    }
+  }
 }
+
