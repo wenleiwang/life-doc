@@ -47,4 +47,13 @@ export const zh: SidebarConfig = {
   '/rabbitmq/': [
     '',
   ],
+  '/algorithm/': [
+    {
+      text:'链表',
+      collapsible: true,
+      children :[
+        '/algorithm/backlist.md',
+      ]
+    },
+  ],
 }
