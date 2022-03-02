@@ -32,7 +32,7 @@ export const zh: SidebarConfig = {
     '/spring/beandifition.md',
   ],
   '/mysql/': [
-    ''
+    '/mysql/interview.md',
   ],
   '/redis/': [
     {
