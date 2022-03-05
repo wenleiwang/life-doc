@@ -5,7 +5,7 @@ module.exports = {
   title: '文文的文档',
   description: '只为了记录',
   head:[
-    ['link',{rel:'icon',href:'/favicon.ico'}]
+    ['link',{rel:'icon',href:'/favicon.ico'}],
   ],
   // 主题和它的配置
   // theme: '@vuepress/theme-default',
@@ -33,7 +33,11 @@ module.exports = {
   markdown:{
     extractHeaders:{
       level : [2,3,4] 
-    }
-  }
+    },
+    
+  },
+  extendsMarkdown: (md) => {
+    md.use(require('markdown-it-katex'))
+  },
 }
 

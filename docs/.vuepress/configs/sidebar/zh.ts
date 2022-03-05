@@ -109,7 +109,7 @@ export const zh: SidebarConfig = {
     },
   ],
   '/rabbitmq/': [
-    '',
+    '/rabbitmq/mideng.md'
   ],
   '/algorithm/': [
     {
@@ -119,5 +119,8 @@ export const zh: SidebarConfig = {
         '/algorithm/backlist.md',
       ]
     },
+  ],
+  '/temp/': [
+    '/temp/interface.md'
   ],
 }
