@@ -6,6 +6,7 @@ export const zh: NavbarConfig = [
   { text: 'Spring', link: '/spring/' },
   { text: 'MySQL', link: '/mysql/' },
   { text: 'Redis', link: '/redis/' },
-  { text: 'RabbitMQ', link: '/rabbitmq/', target:'_blank' },
+  // { text: 'RabbitMQ', link: '/rabbitmq/', target:'_blank' },
+  { text: 'RabbitMQ', link: '/rabbitmq/' },
   { text: '算法', link: '/algorithm/' },
 ]

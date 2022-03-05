@@ -12,6 +12,70 @@ export const zh: SidebarConfig = {
       ]
     },
     {
+      text:'Java9新特性',
+      collapsible: true,
+      children :[
+        '/java/java9/',
+        '/java/java9/onjvm.md'
+      ]
+    },
+    {
+      text:'Java10新特性',
+      collapsible: true,
+      children :[
+        '/java/java10/'
+      ]
+    },
+    {
+      text:'Java11新特性',
+      collapsible: true,
+      children :[
+        '/java/java11/'
+      ]
+    },
+    {
+      text:'Java12新特性',
+      collapsible: true,
+      children :[
+        '/java/java12/'
+      ]
+    },
+    {
+      text:'Java13新特性',
+      collapsible: true,
+      children :[
+        '/java/java13/'
+      ]
+    },
+    {
+      text:'Java14新特性',
+      collapsible: true,
+      children :[
+        '/java/java14/'
+      ]
+    },
+    {
+      text:'Java15新特性',
+      collapsible: true,
+      children :[
+        '/java/java15/'
+      ]
+    },
+    {
+      text:'Java16新特性',
+      collapsible: true,
+      children :[
+        '/java/java16/'
+      ]
+    },
+    {
+      text:'Java17新特性',
+      collapsible: true,
+      children :[
+        '/java/java17/'
+      ]
+    },
+    {
       text:'Utils',
       collapsible: true,
       children :[
