@@ -117,6 +117,7 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/algorithm/backlist.md',
+        '/algorithm/isPail.md',
       ]
     },
   ],
