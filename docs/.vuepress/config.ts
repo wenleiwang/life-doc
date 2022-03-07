@@ -25,14 +25,31 @@ export default defineUserConfig<DefaultThemeOptions>({
         // sidebar
         sidebar: sidebar.zh,
 
+        // 是否启用编辑
+        editLink: true,
         // page meta
-        editLinkText: 'Edit this page on GitHub',
+        editLinkText: '在GitHub上编辑',
+        docsRepo: 'https://github.com/wenleiwang/life-doc',
+        docsBranch: 'master',
+        docsDir: 'docs',
+        editLinkPattern: ':repo/edit/:branch/:path',
+
+        // 是否显示最后更新时间
+        lastUpdated: true,
+        lastUpdatedText: '最后更新时间',
+
+        // 作者
+        contributors: true,
+        contributorsText: '@Author ',
+
+        toggleDarkMode: '切换夜间模式'
+
       },
     },
     displayAllHeaders: true, // 显示所有页面的标题链接
     activeHeaderLinks: true,// 显示活动的标题链接
     sidebarDepth: 4,
-    repo : 'https://github.com/wenleiwang/life-doc.git',
+    repo : 'https://github.com/wenleiwang/life-doc',
   },
   base: '/life-doc/',
   markdown:{
