@@ -1,6 +1,9 @@
+import { defineUserConfig } from '@vuepress/cli'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
-module.exports = {
+export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CH',
   title: '文文的文档',
   description: '只为了记录',
@@ -26,10 +29,10 @@ module.exports = {
     },
     displayAllHeaders: true, // 显示所有页面的标题链接
     activeHeaderLinks: true,// 显示活动的标题链接
-    sidebarDepth: 4
+    sidebarDepth: 4,
+    repo : 'https://github.com/wenleiwang/life-doc.git',
   },
   base: '/life-doc/',
-  repo : 'https://github.com/wenleiwang/life-doc.git',
   markdown:{
     extractHeaders:{
       level : [2,3,4] 
@@ -39,5 +42,5 @@ module.exports = {
   extendsMarkdown: (md) => {
     md.use(require('markdown-it-katex'))
   },
-}
+})
 

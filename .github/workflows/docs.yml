@@ -39,9 +39,6 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
-      - name: add markdown-it-katex
-        run: yarn add markdown-it-katex
-
       # 运行构建脚本
       - name: Build VuePress site
         run: yarn docs:build
