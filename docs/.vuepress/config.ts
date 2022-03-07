@@ -2,7 +2,9 @@ import { defineUserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
+import markdownItKatex from 'markdown-it-katex';
 
+const customElement = ['mi','mo','mn','mrow','annotation','semantics','math'];
 export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CH',
   title: '文文的文档',
@@ -40,7 +42,16 @@ export default defineUserConfig<DefaultThemeOptions>({
     
   },
   extendsMarkdown: (md) => {
-    md.use(require('markdown-it-katex'))
+    md.use(markdownItKatex)
+  },
+  bundlerConfig: {
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+            isCustomElement: tag => customElement.includes(tag)
+        }
+      }
+    }
   },
 })
 
