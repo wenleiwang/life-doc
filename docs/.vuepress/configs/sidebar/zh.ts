@@ -118,6 +118,7 @@ export const zh: SidebarConfig = {
       children :[
         '/algorithm/backlist.md',
         '/algorithm/isPail.md',
+        '/algorithm/reverseBetween.md',
       ]
     },
   ],
