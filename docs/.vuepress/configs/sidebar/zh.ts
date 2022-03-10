@@ -119,6 +119,7 @@ export const zh: SidebarConfig = {
         '/algorithm/backlist.md',
         '/algorithm/isPail.md',
         '/algorithm/reverseBetween.md',
+        '/algorithm/binarytree_preorder.md',
       ]
     },
   ],
