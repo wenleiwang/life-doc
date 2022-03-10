@@ -128,6 +128,7 @@ export const zh: SidebarConfig = {
         '/algorithm/binarytree_preorder.md',
         '/algorithm/binarytree_inorder.md',
         '/algorithm/binarytree_postorder.md',
+        '/algorithm/binarytree_levelorder.md',
       ]
     },
   ],
