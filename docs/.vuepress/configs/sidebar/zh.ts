@@ -119,7 +119,14 @@ export const zh: SidebarConfig = {
         '/algorithm/backlist.md',
         '/algorithm/isPail.md',
         '/algorithm/reverseBetween.md',
+      ]
+    },
+    {
+      text:'二叉树',
+      collapsible: true,
+      children :[
         '/algorithm/binarytree_preorder.md',
+        '/algorithm/binarytree_inorder.md',
       ]
     },
   ],
