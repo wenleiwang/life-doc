@@ -125,9 +125,10 @@ export const zh: SidebarConfig = {
       text:'二叉树',
       collapsible: true,
       children :[
-        '/algorithm/binarytree_preorder.md',
-        '/algorithm/binarytree_inorder.md',
-        '/algorithm/binarytree_postorder.md',
+        '/algorithm/binarytree/binarytree_preorder.md',
+        '/algorithm/binarytree/binarytree_inorder.md',
+        '/algorithm/binarytree/binarytree_postorder.md',
+        '/algorithm/binarytree/binarytree_snake.md',
       ]
     },
   ],
