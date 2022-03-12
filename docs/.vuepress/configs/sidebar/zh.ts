@@ -131,6 +131,7 @@ export const zh: SidebarConfig = {
         '/algorithm/binarytree/binarytree_levelorder.md',
         '/algorithm/binarytree/binarytree_snake.md',
         '/algorithm/binarytree/binarytree_maxdepth.md',
+        '/algorithm/binarytree/binarytree_haspathsum.md'
       ]
     },
   ],
