@@ -37,7 +37,7 @@ Content-type: text/html
 
 注意，第二行为一个空行，这是必须的，使用这个空行的目的是将MIME信息与真正的数据内容分隔开。
 
-![详情](https://baike.baidu.com/item/MIME/2900607?fr=aladdin)
+[MIME信息百度词条详情](https://baike.baidu.com/item/MIME/2900607?fr=aladdin)
 
 HTTP内容协商协议
 （常用）客户端发请求时就指明需要的MIME们（比如Http头部的：Accept），服务端根据客户端指定的要求返回合适的形式，并且在响应头中做出说明（如：Content-Type）
