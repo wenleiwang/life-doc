@@ -138,6 +138,7 @@ export const zh: SidebarConfig = {
         '/algorithm/binarytree/binarytree_isCompleteTree.md',
         '/algorithm/binarytree/binarytree_isBalanced.md',
         '/algorithm/binarytree/binarytree_lowestCommonAncestor.md',
+        '/algorithm/binarytree/binarytree_lowestCommonAncestor2.md',
       ]
     },
   ],
