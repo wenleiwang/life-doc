@@ -144,6 +144,13 @@ export const zh: SidebarConfig = {
         '/algorithm/binarytree/binartytree_solve.md',
       ]
     },
+    {
+      text:'堆/栈/队列',
+      collapsible: true,
+      children :[
+        '/algorithm/innorheaporqueue/includeMain.md',
+      ]
+    }
   ],
   '/temp/': [
     '/temp/interface.md'
