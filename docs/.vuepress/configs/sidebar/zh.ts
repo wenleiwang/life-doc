@@ -149,6 +149,7 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/algorithm/innorheaporqueue/includeMain.md',
+        '/algorithm/innorheaporqueue/isValidBracket.md'
       ]
     }
   ],
