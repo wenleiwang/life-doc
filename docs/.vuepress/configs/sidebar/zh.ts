@@ -159,4 +159,7 @@ export const zh: SidebarConfig = {
   '/python/': [
     '/python/base.md'
   ],
+  '/note/': [
+    '/note/20220305.md'
+  ],
 }
