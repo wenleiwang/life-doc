@@ -10,5 +10,6 @@ export const zh: NavbarConfig = [
   { text: 'RabbitMQ', link: '/rabbitmq/' },
   { text: '算法', link: '/algorithm/' },
   { text: '补充', link: '/temp/' },
+  { text: 'Python', link: '/python/' },
   { text: '写给自己', link: '/note/' },
 ]
