@@ -158,11 +158,11 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 
    
 
-   ![image-20220330112214286](img/springmvc_start/image-20220330112214286.png)
+   ![image-20220330112214286](./img/springmvc_start/image-20220330112214286.png)
 
 
 
-![image-20220330113002421](img/springmvc_start/image-20220330113002421.png)
+![image-20220330113002421](./img/springmvc_start/image-20220330113002421.png)
 
 * AbstractContextLoaderInitializer：创建根容器；createRootApplicationContext()；
 * AbstractDispatcherServletInitializer：
