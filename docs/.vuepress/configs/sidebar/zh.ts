@@ -94,6 +94,7 @@ export const zh: SidebarConfig = {
     '/spring/ComponentScanAnnotationParser.md',
     '/spring/contentnegotiation.md',
     '/spring/beandifition.md',
+    '/spring/springmvc_start.md',
   ],
   '/mysql/': [
     '/mysql/interview.md',
