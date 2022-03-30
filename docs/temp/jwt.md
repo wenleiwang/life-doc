@@ -55,7 +55,7 @@ json_web_token = encodeBase64Url(header) + '.' + encodeBase64Url(payload) + '.' 
 ## 3.JWT 使用
 ### 3.1请求
 * url 参数：?token=你的token
-* header 中：Authorization:Bearer <token>（推荐）
+* header 中：Authorization:Bearer \<token\>（推荐）
 
 > 注意Bearer和token之间有一个空格
 
