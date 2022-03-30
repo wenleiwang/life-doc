@@ -154,6 +154,7 @@ export const zh: SidebarConfig = {
     }
   ],
   '/temp/': [
-    '/temp/interface.md'
+    '/temp/interface.md',
+    '/temp/jwt.md'
   ],
 }
