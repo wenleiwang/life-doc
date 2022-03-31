@@ -156,7 +156,8 @@ export const zh: SidebarConfig = {
   ],
   '/temp/': [
     '/temp/interface.md',
-    '/temp/jwt.md'
+    '/temp/jwt.md',
+    '/temp/gitback.md',
   ],
   '/python/': [
     '/python/base.md'
