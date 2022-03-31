@@ -118,3 +118,36 @@ mixed是reset的默认参数，也就是当你不指定任何参数时的参数�
 ![](./img/gitback/2022-03-31-18-54-55.png)
 
 
+## 回滚大法
+在使用Git的过程中，有时候会因为一些误操作，比如reset、rebase、merge等。特别是在Commit之后又执行了git reset --hard HEAD强制回滚本地记录以及文件到服务器版本，导致本地做的修改全部恢复到Git当前分支的服务器版本，同时自己的Commmit记录也消失了。碰到这种情况，不要慌，我们在Git上做的任何操作都只是在原来之前的操作上做修改，并且会被记录下来保存，也就是说无论你做了什么，对于Git来说都可以进行回滚操作。
+你现在看git的历史记录，你可以看到两次提交：
+```
+$ git log
+* 98abc5a (HEAD, master) more stuff added to foo
+* b7057a9 initial commit
+```
+现在让我们来重置回第一次提交的状态：
+```
+$ git reset --hard b7057a9
+$ git log
+* b7057a9 (HEAD, master) initial commit
+```
+
+这看起来我们是丢掉了我们第二次的提交，本地的修改也消失了，没有办法找回来了。 **但是 reflog 就是用来解决这个问题的。简单的说，它会记录所有HEAD的历史，也就是说当你做 reset，checkout等操作的时候，这些操作会被记录在reflog中** 。
+```
+$ git reflog
+b7057a9 HEAD@{0}: reset: moving to b7057a9
+98abc5a HEAD@{1}: commit: more stuff added to foo
+b7057a9 HEAD@{2}: commit (initial): initial commit
+```
+所以，我们要找回我们第二commit，只需要做如下操作：
+```
+$ git reset --hard 98abc5a
+```
+
+再来看一下 git 记录：
+```
+$ git log
+* 98abc5a (HEAD, master) more stuff added to foo
+* b7057a9 initial commit
+```
