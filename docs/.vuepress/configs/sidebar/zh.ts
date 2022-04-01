@@ -8,7 +8,8 @@ export const zh: SidebarConfig = {
       children :[
         '/java/base/javabasee.md',
         '/java/base/security.md',
-        '/java/base/synchronized.md'
+        '/java/base/synchronized.md',
+        '/java/base/integerInMapper.md'
       ]
     },
     {
