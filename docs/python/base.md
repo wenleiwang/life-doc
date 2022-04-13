@@ -769,3 +769,88 @@ Annotations: {'ham': <class 'str'>, 'return': <class 'str'>, 'eggs': <class 'str
 Arguments: spam eggs
 'spam and eggs'
 ```
+
+
+
+## 模块
+
+退出 Python 解释器后，再次进入时，之前在 Python 解释器中定义的函数和变量就丢失了。因此，编写较长程序时，建议用文本编辑器代替解释器，执行文件中的输入内容，这就是编写 *脚本* 。随着程序越来越长，为了方便维护，最好把脚本拆分成多个文件。编写脚本还一个好处，不同程序调用同一个函数时，不用每次把函数复制到各个程序。
+
+为实现这些需求，Python 把各种定义存入一个文件，在脚本或解释器的交互式实例中使用。这个文件就是 *模块* ；模块中的定义可以 *导入* 到其他模块或 *主* 模块（在顶层和计算器模式下，执行脚本中可访问的变量集）。
+
+模块是包含 Python 定义和语句的文件。其文件名是模块名加后缀名 `.py` 。在模块内部，通过全局变量 `__name__` 可以获取模块名（即字符串）。例如，用文本编辑器在当前目录下创建 `fibo.py` 文件，输入以下内容：
+
+```python
+# Fibonacci numbers module
+
+def fib(n):    # write Fibonacci series up to n
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+
+def fib2(n):   # return Fibonacci series up to n
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a+b
+    return result
+```
+
+```python
+import fibo
+
+fibo.fib(50)
+```
+
+```python
+from fibo import fib, fib2
+fib(500)
+```
+
+```
+# 少用
+from fibo import *
+```
+
+```
+# 把 as 后的名称与导入模块绑定
+import fibo as fib
+fib.fib(50)
+```
+
+```
+from fibo import fib as fibonacci
+fibonacci(50)
+```
+
+### 以脚本的方式执行模块                       
+
+```
+python fibo.py <arguments>
+```
+
+这项操作将执行模块里的代码，和导入模块一样，但会把 `__name__` 赋值为 `"__main__"`。 也就是把下列代码添加到模块末尾：
+
+```python
+if __name__ == "__main__":
+    import sys
+    fib(int(sys.argv[1]))
+```
+
+既可以把这个文件当脚本使用，也可以用作导入的模块， 因为，解析命令行的代码只有在模块以 “main” 文件执行时才会运行：
+
+```
+$ python fibo.py 50
+0 1 1 2 3 5 8 13 21 34
+```
+
+导入模块时，不运行这些代码：
+
+```
+>>>                             import fibo
+```
+
+这种操作常用于为模块提供便捷用户接口，或用于测试（把模块当作执行测试套件的脚本运行）。
