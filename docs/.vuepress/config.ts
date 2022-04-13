@@ -53,6 +53,14 @@ export default defineUserConfig<DefaultThemeOptions>({
     activeHeaderLinks: true,// 显示活动的标题链接
     sidebarDepth: 4,
     repo : 'https://github.com/wenleiwang/life-doc',
+    plugins: [
+      [
+        path.resolve(__dirname, './plugin/rili.js'),
+        {
+          /* 选项 */
+        },
+      ],
+    ],
   },
   base: '/life-doc/',
   markdown:{

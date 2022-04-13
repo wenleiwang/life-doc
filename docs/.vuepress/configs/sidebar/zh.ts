@@ -9,7 +9,8 @@ export const zh: SidebarConfig = {
         '/java/base/javabasee.md',
         '/java/base/security.md',
         '/java/base/synchronized.md',
-        '/java/base/integerInMapper.md'
+        '/java/base/integerInMapper.md',
+        '/java/base/threadLocal.md'
       ]
     },
     {
