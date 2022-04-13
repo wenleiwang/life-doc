@@ -3,6 +3,8 @@ import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 import markdownItKatex from 'markdown-it-katex';
+import { defineClientAppEnhance } from '@vuepress/client'
+
 
 const customElement = ['maction','math','menclose','merror','mfenced','mfrac','mi','mmultiscripts','mn','mo','mover','mpadded','mphantom','mroot','mrow','ms','mspace','msqrt','mstyle','msub','msubsup','msup','mtable','mtd','mtext','mtr','munder','munderover','semantics','annotation'];
 
