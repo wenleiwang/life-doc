@@ -97,6 +97,8 @@ export const zh: SidebarConfig = {
     '/spring/contentnegotiation.md',
     '/spring/beandifition.md',
     '/spring/springmvc_start.md',
+    '/spring/spring_beanfactoryorfactorybean.md',
+    '/spring/spring_circularDependecies.md'
   ],
   '/mysql/': [
     '/mysql/interview.md',
@@ -161,6 +163,7 @@ export const zh: SidebarConfig = {
     '/temp/jwt.md',
     '/temp/gitback.md',
     '/temp/calendar.md',
+    '/temp/spel.md'
   ],
   '/python/': [
     '/python/base.md'

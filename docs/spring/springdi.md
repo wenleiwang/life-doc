@@ -2,6 +2,94 @@
 # spring DI 过程 
 
 ## 0. 依赖注入
+### 构造函数注入
+```java
+package x.y;
+
+public class ThingOne {
+    private String name;
+    private int age;
+    private BelongToFirst sex;
+    public ConstructorBean1(String name, int age,BelongToFirst sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+}
+```
+假设ThingTwo和ThingThree类不通过继承相关，则不存在潜在的歧义。因此，以下配置工作正常，您无需在 `<constructor-arg/>`元素中显式指定构造函数参数索引或类型。
+```xml
+<beans>
+    <bean id="constructorBean1" class="learn.note.springlearn.bean.userxmlbean.ConstructorBean1">
+        <constructor-arg value="wangwenlei"></constructor-arg>
+        <constructor-arg value="25"></constructor-arg>
+        <constructor-arg ref="belongToFirst"></constructor-arg>
+    </bean>
+
+    <bean id="belongToFirst" class="learn.note.springlearn.bean.userxmlbean.BelongToFirst">
+        <property name="sex" value="男"></property>
+    </bean>
+</beans>
+```
+> 也可以使用索引或使用name：
+>
+> ```xml
+> <beans>  
+> 	<bean id="constructorBean1" class="learn.note.springlearn.bean.userxmlbean.ConstructorBean1">
+>         <constructor-arg index="0" value="wangwenlei"></constructor-arg>
+>         <constructor-arg name="age" value="25"></constructor-arg>
+>         <constructor-arg index="2" ref="belongToFirst"></constructor-arg>
+>     </bean>
+>     <bean id="belongToFirst" class="learn.note.springlearn.bean.userxmlbean.BelongToFirst">
+>         <property name="sex" value="男"></property>
+>     </bean>
+> </beans>
+> ```
+
+
+### setter注入
+```java
+public class BelongToFirst {
+    private String sex;
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+}
+```
+xml配置
+```xml
+<beans>
+    <bean id="belongToFirst" class="learn.note.springlearn.bean.userxmlbean.BelongToFirst">
+        <property name="sex" value="男"></property>
+    </bean>
+</beans>
+```
+在命名空间上添加 `xmlns:p="http://www.springframework.org/schema/p"`
+就可以使用更简洁的 XML 配置：
+```xml
+<beans>
+    <bean id="belongToFirst" class="learn.note.springlearn.bean.userxmlbean.BelongToFirst"
+        p:sex="男"
+    />
+</beans>
+```
+
+### 使用初体验
+```java
+public class Main {
+    public static void main(String[] args) {
+        // 你的配置文件名，放在根路径resources下
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("service-learn.xml");
+        // 使用getBean方法可以检索bean的实例
+        final ConstructorBean1 firstXml = context.getBean("constructorBean1", ConstructorBean1.class);
+        // 因为已经配置了值，取出后直接使用
+        System.out.println(firstXml.getName());
+        System.out.println(firstXml.getAge());
+        // 试下对象里依赖另一个Bean
+        System.out.println(firstXml.getSex());
+    }
+}
+```
 ### 发生的时间
 依赖注入有两种情况触发
 1. 用户第一次调用getBean()方法时，IoC容器触发以来注入
@@ -789,3 +877,19 @@ protected Object initializeBean(String beanName, Object bean, @Nullable RootBean
     return wrappedBean;
 }
 ```
+
+## 拓展 
+```xml
+<bean id="mappings"
+    class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+
+    <!-- typed as a java.util.Properties -->
+    <property name="properties">
+        <value>
+            jdbc.driver.className=com.mysql.jdbc.Driver
+            jdbc.url=jdbc:mysql://localhost:3306/mydb
+        </value>
+    </property>
+</bean>
+```
+Spring 容器通过使用 JavaBeans机制将`<value/>`元素内的文本转换为 实例。这是一个不错的捷径，也是 Spring 团队支持使用嵌套元素而不是属性样式的少数几个地方之一。`java.util.PropertiesPropertyEditor`的`<value/>`value
