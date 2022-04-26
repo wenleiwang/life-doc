@@ -92,6 +92,7 @@ export const zh: SidebarConfig = {
     '/spring/springevent.md',
     '/spring/springboot_refreshContext.md',
     '/spring/springlogging.md',
+    '/spring/spring_autowire.md',
     '/spring/springdi.md',
     '/spring/ComponentScanAnnotationParser.md',
     '/spring/contentnegotiation.md',
