@@ -84,6 +84,13 @@ export const zh: SidebarConfig = {
         '/java/utils/json/jackson.md',
       ]
     },
+    {
+      text:'servlet',
+      collapsible: true,
+      children :[
+        '/java/servlet/',
+      ]
+    },
   ],
   '/spring/': [
     '/spring/springbootstart.md',
@@ -99,7 +106,8 @@ export const zh: SidebarConfig = {
     '/spring/beandifition.md',
     '/spring/springmvc_start.md',
     '/spring/spring_beanfactoryorfactorybean.md',
-    '/spring/spring_circularDependecies.md'
+    '/spring/spring_circularDependecies.md',
+    '/spring/spring_aware.md'
   ],
   '/mysql/': [
     '/mysql/interview.md',

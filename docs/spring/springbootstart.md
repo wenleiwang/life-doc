@@ -282,6 +282,38 @@ public ConfigurableApplicationContext run(String... args) {
 
 ![](./img/springbootstart/2022-02-01-20-17-22.png)
 
+> 这里扩展Environment接口的概念：集成在容器中的抽象，它对应用程序环境的两个关键方面进行建模：配置文件和属性。
+>
+> 配置文件是一个命名的、逻辑的 bean 定义组，仅当给定的配置文件处于活动状态时才向容器注册。可以将 Bean 分配给配置文件，无论是在 XML 中定义还是使用注释定义。`Environment`对象与配置文件的关系是判断哪些配置文件（如果有）当前处于活动状态，以及哪些配置文件（如果有）默认应该是活动的。
+>
+> 属性在几乎所有应用程序中都发挥着重要作用，并且可能源自多种来源：属性文件、JVM 系统属性、系统环境变量、JNDI、servlet 上下文参数、ad-hoc `Properties` objects, `Map` objects，等等。`Environment`对象与配置文件的关系是为用户提供一个方便的服务接口，用于配置属性源并从中解析属性。
+
+
+
+> `StandardEnvironment`配置了2个PropertySource对象。
+>
+> 一个代表JVM系统属性集（System.getProperties()）
+>
+> 一个代表系统环境变量集（System.getenv()）
+>
+> 
+>
+> `StandardEnvironment`用于独立应用程序。`StandardEnvironment`填充了其他默认属性源，包括servlet配置和servlet上下文参数。
+>
+> 对于 通用`StandardServletEnvironment`，完整的层次结构如下，最高优先级的条目位于顶部（请注意，属性值不会合并，而是完全被前面的条目覆盖。）：
+>
+> 1. ServletConfig 参数（如果适用——例如，在`DispatcherServlet`上下文的情况下）
+> 2. ServletContext 参数（web.xml 上下文参数条目）
+> 3. JNDI 环境变量（`java:comp/env/`条目）
+> 4. JVM 系统属性（`-D`命令行参数）
+> 5. JVM系统环境（操作系统环境变量）
+>
+> `@PropertySource`)注解提供了一种方便的声明性机制，用于将`PropertySource`添加到Spring的`Environment`
+>
+> `@PropertySource("classpath:/com/myco/app.properties")`
+
+
+
 ### prepareEnvironment()
 `ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);`
 这一步是准备环境解释，点击进入了解
