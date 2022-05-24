@@ -119,7 +119,19 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/redis/base/resume.md',
-        '/redis/base/usestring.md'
+        '/redis/base/usestring.md',
+        '/redis/base/uselist.md',
+        '/redis/base/usehash.md',
+        '/redis/base/usezset.md',
+      ]
+    },
+    {
+      text:'Redis使用',
+      collapsible: true,
+      children :[
+        '/redis/use/distributedLock.md',
+        '/redis/use/uselist.md',
+        '/redis/use/bloomFilter.md',
       ]
     },
   ],
