@@ -191,3 +191,15 @@ public class RedissonConfig {
 原理图：
 
 ![](../img/distributedLock/2022-05-18-14-56-10.png)
+
+
+
+---
+
+> 版本说明：
+>
+>Java 8
+>
+>SpringBoot v2.3.3.RELEASE
+>
+>Redis 6.2.5

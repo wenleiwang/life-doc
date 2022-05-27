@@ -132,6 +132,8 @@ export const zh: SidebarConfig = {
         '/redis/use/distributedLock.md',
         '/redis/use/uselist.md',
         '/redis/use/bloomFilter.md',
+        '/redis/use/useHyperLogLog.md',
+        '/redis/use/useLimit.md',
       ]
     },
   ],

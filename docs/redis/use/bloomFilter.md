@@ -465,3 +465,14 @@ public class Test {
 ----
 总结：
 列出的几个自己实现的代码，底层原理相似。
+
+
+---
+
+> 版本说明：
+>
+>Java 8
+>
+>SpringBoot v2.3.3.RELEASE
+>
+>Redis 6.2.5
