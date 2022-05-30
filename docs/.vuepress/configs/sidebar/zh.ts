@@ -136,6 +136,14 @@ export const zh: SidebarConfig = {
         '/redis/use/useLimit.md',
       ]
     },
+    {
+      text:'Redis集群',
+      collapsible: true,
+      children :[
+        '/redis/cluster/masterSlaveSync.md',
+        '/redis/cluster/sentinel.md',
+      ]
+    },
   ],
   '/rabbitmq/': [
     '/rabbitmq/mideng.md'
