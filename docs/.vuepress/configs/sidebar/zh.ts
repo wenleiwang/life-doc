@@ -195,7 +195,8 @@ export const zh: SidebarConfig = {
     '/temp/jwt.md',
     '/temp/gitback.md',
     '/temp/calendar.md',
-    '/temp/spel.md'
+    '/temp/spel.md',
+    '/temp/learndockerfile.md'
   ],
   '/python/': [
     '/python/base.md'
