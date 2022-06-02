@@ -480,3 +480,36 @@ redis-sentinel-3  | 1:X 01 Jun 2022 15:01:08.929 # +sdown slave 150.158.58.15:63
 ```
 
 搭建完成
+
+## SpringBoot使用Redis哨兵集群
+### Redisson使用
+其余正常使用就行
+```java
+import org.redisson.Redisson;
+import org.redisson.config.Config;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+@Configuration
+public class RedissonConfig {
+
+    @Bean
+    public Redisson redisson () {
+        Config config = new Config();
+        config.useSentinelServers()
+                .addSentinelAddress("redis://150.158.58.15:26379","redis://150.158.58.15:26380","redis://150.158.58.15:26381")
+                .setMasterName("mymaster")
+                .setPassword("密码");
+        return (Redisson) Redisson.create(config);
+    }
+}
+```
+
+### 使用SpringBoot默认配置
+其余正常使用就行
+```yml
+  redis:
+    sentinel:
+      master: mymaster
+      nodes: 150.158.58.15:26379,150.158.58.15:26380,150.158.58.15:26381
+      password: 密码
+```
