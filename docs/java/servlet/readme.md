@@ -4,6 +4,12 @@
 
 Servlet（小服务程序）是一个与协议无关的、跨平台的Web组件，它基于Java技术开发，由Servlet容器所管理。和运行在客户端浏览器中的Applet（小应用程序）相似，Servlet运行在服务器端，可以动态地扩展服务器的功能，并采用“请求一响应”模式提供Web服务。 Servlet的主要功能是交互式地浏览和修改数据，生成动态Web内容。Servlet是平台独立的Java类，即按照Servlet规范编写的Java类，所以具有Java语言的所有优点，如良好的可移植性及安全性等。 Servlet被编译为平台中立的字节码，可以被动态地加载到支持Java技术的Web服务器中运行，就如同Applet对客户端一样，区别在于Servlet运行并不需要图形用户界面。
 
+## Servlet的生命周期
+
+init()：仅执行一次。Servlet启动，会读取配置文件中的信息，构造指定的Servlet对象，创建ServletConfig对象，将ServletConfig作为参数来调用init()方法。
+service() ：核心方法，一般HttpServlet中会有get,post两种处理方式。在调用doGet和doPost方法时会构造servletRequest和servletResponse请求和响应对象作为参数。
+destory()：在停止并且卸载Servlet时执行，负责释放资源
+
 ## Java Servlet优点
 
 1. Servlet可以和其他资源（数据库、文件、Applet和Java应用程序等）交互，把生成的响应内容返回给客户端。如果需要，还可以保存”请求一响应“过程中的信息。
