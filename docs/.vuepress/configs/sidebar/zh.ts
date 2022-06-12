@@ -157,13 +157,13 @@ export const zh: SidebarConfig = {
       text:'链表',
       collapsible: true,
       children :[
-        '/algorithm/backlist.md',
-        '/algorithm/isPail.md',
-        '/algorithm/reverseBetween.md',
-        '/algorithm/mergeKLists.md',
-        '/algorithm/hasCycle.md',
-        '/algorithm/EntryNodeOfLoop.md',
-        '/algorithm/FindKthToTail.md',
+        '/algorithm/list/backlist.md',
+        '/algorithm/list/isPail.md',
+        '/algorithm/list/reverseBetween.md',
+        '/algorithm/list/mergeKLists.md',
+        '/algorithm/list/hasCycle.md',
+        '/algorithm/list/EntryNodeOfLoop.md',
+        '/algorithm/list/FindKthToTail.md',
       ]
     },
     {
