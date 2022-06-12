@@ -160,6 +160,10 @@ export const zh: SidebarConfig = {
         '/algorithm/backlist.md',
         '/algorithm/isPail.md',
         '/algorithm/reverseBetween.md',
+        '/algorithm/mergeKLists.md',
+        '/algorithm/hasCycle.md',
+        '/algorithm/EntryNodeOfLoop.md',
+        '/algorithm/FindKthToTail.md',
       ]
     },
     {
