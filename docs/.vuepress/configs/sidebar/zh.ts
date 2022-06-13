@@ -164,6 +164,9 @@ export const zh: SidebarConfig = {
         '/algorithm/list/hasCycle.md',
         '/algorithm/list/EntryNodeOfLoop.md',
         '/algorithm/list/FindKthToTail.md',
+        '/algorithm/list/removeNthFromEnd.md',
+        '/algorithm/list/FindFirstCommonNode.md', 
+        '/algorithm/list/addInList.md', 
       ]
     },
     {
