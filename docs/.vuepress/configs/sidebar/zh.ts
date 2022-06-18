@@ -167,6 +167,7 @@ export const zh: SidebarConfig = {
         '/algorithm/list/removeNthFromEnd.md',
         '/algorithm/list/FindFirstCommonNode.md', 
         '/algorithm/list/addInList.md', 
+        '/algorithm/list/deleteDuplicates.md', 
       ]
     },
     {
