@@ -202,11 +202,12 @@ export const zh: SidebarConfig = {
       ]
     },
     {
-      text: '字符串',
+      text: '字符串和数组',
       collapsible: true,
       children :[
         '/algorithm/string/judge.md',
         '/algorithm/string/solve.md',
+        '/algorithm/string/merge.md',
       ]
     }
   ],
