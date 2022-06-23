@@ -200,6 +200,15 @@ export const zh: SidebarConfig = {
         '/algorithm/innorheaporqueue/includeMain.md',
         '/algorithm/innorheaporqueue/isValidBracket.md'
       ]
+    },
+    {
+      text: '字符串和数组',
+      collapsible: true,
+      children :[
+        '/algorithm/string/judge.md',
+        '/algorithm/string/solve.md',
+        '/algorithm/string/merge.md',
+      ]
     }
   ],
   '/temp/': [
