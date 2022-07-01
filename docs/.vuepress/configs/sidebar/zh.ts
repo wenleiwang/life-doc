@@ -16,6 +16,7 @@ export const zh: SidebarConfig = {
         '/java/base/integerInMapper.md',
         '/java/base/threadLocal.md',
         '/java/base/proxy.md',
+        '/java/base/callback.md',
       ]
     },
     {
