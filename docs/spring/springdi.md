@@ -457,7 +457,8 @@ protected Object doCreateBean(String beanName, RootBeanDefinition mbd, @Nullable
     // Bean的初始化，》》》》》》》》》》》》》》》**********  依赖注入在此触发 *******《《《《《《《《《《《《《《《
     Object exposedObject = bean;
     try {
-        // 将Bean实例对象封装，并且将Bean定义中的配置的属性值赋值给实例对象
+        // 将Bean实例对象封装，并且将Bean定义中的配置的属性值赋值给实例对象。
+        // 这里会把所有的BeanPostProcess都触发，肯定包括AutowiredAnnotationBeanPostProcessor啦
         populateBean(beanName, mbd, instanceWrapper);
         // 初始化Bean对象
         exposedObject = initializeBean(beanName, exposedObject, mbd);
