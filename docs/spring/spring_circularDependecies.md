@@ -91,11 +91,12 @@ public class B {
 ```java
 protected  T doGetBean(final String name, @Nullable final Class requiredType,
     @Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
-  
+    // ...
     // 尝试通过bean名称获取目标bean对象，比如这里的A对象
     // 第一个关注方法：尝试从缓存中获取目标对象，如果没有获取到，则尝试获取半成品的目标对象；
     // 这里面就涉及到从3层缓存中取对象的逻辑
     Object sharedInstance = getSingleton(beanName);
+    // ...
     // 我们这里的目标对象都是单例的
     if (mbd.isSingleton()) {
         // 第二个关注方法：尝试创建目标对象
@@ -110,6 +111,7 @@ protected  T doGetBean(final String name, @Nullable final Class requiredType,
             }
         });
     }
+    // ...
     return (T) bean;
 }
 ```
