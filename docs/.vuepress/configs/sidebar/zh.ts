@@ -96,6 +96,7 @@ export const zh: SidebarConfig = {
       children :[
         '/java/servlet/',
         '/java/servlet/Servlet.md',
+        '/java/servlet/ServletConfigAndContext.md',
       ]
     },
   ],
