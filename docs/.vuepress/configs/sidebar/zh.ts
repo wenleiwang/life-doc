@@ -95,6 +95,7 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/java/servlet/',
+        '/java/servlet/Servlet.md',
       ]
     },
   ],
