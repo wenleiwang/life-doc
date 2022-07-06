@@ -112,7 +112,7 @@ export const zh: SidebarConfig = {
     '/spring/spring_circularDependecies.md',
     '/spring/ComponentScanAnnotationParser.md',
     '/spring/contentnegotiation.md',
-    '/spring/beandifition.md',
+    '/spring/beandefinition.md',
     '/spring/springmvc_start.md',
     '/spring/spring_beanfactoryorfactorybean.md',
     '/spring/spring_aware.md'
