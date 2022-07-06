@@ -1,6 +1,10 @@
 
 # spring DI 过程 
 
+> SpringBoot版本：spring-context-5.2.8.RELEASE.jar
+> SpringBoot版本：spring-context-5.2.8.RELEASE.jar
+> SpringBoot版本：spring-context-5.2.8.RELEASE.jar
+
 ## 0. 依赖注入
 ### 构造函数注入
 ```java
@@ -92,10 +96,10 @@ public class Main {
 ```
 ### 发生的时间
 依赖注入有两种情况触发
-1. 用户第一次调用getBean()方法时，IoC容器触发以来注入
+1. 用户第一次调用getBean()方法时，IoC容器触发依赖注入
 2. 当属性设为懒加载时，容器在解析注册Bean定义时进行预实例化
 
-## 1. 寻找获取Bean的入口
+## 1. 寻找getBean()的入口
 BeanFactory接口定义了SpringIoC容器的基本功能规范。BeanFactory接口中定义了几个getBean()方法，用于用户向IoC容器索取被管理的Bean的方法。
 BeanFactory是接口，具体情况看他的实现AbstractBeanFactory，类图如下：
 
@@ -762,7 +766,7 @@ public Object instantiate(@Nullable Constructor<?> ctor, Object... args) {
 ```
 
 ### 2.3 填充属性
-```java
+```java {16}
 protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable BeanWrapper bw) {
     if (bw == null) {
         if (mbd.hasPropertyValues()) {
@@ -878,6 +882,19 @@ protected Object initializeBean(String beanName, Object bean, @Nullable RootBean
     return wrappedBean;
 }
 ```
+
+## 3.寻找使用getBean()的入口
+### 3.1 SpringBoot启动时触发加载Bean
+[refresh()方法中`registerBeanPostProcessors(beanFactory);`](./springboot_refreshContext.html#第11步-finishbeanfactoryinitialization-beanfactory)
+
+### 3.2 @Autowire注解
+[上面2.3填充属性小节中有一步扩展](#_2-3-填充属性)
+1. 任何 InstantiationAwareBeanPostProcessors 有机会在设置属性之前修改 bean 的状态
+2. 任何 InstantiationAwareBeanPostProcessors 给Bean设置属性
+
+扩展会所有的BeanPostProcessors，其中就包括`AutowiredAnnotationBeanPostProcessor`。
+`postProcessProperties()`处理面有一步`descriptor.getResolvableType()`方法使用了`getBean()`。[细节:@Autowire具体如何获取到对象](./spring_autowire.md#注解autowired)
+
 
 ## 拓展 
 ```xml
