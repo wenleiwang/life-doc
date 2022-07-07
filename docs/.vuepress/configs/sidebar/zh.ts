@@ -212,6 +212,14 @@ export const zh: SidebarConfig = {
         '/algorithm/string/solve.md',
         '/algorithm/string/merge.md',
       ]
+    },
+    {
+      text: '递归/回溯',
+      collapsible: true,
+      children :[
+        '/algorithm/recursion/solve.md',
+        '/algorithm/recursion/Permutation.md',
+      ]
     }
   ],
   '/temp/': [
