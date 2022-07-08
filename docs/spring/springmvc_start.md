@@ -63,7 +63,7 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
 }
 ```
 
-
+自己的实现，Servlet会找到
 
 ![image-20220330110027391](./img/springmvc_start/image-20220330110027391.png)
 
@@ -83,7 +83,7 @@ https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/web.
 
 
 
-我们看看Spring-web包jar包内：
+我们看看Spring-web包jar包内：Servlet也会找到
 
 ![image-20220330110741432](./img/springmvc_start/image-20220330110741432.png)
 
@@ -289,6 +289,14 @@ public class RootConfig {
 
 这样子，我们的Controller就只会被扫描一次了，容器也就非常的干净了，强烈建议这么干。
 
+::: tip 注意 这里是Spring MVC
+SpringBoot与Spring MVC对容器的使用不一样。SpringBoot没有父子容器的概念，SpringBoot就一个容器。
+
+SpringBoot直接在在启动时创建一个AnnotationConfigServletWebServerApplicationContext的容器，进而在后续时加载Servlet时使用容器。
+
+Spring MVC是通过web.xml加载Servlet，Servlet使用ServletContainerInitializer加载目标对象完成父子容器的创建等操作。
+
+:::
 
 
 ## 3.父子容器隔离
@@ -341,7 +349,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 我们还能看到还有一个类：`WebMvcConfigurationSupport`。小伙伴们查看很多文章，但此处我只推荐一个老铁的文章，说到了点上：[WebMvcConfigurationSupport与WebMvcConfigurer的关系](https://www.jianshu.com/p/d47a09532de7)
 
-**结论可以摆在此处**：最佳实践还是继承WebMvcConfigurerAdapter(或直接实现接口WebMvcConfigurer),只不过要多加一个@EnableWebMvc注解而已。备注：若是SpringBoot环境，请不要加@EnableWebMvc注解，因为springboot已经实例化了WebMvcConfigurationSupport，如果添加了该注解，默认的WebMvcConfigurationSupport配置类是不会生效的
+**结论可以摆在此处**：最佳实践还是继承直接实现接口WebMvcConfigurer(或WebMvcConfigurerAdapter，Adapter在5.0开始弃用),只不过要多加一个@EnableWebMvc注解而已。备注：若是SpringBoot环境，请不要加@EnableWebMvc注解，因为springboot已经实例化了WebMvcConfigurationSupport，如果添加了该注解，默认的WebMvcConfigurationSupport配置类是不会生效的
 
 ## 5. HandlerInterceptor与WebRequestInterceptor的异同
 
