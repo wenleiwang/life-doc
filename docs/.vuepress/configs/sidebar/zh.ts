@@ -205,6 +205,7 @@ export const zh: SidebarConfig = {
         '/algorithm/innorheaporqueue/twoSum.md',
         '/algorithm/innorheaporqueue/MoreThanHalfNum.md',
         '/algorithm/innorheaporqueue/FindNumsAppearOnce.md',
+        '/algorithm/innorheaporqueue/minNumberDisappeared.md ',
       ]
     },
     {
