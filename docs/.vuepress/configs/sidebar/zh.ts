@@ -202,7 +202,8 @@ export const zh: SidebarConfig = {
       children :[
         '/algorithm/innorheaporqueue/includeMain.md',
         '/algorithm/innorheaporqueue/isValidBracket.md',
-        '/algorithm/innorheaporqueue/twoSum.md'
+        '/algorithm/innorheaporqueue/twoSum.md',
+        '/algorithm/innorheaporqueue/MoreThanHalfNum.md',
       ]
     },
     {
