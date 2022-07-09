@@ -197,11 +197,12 @@ export const zh: SidebarConfig = {
       ]
     },
     {
-      text:'堆/栈/队列',
+      text:'哈希/堆/栈/队列',
       collapsible: true,
       children :[
         '/algorithm/innorheaporqueue/includeMain.md',
-        '/algorithm/innorheaporqueue/isValidBracket.md'
+        '/algorithm/innorheaporqueue/isValidBracket.md',
+        '/algorithm/innorheaporqueue/twoSum.md'
       ]
     },
     {
