@@ -219,6 +219,8 @@ export const zh: SidebarConfig = {
       children :[
         '/algorithm/recursion/solve.md',
         '/algorithm/recursion/Permutation.md',
+        '/algorithm/recursion/Nqueen.md',
+        '/algorithm/recursion/generateParenthesis.md',
       ]
     }
   ],
