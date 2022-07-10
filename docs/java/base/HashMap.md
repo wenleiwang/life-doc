@@ -18,6 +18,173 @@ HashMap对象在实例化后，底层创建了一个长度为16的一维数组 E
 
 在不断添加数据的过程中，会涉及到数组的扩容问题。当添加数据超出临界值(且数据要存放的位置非空)时，需要对数组扩容。默认的扩容方式：扩容为原来容量的2倍，并将原来的数据复制过来。
 
+> java8在第二步之前多了一步，判断是否是数结构。如果是结构，使用红黑树的putVlaue方法。
+>
+> 在第二步时也多了一个处理。判读如果链表节点超过8变成红黑树结构
+
+```java
+/**
+*
+* @param hash key求hash的值
+* @param key 目标key
+* @param value 目标value
+* @param onlyIfAbsent 如果为真，则不更改现有值，put函数丢过来的是false
+* @param evict 如果为 false，则表处于创建模式，put函数丢过来true
+* @return 前一个值，如果没有，则为 null
+*/
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                boolean evict) {
+    // 接收map的节点数组
+    Node<K,V>[] tab; 
+    // 
+    Node<K,V> p; 
+    //
+    int n;
+    // 
+    int i;
+    // 把成员变量赋值给tab并判断是否为null；如果不为null，把节点数组长度赋值给n并判断长度是否为0
+    if ((tab = table) == null || (n = tab.length) == 0)
+        // 条件成立，初始化节点数组。分别把初始化后的节点数组和长度赋值给tab、n
+        n = (tab = resize()).length;
+
+    // 最后节点位置和hash数求与值赋值给i，从节点数组中取出节点给p并判断p是否为null
+    if ((p = tab[i = (n - 1) & hash]) == null)
+        // 没有节点生成一个新的节点，直接放入
+        tab[i] = newNode(hash, key, value, null);
+    else {
+        Node<K,V> e; 
+        K k;
+        // 节点的hash值与当前key的hash值比较；（节点的key值赋值给k，与目标key比较）
+        if (p.hash == hash &&
+            ((k = p.key) == key || (key != null && key.equals(k))))
+            // 取出节点给e
+            e = p;
+        else if (p instanceof TreeNode)
+            // p是数结构，直接使用数结构操作节点。e是putTreeVal的返回值
+            e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+        else {
+            for (int binCount = 0; ; ++binCount) {
+                // e是最后一个结点
+                if ((e = p.next) == null) {
+                    p.next = newNode(hash, key, value, null);
+                    // 循环次数超过7，从第8次开始
+                    if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                        // 改使用红黑数
+                        treeifyBin(tab, hash);
+                    break;
+                }
+                // 中间有key相等
+                if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k))))
+                    break;
+                // 取到下一个节点
+                p = e;
+            }
+        }
+        if (e != null) { // 存在key的映射
+            // 老值
+            V oldValue = e.value;
+            // 是否替换新值
+            if (!onlyIfAbsent || oldValue == null)
+                e.value = value;
+            afterNodeAccess(e);
+            // 返回老值
+            return oldValue;
+        }
+    }
+    // 修改计数加1
+    ++modCount;
+    // 节点总数大于临界值，重新构建
+    if (++size > threshold)
+        resize();
+    afterNodeInsertion(evict);
+    // 返回null
+    return null;
+}
+```
+
+```java
+// map：目标使用的map对象
+// tab：节点数组
+// h：目标key的hash值
+// k：目标key
+// v：目标value
+final TreeNode<K,V> putTreeVal(HashMap<K,V> map, Node<K,V>[] tab,
+                                int h, K k, V v) {
+    // 
+    Class<?> kc = null;
+    // 搜索开关
+    boolean searched = false;
+    // 有父节点，向上找到根结点给root；没有父节点，本节点就是根节点
+    TreeNode<K,V> root = (parent != null) ? root() : this;
+    // 从根节点开始循环
+    for (TreeNode<K,V> p = root;;) {
+        int dir, ph; K pk;
+        if ((ph = p.hash) > h)
+            // 当前节点的hsah值比目标key的hash值大
+            dir = -1;
+        else if (ph < h)
+            // 当前节点的hsah值比目标key的hash值小
+            dir = 1;
+        else if ((pk = p.key) == k || (k != null && k.equals(pk)))
+            //当前节点的hsah值比目标key的hash值一致，且key一致。返回当前节点
+            return p;
+        else if ((kc == null &&
+                    (kc = comparableClassFor(k)) == null) ||
+                    (dir = compareComparables(kc, k, pk)) == 0) {
+            // 当前节点的hsah值比目标key的hash值一致，且key不一致。
+            // 目标key不可比较 或 可比较但比较结果相等
+            if (!searched) {
+                // 没有搜索过
+                TreeNode<K,V> q, ch;
+                // 设为搜索过
+                searched = true;
+                // 当前节点的左孩子不为空，左边能找到，找到节点赋值给q
+                // 或者
+                // 右边不为空，右边能找到，找到节点赋值给q
+                if (((ch = p.left) != null &&
+                        (q = ch.find(h, k, kc)) != null) ||
+                    ((ch = p.right) != null &&
+                        (q = ch.find(h, k, kc)) != null))
+                    // 找到直接返回
+                    return q;
+            }
+            // 目标key不可比较 或 可比较但比较结果相等 的解决方法。
+            // 解决办法：只需要一致的插入规则来保持重新平衡之间的等价性
+            // 类名比较得到结果。
+            // 类名还一致通过:(System.identityHashCode(k) <= System.identityHashCode(pk) ?-1 : 1)
+            dir = tieBreakOrder(k, pk);
+        }
+
+        // 当前节点赋值给xp
+        TreeNode<K,V> xp = p;
+        // p 去到左节点或右节点。
+        if ((p = (dir <= 0) ? p.left : p.right) == null) {
+            // 节点为null，xp的next节点赋值给xpn
+            Node<K,V> xpn = xp.next;
+            // 新建一个结点x
+            TreeNode<K,V> x = map.newTreeNode(h, k, v, xpn);
+            if (dir <= 0)
+                // dir小于0，放在左节点
+                xp.left = x;
+            else
+                // 大于0，放在右节点
+                xp.right = x;
+            // xp的naxt指向新节点
+            xp.next = x;
+            // x的父节点指向x的前一个结点
+            // x的前一个结点指向xp
+            x.parent = x.prev = xp;
+            if (xpn != null)
+                ((TreeNode<K,V>)xpn).prev = x;
+            // 做调整重新找到root，修改节点数组。确保给定的根是其 bin 的第一个节点。
+            moveRootToFront(tab, balanceInsertion(root, x));
+            return null;
+        }
+    }
+}
+```
+
 
 ## JDK7与JDK8中HashMap有什么区别？
 1. 使用空参构造器创建HashMap对象时，底层没有直接创建一个长度为16的数组。
@@ -30,8 +197,83 @@ HashMap对象在实例化后，底层创建了一个长度为16的一维数组 E
 ## HashMap中的循环链表是如何产生的
 多线程同时put时，如果同时调用了resize操作，可能会导致循环链表产生，进而使得后面get的时候，会死循环。下面详细阐述循环链表如何形成的。
 ransfer逻辑是遍历旧数组，将旧数组元素通过头插法的方式，迁移到新数组的对应位置问题出就出在头插法。
-
-举个例子：
-
+```java
+// 初始化或加倍表大小。如果为空，则按照字段阈值中保存的初始容量目标进行分配。
+// 否则，因为我们使用二次幂展开，每个 bin 中的元素必须保持相同的索引，或者在新表中以二次幂的偏移量移动。
+final Node<K,V>[] resize() {
+    Node<K,V>[] oldTab = table;
+    int oldCap = (oldTab == null) ? 0 : oldTab.length;
+    int oldThr = threshold;
+    int newCap, newThr = 0;
+    if (oldCap > 0) {
+        if (oldCap >= MAXIMUM_CAPACITY) {
+            threshold = Integer.MAX_VALUE;
+            return oldTab;
+        }
+        else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+                    oldCap >= DEFAULT_INITIAL_CAPACITY)
+            newThr = oldThr << 1; // double threshold
+    }
+    else if (oldThr > 0) // initial capacity was placed in threshold
+        newCap = oldThr;
+    else {               // zero initial threshold signifies using defaults
+        newCap = DEFAULT_INITIAL_CAPACITY;
+        newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
+    }
+    if (newThr == 0) {
+        float ft = (float)newCap * loadFactor;
+        newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
+                    (int)ft : Integer.MAX_VALUE);
+    }
+    threshold = newThr;
+    @SuppressWarnings({"rawtypes","unchecked"})
+        Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+    table = newTab;
+    if (oldTab != null) {
+        for (int j = 0; j < oldCap; ++j) {
+            Node<K,V> e;
+            if ((e = oldTab[j]) != null) {
+                oldTab[j] = null;
+                if (e.next == null)
+                    newTab[e.hash & (newCap - 1)] = e;
+                else if (e instanceof TreeNode)
+                    ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
+                else { // preserve order
+                    Node<K,V> loHead = null, loTail = null;
+                    Node<K,V> hiHead = null, hiTail = null;
+                    Node<K,V> next;
+                    do {
+                        next = e.next;
+                        if ((e.hash & oldCap) == 0) {
+                            if (loTail == null)
+                                loHead = e;
+                            else
+                                loTail.next = e;
+                            loTail = e;
+                        }
+                        else {
+                            if (hiTail == null)
+                                hiHead = e;
+                            else
+                                hiTail.next = e;
+                            hiTail = e;
+                        }
+                    } while ((e = next) != null);
+                    if (loTail != null) {
+                        loTail.next = null;
+                        newTab[j] = loHead;
+                    }
+                    if (hiTail != null) {
+                        hiTail.next = null;
+                        newTab[j + oldCap] = hiHead;
+                    }
+                }
+            }
+        }
+    }
+    return newTab;
+}
+```
 
 ## HashMap是如何解决哈希冲突的？
+解决Has冲突的方法有开放定制法、链地址法、公共溢出区法、再散列法。HashMap使用的是链地址法，如果出现了哈希冲突且key不一样就新建一个结点，超过一定长度修改为红黑树结构
