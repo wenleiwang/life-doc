@@ -111,14 +111,21 @@ export const zh: SidebarConfig = {
     '/spring/springdi.md',
     '/spring/spring_circularDependecies.md',
     '/spring/ComponentScanAnnotationParser.md',
-    '/spring/contentnegotiation.md',
     '/spring/beandefinition.md',
-    '/spring/springmvc_start.md',
     '/spring/spring_beanfactoryorfactorybean.md',
-    '/spring/spring_aware.md'
+    '/spring/spring_aware.md',
+    {
+      text:'Spring MVC',
+      collapsible: true,
+      children :[
+        '/spring/springmvc_start.md',
+        '/spring/contentnegotiation.md',
+      ]
+    }
   ],
   '/mysql/': [
     '/mysql/interview.md',
+    '/mysql/transaction.md',
   ],
   '/redis/': [
     {
