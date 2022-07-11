@@ -203,11 +203,15 @@ export const zh: SidebarConfig = {
       ]
     },
     {
-      text:'堆/栈/队列',
+      text:'哈希/堆/栈/队列',
       collapsible: true,
       children :[
         '/algorithm/innorheaporqueue/includeMain.md',
-        '/algorithm/innorheaporqueue/isValidBracket.md'
+        '/algorithm/innorheaporqueue/isValidBracket.md',
+        '/algorithm/innorheaporqueue/twoSum.md',
+        '/algorithm/innorheaporqueue/MoreThanHalfNum.md',
+        '/algorithm/innorheaporqueue/FindNumsAppearOnce.md',
+        '/algorithm/innorheaporqueue/minNumberDisappeared.md ',
       ]
     },
     {
@@ -217,6 +221,16 @@ export const zh: SidebarConfig = {
         '/algorithm/string/judge.md',
         '/algorithm/string/solve.md',
         '/algorithm/string/merge.md',
+      ]
+    },
+    {
+      text: '递归/回溯',
+      collapsible: true,
+      children :[
+        '/algorithm/recursion/solve.md',
+        '/algorithm/recursion/Permutation.md',
+        '/algorithm/recursion/Nqueen.md',
+        '/algorithm/recursion/generateParenthesis.md',
       ]
     }
   ],
