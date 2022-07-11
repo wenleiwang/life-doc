@@ -125,6 +125,7 @@ export const zh: SidebarConfig = {
   ],
   '/mysql/': [
     '/mysql/interview.md',
+    '/mysql/transaction.md',
   ],
   '/redis/': [
     {
