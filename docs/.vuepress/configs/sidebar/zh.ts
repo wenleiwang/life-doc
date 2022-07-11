@@ -7,6 +7,8 @@ export const zh: SidebarConfig = {
       collapsible: true,
       children :[
         '/java/base/javabasee.md',
+        '/java/base/HashMap.md',
+        '/java/base/ConcurrentMap.md',
         '/java/base/security.md',
         '/java/base/synchronized.md',
         '/java/base/interfaceandabstract.md',
