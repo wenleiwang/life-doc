@@ -13,6 +13,7 @@ export const zh: SidebarConfig = {
         '/java/base/inclass.md',
         '/java/base/thread.md',
         '/java/base/threadpool.md',
+        '/java/base/lock.md',
         '/java/base/synchronized.md',
         '/java/base/reflew.md',
         '/java/base/integerInMapper.md',
