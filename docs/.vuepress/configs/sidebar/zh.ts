@@ -131,6 +131,13 @@ export const zh: SidebarConfig = {
   '/mysql/': [
     '/mysql/interview.md',
     '/mysql/transaction.md',
+    {
+      text:'Java使用MySQL',
+      collapsible: true,
+      children :[
+        '/mysql/use/jdbc.md',
+      ]
+    }
   ],
   '/redis/': [
     {
