@@ -118,6 +118,7 @@ export const zh: SidebarConfig = {
     '/spring/beandefinition.md',
     '/spring/spring_beanfactoryorfactorybean.md',
     '/spring/spring_aware.md',
+    '/spring/spring_transaction.md',
     {
       text:'Spring MVC',
       collapsible: true,
