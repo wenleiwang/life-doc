@@ -184,11 +184,11 @@ public class PerformSpendTimeAspect {
 
 *execution* *代表所要执行的表达式主体:*
 
-- *第一处* *** *代表方法返回类型* ****代表所有类型*
-- *第二处 包名代表**aop**监控的类所在的包*
-- *第三处* *..* *代表该包以及其子包下的所有类方法*
-- *第四处* *** *代表类名，*****代表所有类*
-- *第五处* **(..) ***代表类中的方法名，**(..)**表示方法中的任何参数*
+- 第一处 * 代表方法返回类型 *代表所有类型
+- 第二处 包名代表aop监控的类所在的包
+- 第三处 .. 代表该包以及其子包下的所有类方法
+- 第四处 * 代表类名，*代表所有类
+- 第五处 *(..) 其中 *代表类中的方法名，(..)表示方法中的任何参数
 
 
 
@@ -205,3 +205,197 @@ public class PerformSpendTimeAspect {
 > Spring没有自己定义切面相关的注解，而是使用来自`org.aspectj`这个Jar包里面的注解。但没用aspectj的技术解析。
 >
 > aspectj还有很多注解，但Spring支持的是：`@Aspect、@Before、@After、@AfterReturning、@AfterThrowing、@Around` 其余的注解Spring都是不予解析（由AspectJ内部技术去解析）
+
+### AOP的入口
+AOP是由BeanPostProcessor后置处理器开始的，它是Spring IOC容器经常使用的一个特性，这个Bean后置处理器是一个监听器，可以监听容器触发的Bean生命周期事件。
+
+向容器注册后置处理器以后，容器中管理的Bean就具备接收IoC容器回调事件的能力
+
+BeanPostProcessor的使用非常简单，只需要提供一个BeanPostProcess接口的实现类，然后再Bean的配置文件中设置即可
+
+#### BeanPostProcess的源码
+```java
+public interface BeanPostProcessor {
+    // Bean初始化前提供的回调接口
+    @Nullable
+    default Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
+    // Bean初始化后提供的回调接口
+    @Nullable
+    default Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+}
+```
+这两个回调入口和容器管理的Bean的生命周期紧密相关，可以为用户提供在Spring IoC 容器初始化Bean过程中自定义的处理操作
+
+#### AbstractAutowireCapableBeanFactory类的doCreateBean()方法
+BeanPostProcessor后置处理器的调用发生在Spring IoC 容器完成Bean实例对象的创建和属性注入之后，在对Spring依赖注入的源码分析中知道，
+当程序第一次调用getBean()方法向Spring IoC容器索取指定Bean时，触发Spring IoC容器创建爱你Bean对象实例并进行依赖注入。
+
+真正实现创建Bean对象并进行依赖注入的方法是AbstractAutowireCapableBeanFactory类的doCreateBean()
+
+[思路代码如下，详情请看Spring DI章节](./springdi.md)
+
+```java
+protected Object doCreateBean(String beanName, RootBeanDefinition mbd, @Nullable Object[] args)
+        throws BeanCreationException {
+    ...
+
+    // Initialize the bean instance.
+    Object exposedObject = bean;
+    try {
+        // 对Bean属性进行依赖注入，这里面会调用所有InstantiationAwareBeanPostProcessor
+        populateBean(beanName, mbd, instanceWrapper);
+        // Bean 实例管理对象的依赖注入完成以后，开始对Bean实例对象进行初始化
+        // 为Bean实例对象应用BeanPostProcessor
+        exposedObject = initializeBean(beanName, exposedObject, mbd);
+    }
+    catch (Throwable ex) {
+        if (ex instanceof BeanCreationException && beanName.equals(((BeanCreationException) ex).getBeanName())) {
+            throw (BeanCreationException) ex;
+        }
+        else {
+            throw new BeanCreationException(
+                    mbd.getResourceDescription(), beanName, "Initialization of bean failed", ex);
+        }
+    }
+
+    ...
+
+    return exposedObject;
+}
+```
+#### AbstractAutowireCapableBeanFactory类的initializeBean()方法
+```java
+protected Object initializeBean(String beanName, Object bean, @Nullable RootBeanDefinition mbd) {
+    // 通过JDK的安全机制验证权限
+    if (System.getSecurityManager() != null) {
+        // 实现 PrivilegedAction 接口的匿名内部类
+        AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
+            invokeAwareMethods(beanName, bean);
+            return null;
+        }, getAccessControlContext());
+    }
+    else {
+        // 为Bean实例对象包装相关属性，如名称、类加载器、所属容器等
+        invokeAwareMethods(beanName, bean);
+    }
+
+    Object wrappedBean = bean;
+    if (mbd == null || !mbd.isSynthetic()) {
+        // 调用 BeanPostProcessor 后置处理器的回调方法，在Bean实例初始化前做一些事情
+        wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+    }
+
+    try {
+        // 调用Bean实例化方法，这个初始化方法是在Spring Bean定义配置文件中通过init-Method属性指定的
+        invokeInitMethods(beanName, wrappedBean, mbd);
+    }
+    catch (Throwable ex) {
+        throw new BeanCreationException(
+                (mbd != null ? mbd.getResourceDescription() : null),
+                beanName, "Invocation of init method failed", ex);
+    }
+    if (mbd == null || !mbd.isSynthetic()) {
+        // 调用 BeanPostProcessor 后置处理器的回调方法，在Bean实例初始化后做一些事情
+        wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
+    }
+
+    return wrappedBean;
+}
+```
+#### BeanPostProcessor后置处理器实例初始化之前后的处理方法
+前
+```java
+@Override
+public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName)
+        throws BeansException {
+
+    Object result = existingBean;
+    // 遍历容器为所创建的 Bean 添加所有的 BeanPostProcessor后置处理器
+    for (BeanPostProcessor processor : getBeanPostProcessors()) {
+        // 调用Bean实例所有的后置处理器中初始化前的处理方法，为Bean实例对象在初始化之前做一些自定的处理
+        Object current = processor.postProcessBeforeInitialization(result, beanName);
+        if (current == null) {
+            return result;
+        }
+        result = current;
+    }
+    return result;
+}
+```
+后
+```java
+@Override
+public Object applyBeanPostProcessorsAfterInitialization(Object existingBean, String beanName)
+        throws BeansException {
+
+    Object result = existingBean;
+    // 遍历容器为所创建的 Bean 添加所有的 BeanPostProcessor后置处理器
+    for (BeanPostProcessor processor : getBeanPostProcessors()) {
+        // 调用Bean实例所有的后置处理器中初始化前的处理方法，为Bean实例对象在初始化之前做一些自定的处理
+        Object current = processor.postProcessAfterInitialization(result, beanName);
+        if (current == null) {
+            return result;
+        }
+        result = current;
+    }
+    return result;
+}
+```
+BeanPostProcessor初始化前的操作方法和初始化后的操作方法均委派其实现子类实现。Spring中BeanPostProcessor的实现子类非常多，分别完成不同的操作。
+如AOP面向切面变成的注册通知适配器、Bean对象的数据校验、Bean继承属性，方法的合并等。
+
+下面我们分析一个创建AOP代理对象的子类AbstractAutoProxyCreator
+
+### 选择代理策略
+创建AOP代理对象的子类AbstractAutoProxyCreator，该类重写了postProcessAfterInitialization()方法。
+
+看下源码，它调用了一个非常核心的方法warpIfNecessary()，如下所示：
+```java
+@Override
+public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) {
+    if (bean != null) {
+        Object cacheKey = getCacheKey(bean.getClass(), beanName);
+        if (this.earlyProxyReferences.remove(cacheKey) != bean) {
+            return wrapIfNecessary(bean, beanName, cacheKey);
+        }
+    }
+    return bean;
+}
+
+protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) {
+    if (StringUtils.hasLength(beanName) && this.targetSourcedBeans.contains(beanName)) {
+        return bean;
+    }
+    // 判断是否应该代理这个类
+    if (Boolean.FALSE.equals(this.advisedBeans.get(cacheKey))) {
+        return bean;
+    }
+    /**
+     * 判断是否是一些 InfrastructureClass 或者是否应该跳过这个Bean
+     * InfrastructureClass 就是这Advice、PointCut、Advisor等接口的实现类
+     * shouldSkip()方法默认返回的是false，由于是protected修饰的方法，子类可以覆盖
+     */
+    if (isInfrastructureClass(bean.getClass()) || shouldSkip(bean.getClass(), beanName)) {
+        this.advisedBeans.put(cacheKey, Boolean.FALSE);
+        return bean;
+    }
+
+    // Create proxy if we have advice.
+    Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(bean.getClass(), beanName, null);
+    if (specificInterceptors != DO_NOT_PROXY) {
+        this.advisedBeans.put(cacheKey, Boolean.TRUE);
+        Object proxy = createProxy(
+                bean.getClass(), beanName, specificInterceptors, new SingletonTargetSource(bean));
+        this.proxyTypes.put(cacheKey, proxy.getClass());
+        return proxy;
+    }
+
+    this.advisedBeans.put(cacheKey, Boolean.FALSE);
+    return bean;
+}
+```

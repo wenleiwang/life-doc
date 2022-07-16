@@ -462,7 +462,7 @@ protected Object doCreateBean(String beanName, RootBeanDefinition mbd, @Nullable
     Object exposedObject = bean;
     try {
         // 将Bean实例对象封装，并且将Bean定义中的配置的属性值赋值给实例对象。
-        // 这里会把所有的BeanPostProcess都触发，肯定包括AutowiredAnnotationBeanPostProcessor啦
+        // 这里会把所有的InstantiationAwareBeanPostProcessor都触发，肯定包括AutowiredAnnotationBeanPostProcessor啦
         populateBean(beanName, mbd, instanceWrapper);
         // 初始化Bean对象
         exposedObject = initializeBean(beanName, exposedObject, mbd);
@@ -766,6 +766,10 @@ public Object instantiate(@Nullable Constructor<?> ctor, Object... args) {
 ```
 
 ### 2.3 填充属性
+下面原码之前先来了解下Spring之InstantiationAwareBeanPostProcessor接口，不然看的会有点懵。
+
+[Spring之InstantiationAwareBeanPostProcessor接口，介绍对象创建过程中用到的几个回调方法](./replenish/InstantiationAwareBeanPostProcessor.md)
+
 ```java {16}
 protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable BeanWrapper bw) {
     if (bw == null) {
@@ -788,7 +792,9 @@ protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable B
         for (BeanPostProcessor bp : getBeanPostProcessors()) {
             if (bp instanceof InstantiationAwareBeanPostProcessor) {
                 InstantiationAwareBeanPostProcessor ibp = (InstantiationAwareBeanPostProcessor) bp;
+                //postProcessAfterInstantiation 这个方法返回true，后面的处理器才会继续执行，但返回false，直接return了
                 if (!ibp.postProcessAfterInstantiation(bw.getWrappedInstance(), beanName)) {
+                    // 处理器若告知说不用继续赋值了，那就以处理器的结果为准即可
                     return;
                 }
             }
@@ -822,7 +828,9 @@ protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable B
         for (BeanPostProcessor bp : getBeanPostProcessors()) {
             if (bp instanceof InstantiationAwareBeanPostProcessor) {
                 InstantiationAwareBeanPostProcessor ibp = (InstantiationAwareBeanPostProcessor) bp;
+                // 调用 postProcessProperties方法
                 PropertyValues pvsToUse = ibp.postProcessProperties(pvs, bw.getWrappedInstance(), beanName);
+                // 如果返回null,调用 postProcessPropertyValues 方法。感觉这里编写目的是兼容已废弃方法
                 if (pvsToUse == null) {
                     if (filteredPds == null) {
                         filteredPds = filterPropertyDescriptorsForDependencyCheck(bw, mbd.allowCaching);
@@ -842,7 +850,7 @@ protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable B
         }
         checkDependencies(beanName, mbd, filteredPds, pvs);
     }
-
+    // 真正设置属性的方法。
     if (pvs != null) {
         applyPropertyValues(beanName, mbd, bw, pvs);
     }
@@ -852,22 +860,27 @@ protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable B
 ### 2.4 初始化Bean对象
 ```java
 protected Object initializeBean(String beanName, Object bean, @Nullable RootBeanDefinition mbd) {
+    // 通过JDK的安全机制验证权限
     if (System.getSecurityManager() != null) {
+        // 实现 PrivilegedAction 接口的匿名内部类
         AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
             invokeAwareMethods(beanName, bean);
             return null;
         }, getAccessControlContext());
     }
     else {
+        // 为Bean实例对象包装相关属性，如名称、类加载器、所属容器等
         invokeAwareMethods(beanName, bean);
     }
 
     Object wrappedBean = bean;
     if (mbd == null || !mbd.isSynthetic()) {
+        // 调用 BeanPostProcessor 后置处理器的回调方法，在Bean实例初始化前做一些事情
         wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
     }
 
     try {
+        // 调用Bean实例化方法，这个初始化方法是在Spring Bean定义配置文件中通过init-Method属性指定的
         invokeInitMethods(beanName, wrappedBean, mbd);
     }
     catch (Throwable ex) {
@@ -876,6 +889,7 @@ protected Object initializeBean(String beanName, Object bean, @Nullable RootBean
                 beanName, "Invocation of init method failed", ex);
     }
     if (mbd == null || !mbd.isSynthetic()) {
+        // 调用 BeanPostProcessor 后置处理器的回调方法，在Bean实例初始化后做一些事情
         wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
     }
 

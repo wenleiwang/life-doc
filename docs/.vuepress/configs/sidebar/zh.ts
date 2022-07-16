@@ -115,7 +115,7 @@ export const zh: SidebarConfig = {
     '/spring/springdi.md',
     '/spring/spring_circularDependecies.md',
     '/spring/ComponentScanAnnotationParser.md',
-    '/spring/beandefinition.md',
+  
     '/spring/spring_beanfactoryorfactorybean.md',
     '/spring/spring_aware.md',
     '/spring/spring_transaction.md',
@@ -125,6 +125,14 @@ export const zh: SidebarConfig = {
       children :[
         '/spring/springmvc_start.md',
         '/spring/contentnegotiation.md',
+      ]
+    },
+    {
+      text:'Spring小知识点',
+      collapsible: true,
+      children :[
+        '/spring/replenish/InstantiationAwareBeanPostProcessor.md',
+        '/spring/replenish/beandefinition.md',
       ]
     }
   ],

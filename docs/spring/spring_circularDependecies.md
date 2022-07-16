@@ -25,6 +25,14 @@ Unlike the typical case (with no circular dependencies), a circular dependency b
 ## Spring是如何解决循环依赖的？
 构造注入无法解决依赖问题，需要使用Setter注入的方式。
 
+## 可能需要的知识
+
+完全熟悉这篇文章可能需要
+
+[1.关于InstantiationAwareBeanPostProcessor介绍看这篇文章，介绍对象创建过程中用到的几个回调方法](./replenish/InstantiationAwareBeanPostProcessor.md)
+
+[2.如果需要详细知道流程，看这篇文章Spring DI 流程](./springdi.md)
+
 ## 对象的创建过程
 对象的创建分为实例化和初始化两个部分，Java在这不明显
 
@@ -299,7 +307,7 @@ protected Object doCreateBean(final String beanName, final RootBeanDefinition mb
     // Initialize the bean instance.
     Object exposedObject = bean;
     try {
-        // 这里处理为实例的属性赋值，会把所有的BeanPostProcess都触发，肯定包括AutowiredAnnotationBeanPostProcessor啦
+        // 这里处理为实例的属性赋值，会把所有的InstantiationAwareBeanPostProcessor都触发，肯定包括AutowiredAnnotationBeanPostProcessor啦
         // 解决循环依赖的递归调用就在这里其中的一步
         // 递归调用：descriptor.resolveCandidate(autowiredBeanName, type, this);
         populateBean(beanName, mbd, instanceWrapper);

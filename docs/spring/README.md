@@ -16,11 +16,17 @@
 
 ## 代码版本声明
 > spring-boot-2.3.3.RELEASE.jar
+> 
 > spring-boot-autoconfigure-2.3.3.RELEASE.jar
+> 
 > spring-context-5.2.8.RELEASE.jar
+> 
 > spring-core-5.2.8.RELEASE.jar
+> 
 > spring-beans-5.2.8.RELEASE.jar
+> 
 > spring-aop-5.2.8.RELEASE.jar
+> 
 > spring-web-5.2.8.RELEASE.jar
 
 ## Bean的作用范围
