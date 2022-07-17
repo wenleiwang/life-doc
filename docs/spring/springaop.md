@@ -385,10 +385,12 @@ protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) 
         return bean;
     }
 
+    // 获取这个Bean的通知
     // Create proxy if we have advice.
     Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(bean.getClass(), beanName, null);
     if (specificInterceptors != DO_NOT_PROXY) {
         this.advisedBeans.put(cacheKey, Boolean.TRUE);
+        // 创建代理
         Object proxy = createProxy(
                 bean.getClass(), beanName, specificInterceptors, new SingletonTargetSource(bean));
         this.proxyTypes.put(cacheKey, proxy.getClass());
@@ -397,5 +399,70 @@ protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) 
 
     this.advisedBeans.put(cacheKey, Boolean.FALSE);
     return bean;
+}
+```
+
+```java
+protected Object createProxy(Class<?> beanClass, @Nullable String beanName,
+        @Nullable Object[] specificInterceptors, TargetSource targetSource) {
+
+    if (this.beanFactory instanceof ConfigurableListableBeanFactory) {
+        AutoProxyUtils.exposeTargetClass((ConfigurableListableBeanFactory) this.beanFactory, beanName, beanClass);
+    }
+
+    // 用于编程使用的 AOP 代理工厂,提供了一种在自定义用户代码中获取和配置 AOP 代理实例的简单方法
+    ProxyFactory proxyFactory = new ProxyFactory();
+    // 从其他配置对象复制配置
+    proxyFactory.copyFrom(this);
+
+    // 不直接代理目标类以及任何接口，进入
+    if (!proxyFactory.isProxyTargetClass()) {
+        // 确定给定的 bean 是否应该使用它的目标类而不是它的接口来代理
+        if (shouldProxyTargetClass(beanClass, beanName)) {
+            proxyFactory.setProxyTargetClass(true);
+        }
+        else {
+            evaluateProxyInterfaces(beanClass, proxyFactory);
+        }
+    }
+
+    Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);
+    proxyFactory.addAdvisors(advisors);
+    proxyFactory.setTargetSource(targetSource);
+    customizeProxyFactory(proxyFactory);
+
+    proxyFactory.setFrozen(this.freezeProxy);
+    if (advisorsPreFiltered()) {
+        proxyFactory.setPreFiltered(true);
+    }
+    // 从工厂中获取代理对象
+    return proxyFactory.getProxy(getProxyClassLoader());
+}
+```
+整个过程最终调用的是`proxyFactory.getProxy(getProxyClassLoader())`方法。到这里有JDK和CGLib两种。
+
+该如何选择？这个选择使用DefaultAopProxyFactory的createAopProxy()方法：
+```java
+@Override
+public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
+    if (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) {
+        Class<?> targetClass = config.getTargetClass();
+        if (targetClass == null) {
+            throw new AopConfigException("TargetSource cannot determine target class: " +
+                    "Either an interface or a target is required for proxy creation.");
+        }
+        if (targetClass.isInterface() || Proxy.isProxyClass(targetClass)) {
+            return new JdkDynamicAopProxy(config);
+        }
+        return new ObjenesisCglibAopProxy(config);
+    }
+    else {
+        return new JdkDynamicAopProxy(config);
+    }
+}
+
+private boolean hasNoUserSuppliedProxyInterfaces(AdvisedSupport config) {
+    Class<?>[] ifcs = config.getProxiedInterfaces();
+    return (ifcs.length == 0 || (ifcs.length == 1 && SpringProxy.class.isAssignableFrom(ifcs[0])));
 }
 ```
