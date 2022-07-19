@@ -134,6 +134,13 @@ export const zh: SidebarConfig = {
         '/spring/replenish/InstantiationAwareBeanPostProcessor.md',
         '/spring/replenish/beandefinition.md',
       ]
+    },
+    {
+      text:'Spring Cloud',
+      collapsible: true,
+      children :[
+        '/spring/spring_cloud/',
+      ]
     }
   ],
   '/mysql/': [
