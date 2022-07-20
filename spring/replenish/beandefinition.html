@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.33">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/favicon.ico"><title>BeanDefinition源码阅读 | 文文的文档</title><meta name="description" content="只为了记录">
+    <link rel="modulepreload" href="/life-doc/assets/app.388479f4.js"><link rel="modulepreload" href="/life-doc/assets/beandefinition.html.bdefc928.js"><link rel="modulepreload" href="/life-doc/assets/plugin-vue_export-helper.21dcd24c.js"><link rel="modulepreload" href="/life-doc/assets/beandefinition.html.ba3708db.js">
+    <link rel="stylesheet" href="/life-doc/assets/style.baed1ee8.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header ref_key="navbar" class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/life-doc/" class=""><!----><span class="site-name can-hide">文文的文档</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/life-doc/" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/java/" class="" aria-label="Java"><!--[--><!--]--> Java <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/spring/" class="router-link-active" aria-label="Spring"><!--[--><!--]--> Spring <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/mysql/" class="" aria-label="MySQL"><!--[--><!--]--> MySQL <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/redis/" class="" aria-label="Redis"><!--[--><!--]--> Redis <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/rabbitmq/" class="" aria-label="RabbitMQ"><!--[--><!--]--> RabbitMQ <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/algorithm/" class="" aria-label="算法"><!--[--><!--]--> 算法 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/temp/" class="" aria-label="补充"><!--[--><!--]--> 补充 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/python/" class="" aria-label="Python"><!--[--><!--]--> Python <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/english/" class="" aria-label="English"><!--[--><!--]--> English <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/note/" class="" aria-label="写给自己"><!--[--><!--]--> 写给自己 <!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/wenleiwang/life-doc" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="切换夜间模式"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/life-doc/" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/java/" class="" aria-label="Java"><!--[--><!--]--> Java <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/spring/" class="router-link-active" aria-label="Spring"><!--[--><!--]--> Spring <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/mysql/" class="" aria-label="MySQL"><!--[--><!--]--> MySQL <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/redis/" class="" aria-label="Redis"><!--[--><!--]--> Redis <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/rabbitmq/" class="" aria-label="RabbitMQ"><!--[--><!--]--> RabbitMQ <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/algorithm/" class="" aria-label="算法"><!--[--><!--]--> 算法 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/temp/" class="" aria-label="补充"><!--[--><!--]--> 补充 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/python/" class="" aria-label="Python"><!--[--><!--]--> Python <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/english/" class="" aria-label="English"><!--[--><!--]--> English <!--[--><!--]--></a></div><div class="navbar-item"><a href="/life-doc/note/" class="" aria-label="写给自己"><!--[--><!--]--> 写给自己 <!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/wenleiwang/life-doc" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><a href="/life-doc/spring/springbootstart.html" class="sidebar-item sidebar-heading" aria-label="SpringBoot Start"><!--[--><!--]--> SpringBoot Start <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/springioc.html" class="sidebar-item sidebar-heading" aria-label="spring IOC"><!--[--><!--]--> spring IOC <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/springaop.html" class="sidebar-item sidebar-heading" aria-label="spring AOP"><!--[--><!--]--> spring AOP <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/springevent.html" class="sidebar-item sidebar-heading" aria-label="Spring 事件驱动机制"><!--[--><!--]--> Spring 事件驱动机制 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/springboot_refreshContext.html" class="sidebar-item sidebar-heading" aria-label="Spingboot启动的refreshContext(context)"><!--[--><!--]--> Spingboot启动的refreshContext(context) <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/springlogging.html" class="sidebar-item sidebar-heading" aria-label="SpringBoot使用的日志"><!--[--><!--]--> SpringBoot使用的日志 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/spring_autowire.html" class="sidebar-item sidebar-heading" aria-label="自动装配与条件装配"><!--[--><!--]--> 自动装配与条件装配 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/springdi.html" class="sidebar-item sidebar-heading" aria-label="spring DI 过程"><!--[--><!--]--> spring DI 过程 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/spring_circularDependecies.html" class="sidebar-item sidebar-heading" aria-label="Spring循环依赖"><!--[--><!--]--> Spring循环依赖 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/ComponentScanAnnotationParser.html" class="sidebar-item sidebar-heading" aria-label="ComponentScanAnnotationParser类"><!--[--><!--]--> ComponentScanAnnotationParser类 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/spring_beanfactoryorfactorybean.html" class="sidebar-item sidebar-heading" aria-label="BeanFactory与FactoryBean的区别"><!--[--><!--]--> BeanFactory与FactoryBean的区别 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/spring_aware.html" class="sidebar-item sidebar-heading" aria-label="Spring的Aware"><!--[--><!--]--> Spring的Aware <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/spring_transaction.html" class="sidebar-item sidebar-heading" aria-label="Spring 事务管理"><!--[--><!--]--> Spring 事务管理 <!--[--><!--]--></a><!----></li><li><p class="sidebar-item sidebar-heading collapsible">Spring MVC <span class="right arrow"></span></p><!--[--><ul style="display:none;" class="sidebar-item-children"><!--[--><li><a href="/life-doc/spring/springmvc_start.html" class="sidebar-item" aria-label="Spring MVC 注解驱动开发"><!--[--><!--]--> Spring MVC 注解驱动开发 <!--[--><!--]--></a><!----></li><li><a href="/life-doc/spring/contentnegotiation.html" class="sidebar-item" aria-label="内容协商协议 &amp; Spring MVC内容协商"><!--[--><!--]--> 内容协商协议 &amp; Spring MVC内容协商 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p class="sidebar-item sidebar-heading active collapsible">Spring小知识点 <span class="down arrow"></span></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/life-doc/spring/replenish/InstantiationAwareBeanPostProcessor.html" class="sidebar-item" aria-label="InstantiationAwareBeanPostProcessor接口介绍"><!--[--><!--]--> InstantiationAwareBeanPostProcessor接口介绍 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/life-doc/spring/replenish/beandefinition.html" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="BeanDefinition源码阅读"><!--[--><!--]--> BeanDefinition源码阅读 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/life-doc/spring/replenish/beandefinition.html#beandefinition接口" class="router-link-active router-link-exact-active sidebar-item" aria-label="BeanDefinition接口"><!--[--><!--]--> BeanDefinition接口 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><li><p class="sidebar-item sidebar-heading collapsible">Spring Cloud <span class="right arrow"></span></p><!--[--><ul style="display:none;" class="sidebar-item-children"><!--[--><li><a href="/life-doc/spring/spring_cloud/" class="sidebar-item" aria-label="概述"><!--[--><!--]--> 概述 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="beandefinition源码阅读" tabindex="-1"><a class="header-anchor" href="#beandefinition源码阅读" aria-hidden="true">#</a> BeanDefinition源码阅读</h1><p>Bean的定义</p><h2 id="beandefinition接口" tabindex="-1"><a class="header-anchor" href="#beandefinition接口" aria-hidden="true">#</a> BeanDefinition接口</h2><p>作用：BeanDefinition 描述了一个 bean 实例，它具有属性值、构造函数参数值以及具体实现提供的更多信息。</p><p>这只是一个最小的接口：主要目的是允许BeanFactoryPostProcessor内省和修改属性值和其他 bean 元数据。</p><p><img src="/life-doc/assets/2022-07-06-10-16-27.e45bb234.png" alt=""></p><p>继承了2个接口AttributeAccessor、BeanMetadataElement。就具扩展了Attribute（属性）处理和获取Bean元数据的功能</p><p>AttributeAccessor：属性访问器，有getAttribute()、setAttribute()、removeAttribute()、hasAttribute()、attributeNames()方法</p><p>BeanMetadataElement：Bean 元数据元素，有getSource()方法。由承载配置源对象的 bean 元数据元素实现的接口。</p><p>看下方法汇总</p><p><img src="/life-doc/assets/2022-07-06-10-22-36.fe34a5ed.png" alt=""></p><div class="language-java ext-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span></span><span class="token class-name">BeanMetadataElement</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span></span><span class="token class-name">MutablePropertyValues</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">AttributeAccessor</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">ResolvableType</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span><span class="token class-name">Nullable</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanDefinition</span> <span class="token keyword">extends</span> <span class="token class-name">AttributeAccessor</span><span class="token punctuation">,</span> <span class="token class-name">BeanMetadataElement</span> <span class="token punctuation">{</span>
+
+	<span class="token doc-comment comment">/**
+	 * 标准单例范围的范围标识符：“单例”  singleton
+	 */</span>
+	<span class="token class-name">String</span> SCOPE_SINGLETON <span class="token operator">=</span> <span class="token class-name">ConfigurableBeanFactory</span><span class="token punctuation">.</span>SCOPE_SINGLETON<span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 标准原型范围的范围标识符：“原型” prototype
+	 */</span>
+	<span class="token class-name">String</span> SCOPE_PROTOTYPE <span class="token operator">=</span> <span class="token class-name">ConfigurableBeanFactory</span><span class="token punctuation">.</span>SCOPE_PROTOTYPE<span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 指示BeanDefinition是应用程序主要部分的角色提示。通常对应于用户定义的 bean
+	 */</span>
+	<span class="token keyword">int</span> ROLE_APPLICATION <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 角色提示表明BeanDefinition是一些较大配置的支持部分，
+     * 通常是外部org.springframework.beans.factory.parsing.ComponentDefinition 
+     * SUPPORT bean 被认为足够重要，
+     * 以便在更仔细地查看特定org.springframework.beans.factory.parsing.ComponentDefinition时意识到这一点，
+     * 但在查看应用程序的整体配置时则不然。
+	 */</span>
+	<span class="token keyword">int</span> ROLE_SUPPORT <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 指示BeanDefinition提供完全后台角色且与最终用户无关的角色提示。
+     * 当注册完全属于org.springframework.beans.factory.parsing.ComponentDefinition内部工作的 bean 时，会使用此提示
+	 */</span>
+	<span class="token keyword">int</span> ROLE_INFRASTRUCTURE <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+
+	<span class="token comment">// Modifiable attributes</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置此 bean 定义的父定义的名称（如果有）
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setParentName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> parentName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 定义的父定义的名称（如果有）。
+	 */</span>
+	<span class="token class-name">String</span> <span class="token function">getParentName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 指定此 bean 定义的 bean 类名。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setBeanClassName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> beanClassName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 定义的当前 bean 类名。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getBeanClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 覆盖此 bean 的目标范围，指定一个新的范围名称
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setScope</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> scope<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 的当前目标范围的名称，如果尚不知道，则返回null 。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getScope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置这个 bean 是否应该被延迟初始化。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setLazyInit</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> lazyInit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 是否应该延迟初始化，即在启动时不急切地实例化。仅适用于单例 bean。
+	 */</span>
+	<span class="token keyword">boolean</span> <span class="token function">isLazyInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置此 bean 初始化所依赖的 bean 的名称。 bean 工厂将保证这些 bean 首先被初始化。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setDependsOn</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> dependsOn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 所依赖的 bean 名称。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getDependsOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置此 bean 是否是自动装配到其他 bean 的候选对象。
+     * 请注意，此标志旨在仅影响基于类型的自动装配。它不会影响按名称的显式引用，
+     * 即使指定的 bean 未标记为自动装配候选者，也会得到解决。
+     * 因此，如果名称匹配，按名称自动装配仍然会注入一个 bean。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setAutowireCandidate</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> autowireCandidate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 是否是自动装配到其他 bean 的候选对象。
+	 */</span>
+	<span class="token keyword">boolean</span> <span class="token function">isAutowireCandidate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置此 bean 是否是主要的自动装配候选者。
+     * 如果该值对于多个匹配候选者中的一个 bean 为true ，
+     * 则它将作为主要的自动装配候选者。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setPrimary</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> primary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 是否是主要的自动装配候选者。
+	 */</span>
+	<span class="token keyword">boolean</span> <span class="token function">isPrimary</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 指定要使用的工厂 bean（如果有）。这是要调用指定工厂方法的 bean 的名称。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setFactoryBeanName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> factoryBeanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回工厂 bean 名称（如果有）
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getFactoryBeanName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 指定工厂方法（如果有）。将使用构造函数参数调用此方法，如果未指定参数，则不使用任何参数。
+     * 该方法将在指定的工厂 bean 上调用，如果有的话，或者作为本地 bean 类的静态方法。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setFactoryMethodName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> factoryMethodName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回一个工厂方法，如果有的话。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getFactoryMethodName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 的构造函数参数值。返回的实例可以在 bean 工厂后处理期间进行修改。
+	 */</span>
+	<span class="token class-name">ConstructorArgumentValues</span> <span class="token function">getConstructorArgumentValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 如果有为此 bean 定义的构造函数参数值，则返回。
+	 */</span>
+	<span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">hasConstructorArgumentValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token operator">!</span><span class="token function">getConstructorArgumentValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回要应用于 bean 的新实例的属性值。
+	 * 返回的实例可以在 bean 工厂后处理期间进行修改。
+	 */</span>
+	<span class="token class-name">MutablePropertyValues</span> <span class="token function">getPropertyValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 如果有为此 bean 定义的属性值，则返回。
+	 */</span>
+	<span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">hasPropertyValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token operator">!</span><span class="token function">getPropertyValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置初始化方法的名称。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setInitMethodName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> initMethodName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回初始化方法的名称。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getInitMethodName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置销毁方法的名称。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setDestroyMethodName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> destroyMethodName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回销毁方法的名称。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getDestroyMethodName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 为此BeanDefinition设置角色提示。
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setRole</span><span class="token punctuation">(</span><span class="token keyword">int</span> role<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 获取此BeanDefinition的角色提示。
+     * 角色提示为框架和工具提供了特定BeanDefinition的角色和重要性的指示。
+	 */</span>
+	<span class="token keyword">int</span> <span class="token function">getRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 设置此 bean 定义的描述
+	 */</span>
+	<span class="token keyword">void</span> <span class="token function">setDescription</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">String</span> description<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 定义的描述。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">// Read-only attributes</span>
+
+	<span class="token doc-comment comment">/**
+	 * 根据 bean 类或其他特定元数据，返回此 bean 定义的可解析类型。
+	 */</span>
+	<span class="token class-name">ResolvableType</span> <span class="token function">getResolvableType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回这是否是Singleton ，在所有调用中都返回一个共享实例。
+	 */</span>
+	<span class="token keyword">boolean</span> <span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回这是否是Prototype ，每次调用都返回一个独立的实例。
+	 */</span>
+	<span class="token keyword">boolean</span> <span class="token function">isPrototype</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 是否是“抽象的”，即不打算实例化
+	 */</span>
+	<span class="token keyword">boolean</span> <span class="token function">isAbstract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回此 bean 定义来自的资源的描述（为了在出现错误时显示上下文）。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">String</span> <span class="token function">getResourceDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token doc-comment comment">/**
+	 * 返回原始 BeanDefinition，如果没有则返回null 。允许检索修饰的 bean 定义（如果有）。
+     * 此方法返回直接发起者。遍历 originator 链以找到用户定义的原始 BeanDefinition。
+	 */</span>
+	<span class="token annotation punctuation">@Nullable</span>
+	<span class="token class-name">BeanDefinition</span> <span class="token function">getOriginatingBeanDefinition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br></div></div><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/wenleiwang/life-doc/edit/master/docs/spring/replenish/beandefinition.md" rel="noopener noreferrer" target="_blank" aria-label="在GitHub上编辑"><!--[--><!--]--> 在GitHub上编辑 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">最后更新时间: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">@Author : </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: wenleiwang@126.com">wangwenlei</span><!----><!--]--><!--]--></span></div></footer><nav class="page-nav"><p class="inner"><span class="prev"><a href="/life-doc/spring/replenish/InstantiationAwareBeanPostProcessor.html" class="" aria-label="InstantiationAwareBeanPostProcessor接口介绍"><!--[--><!--]--> InstantiationAwareBeanPostProcessor接口介绍 <!--[--><!--]--></a></span><!----></p></nav><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/life-doc/assets/app.388479f4.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+const a={key:"v-ab2a4a22",path:"/java/base/interfaceandabstract.html",title:"\u62BD\u8C61\u7C7B\u548C\u63A5\u53E3",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1654697416e3,contributors:[{name:"wangwenlei",email:"wenleiwang@126.com",commits:1}]},filePathRelative:"java/base/interfaceandabstract.md"};export{a as data};

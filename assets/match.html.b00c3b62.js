@@ -1,0 +1,1 @@
+const e={key:"v-2a0991ec",path:"/english/match.html",title:"\u56FA\u5B9A\u642D\u914D",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[{level:2,title:"at which point",slug:"at-which-point",children:[]}],git:{updatedTime:1652666189e3,contributors:[{name:"wangwenlei",email:"wenleiwang@126.com",commits:1}]},filePathRelative:"english/match.md"};export{e as data};

@@ -1,0 +1,1 @@
+const e={key:"v-45eda174",path:"/java/base/exception.html",title:"\u5F02\u5E38",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1654697416e3,contributors:[{name:"wangwenlei",email:"wenleiwang@126.com",commits:1}]},filePathRelative:"java/base/exception.md"};export{e as data};

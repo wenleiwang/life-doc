@@ -1,0 +1,1 @@
+const a={key:"v-0c792193",path:"/spring/spring_beanfactoryorfactorybean.html",title:"BeanFactory\u4E0EFactoryBean\u7684\u533A\u522B",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1650770295e3,contributors:[{name:"wangwenlei",email:"wangwenlei@fang.com",commits:1}]},filePathRelative:"spring/spring_beanfactoryorfactorybean.md"};export{a as data};

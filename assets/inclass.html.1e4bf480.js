@@ -1,0 +1,1 @@
+const a={key:"v-18941750",path:"/java/base/inclass.html",title:"\u533F\u540D\u5185\u90E8\u7C7B",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1654697416e3,contributors:[{name:"wangwenlei",email:"wenleiwang@126.com",commits:1}]},filePathRelative:"java/base/inclass.md"};export{a as data};

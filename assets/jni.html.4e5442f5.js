@@ -1,0 +1,1 @@
+const e={key:"v-38766b5e",path:"/java/base/jni.html",title:"JNI\u6280\u672F",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1652061411e3,contributors:[{name:"wangwenlei",email:"wangwenlei@fang.com",commits:1}]},filePathRelative:"java/base/jni.md"};export{e as data};

@@ -1,0 +1,1 @@
+const e={key:"v-7bfc082d",path:"/temp/proxy.html",title:"\u6B63\u5411\u4EE3\u7406\u4E0E\u53CD\u5411\u4EE3\u7406",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:165832958e4,contributors:[{name:"wangwenlei",email:"wenleiwang@126.com",commits:1}]},filePathRelative:"temp/proxy.md"};export{e as data};

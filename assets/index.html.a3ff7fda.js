@@ -1,0 +1,1 @@
+const e={key:"v-43539db8",path:"/english/",title:"\u82F1\u8BED",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1649838879e3,contributors:[{name:"wangwenlei",email:"wangwenlei@fang.com",commits:1}]},filePathRelative:"english/index.md"};export{e as data};

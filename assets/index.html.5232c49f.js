@@ -1,0 +1,1 @@
+const a={key:"v-14c69af4",path:"/java/",title:"Java",lang:"zh-CH",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1650770295e3,contributors:[{name:"wangwenlei",email:"wangwenlei@fang.com",commits:4}]},filePathRelative:"java/readme.md"};export{a as data};
