@@ -103,6 +103,13 @@ export const zh: SidebarConfig = {
         '/java/servlet/ServletConfigAndContext.md',
       ]
     },
+    {
+      text:'JVM',
+      collapsible: true,
+      children :[
+        '/java/jvm/class.md',
+      ]
+    }
   ],
   '/spring/': [
     '/spring/springbootstart.md',
@@ -268,7 +275,8 @@ export const zh: SidebarConfig = {
     '/temp/gitback.md',
     '/temp/calendar.md',
     '/temp/spel.md',
-    '/temp/learndockerfile.md'
+    '/temp/learndockerfile.md',
+    '/temp/proxy.md',
   ],
   '/python/': [
     '/python/base.md'
