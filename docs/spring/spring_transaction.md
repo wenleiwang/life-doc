@@ -270,6 +270,54 @@ Class B {
     }
 }
 ```
+
+捕捉bMethod的异常，如果bMethod()异常，bMethod()会回滚但不会导致aMethod()方法回滚。
+```java
+Class A {
+    @Transactional(propagation=propagation.PROPAGATION_REQUIRED)
+    public void aMethod {
+        //do something
+        B b = new B();
+        try {
+            b.bMethod();
+        } catch(Exception e) {
+
+        }
+    }
+}
+
+Class B {
+    @Transactional(propagation=propagation.REQUIRES_NEW)
+    public void bMethod {
+       //do something
+    }
+}
+```
+
+不论bMethod()有没有被捕捉，aMethod()抛出异常都不会导致bMethod()回滚
+```java
+Class A {
+    @Transactional(propagation=propagation.PROPAGATION_REQUIRED)
+    public void aMethod {
+        //do something
+        B b = new B();
+        try {
+            b.bMethod();
+        } catch(Exception e) {
+
+        }
+
+        throw new RuntimeException();
+    }
+}
+
+Class B {
+    @Transactional(propagation=propagation.REQUIRES_NEW)
+    public void bMethod {
+       //do something
+    }
+}
+```
 #### NESTED
 
 如果当前存在事务，就在嵌套事务内执行；如果当前没有事务，就执行与TransactionDefinition.PROPAGATION_REQUIRED类似的操作。也就是说：
@@ -277,7 +325,7 @@ Class B {
 * 在外部方法开启事务的情况下,在内部开启一个新的事务，作为嵌套事务存在。
 * 如果外部方法无事务，则单独开启一个事务，与 PROPAGATION_REQUIRED 类似。
 
-这里还是简单举个例子：如果 bMethod() 回滚的话，aMethod()也会回滚。
+这里还是简单举个例子：如果 bMethod() 回滚的话，异常冒泡而出，aMethod()也会回滚。
 ```java
 Class A {
     @Transactional(propagation=propagation.PROPAGATION_REQUIRED)
@@ -295,6 +343,58 @@ Class B {
     }
 }
 ```
+
+使用例子2：如果 bMethod() 回滚的话，被捕捉到并处理，aMethod()不会回滚。
+```java
+Class A {
+    @Transactional(propagation=propagation.PROPAGATION_REQUIRED)
+    public void aMethod {
+        //do something
+        B b = new B();
+        try {
+            b.bMethod();
+        } catch(Exception e) {
+            // do something
+        }
+    }
+}
+
+Class B {
+    @Transactional(propagation=propagation.PROPAGATION_NESTED)
+    public void bMethod {
+       //do something
+    }
+}
+```
+
+使用例子3：如果 aMethod() 抛出异常，则 aMethod() 回滚 同时 bMethod() 也回滚。
+```java
+Class A {
+    @Transactional(propagation=propagation.PROPAGATION_REQUIRED)
+    public void aMethod {
+        //do something
+        B b = new B();
+        try {
+            b.bMethod();
+        } catch(Exception e) {
+            // do something
+        }
+
+        // 抛出异常
+        throw new RuntimeException();
+    }
+}
+
+Class B {
+    @Transactional(propagation=propagation.PROPAGATION_NESTED)
+    public void bMethod {
+       //do something
+    }
+}
+```
+
+总结一下：当调用的方法是nested事务,该方法抛出异常如果得到了处理(try-catch),那么该方法发生异常不会触发整个方法的回滚，
+而调用者出现unchecked异常,却能触发所调用的nested事务的回滚
 
 #### MANDATORY
 如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。（mandatory：强制性）
@@ -397,3 +497,109 @@ Error 也会导致事务回滚，但是，在遇到检查型（Checked）异常�
 > 文章摘自：https://juejin.cn/post/6844903608224333838
 > 
 > 作者：JavaGuide
+
+> 可以阅读这个博主的文章写得很好：https://www.jianshu.com/p/bc3cbacf9e70
+
+## 实战多层事务开启效果，两层以上
+为了模拟效果这里在添加教师信息后添加学生信息，在添加学生信息时添加课程信息。来模拟3层Service事务效果。
+
+添加教师信息
+```java
+@Override
+@Transactional(propagation = Propagation.REQUIRED)
+public ResponseBase addTeacher(Teacher request) {
+    // 插入操作
+    int insert = teacherMapper.insert(request);
+    if (insert > 0) {
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT TRX_ID FROM INFORMATION_SCHEMA.INNODB_TRX WHERE TRX_MYSQL_THREAD_ID = CONNECTION_ID( );");
+        SqlRowSet num = jdbcTemplate.queryForRowSet("SELECT CONNECTION_ID( ) as id ;");
+        int anInt = 0;
+        while (num.next()) {
+            anInt = num.getInt("id");
+        }
+        // 打印当前正在执行的事务以及由谁创建的事务
+        System.out.println("" + anInt + maps + TransactionSynchronizationManager.getCurrentTransactionName());
+        Student student2 = new Student();
+        student2.setName("测试事务2");
+        studentService.addStudent(student2);
+        return ResponseGenerator.successful("操作成功！");
+    } else {
+        return ResponseGenerator.fail("操作失败！");
+    }
+}
+```
+
+添加学生
+```java
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
+public ResponseBase addStudent(Student request) {
+    // 插入学生信息
+    int insert = studentMapper.insert(request);
+    if (insert > 0) {
+        // 这里如果不延时一下，会出现打印不出正在执行事务问题
+        try {
+            Thread.sleep(500L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT TRX_ID FROM INFORMATION_SCHEMA.INNODB_TRX WHERE TRX_MYSQL_THREAD_ID = CONNECTION_ID( );");
+        List<Map<String, Object>> all = jdbcTemplate.queryForList("SELECT TRX_ID FROM INFORMATION_SCHEMA.INNODB_TRX;");
+        SqlRowSet num = jdbcTemplate.queryForRowSet("SELECT CONNECTION_ID( ) as id ;");
+        int anInt = 0;
+        while (num.next()) {
+            anInt = num.getInt("id");
+        }
+        // 打印当前正在执行的事务以及由谁创建的事务
+        System.out.println("" + anInt + maps + " all :" + all + TransactionSynchronizationManager.getCurrentTransactionName());
+        try {
+            Course course = new Course();
+            course.setName("测试事务课程");
+            courseService.addCourse(course);
+        } catch (Exception e) {
+            log.error("测试事务课程",e);
+            throw new ResponseException("课程添加报错");
+        }
+        return ResponseGenerator.successful();
+    } else {
+        return ResponseGenerator.fail("操作失败！");
+    }
+}
+```
+添加课程信息
+```java
+@Transactional(propagation = Propagation.REQUIRED)
+public ResponseBase addCourse(Course request) {
+    int insert = baseMapper.insert(request);
+    TeacherListRequest request1 = new TeacherListRequest();
+    request1.setPage(1);
+    request1.setPageSize(1000000);
+    List<Teacher> teacher = teacherMapper.listTeacher(request1);
+    System.out.println(teacher.toString());
+    if (insert > 0) {
+        // 这里如果不延时一下，会出现打印不出正在执行事务问题
+        try {
+            Thread.sleep(500L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT TRX_ID FROM INFORMATION_SCHEMA.INNODB_TRX WHERE TRX_MYSQL_THREAD_ID = CONNECTION_ID( );");
+        SqlRowSet num = jdbcTemplate.queryForRowSet("SELECT CONNECTION_ID( ) as id ;");
+        int anInt = 0;
+        while (num.next()) {
+            anInt = num.getInt("id");
+        }
+        // 打印当前正在执行的事务以及由谁创建的事务
+        System.out.println("" + anInt + maps + TransactionSynchronizationManager.getCurrentTransactionName());
+        return ResponseGenerator.successful();
+    } else {
+        return ResponseGenerator.fail("操作失败！");
+    }
+}
+```
+
+执行后效果
+```
+153[{TRX_ID=7456}]com.tx.schoolservice.service.impl.TeacherServiceImpl.addTeacher
+154[] all :[{TRX_ID=7456}]com.tx.schoolservice.service.impl.StudentServiceImpl.addStudent
+155 2:155[{TRX_ID=7462}]com.tx.schoolservice.service.impl.CourseServiceImpl.addCourse
+```
