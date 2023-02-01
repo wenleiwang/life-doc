@@ -10,7 +10,7 @@ const customElement = ['maction','math','menclose','merror','mfenced','mfrac','m
 
 export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CH',
-  title: '文文的文档',
+  title: '文文的技术笔记',
   description: '只为了记录',
   head:[
     ['link',{rel:'icon',href:'/favicon.ico'}],
