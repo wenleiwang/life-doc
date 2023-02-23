@@ -272,6 +272,7 @@ export const zh: SidebarConfig = {
   '/temp/': [
     '/temp/interface.md',
     '/temp/jwt.md',
+    '/temp/git_branch.md',
     '/temp/gitback.md',
     '/temp/calendar.md',
     '/temp/spel.md',
