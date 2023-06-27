@@ -7,7 +7,7 @@ export const zh: NavbarConfig = [
   { text: 'MySQL', link: '/mysql/' },
   { text: 'Redis', link: '/redis/' },
   // { text: 'RabbitMQ', link: '/rabbitmq/', target:'_blank' },
-  { text: 'RabbitMQ', link: '/rabbitmq/' },
+  { text: 'MQ', link: '/mq/' },
   { text: '算法', link: '/algorithm/' },
   { text: '补充', link: '/temp/' },
   { text: 'Python', link: '/python/' },

@@ -7,7 +7,7 @@ export const en: NavbarConfig = [
   { text: 'MySQL', link: '/mysql/' },
   { text: 'Redis', link: '/redis/' },
   // { text: 'RabbitMQ', link: '/rabbitmq/', target:'_blank' },
-  { text: 'RabbitMQ', link: '/rabbitmq/' },
+  { text: 'MQ', link: '/mq/' },
   { text: 'algorithm', link: '/algorithm/' },
   { text: 'temp', link: '/temp/' },
   { text: 'Python', link: '/python/' },

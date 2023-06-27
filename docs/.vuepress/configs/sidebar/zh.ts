@@ -24,67 +24,19 @@ export const zh: SidebarConfig = {
       ]
     },
     {
-      text:'Java9新特性',
+      text:'Java各版本特性',
       collapsible: true,
       children :[
-        '/java/java9/',
-        '/java/java9/onjvm.md'
-      ]
-    },
-    {
-      text:'Java10新特性',
-      collapsible: true,
-      children :[
-        '/java/java10/'
-      ]
-    },
-    {
-      text:'Java11新特性',
-      collapsible: true,
-      children :[
-        '/java/java11/'
-      ]
-    },
-    {
-      text:'Java12新特性',
-      collapsible: true,
-      children :[
-        '/java/java12/'
-      ]
-    },
-    {
-      text:'Java13新特性',
-      collapsible: true,
-      children :[
-        '/java/java13/'
-      ]
-    },
-    {
-      text:'Java14新特性',
-      collapsible: true,
-      children :[
-        '/java/java14/'
-      ]
-    },
-    {
-      text:'Java15新特性',
-      collapsible: true,
-      children :[
-        '/java/java15/'
-      ]
-    },
-    {
-      text:'Java16新特性',
-      collapsible: true,
-      children :[
-        '/java/java16/'
-      ]
-    },
-    {
-      text:'Java17新特性',
-      collapsible: true,
-      children :[
-        '/java/java17/'
+        '/java/featrue/java9.md',
+        '/java/featrue/onjvm.md',
+        '/java/featrue/java10.md',
+        '/java/featrue/java11.md',
+        '/java/featrue/java12.md',
+        '/java/featrue/java13.md',
+        '/java/featrue/java14.md',
+        '/java/featrue/java15.md',
+        '/java/featrue/java16.md',
+        '/java/featrue/java17.md',
       ]
     },
     {
@@ -193,8 +145,22 @@ export const zh: SidebarConfig = {
       ]
     },
   ],
-  '/rabbitmq/': [
-    '/rabbitmq/mideng.md'
+  '/mq/': [
+    {
+      text:'RabbitMQ',
+      collapsible: true,
+      children :[
+        '/mq/rabbitmq/',
+      ]
+    },
+    {
+      text:'RocketMQ',
+      collapsible: true,
+      children :[
+        '/mq/rocketmq/',
+      ]
+    },
+    '/mq/mideng.md'
   ],
   '/algorithm/': [
     {
@@ -266,6 +232,13 @@ export const zh: SidebarConfig = {
         '/algorithm/recursion/Permutation.md',
         '/algorithm/recursion/Nqueen.md',
         '/algorithm/recursion/generateParenthesis.md',
+      ]
+    },
+    {
+      text: '其他',
+      collapsible: true,
+      children :[
+        '/algorithm/more/pivotInteger.md',
       ]
     }
   ],
