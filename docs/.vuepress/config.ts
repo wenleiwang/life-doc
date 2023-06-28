@@ -7,7 +7,7 @@ import { defineClientAppEnhance } from '@vuepress/client'
 
 
 const customElement = ['maction','math','menclose','merror','mfenced','mfrac','mi','mmultiscripts','mn','mo','mover','mpadded','mphantom','mroot','mrow','ms','mspace','msqrt','mstyle','msub','msubsup','msup','mtable','mtd','mtext','mtr','munder','munderover','semantics','annotation'];
-
+const katex = require('katex');
 export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CH',
   title: '文文的技术笔记',
@@ -70,7 +70,12 @@ export default defineUserConfig<DefaultThemeOptions>({
     
   },
   extendsMarkdown: (md) => {
-    md.use(markdownItKatex)
+    md.use(markdownItKatex, {
+      // 配置选项
+      katex:katex,
+      "throwOnError" : false,
+      "errorColor" : " #cc0000"
+    })
   },
   bundlerConfig: {
     vuePluginOptions: {
