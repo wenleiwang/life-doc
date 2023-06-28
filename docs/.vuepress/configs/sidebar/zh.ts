@@ -251,6 +251,7 @@ export const zh: SidebarConfig = {
     '/temp/spel.md',
     '/temp/learndockerfile.md',
     '/temp/proxy.md',
+    '/temp/黄赤交角.md',
   ],
   '/python/': [
     '/python/base.md'
