@@ -1,3 +1,13 @@
+---
+title: binarytree_mirror
+date: 2023-02-01 18:08:51
+permalink: /pages/365e2b/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 二叉树的镜像
 
 ## 0.题目

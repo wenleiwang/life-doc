@@ -1,3 +1,12 @@
+---
+title: spring_transaction
+date: 2023-02-01 18:08:51
+permalink: /pages/ba6b88/
+categories:
+  - spring
+tags:
+  - 
+---
 # Spring 事务管理
 
 ## Spring事务管理和数据库事务的关系

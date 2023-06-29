@@ -1,3 +1,13 @@
+---
+title: lock
+date: 2023-02-01 18:08:51
+permalink: /pages/11af4a/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # Java中的锁
 ## 锁概念总结
 

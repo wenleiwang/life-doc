@@ -1,3 +1,13 @@
+---
+title: hasCycle
+date: 2023-02-01 18:08:51
+permalink: /pages/acbee2/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 判断链表中是否有环
 ## 描述
 判断给定的链表中是否有环。如果有环则返回true，否则返回false。

@@ -1,3 +1,12 @@
+---
+title: spring_circularDependecies
+date: 2023-02-01 18:08:51
+permalink: /pages/77c076/
+categories:
+  - spring
+tags:
+  - 
+---
 # Spring循环依赖
 
 英文： Circular dependencies

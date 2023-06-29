@@ -1,3 +1,13 @@
+---
+title: readme
+date: 2023-02-01 18:08:51
+permalink: /pages/b085ab/
+categories:
+  - spring
+  - spring_cloud
+tags:
+  - 
+---
 # 概述
 Spring Cloud 是分布式微服务架构的一站式解决方案，它提供了一套简单易用的编程模型，使我们能在 Spring Boot 的基础上轻松地实现微服务系统的构建。
 

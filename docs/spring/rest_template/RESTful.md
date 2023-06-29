@@ -1,3 +1,13 @@
+---
+title: RESTful
+date: 2023-03-27 15:09:41
+permalink: /pages/a29036/
+categories:
+  - spring
+  - rest_template
+tags:
+  - 
+---
 # 理解RESTful架构
 
 > 参考文档：

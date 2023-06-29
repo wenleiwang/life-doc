@@ -1,5 +1,13 @@
 ---
-next : '/redis/base/usestring.md'
+next: /redis/base/usestring.md
+title: resume
+date: 2023-02-01 18:08:51
+permalink: /pages/ce3a56/
+categories: 
+  - redis
+  - base
+tags: 
+  - 
 ---
 
 # Redis环境搭建

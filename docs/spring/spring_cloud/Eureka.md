@@ -1,3 +1,13 @@
+---
+title: Eureka
+date: 2023-02-01 18:08:51
+permalink: /pages/f01262/
+categories:
+  - spring
+  - spring_cloud
+tags:
+  - 
+---
 # Spring Cloud Eureke
 Eureka 一词来源于古希腊词汇，是“发现了”的意思。在软件领域，Eureka 是 Netflix 公司开发的一款开源的服务注册与发现组件。
 

@@ -1,3 +1,13 @@
+---
+title: masterSlaveSync
+date: 2023-02-01 18:08:51
+permalink: /pages/20ca36/
+categories:
+  - redis
+  - cluster
+tags:
+  - 
+---
 # 主从同步
 在Redis的使用中没有使用集群，至少也会做主从。当主节点（Master）挂掉的时候，切换让从节点（Slave）接管，服务就可以继续。
 

@@ -1,3 +1,13 @@
+---
+title: usestring
+date: 2023-02-01 18:08:51
+permalink: /pages/57f69a/
+categories:
+  - redis
+  - base
+tags:
+  - 
+---
 # Redis基础数据类型——string(字符串)
 
 ## 单个键值对

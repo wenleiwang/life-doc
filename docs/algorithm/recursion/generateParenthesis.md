@@ -1,3 +1,13 @@
+---
+title: generateParenthesis
+date: 2023-02-01 18:08:51
+permalink: /pages/1cba77/
+categories:
+  - algorithm
+  - recursion
+tags:
+  - 
+---
 # 括号匹配问题
 ## 描述
 给出n对括号，请编写一个函数来生成所有的由n对括号组成的合法组合。

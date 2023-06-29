@@ -1,5 +1,12 @@
 ---
-
+title: java11
+date: 2023-02-01 18:08:51
+permalink: /pages/e2c3b8/
+categories:
+  - java
+  - featrue
+tags:
+  - 
 ---
 # Java11新特性
 

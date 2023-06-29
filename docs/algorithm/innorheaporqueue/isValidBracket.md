@@ -1,3 +1,13 @@
+---
+title: isValidBracket
+date: 2023-02-01 18:08:51
+permalink: /pages/3d50f9/
+categories:
+  - algorithm
+  - innorheaporqueue
+tags:
+  - 
+---
 # 有效括号序列
 
 ## 0.题目

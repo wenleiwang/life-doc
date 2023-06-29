@@ -1,3 +1,13 @@
+---
+title: Permutation
+date: 2023-02-01 18:08:51
+permalink: /pages/689868/
+categories:
+  - algorithm
+  - recursion
+tags:
+  - 
+---
 # 字符串的排列
 ## 描述
 输入一个长度为 n 字符串，打印出该字符串中字符的所有排列，你可以以任意顺序返回这个字符串数组。

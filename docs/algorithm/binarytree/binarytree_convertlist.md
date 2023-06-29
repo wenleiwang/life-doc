@@ -1,3 +1,13 @@
+---
+title: binarytree_convertlist
+date: 2023-02-01 18:08:51
+permalink: /pages/ce7730/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 二叉树与双向链表
 
 ## 0. 题目

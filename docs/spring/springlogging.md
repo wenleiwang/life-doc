@@ -1,3 +1,12 @@
+---
+title: springlogging
+date: 2023-02-01 18:08:51
+permalink: /pages/b35d39/
+categories:
+  - spring
+tags:
+  - 
+---
 # SpringBoot使用的日志
 
 ## 1.执行过程

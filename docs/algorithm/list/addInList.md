@@ -1,3 +1,13 @@
+---
+title: addInList
+date: 2023-02-01 18:08:51
+permalink: /pages/2c23d0/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 链表相加(二)
 ## 描述
 

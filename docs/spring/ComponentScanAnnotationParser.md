@@ -1,3 +1,12 @@
+---
+title: ComponentScanAnnotationParser
+date: 2023-02-01 18:08:51
+permalink: /pages/f6c205/
+categories:
+  - spring
+tags:
+  - 
+---
 # ComponentScanAnnotationParser类
 
 ```java

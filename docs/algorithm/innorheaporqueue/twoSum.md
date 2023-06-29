@@ -1,3 +1,13 @@
+---
+title: twoSum
+date: 2023-02-01 18:08:51
+permalink: /pages/ed6fc4/
+categories:
+  - algorithm
+  - innorheaporqueue
+tags:
+  - 
+---
 # 两数之和
 ## 描述
 给出一个整型数组 numbers 和一个目标值 target，请在数组中找出两个加起来等于目标值的数的下标，返回的下标按升序排列。

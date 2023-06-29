@@ -1,3 +1,12 @@
+---
+title: that
+date: 2023-02-01 18:08:51
+permalink: /pages/a9e77e/
+categories:
+  - english
+tags:
+  - 
+---
 # that可以引导哪些从句
 > https://zhuanlan.zhihu.com/p/41279450
 

@@ -1,3 +1,12 @@
+---
+title: spring_beanfactoryorfactorybean
+date: 2023-02-01 18:08:51
+permalink: /pages/59a511/
+categories:
+  - spring
+tags:
+  - 
+---
 # BeanFactory与FactoryBean的区别
 
 一直都说

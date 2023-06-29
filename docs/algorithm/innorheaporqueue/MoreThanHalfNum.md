@@ -1,3 +1,13 @@
+---
+title: MoreThanHalfNum
+date: 2023-02-01 18:08:51
+permalink: /pages/2cb301/
+categories:
+  - algorithm
+  - innorheaporqueue
+tags:
+  - 
+---
 # 数组中出现次数超过一半的数字
 ## 描述
 给一个长度为 n 的数组，数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。

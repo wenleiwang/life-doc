@@ -1,3 +1,12 @@
+---
+title: interface
+date: 2023-02-01 18:08:51
+permalink: /pages/643c9d/
+categories:
+  - temp
+tags:
+  - 
+---
 # 接口高频调用的相关
 
 ## 你怎么防止优惠券有人重复刷？

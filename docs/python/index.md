@@ -1,3 +1,12 @@
+---
+title: index
+date: 2023-02-01 18:08:51
+permalink: /pages/b20f89/
+categories:
+  - python
+tags:
+  - 
+---
 # python
 
 ## 简介

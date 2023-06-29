@@ -1,3 +1,13 @@
+---
+title: object
+date: 2023-02-01 18:08:51
+permalink: /pages/b18eb5/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # Object 对象
 
 

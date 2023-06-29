@@ -1,3 +1,13 @@
+---
+title: minNumberDisappeared
+date: 2023-02-01 18:08:51
+permalink: /pages/9def28/
+categories:
+  - algorithm
+  - innorheaporqueue
+tags:
+  - 
+---
 # 缺失的第一个正整数
 ## 描述
 给定一个未排序的整数数组nums，请你找出其中没有出现的最小的正整数。中间没出现也是

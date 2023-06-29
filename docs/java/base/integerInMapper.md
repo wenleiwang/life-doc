@@ -1,3 +1,13 @@
+---
+title: integerInMapper
+date: 2023-02-01 18:08:51
+permalink: /pages/bfad93/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # Integer在Mapper中的判断
 ## 阐述
 1. Integer类型在Mapper使用`<if test="state == 1">`直接判断即可

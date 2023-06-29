@@ -1,5 +1,12 @@
 ---
-
+title: java14
+date: 2023-02-01 18:08:51
+permalink: /pages/87d247/
+categories:
+  - java
+  - featrue
+tags:
+  - 
 ---
 # Java14新特性
 

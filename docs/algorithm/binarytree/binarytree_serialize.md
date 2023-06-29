@@ -1,3 +1,13 @@
+---
+title: binarytree_serialize
+date: 2023-02-01 18:08:51
+permalink: /pages/8af89f/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 序列化二叉树
 
 ## 0.题目

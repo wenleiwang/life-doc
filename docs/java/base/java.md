@@ -1,3 +1,13 @@
+---
+title: java
+date: 2023-02-01 18:08:51
+permalink: /pages/59dd62/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # Java基础必备
 
 ## 1.为什么Java代码可以实现一次编写到处运行？

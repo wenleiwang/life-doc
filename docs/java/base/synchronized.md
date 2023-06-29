@@ -1,3 +1,13 @@
+---
+title: synchronized
+date: 2023-02-01 18:08:51
+permalink: /pages/f858e4/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 
 
 # synchronized关键字

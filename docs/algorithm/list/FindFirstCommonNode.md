@@ -1,3 +1,13 @@
+---
+title: FindFirstCommonNode
+date: 2023-02-01 18:08:51
+permalink: /pages/1f24cc/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 两个链表的第一个公共结点
 
 ## 描述

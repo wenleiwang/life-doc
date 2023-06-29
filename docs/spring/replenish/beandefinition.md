@@ -1,3 +1,13 @@
+---
+title: beandefinition
+date: 2023-02-01 18:08:51
+permalink: /pages/94f8f2/
+categories:
+  - spring
+  - replenish
+tags:
+  - 
+---
 # BeanDefinition源码阅读
 Bean的定义
 

@@ -1,3 +1,13 @@
+---
+title: binarytree_lowestCommonAncestor
+date: 2023-02-01 18:08:51
+permalink: /pages/6d4cf4/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 二叉搜索树的最近公共祖先
 
 ## 0.题目

@@ -1,3 +1,12 @@
+---
+title: base
+date: 2023-02-01 18:08:51
+permalink: /pages/2049f7/
+categories:
+  - python
+tags:
+  - 
+---
 # 基础
 ## 开启新的征程
 

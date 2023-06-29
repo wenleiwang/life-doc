@@ -1,3 +1,13 @@
+---
+title: deleteDuplicates
+date: 2023-02-01 18:08:51
+permalink: /pages/661f5d/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 删除有序链表中重复的元素（二）
 
 ## 描述

@@ -1,3 +1,13 @@
+---
+title: solve
+date: 2023-02-01 18:08:51
+permalink: /pages/c276a8/
+categories:
+  - algorithm
+  - string
+tags:
+  - 
+---
 # 反转字符串
 ## 描述
 写出一个程序，接受一个字符串，然后输出该字符串反转后的字符串。（字符串长度不超过1000）

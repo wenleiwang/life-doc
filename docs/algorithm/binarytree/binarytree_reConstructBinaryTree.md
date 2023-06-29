@@ -1,3 +1,13 @@
+---
+title: binarytree_reConstructBinaryTree
+date: 2023-02-01 18:08:51
+permalink: /pages/5aeabc/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 重建二叉树
 
 ## 0.题目

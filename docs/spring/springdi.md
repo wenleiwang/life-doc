@@ -1,3 +1,12 @@
+---
+title: springdi
+date: 2023-02-01 18:08:51
+permalink: /pages/2b83ea/
+categories:
+  - spring
+tags:
+  - 
+---
 
 # spring DI 过程 
 

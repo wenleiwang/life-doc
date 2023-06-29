@@ -1,3 +1,12 @@
+---
+title: springevent
+date: 2023-02-01 18:08:51
+permalink: /pages/bb144a/
+categories:
+  - spring
+tags:
+  - 
+---
 # Spring 事件驱动机制
 
 ## 1.理解JDK1.1提供的发布订阅模式（EventListener和EventObject）

@@ -1,3 +1,13 @@
+---
+title: InstantiationAwareBeanPostProcessor
+date: 2023-02-01 18:08:51
+permalink: /pages/220b9f/
+categories:
+  - spring
+  - replenish
+tags:
+  - 
+---
 # InstantiationAwareBeanPostProcessor接口介绍
 
 InstantiationAwareBeanPostProcessor接口是BeanPostProcessor的子接口，通过接口字面意思翻译该接口的作用是感知Bean实例话的处理器。

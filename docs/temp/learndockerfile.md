@@ -1,3 +1,12 @@
+---
+title: learndockerfile
+date: 2023-02-01 18:08:51
+permalink: /pages/8db8b4/
+categories:
+  - temp
+tags:
+  - 
+---
 # DockerFile和docker-compose
 Dockerfile 是一个文本文件，其内包含了一条条的指令，描述我们的镜像该如何构建，就像我们程序的源码。
 

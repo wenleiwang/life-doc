@@ -1,5 +1,12 @@
 ---
-
+title: java10
+date: 2023-02-01 18:08:51
+permalink: /pages/48e76d/
+categories:
+  - java
+  - featrue
+tags:
+  - 
 ---
 # Java10新特性
 

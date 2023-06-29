@@ -1,3 +1,13 @@
+---
+title: usezset
+date: 2023-02-01 18:08:51
+permalink: /pages/72dddd/
+categories:
+  - redis
+  - base
+tags:
+  - 
+---
 # Redis基础类型——zset（有序列表）
 
 ## 介绍基本概念

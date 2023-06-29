@@ -1,3 +1,12 @@
+---
+title: gitback
+date: 2023-02-01 18:08:51
+permalink: /pages/7d50b9/
+categories:
+  - temp
+tags:
+  - 
+---
 # git reset与revert的区别
 
 ## 0.基础知识铺垫

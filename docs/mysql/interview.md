@@ -1,3 +1,12 @@
+---
+title: interview
+date: 2023-02-01 18:08:51
+permalink: /pages/edc171/
+categories:
+  - mysql
+tags:
+  - 
+---
 # 数据库知识点
 
 ## 数据库三范式

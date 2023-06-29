@@ -1,3 +1,13 @@
+---
+title: binartytree_solve
+date: 2023-02-01 18:08:51
+permalink: /pages/bca1d6/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 二叉树的右视图
 
 ## 0.题目

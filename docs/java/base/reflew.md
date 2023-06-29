@@ -1,3 +1,13 @@
+---
+title: reflew
+date: 2023-02-01 18:08:51
+permalink: /pages/f8d6d1/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # 反射
 通的java对象是通过new关键字把对应类的字节码文件加载到内存，然后创建该对象的。
 

@@ -1,3 +1,13 @@
+---
+title: binarytree_snake
+date: 2023-02-01 18:08:51
+permalink: /pages/dac06b/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 二叉树遍历之蛇形打印
 
 ## 0.题目

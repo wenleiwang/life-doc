@@ -1,3 +1,13 @@
+---
+title: thread
+date: 2023-02-01 18:08:51
+permalink: /pages/3700f3/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # 线程
 
 ## 线程状态转换

@@ -1,3 +1,13 @@
+---
+title: useLimit
+date: 2023-02-01 18:08:51
+permalink: /pages/bac779/
+categories:
+  - redis
+  - use
+tags:
+  - 
+---
 # Redis实现限流
 
 限流算法在分布式领域是一个经常被提起的话题，当系统的处理能力有限时，如果阻止计划外的请求继续对系统施加压力？

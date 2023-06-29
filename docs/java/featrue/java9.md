@@ -1,5 +1,12 @@
 ---
-
+title: java9
+date: 2023-02-01 18:08:51
+permalink: /pages/d5f393/
+categories:
+  - java
+  - featrue
+tags:
+  - 
 ---
 # Java9
 

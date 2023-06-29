@@ -1,3 +1,13 @@
+---
+title: usehash
+date: 2023-02-01 18:08:51
+permalink: /pages/d2c436/
+categories:
+  - redis
+  - base
+tags:
+  - 
+---
 # Redis基础类型——hash（字典）
 
 ## 介绍基本概念

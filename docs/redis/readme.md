@@ -1,4 +1,11 @@
 ---
+title: readme
+date: 2023-02-01 18:08:51
+permalink: /pages/1c4905/
+categories:
+  - redis
+tags:
+  - 
 ---
 # Redis
 

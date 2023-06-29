@@ -1,3 +1,12 @@
+---
+title: transaction
+date: 2023-02-01 18:08:51
+permalink: /pages/5a0e67/
+categories:
+  - mysql
+tags:
+  - 
+---
 # MySQL事务
 ## 什么是事务？
 一组操作，要么都执行，要么都不执行。

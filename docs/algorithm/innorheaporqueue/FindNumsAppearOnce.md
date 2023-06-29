@@ -1,3 +1,13 @@
+---
+title: FindNumsAppearOnce
+date: 2023-02-01 18:08:51
+permalink: /pages/8552ae/
+categories:
+  - algorithm
+  - innorheaporqueue
+tags:
+  - 
+---
 # 数组中只出现一次的的两个数字
 ## 描述
 一个整型数组里除了两个数字只出现一次，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。

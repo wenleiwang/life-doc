@@ -1,3 +1,13 @@
+---
+title: binarytree_lowestCommonAncestor2
+date: 2023-02-01 18:08:51
+permalink: /pages/c9bd86/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 在二叉树中找到两个结点的最近公共祖先
 
 ## 0.题目

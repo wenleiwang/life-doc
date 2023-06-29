@@ -1,3 +1,13 @@
+---
+title: heap_oom
+date: 2023-02-01 18:08:51
+permalink: /pages/d6a370/
+categories:
+  - java
+  - jvm
+tags:
+  - 
+---
 # Java8体验堆溢出
 
 使用的HotSpot JDK8

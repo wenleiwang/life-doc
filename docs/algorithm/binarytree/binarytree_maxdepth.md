@@ -1,3 +1,13 @@
+---
+title: binarytree_maxdepth
+date: 2023-02-01 18:08:51
+permalink: /pages/9ae689/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 二叉树的最大深度
 
 ## 0.题目 

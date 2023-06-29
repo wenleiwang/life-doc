@@ -1,3 +1,13 @@
+---
+title: judge
+date: 2023-02-01 18:08:51
+permalink: /pages/b1f1a0/
+categories:
+  - algorithm
+  - string
+tags:
+  - 
+---
 # 判断是否为回文字符串
 
 ## 描述

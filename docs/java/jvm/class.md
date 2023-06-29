@@ -1,3 +1,13 @@
+---
+title: class
+date: 2023-02-01 18:08:51
+permalink: /pages/9e709b/
+categories:
+  - java
+  - jvm
+tags:
+  - 
+---
 # 虚拟机类的加载机制
 
 ## 定义

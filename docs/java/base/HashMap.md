@@ -1,3 +1,13 @@
+---
+title: HashMap
+date: 2023-02-01 18:08:51
+permalink: /pages/7ee56b/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # HashMap
 
 ## HashMap特点

@@ -1,3 +1,13 @@
+---
+title: distributedLock
+date: 2023-02-01 18:08:51
+permalink: /pages/7fe752/
+categories:
+  - redis
+  - use
+tags:
+  - 
+---
 # Redis实现分布式锁
 分布式应用进行逻辑处理时经常会遇到并发问题。
 

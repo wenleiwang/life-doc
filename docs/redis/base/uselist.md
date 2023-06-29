@@ -1,3 +1,13 @@
+---
+title: uselist
+date: 2023-02-01 18:08:51
+permalink: /pages/5d9e8c/
+categories:
+  - redis
+  - base
+tags:
+  - 
+---
 # Redis基础类型——list(列表)
 Java方法基于redisTemplate.opsForList()。
 

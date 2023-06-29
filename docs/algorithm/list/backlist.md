@@ -1,3 +1,13 @@
+---
+title: backlist
+date: 2023-02-01 18:08:51
+permalink: /pages/6e7cc5/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 链表反转
 
 ## 1.描述

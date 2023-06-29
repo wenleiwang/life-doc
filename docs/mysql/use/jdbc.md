@@ -1,3 +1,13 @@
+---
+title: jdbc
+date: 2023-02-01 18:08:51
+permalink: /pages/9a5633/
+categories:
+  - mysql
+  - use
+tags:
+  - 
+---
 # 通过JDBC使用数据库
 ## 什么是JDBC？
 全称： Java Data Base Connectivity

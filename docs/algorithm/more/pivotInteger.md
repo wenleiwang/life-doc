@@ -1,3 +1,13 @@
+---
+title: pivotInteger
+date: 2023-06-26 09:37:14
+permalink: /pages/f771c5/
+categories:
+  - algorithm
+  - more
+tags:
+  - 
+---
 # 找出中枢整数
 题目来自力扣
 

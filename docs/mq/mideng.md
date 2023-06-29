@@ -1,3 +1,12 @@
+---
+title: mideng
+date: 2023-02-01 18:08:51
+permalink: /pages/cb4056/
+categories:
+  - mq
+tags:
+  - 
+---
 # 如何设计幂等
 
 

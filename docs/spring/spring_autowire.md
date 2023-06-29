@@ -1,3 +1,12 @@
+---
+title: spring_autowire
+date: 2023-02-01 18:08:51
+permalink: /pages/7cd789/
+categories:
+  - spring
+tags:
+  - 
+---
 # 自动装配与条件装配
 
 > 解释摘自参考官网: Spring容器可以自动装配Beans之间的关系。可以让Spring通过检查`Application`容器自动的解析合作者（其他Beans）

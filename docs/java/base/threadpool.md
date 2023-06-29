@@ -1,3 +1,13 @@
+---
+title: threadpool
+date: 2023-02-01 18:08:51
+permalink: /pages/5a5ef1/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # 线程池
 ## 一、写在前面
 听到线程池、线程，不禁都为为之端正姿势

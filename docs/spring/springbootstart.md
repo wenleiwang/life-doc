@@ -1,3 +1,12 @@
+---
+title: springbootstart
+date: 2023-02-01 18:08:51
+permalink: /pages/e9d74f/
+categories:
+  - spring
+tags:
+  - 
+---
 
 # SpringBoot Start
 

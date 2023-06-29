@@ -1,3 +1,13 @@
+---
+title: binarytree_isValidBST
+date: 2023-02-01 18:08:51
+permalink: /pages/3fc662/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # 判断二叉树是否是搜索二叉树
 
 ## 0.题目

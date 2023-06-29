@@ -1,3 +1,13 @@
+---
+title: proxy
+date: 2023-02-01 18:08:51
+permalink: /pages/b953ba/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # Java的代理
 
 Java的代理有2中，JDK动态代理和CGLIB代理

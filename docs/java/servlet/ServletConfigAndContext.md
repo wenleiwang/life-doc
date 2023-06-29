@@ -1,3 +1,13 @@
+---
+title: ServletConfigAndContext
+date: 2023-02-01 18:08:51
+permalink: /pages/944fed/
+categories:
+  - java
+  - servlet
+tags:
+  - 
+---
 # ServletConfig与ServletContext
 
 ## ServletConfig接口

@@ -1,3 +1,13 @@
+---
+title: FindKthToTail
+date: 2023-02-01 18:08:51
+permalink: /pages/e13794/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 链表中倒数最后k个结点
 
 ## 描述

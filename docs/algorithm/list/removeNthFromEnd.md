@@ -1,3 +1,13 @@
+---
+title: removeNthFromEnd
+date: 2023-02-01 18:08:51
+permalink: /pages/dcd35e/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 删除链表的倒数第n个节点
 ## 描述
 给定一个链表，删除链表的倒数第 n 个节点并返回链表的头指针

@@ -1,3 +1,13 @@
+---
+title: readme
+date: 2023-02-01 18:08:51
+permalink: /pages/961627/
+categories:
+  - java
+  - servlet
+tags:
+  - 
+---
 # Servlet是什么？
 
 [摘自](https://www.csdn.net/tags/MtTaYgwsMTA3NTUtYmxvZwO0O0OO0O0O.html)

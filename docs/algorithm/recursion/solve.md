@@ -1,3 +1,13 @@
+---
+title: solve
+date: 2023-02-01 18:08:51
+permalink: /pages/306d4a/
+categories:
+  - algorithm
+  - recursion
+tags:
+  - 
+---
 # 岛屿数量
 
 ## 描述

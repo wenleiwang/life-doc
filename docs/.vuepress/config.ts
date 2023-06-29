@@ -4,6 +4,7 @@ import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 import markdownItKatex from 'markdown-it-katex';
 import { defineClientAppEnhance } from '@vuepress/client'
+import { resolve } from 'path'
 
 
 const customElement = ['maction','math','menclose','merror','mfenced','mfrac','mi','mmultiscripts','mn','mo','mover','mpadded','mphantom','mroot','mrow','ms','mspace','msqrt','mstyle','msub','msubsup','msup','mtable','mtd','mtext','mtr','munder','munderover','semantics','annotation'];
@@ -17,6 +18,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   ],
   // 主题和它的配置
   // theme: '@vuepress/theme-default',
+  theme: resolve(__dirname, '../../vuepress-theme-wdo'), // 使用本地主题包
   themeConfig: {
     logo: '/logo.png',
     logoDark : null,

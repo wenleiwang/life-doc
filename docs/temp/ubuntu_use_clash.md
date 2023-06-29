@@ -1,3 +1,12 @@
+---
+title: ubuntu_use_clash
+date: 2023-02-01 18:08:51
+permalink: /pages/f5a5e2/
+categories:
+  - temp
+tags:
+  - 
+---
 # Ubuntu虚拟机使用clash代理及其配置
 运行环境：Ubuntu 20.04 LTS
 

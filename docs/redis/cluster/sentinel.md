@@ -1,3 +1,13 @@
+---
+title: sentinel
+date: 2023-02-01 18:08:51
+permalink: /pages/69e7aa/
+categories:
+  - redis
+  - cluster
+tags:
+  - 
+---
 # Redis哨兵模式
 Redis Sentinel是针对需要当发生故障时自动进行主从切换，程序可以不用重启的一个高可用的解决方案。
 

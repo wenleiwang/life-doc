@@ -1,3 +1,13 @@
+---
+title: merge
+date: 2023-02-01 18:08:51
+permalink: /pages/3b3c84/
+categories:
+  - algorithm
+  - string
+tags:
+  - 
+---
 # 合并两个有序的数组
 ## 描述
 给出一个有序的整数数组 A 和有序的整数数组 B ，请将数组 B 合并到数组 A 中，变成一个有序的升序数组

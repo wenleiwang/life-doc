@@ -1,3 +1,13 @@
+---
+title: security
+date: 2023-02-01 18:08:51
+permalink: /pages/d648b7/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # 系统安全管理器 System.getSecurityManager()
 
 ## 简介

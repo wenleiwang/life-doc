@@ -1,3 +1,12 @@
+---
+title: springboot_externalizedConfiguration
+date: 2023-02-01 18:08:51
+permalink: /pages/a5c01f/
+categories:
+  - spring
+tags:
+  - 
+---
 # 外部配置
 
 Spring Boot 允许您将配置外部化，以便您可以在不同的环境中使用相同的应用程序代码。您可以使用各种外部配置源，包括 Java 属性文件、YAML 文件、环境变量和命令行参数。

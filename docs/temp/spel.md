@@ -1,3 +1,12 @@
+---
+title: spel
+date: 2023-02-01 18:08:51
+permalink: /pages/bf6f45/
+categories:
+  - temp
+tags:
+  - 
+---
 # SpEL
 
 文章摘自：http://itmyhome.com/spring/expressions.html

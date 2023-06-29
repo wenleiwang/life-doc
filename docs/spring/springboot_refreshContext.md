@@ -1,3 +1,12 @@
+---
+title: springboot_refreshContext
+date: 2023-02-01 18:08:51
+permalink: /pages/9713b1/
+categories:
+  - spring
+tags:
+  - 
+---
 # Spingboot启动的refreshContext(context)
 
 ## 入口

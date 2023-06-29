@@ -1,3 +1,12 @@
+---
+title: contentnegotiation
+date: 2023-02-01 18:08:51
+permalink: /pages/225323/
+categories:
+  - spring
+tags:
+  - 
+---
 # 内容协商协议 & Spring MVC内容协商
 
 百度词条：

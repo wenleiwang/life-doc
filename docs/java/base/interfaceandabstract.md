@@ -1,3 +1,13 @@
+---
+title: interfaceandabstract
+date: 2023-02-01 18:08:51
+permalink: /pages/3951a2/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # 抽象类和接口
 jdk1.8之前
 

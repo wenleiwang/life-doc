@@ -1,3 +1,12 @@
+---
+title: springaop
+date: 2023-02-01 18:08:51
+permalink: /pages/8cd569/
+categories:
+  - spring
+tags:
+  - 
+---
 # spring AOP
 
 ## 一、AOP概念及使用

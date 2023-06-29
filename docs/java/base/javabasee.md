@@ -1,3 +1,13 @@
+---
+title: javabasee
+date: 2023-02-01 18:08:51
+permalink: /pages/dbbc96/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # java基础
 
 

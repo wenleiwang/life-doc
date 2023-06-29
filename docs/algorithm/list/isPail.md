@@ -1,3 +1,13 @@
+---
+title: isPail
+date: 2023-02-01 18:08:51
+permalink: /pages/683232/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 判断链表是否是回文结构
 
 ## 1.题目

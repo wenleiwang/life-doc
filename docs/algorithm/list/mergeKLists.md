@@ -1,3 +1,13 @@
+---
+title: mergeKLists
+date: 2023-02-01 18:08:51
+permalink: /pages/8ad43b/
+categories:
+  - algorithm
+  - list
+tags:
+  - 
+---
 # 合并K个已合并的链表
 ## 描述
 合并 k 个升序的链表并将结果作为一个升序的链表返回其头节点。

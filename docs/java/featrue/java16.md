@@ -1,5 +1,12 @@
 ---
-
+title: java16
+date: 2023-02-01 18:08:51
+permalink: /pages/fe201a/
+categories:
+  - java
+  - featrue
+tags:
+  - 
 ---
 # Java16新特性
 

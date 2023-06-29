@@ -1,3 +1,13 @@
+---
+title: binarytree_inorder
+date: 2023-02-01 18:08:51
+permalink: /pages/00cae5/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # （二）二叉树之中序遍历
 
 ## 0.前言

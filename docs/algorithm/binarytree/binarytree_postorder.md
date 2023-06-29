@@ -1,3 +1,13 @@
+---
+title: binarytree_postorder
+date: 2023-02-01 18:08:51
+permalink: /pages/77ddf5/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # （三）二叉树之后序遍历
 
 ## 0.前言

@@ -1,3 +1,13 @@
+---
+title: binarytree_preorder
+date: 2023-02-01 18:08:51
+permalink: /pages/1b54c9/
+categories:
+  - algorithm
+  - binarytree
+tags:
+  - 
+---
 # （一）二叉树遍历之先序遍历
 
 ## 0.前言

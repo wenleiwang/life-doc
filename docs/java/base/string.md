@@ -1,3 +1,13 @@
+---
+title: string
+date: 2023-02-01 18:08:51
+permalink: /pages/a25cbb/
+categories:
+  - java
+  - base
+tags:
+  - 
+---
 # String类
 * split()
 * replace()

@@ -1,5 +1,12 @@
 ---
-
+title: java15
+date: 2023-02-01 18:08:51
+permalink: /pages/d04de3/
+categories:
+  - java
+  - featrue
+tags:
+  - 
 ---
 # Java15新特性
 

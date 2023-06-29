@@ -1,3 +1,13 @@
+---
+title: object
+date: 2023-02-01 18:08:51
+permalink: /pages/1a0f11/
+categories:
+  - java
+  - jvm
+tags:
+  - 
+---
 # Java对象
 Java对象由3部分组成
 1. Java对象头
