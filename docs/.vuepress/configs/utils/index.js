@@ -116,6 +116,7 @@ const filehelper = {
      * @returns {Array} result 所有的目录
      */
     getOneAllDirs: function getOneAllDirs (mypath = ".", unDirIncludes,) {
+        mypath = mypath.replace(/\\/g,"/").replace(/\/\//g,"/")
         // 获取目录数据
         const items = fs.readdirSync(mypath)
         let result = []
