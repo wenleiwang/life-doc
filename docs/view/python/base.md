@@ -1,13 +1,13 @@
 # 基础
 ## 开启新的征程
 
-![image-20220329225201741](index.assets/image-20220329225201741.png)
+![image-20220329225201741](./img/index/image-20220329225201741.png)
 
 ##  Hello Python（输出函数）
 
 输出函数
 
-![image-20220329225547438](index.assets/image-20220329225547438.png)
+![image-20220329225547438](./img/index/image-20220329225547438.png)
 
 ```python
 # 井号是行注释
@@ -30,7 +30,7 @@ print('hello','world','Python')
 
 右键运行，效果如下
 
-![image-20220329225656707](index.assets/image-20220329225656707.png) 
+![image-20220329225656707](./img/index/image-20220329225656707.png) 
 
 
 
@@ -65,7 +65,7 @@ print(r'hello \n world')
 
 ## 二进制与字符编码
 
-![image-20220329232853156](index.assets/image-20220329232853156.png)
+![image-20220329232853156](./img/index/image-20220329232853156.png)
 
 
 
@@ -84,7 +84,7 @@ import keyword
 print(keyword.kwlist)
 ```
 
-![image-20220329233133642](index.assets/image-20220329233133642.png)
+![image-20220329233133642](./img/index/image-20220329233133642.png)
 
 ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
@@ -118,7 +118,7 @@ else:
     print('More')
 ```
 
-![image-20220331212947380](base.assets/image-20220331212947380.png)
+![image-20220331212947380](./img/base/image-20220331212947380.png)
 
 if 语句包含零个或多个 `elif`子句及可选的 `else`子句。关键字 '`elif`' 是 'else if' 的缩写，适用于避免过多的缩进。`if` ... `elif` ... `elif` ... 序列可以当作其他语言中 `switch` 或 `case` 语句的替代品。
 
@@ -144,7 +144,7 @@ print(users)
 
 这里user,status会相当于一次获取2个元素分别给到user和status
 
-![image-20220331214306639](base.assets/image-20220331214306639.png)
+![image-20220331214306639](./img/base/image-20220331214306639.png)
 
 ### range()函数
 

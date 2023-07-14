@@ -64,8 +64,7 @@ const filehelper = {
      */
     getAllFiles: (rpath, unDirIncludes, SuffixIncludes) => {
         let filenameList = []
-
-        rpath = rpath.replace("/\\/g","/").replace("////g","/")
+        rpath = rpath.replace(/\\/g,"/").replace(/\/\//g,"/")
         const fileNames = fs.readdirSync(rpath)
         fileNames.forEach((file) => {
             let fileInfo = fs.statSync(rpath + file)
@@ -219,13 +218,15 @@ const sideBarTool = {
                 let titleTemp = item.replace(RootPath + '\\view', "").replace(/\\/g, '')
 
                 nextFile.forEach(i => {
-                    let dirTwo = i.replace(RootPath, "").replace(/\\/g, '/').replace('////g', '/')
+                    let dirTwo = i.replace(RootPath, "").replace(/\\/g, '/').replace(/\/\//g, '/')
                     let twoFiles = filehelper.getAllFiles(i, unDirIncludes, SuffixIncludes)
                     if (twoFiles) {
                         let twoPages = []
                         twoFiles.forEach(twoName => {
                             if (twoName) {
                                 twoPages.push('/view' + dirTwo + twoName + '.md')
+                            } else {
+                                twoPages.push('/view' + dirTwo)
                             }
                         })
                         dirTwo = dirTwo.replace(titleTemp, "")

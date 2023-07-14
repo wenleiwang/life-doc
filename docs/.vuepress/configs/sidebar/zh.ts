@@ -16,7 +16,7 @@ console.log('rootPath',rootPath)
 let sidebar = sideBarTool.genSideBarGroup(rootPath, unDirIncludes, SuffixIncludes, {})
 
 
-// console.log('最终生成：',sidebar)
+console.log('最终生成：',sidebar)
 export const zh: SidebarConfig = sidebar
 
 // export const zh: SidebarConfig = {
