@@ -64,6 +64,7 @@ const filehelper = {
      */
     getAllFiles: (rpath, unDirIncludes, SuffixIncludes) => {
         let filenameList = []
+        rpath = rpath.replace(/\\/g, '/')
         const fileNames = fs.readdirSync(rpath)
         fileNames.forEach((file) => {
             let fileInfo = fs.statSync(rpath + '\\' + file)
