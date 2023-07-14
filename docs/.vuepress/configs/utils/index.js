@@ -64,10 +64,11 @@ const filehelper = {
      */
     getAllFiles: (rpath, unDirIncludes, SuffixIncludes) => {
         let filenameList = []
-        rpath = rpath.replace(/\\/g, '/')
+
+        rpath = rpath.replaceAll("\\","/").replaceAll("//","/")
         const fileNames = fs.readdirSync(rpath)
         fileNames.forEach((file) => {
-            let fileInfo = fs.statSync(rpath + '\\' + file)
+            let fileInfo = fs.statSync(rpath + file)
             if (fileInfo.isFile() && !unDirIncludes.includes(file) && !str.contains(file, "img", true)) {
                 // 只处理固定后缀的文件
                 if (SuffixIncludes.includes(file.split('.')[1])) {
@@ -102,7 +103,7 @@ const filehelper = {
             // isDirectory() 不接收任何参数,如果是目录(文件夹)返回true,否则返回false
             // 如果是目录,且不包含如下目录
             if (fs.statSync(temp).isDirectory() && !item.startsWith(".") && !unDirIncludes.includes(item)) {
-                result.push(mypath + '\\' + item + '\\')
+                result.push(temp)
                 result = result.concat(getAllDirs(temp, unDirIncludes))
             }
         })
@@ -227,7 +228,8 @@ const sideBarTool = {
                                 twoPages.push('/view' + dirTwo + twoName + '.md')
                             }
                         })
-                        title = dirTwo.replace(titleTemp, "").replaceAll('/','')
+                        dirTwo = dirTwo.replace(titleTemp, "")
+                        title = dirTwo.split("/")[dirTwo.split("/").length - 2]
                         let Obj = {
                             text: title,
                             collapsible: true,
