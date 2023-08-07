@@ -9,7 +9,7 @@
 
 输入命令：`set name wenlei`
 
-![set name wenlei](../img/unit2/2022-01-23-21-31-15.png)
+![set name wenlei](./img/unit2/2022-01-23-21-31-15.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -25,7 +25,7 @@ class SetString {
 ### 获取
 输入命令：`get name`
 
-![get name](../img/unit2/2022-01-23-21-35-07.png)
+![get name](./img/unit2/2022-01-23-21-35-07.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -39,7 +39,7 @@ class SetString {
 ```
 
 ### 删除
-![](../img/unit2/2022-01-23-21-51-14.png)
+![](./img/unit2/2022-01-23-21-51-14.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -52,7 +52,7 @@ class SetString {
 }
 ```
 ### 过期
-![过期](../img/unit2/2022-01-24-00-00-28.png)
+![过期](./img/unit2/2022-01-24-00-00-28.png)
 ```java
 public boolean set(String key, Object value, long time) {
     try {
@@ -71,7 +71,7 @@ public boolean set(String key, Object value, long time) {
 
 ## 批量键值对
 ### 批量插入
-![](../img/unit2/2022-01-23-21-59-47.png)
+![](./img/unit2/2022-01-23-21-59-47.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -114,10 +114,10 @@ public class RedisUtil {
 ```
 #### 插入效果展示
 db4是java插入，db1是CLI插入
-![](../img/unit2/2022-01-23-22-43-38.png)
+![](./img/unit2/2022-01-23-22-43-38.png)
 
 ### 批量查询
-![CLI批量查询](../img/unit2/2022-01-23-22-47-12.png)
+![CLI批量查询](./img/unit2/2022-01-23-22-47-12.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -149,7 +149,7 @@ public List<Object> mGet(List<String> keys) {
     return list;
 }
 ```
-![Java批量查询](../img/unit2/2022-01-23-23-50-48.png)
+![Java批量查询](./img/unit2/2022-01-23-23-50-48.png)
 ::: danger 注意
 Java的RedisConfig中的序列化配置会影响插入和查询
 

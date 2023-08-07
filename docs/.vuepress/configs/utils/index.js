@@ -70,7 +70,8 @@ const filehelper = {
             let fileInfo = fs.statSync(rpath + file)
             if (fileInfo.isFile() && !unDirIncludes.includes(file) && !str.contains(file, "img", true)) {
                 // 只处理固定后缀的文件
-                if (SuffixIncludes.includes(file.split('.')[1])) {
+                let split = file.split('.')
+                if (SuffixIncludes.includes(split[split.length - 1])) {
                     //  过滤readme.md文件
                     if (file === 'readme.md' || file === 'README.md') {
                         file = ''
@@ -221,6 +222,7 @@ const sideBarTool = {
                 nextFile.forEach(i => {
                     let dirTwo = i.replace(RootPath, "").replace(/\\/g, '/').replace(/\/\//g, '/')
                     let twoFiles = filehelper.getAllFiles(i, unDirIncludes, SuffixIncludes)
+                    console.log('twoFiles' + i,twoFiles)
                     if (twoFiles) {
                         let twoPages = []
                         twoFiles.forEach(twoName => {
