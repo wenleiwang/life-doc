@@ -21,7 +21,7 @@ next : '/redis/base/usestring.md'
 
 ### 1. 2.拉取最新版本
 `docker pull redis:latest`
-![](../img/unit1/2022-01-22-01-18-07.png)
+![](./img/unit1/2022-01-22-01-18-07.png)
 出现如上字样，标志拉去成功
 
 ### 1. 3.查看Redis镜像

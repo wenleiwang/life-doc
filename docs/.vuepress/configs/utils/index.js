@@ -222,7 +222,6 @@ const sideBarTool = {
                 nextFile.forEach(i => {
                     let dirTwo = i.replace(RootPath, "").replace(/\\/g, '/').replace(/\/\//g, '/')
                     let twoFiles = filehelper.getAllFiles(i, unDirIncludes, SuffixIncludes)
-                    console.log('twoFiles' + i,twoFiles)
                     if (twoFiles) {
                         let twoPages = []
                         twoFiles.forEach(twoName => {
