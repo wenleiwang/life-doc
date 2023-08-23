@@ -31,7 +31,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         // 是否启用编辑
         editLink: true,
         // page meta
-        editLinkText: '在GitHub上编辑',
+        editLinkText: '去编辑',
         docsRepo: 'https://github.com/wenleiwang/life-doc',
         docsBranch: 'master',
         docsDir: 'docs',
@@ -39,12 +39,11 @@ export default defineUserConfig<DefaultThemeOptions>({
 
         // 是否显示最后更新时间
         lastUpdated: true,
-        lastUpdatedText: '最后更新时间',
+        lastUpdatedText: '时间',
 
         // 作者
         contributors: true,
-        contributorsText: '@Author ',
-
+        contributorsText: '作者',
         toggleDarkMode: '切换夜间模式'
 
       },

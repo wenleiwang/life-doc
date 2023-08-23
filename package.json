@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "文文的技术笔记",
   "main": "index.js",
-  "author": "wenleiwang",
+  "author": "文先生",
   "license": "MIT",
   "scripts": {
     "docs:dev": "vuepress dev docs",
