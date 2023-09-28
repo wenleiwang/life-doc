@@ -1,25 +1,23 @@
-import { defineUserConfig } from '@vuepress/cli'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
-import markdownItKatex from 'markdown-it-katex';
-import { defineClientAppEnhance } from '@vuepress/client'
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
+import { defaultTheme } from '@vuepress/theme-default'
+import { tocPlugin } from '@vuepress/plugin-toc'
 
 
 const customElement = ['maction','math','menclose','merror','mfenced','mfrac','mi','mmultiscripts','mn','mo','mover','mpadded','mphantom','mroot','mrow','ms','mspace','msqrt','mstyle','msub','msubsup','msup','mtable','mtd','mtext','mtr','munder','munderover','semantics','annotation'];
-const katex = require('katex');
-export default defineUserConfig<DefaultThemeOptions>({
+
+export default {
+  base: '/life-doc/',
   lang: 'zh-CH',
   title: '文文的技术笔记',
   description: '只为了记录',
   head:[
     ['link',{rel:'icon',href:'/favicon.ico'}],
   ],
-  // 主题和它的配置
-  // theme: '@vuepress/theme-default',
-  themeConfig: {
-    logo: '/logo.png',
+
+  theme: defaultTheme({
     logoDark : null,
+    logo: '/logo.png',
     locales: {
       '/': {
         // navbar
@@ -50,40 +48,34 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     displayAllHeaders: true, // 显示所有页面的标题链接
     activeHeaderLinks: true,// 显示活动的标题链接
-    sidebarDepth: 4,
+    sidebarDepth: 0,
     repo : 'https://github.com/wenleiwang/life-doc',
-    plugins: [
-      [
-        path.resolve(__dirname, './plugin/rili.js'),
-        {
-          /* 选项 */
-        },
-      ],
-    ],
-  },
-  base: '/life-doc/',
+  }),
+  plugins: [
+    mdEnhancePlugin({
+      // 使用 KaTeX 启用 TeX 支持
+      katex: true,
+      // 使用 mathjax 启用 TeX 支持
+      mathjax: true,
+    }),
+    tocPlugin({
+      // 配置项
+    }),
+  ],
   markdown:{
     extractHeaders:{
-      level : [2,3,4] 
+      level : []
     },
-    
-  },
-  extendsMarkdown: (md) => {
-    md.use(markdownItKatex, {
-      // 配置选项
-      katex:katex,
-      "throwOnError" : false,
-      "errorColor" : " #cc0000"
-    })
+
   },
   bundlerConfig: {
     vuePluginOptions: {
       template: {
         compilerOptions: {
-            isCustomElement: tag => customElement.includes(tag)
+          isCustomElement: tag => customElement.includes(tag)
         }
       }
     }
   },
-})
 
+}

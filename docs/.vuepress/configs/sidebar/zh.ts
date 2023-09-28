@@ -1,5 +1,5 @@
 import type { SidebarConfig } from '@vuepress/theme-default'
-import {path} from "@vuepress/utils";
+import { resolve,dirname } from "path";
 import { sideBarTool } from '../utils'
 
 //导入生成侧边栏的工具类
@@ -11,12 +11,13 @@ let unDirIncludes = ['node_modules', 'assets', 'public', '网络工程','dest','
 let SuffixIncludes = ['md', 'html']
 //使用方法生生成侧边栏
 // 侧边栏
-const rootPath = path.dirname(path.resolve(__dirname, '../../')) + '/view'
-console.log('rootPath',rootPath)
-let sidebar = sideBarTool.genSideBarGroup(rootPath, unDirIncludes, SuffixIncludes, {})
+const rootPath = dirname(resolve(__dirname, '../../')) + '/view'
+const reRootPath = rootPath.replace(/\\/g, '/')
+console.log('rootPath',reRootPath)
+let sidebar = sideBarTool.genSideBarGroup(reRootPath, unDirIncludes, SuffixIncludes, {})
 
 
-// console.log('最终生成：',sidebar)
+console.log('最终生成：',sidebar)
 export const zh: SidebarConfig = sidebar
 
 // export const zh: SidebarConfig = {

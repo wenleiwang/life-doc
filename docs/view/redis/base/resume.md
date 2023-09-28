@@ -3,7 +3,7 @@ next : '/redis/base/usestring.md'
 ---
 
 # Redis环境搭建
-
+[[toc]]
 ## 0.前期准备
 
 ### 0.1.使用Xshell链接上服务器

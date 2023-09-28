@@ -1,5 +1,5 @@
-const PATH = require('path')
-const fs = require('fs')
+import { join } from "path";
+import fs from 'fs'
 
 // 字符串工具类
 const str = {
@@ -99,7 +99,7 @@ const filehelper = {
         let result = []
         // 遍历目录中所有文件夹
         items.map(item => {
-            let temp = PATH.join(mypath, item)
+            let temp = join(mypath, item)
             // isDirectory() 不接收任何参数,如果是目录(文件夹)返回true,否则返回false
             // 如果是目录,且不包含如下目录
             if (fs.statSync(temp).isDirectory() && !item.startsWith(".") && !unDirIncludes.includes(item)) {
@@ -123,7 +123,7 @@ const filehelper = {
         let result = []
         // 遍历目录中所有文件夹
         items.map(item => {
-            let temp = PATH.join(mypath, item)
+            let temp = join(mypath, item)
             // isDirectory() 不接收任何参数,如果是目录(文件夹)返回true,否则返回false
             // 如果是目录,且不包含如下目录
             if (fs.statSync(temp).isDirectory() && !item.startsWith(".") && !unDirIncludes.includes(item)) {
