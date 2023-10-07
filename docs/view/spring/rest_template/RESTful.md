@@ -1,5 +1,5 @@
 # 理解RESTful架构
-
+[[toc]]
 > 参考文档：
 >
 > [[1] 阮一峰-理解RESTful架构](https://www.ruanyifeng.com/blog/2011/09/restful.html)

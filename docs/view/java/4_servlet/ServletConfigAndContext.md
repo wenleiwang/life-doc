@@ -1,4 +1,5 @@
 # ServletConfig与ServletContext
+[[toc]]
 
 ## ServletConfig接口
 作用：servlet 容器用于在初始化期间将信息传递给 servlet 的 servlet 配置对象。

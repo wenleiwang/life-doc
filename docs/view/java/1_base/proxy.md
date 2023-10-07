@@ -1,4 +1,5 @@
 # Java的代理
+[[toc]]
 
 Java的代理有2中，JDK动态代理和CGLIB代理
 

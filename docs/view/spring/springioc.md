@@ -1,4 +1,5 @@
 # spring IOC
+[[toc]]
 
 ## 生命周期
 

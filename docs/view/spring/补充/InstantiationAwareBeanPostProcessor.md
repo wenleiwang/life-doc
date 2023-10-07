@@ -1,4 +1,5 @@
 # InstantiationAwareBeanPostProcessor接口介绍
+[[toc]]
 
 InstantiationAwareBeanPostProcessor接口是BeanPostProcessor的子接口，通过接口字面意思翻译该接口的作用是感知Bean实例话的处理器。
 

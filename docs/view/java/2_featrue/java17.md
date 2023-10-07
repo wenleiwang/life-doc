@@ -2,6 +2,7 @@
 
 ---
 # Java17新特性
+[[toc]]
 
 * 306    Restore Always-Strict Floating-Point Semantics    恢复总是严格的浮点语义
 * 356    Enhanced Pseudo-Random Number Generators    增强型伪随机数发生器

@@ -1,4 +1,5 @@
 # SpringBoot使用的日志
+[[toc]]
 
 ## 1.执行过程
 在SpringBoot启动过程中有这么两句话，[点击查看详细启动过程](springbootstart.md)

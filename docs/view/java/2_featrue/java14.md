@@ -2,6 +2,7 @@
 
 ---
 # Java14新特性
+[[toc]]
 
 * 305    Pattern Matching for instanceof (Preview)    instanceof 的模式匹配（预览）
 * 343    Packaging Tool (Incubator)    打包工具（孵化）

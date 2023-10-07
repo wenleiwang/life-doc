@@ -2,6 +2,7 @@
 
 ---
 # Java15新特性
+[[toc]]
 
 * 339    Edwards-Curve Digital Signature Algorithm (EdDSA)    蒙哥马利与扭曲爱德华曲线签名算法
 * 360    Sealed Classes (Preview)    密封类(预览)

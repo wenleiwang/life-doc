@@ -1,4 +1,5 @@
 # 安装
+[[toc]]
 
 ## Docker安装Rabbit MQ
 

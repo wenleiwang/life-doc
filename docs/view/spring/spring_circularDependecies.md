@@ -1,4 +1,5 @@
 # Spring循环依赖
+[[toc]]
 
 英文： Circular dependencies
 

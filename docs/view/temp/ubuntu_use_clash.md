@@ -1,4 +1,5 @@
 # Ubuntu虚拟机使用clash代理及其配置
+[[toc]]
 运行环境：Ubuntu 20.04 LTS
 
 运行环境：Ubuntu 20.04 LTS
@@ -17,10 +18,8 @@ Ubuntu是用VMWare Work Station搭建的一个虚拟机，版本是20.04 LTS，�
 ```
 # 来到用户主目录下
 cd ~
-​
 # 创建文件夹 clash
 mkdir clash 
-​
 cd clash
 # 将刚才下载的文件拷贝到 ~/clash中后，解压
 rm clash-linux-amd64-v1.6.0.gz clash  # 改名是为了更方便进行后续操作
@@ -39,7 +38,7 @@ config.yaml 是我们需要修改的配置文件，默认下载下来的config.y
 ```
 # 先删除原先的配置文件
 rm config.yaml 
-​
+
 # 再下载配置文件放入位置，上传也行
 wget --no-check-certificate -O ~/.config/clash/ 你的订阅地址
 ```

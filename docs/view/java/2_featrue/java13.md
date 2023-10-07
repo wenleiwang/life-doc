@@ -2,6 +2,7 @@
 
 ---
 # Java13新特性
+[[toc]]
 
 * 350    Dynamic CDS Archives     对appCDS进行性了扩展，允许在Java应用执行结束时动态归档类。归档类包括包括默认的基础层CDS(class data-sharing) 存档中不存在的所有已加载的应用程序类和类库。通过此仿瓷提高了AppCDS的可用性；
 

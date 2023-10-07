@@ -1,4 +1,5 @@
 # HashMap
+[[toc]]
 
 ## HashMap特点
 

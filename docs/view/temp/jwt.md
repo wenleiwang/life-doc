@@ -1,4 +1,5 @@
 # JWT
+[[toc]]
 
 ## 0.概念
 JWT 全称 JSON Web Tokens ，是一种规范化的 token。是对 token 这一技术提出一套规范。

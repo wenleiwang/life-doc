@@ -1,5 +1,6 @@
 
 # SpringBoot Start
+[[toc]]
 
 Java的启动从main开始
 ```java

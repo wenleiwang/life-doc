@@ -1,4 +1,5 @@
 # ThreadLocal正确使用姿势
+[[toc]]
 
 ## 前言
 

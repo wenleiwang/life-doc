@@ -1,4 +1,5 @@
 # BeanFactory与FactoryBean的区别
+[[toc]]
 
 一直都说
 

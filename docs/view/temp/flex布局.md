@@ -1,4 +1,5 @@
 # flex布局
+[[toc]]
 
 在传统网页开发，我们用的是盒模型，通过display:inline | block | inline-block、 position、float来实现布局，
 缺乏灵活性且有些适配效果难以实现。比如像下面这种常见的信息列表，要求内容高度不确定下保持垂直居中：

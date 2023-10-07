@@ -1,4 +1,5 @@
 # Java8体验堆溢出
+[[toc]]
 
 使用的HotSpot JDK8
 

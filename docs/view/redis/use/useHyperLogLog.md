@@ -1,4 +1,5 @@
 # HyperLogLog
+[[toc]]
 
 ## 使用场景
 * 统计UV（独立访客）

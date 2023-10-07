@@ -1,4 +1,5 @@
 # ComponentScanAnnotationParser类
+[[toc]]
 
 ```java
 package org.springframework.context.annotation;

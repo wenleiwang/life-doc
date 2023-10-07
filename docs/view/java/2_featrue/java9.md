@@ -2,6 +2,7 @@
 
 ---
 # Java9
+[[toc]]
 
 Java9发布于2017年9月22日，带来了很多新特性，其中最主要的变化是已经实现的模块化系统。
 详情 看官方文档https://docs.oracle.com/javase/9/whatsnew/toc.htm#JSNEW-GUID-527735CF-44E1-4144-919B-E7D7CC9CDD4D

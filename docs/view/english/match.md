@@ -1,4 +1,5 @@
 # 固定搭配
+[[toc]]
 
 ## at which point
 

@@ -1,4 +1,6 @@
 # Redis基础类型——list(列表)
+[[toc]]
+
 Java方法基于redisTemplate.opsForList()。
 
 ## 介绍基本概念

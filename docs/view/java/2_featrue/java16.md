@@ -2,6 +2,7 @@
 
 ---
 # Java16新特性
+[[toc]]
 
 * 338    Vector API (Incubator)    病媒API(孵化器)
 * 347    Enable C++14 Language Features    启用C++ 14种语言特性

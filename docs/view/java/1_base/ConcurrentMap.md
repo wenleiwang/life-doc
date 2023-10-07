@@ -1,4 +1,5 @@
 # ConcurrentMap
+[[toc]]
 线程安全的Map
 
 ## 类图

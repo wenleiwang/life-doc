@@ -1,4 +1,5 @@
 # Spring 事件驱动机制
+[[toc]]
 
 ## 1.理解JDK1.1提供的发布订阅模式（EventListener和EventObject）
 在接触Spring时间驱动机制之前先来看下JDK1.1提供的发布订阅模式（EventListener和EventObject）的使用，

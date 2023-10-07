@@ -1,5 +1,6 @@
 
 # spring DI 过程 
+[[toc]]
 
 > SpringBoot版本：spring-context-5.2.8.RELEASE.jar
 > SpringBoot版本：spring-context-5.2.8.RELEASE.jar

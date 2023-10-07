@@ -1,4 +1,5 @@
 # Spring的`Aware`
+[[toc]]
 
 ## `ApplicationContextAware`
 
