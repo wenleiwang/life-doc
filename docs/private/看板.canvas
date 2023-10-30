@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"f4a33fdc67010276","x":40,"y":-300,"width":400,"height":100,"type":"file","file":"private/note/2023-10-30.md"},
+		{"id":"99648262cf08c18b","x":-320,"y":-200,"width":250,"height":60,"color":"1","type":"text","text":"这里是卡片"}
+	],
+	"edges":[
+		{"id":"0291833c1c8a86b4","fromNode":"99648262cf08c18b","fromSide":"right","toNode":"f4a33fdc67010276","toSide":"left"}
+	]
+}

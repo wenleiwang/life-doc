@@ -1,0 +1,166 @@
+{
+  "main": {
+    "id": "e5c77c923a1003ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "f0a81586cc39c263",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1582ffed9163ebf6",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "private/note/img/Pasted image 20231030170209.png"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5a6a8cecb36d0a2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "51a8c70bf6177300",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0130a46c067152a4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "97e6e4e18afd8fc9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8cb6c5e40e4ca03a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "aa14c24bd625bc75",
+    "type": "split",
+    "children": [
+      {
+        "id": "3f3d012668bf4a80",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45caa598f93f42d6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "private/note/img/Pasted image 20231030170209.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9ab91a68a86c0f8a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1d21b81bff9ad8b9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "private/note/img/Pasted image 20231030170209.png"
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "oz-clear-unused-images:Clear Unused Images": false
+    }
+  },
+  "active": "1582ffed9163ebf6",
+  "lastOpenFiles": [
+    "private/note/img/Pasted image 20231030164017.png",
+    "private/note/img/Pasted image 20231030170209.png",
+    "private/note/img/Pasted image 20231030170223.png",
+    "private/test2/node-test2.md",
+    "private/note/test1.md",
+    "private/note/2023-10-30.md",
+    "private/test1/img",
+    "private/test2/img/Pasted image 20231030170159.png",
+    "private/test2/img",
+    "private/test2",
+    "private/test1",
+    "private/note/发货闪电发货啥地方.md",
+    "未命名.canvas",
+    "未命名 1.canvas",
+    "private/看板.canvas",
+    "private/note/img",
+    "private/note",
+    "private",
+    "redis/base/resume.md",
+    "redis/base/toc.md",
+    "note/20231009.md",
+    "note/20220305记.md",
+    "note/20220824二十四节气.md",
+    "spring/springbootstart.md",
+    "1,2,3],[4,5,6],[7,8,9.md",
+    "note/index.md",
+    "note/toc.md"
+  ]
+}
