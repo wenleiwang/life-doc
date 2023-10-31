@@ -7,7 +7,8 @@ Bean的定义
 
 这只是一个最小的接口：主要目的是允许BeanFactoryPostProcessor内省和修改属性值和其他 bean 元数据。
 
-![](./img//beandefinition/2022-07-06-10-16-27.png)
+![](img/6257b2e15f51f3720e11a704271810df.png)
+
 
 继承了2个接口AttributeAccessor、BeanMetadataElement。就具扩展了Attribute（属性）处理和获取Bean元数据的功能
 
@@ -17,7 +18,7 @@ BeanMetadataElement：Bean 元数据元素，有getSource()方法。由承载配
 
 看下方法汇总
 
-![](./img//beandefinition/2022-07-06-10-22-36.png)
+![](img/9b406395053ee4e3c16020c539d54138.png)
 
 ```java
 package org.springframework.beans.factory.config;

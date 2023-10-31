@@ -3,5 +3,11 @@
   "newLinkFormat": "relative",
   "showUnsupportedFiles": false,
   "useMarkdownLinks": true,
-  "attachmentFolderPath": "./img"
+  "attachmentFolderPath": "./img",
+  "autoPairMarkdown": false,
+  "focusNewTab": true,
+  "showLineNumber": false,
+  "rightToLeft": false,
+  "showInlineTitle": true,
+  "alwaysUpdateLinks": true
 }

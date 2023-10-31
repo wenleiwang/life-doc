@@ -14,6 +14,7 @@ export default {
   head:[
     ['link',{rel:'icon',href:'/favicon.ico'}],
   ],
+  pagePatterns: ['**/*.md', '!.vuepress', '!node_modules', '!private', '!.obsidian', '!.trash'],
 
   theme: defaultTheme({
     logoDark : null,
