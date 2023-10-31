@@ -234,7 +234,7 @@ const sideBarTool = {
                         dirTwo = dirTwo.replace(titleTemp, "")
                         title = dirTwo.split("/")[dirTwo.split("/").length - 2]
                         let Obj = {
-                            text: title,
+                            text: title.indexOf("_") !== -1 ? title.substring(title.indexOf("_") + 1) : title,
                             collapsible: true,
                             sidebarDepth: 2,
                             children: twoPages
