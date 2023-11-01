@@ -72,7 +72,7 @@ public class Student {
 }
 ```
 标记完运行发现LocalDateTime类型对应的start是没有被序列化成想要的字符串
-![](./img/2022-01-24-22-31-08.png)
+![](img/2022-01-24-22-31-08.png)
 需要引入一个jsr310的包，是jackson对LocalDateTime等jar8时间日期处理的Model
 在jackson中是作为Model生效的，Model需要注册。
 1. 先引入jsr310的包
@@ -106,7 +106,7 @@ public class JasksonTest {
 ```
 3. 再次查看
 
-![](./img/2022-01-24-22-32-52.png)
+![](img/2022-01-24-22-32-52.png)
 
 
 #### LocalDateTime设置全局
@@ -138,7 +138,7 @@ public class JasksonTest {
 ```
 查看
 
-![](./img/2022-01-24-22-46-00.png)
+![](img/2022-01-24-22-46-00.png)
 
 
 ::: danger 注意
@@ -227,7 +227,7 @@ void jasksonTest2() throws JsonProcessingException {
 }
 ```
 age值被更新
-![](./img/2022-01-24-23-28-11.png)
+![](img/2022-01-24-23-28-11.png)
 
 ---
 完~

@@ -8,6 +8,6 @@
   "focusNewTab": true,
   "showLineNumber": false,
   "rightToLeft": false,
-  "showInlineTitle": true,
+  "showInlineTitle": false,
   "alwaysUpdateLinks": true
 }

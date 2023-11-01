@@ -45,6 +45,6 @@ Tomcat属于Servlet容器，其工作模式也分为上述3种，所以Tomcat既
 
 Java Servlet API是Servlet容器和Servlet之间的接口，它定义了Servlet的各种方法，还定义了Servlet容器传送给Servlet的对象类，其中最重要的是请求对象ServletRequest和响应对象ServletResponse。这两个对象都是由Servlet容器在客户端调用Servlet时产生的，Servlet容器把客户请求信息封装在ServletRequest对象中，然后把这两个对象都传送给要调用的Servlet，Servlet处理完后把响应结果写入ServletResponse，然后由Servlet容器把响应结果发送到客户端。Tomcat服务器接收客户端请求并作出响应的完整过程如图所示 。
 
-![image-20220506111001006](./img/readme/image-20220506111001006.png)
+![image-20220506111001006](img/readme/76beb15d2c840317b0cdfd2c50074018.png)
 
 其中，①处表示Web服务器接收到客户端发出的HTTP请求后，转发给Servlet容器，同时把控制返回Servlet容器；②处表示Servlet容器把响应对象ServletResponse中的处理结。果转发给Web服务器，通知Web服务器以HTTP响应的方式把结果发送到客户端，同时把控制返回Web服务器.

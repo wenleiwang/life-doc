@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b3799f57f8042183",
+        "id": "2216828c769f2bd4",
         "type": "tabs",
         "children": [
           {
-            "id": "318480435622b611",
+            "id": "bb5e88d5fd4f20c9",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -118,7 +118,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -135,8 +136,24 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "318480435622b611",
+  "active": "bb5e88d5fd4f20c9",
   "lastOpenFiles": [
+    "view/java/4_servlet/Servlet.md",
+    "view/java/4_servlet/readme.md",
+    "private/note/2023-11-01.md",
+    "private/note/2023-10-30.md",
+    "private/note/2023-10-31.md",
+    "view/java/5_WebSocket/基于Netty搭建WebSocket服务.md",
+    "private/obsidian的使用.md",
+    "view/java/4_servlet/ServletConfigAndContext.md",
+    "view/java/5_WebSocket/readme.md",
+    "view/java/5_WebSocket",
+    "view/java/4_servlet/img/Servlet/49833ebcfc0bb04a585e8bbbd30e23db.png",
+    "view/java/4_servlet/img/Servlet/cf3da52e60b0a3929f6b1ff751e9e437.png",
+    "view/java/4_servlet/img/Servlet/76c89e5e14826461237e69635a42040e.png",
+    "view/java/4_servlet/img/readme",
+    "view/java/4_servlet/img",
+    "view/java/4_服务/0_servlet",
     "view/java/readme.md",
     "view/java/4e55c8bff17d9655a15f5207e3c89174.png",
     "view/java/1_base/callback.md",
@@ -158,21 +175,10 @@
     "view/mq/img/mideng/5c82a6aac1b3eb224dc784d34b87f5d0.png",
     "view/java/2_featrue/onjvm.md",
     "view/java/7_奇怪的知识又增加了/日志打印.md",
-    "private/note/2023-10-31.md",
     "private/看板.canvas",
-    "private/note/2023-10-30.md",
     "private/note/img/Pasted image 20231030182417.png",
     "view/java/2_featrue/java9.md",
     "view/java/2_featrue/java10.md",
-    "view/java/2_featrue/java12.md",
-    "view/mq/rabbitmq/readme.md",
-    "view/mq/rabbitmq/toc.md",
-    "view/mq/rabbitmq/1_基础.md",
-    "private/note/img/e8f77094114f813cbb3e361efc7ebcc3.png",
-    "private/note/img/9666e0aedbe922f85541681e918c860b.png",
-    "private/note/test1.md",
-    "private/note/img/Pasted image 20231030170209.png",
-    "private/test2/node-test2.md",
     "private/test1/img",
     "private/test2/img",
     "private/test2",
@@ -180,7 +186,6 @@
     "未命名.canvas",
     "未命名 1.canvas",
     "private/note/img",
-    "private/note",
-    "private"
+    "private/note"
   ]
 }

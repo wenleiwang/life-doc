@@ -135,13 +135,13 @@ public class Test {
 
 效果展示：
 
-![image-20230404144508926](./img/StockWalker/image-20230404144508926.png)
+![image-20230404144508926](img/StockWalker/image-20230404144508926.png)
 
 ### 进阶一点
 
 可以发现s相当于就是堆栈流，.walk就可以用流的方式操作进行循环、过滤等操作得到一个返回结果
 
-![image-20230404145652756](./img/StockWalker/image-20230404145652756.png)
+![image-20230404145652756](img/StockWalker/image-20230404145652756.png)
 
 #### 得到一个Optional
 
@@ -168,7 +168,7 @@ Class<?> aClass = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERE
 
 多调用几次发现都是同一个Class@457，说明getDeclaringClass得到的是同一个
 
-![image-20230404151001427](./img/StockWalker/image-20230404151001427.png)
+![image-20230404151001427](img/StockWalker/image-20230404151001427.png)
 
 
 

@@ -3,7 +3,7 @@
 
 通过全局搜索得到Servlet接口
 
-![](./img/Servlet/2022-07-05-20-50-11.png)
+![](img/Servlet/76c89e5e14826461237e69635a42040e.png)
 
 这个包里包含Servlet涉及的全部内容。
 > 使用版本:tomcat-embed-core-9.0.37
@@ -180,14 +180,14 @@ Servlet 通常在多线程服务器上运行，因此请注意 Servlet 必须处
 
 继承了GenericServlet抽象类
 
-![](./img/Servlet/2022-07-05-21-23-40.png)
+![](img/Servlet/cf3da52e60b0a3929f6b1ff751e9e437.png)
 
 HttpServlet是专门为Web开发编写的Servlet模板类，在GenericServlet的基础上做了进一步的细分，就是我们常常看见的doXXX方法，
 以及ServletRequest、ServletResponse到HttpServletRequest、HttpServletResponse的转换，整个类的设计更加符合基于HTTP的Web技术要求。
 
 看下方法概览
 
-![](./img/Servlet/2022-07-05-21-28-59.png)
+![](img/Servlet/49833ebcfc0bb04a585e8bbbd30e23db.png)
 
 ```java
 package javax.servlet.http;
