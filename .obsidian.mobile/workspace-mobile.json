@@ -11,8 +11,12 @@
             "id": "f35ba795c1fbaa16",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "docs/private/note/2022-09-24.md",
+                "mode": "preview",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
         "state": {
           "type": "backlink",
           "state": {
+            "file": "docs/private/note/2022-09-24.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
+            "file": "docs/private/note/2022-09-24.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -107,7 +113,9 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {}
+          "state": {
+            "file": "docs/private/note/2022-09-24.md"
+          }
         }
       },
       {
@@ -133,11 +141,17 @@
   },
   "active": "f35ba795c1fbaa16",
   "lastOpenFiles": [
+    "docs/private/note/img/IMG_3907.jpeg",
+    "docs/private/note/2022-09-21.md",
+    "docs/private/note/2022-09-24.md",
+    "docs/private/note/2023-10-30.md",
+    "docs/private/note/img/IMG_3906.jpeg",
+    "docs/private/note/img/Pasted image 20231030182417.png",
+    "docs/private/note/2023-10-31.md",
     "docs/private/note/2023-11-02.md",
+    "未命名",
     "toc.md",
     "docs/view/temp/readme.md",
-    "docs/private/note/2023-10-30.md",
-    "docs/private/note/2023-10-31.md",
     "package.json",
     "package-lock.json",
     "yarn.lock",
@@ -149,15 +163,12 @@
     "docs/view/mq/rabbitmq/img/0_安装RabbitMQ/image-20230807113323275.png",
     "docs/view/mq/rabbitmq/img/0_安装RabbitMQ/image-20230807101959353.png",
     "docs/view/mq/rabbitmq/img/0_安装RabbitMQ/image-20230807113258712.png",
-    "docs/view/mq/rabbitmq/img/0_安装RabbitMQ/image-20230807102906928.png",
-    "docs/view/mq/rabbitmq/img/0_安装RabbitMQ/image-20230807102531895.png",
     "docs/view/spring/补充/img/InstantiationAwareBeanPostProcessor",
     "docs/view/spring/spring_cloud/img/Eureka",
     "docs/view/spring/spring_cloud/img/readme",
     "docs/view/mq/rabbitmq/img/0_安装RabbitMQ",
     "docs/view/mq/rabbitmq/img/readme",
     "docs/view/mq/rabbitmq/img/1_基础",
-    "docs/view/mysql/use/img/jdbc",
     "docs/view/spring/补充/InstantiationAwareBeanPostProcessor.md",
     "docs/view/spring/补充/beandefinition.md",
     "docs/view/spring/spring_cloud/Eureka.md",
@@ -176,9 +187,6 @@
     "docs/view/algorithm/1_字符串/judge.md",
     "docs/view/algorithm/4_数组、堆、队列/includeMain.md",
     "docs/view/algorithm/4_数组、堆、队列/twoSum.md",
-    "docs/view/algorithm/4_数组、堆、队列/isValidBracket.md",
-    "docs/view/algorithm/4_数组、堆、队列/FindNumsAppearOnce.md",
-    "docs/view/algorithm/4_数组、堆、队列/MoreThanHalfNum.md",
     "docs/private/看板.canvas"
   ]
 }

@@ -3,5 +3,6 @@
   "useMarkdownLinks": true,
   "attachmentFolderPath": "./img",
   "defaultViewMode": "preview",
-  "autoPairMarkdown": false
+  "autoPairMarkdown": false,
+  "newLinkFormat": "relative"
 }
