@@ -6,7 +6,8 @@
   "renameFileTypes": [
     "png",
     "jpg",
-    "gif"
+    "gif",
+    "jpeg"
   ],
   "renameOnlyLinkedAttachments": true,
   "mergeTheSameAttachments": true,

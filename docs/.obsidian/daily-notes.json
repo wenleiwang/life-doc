@@ -1,3 +1,4 @@
 {
-  "folder": "private/note"
+  "folder": "private/note",
+  "autorun": true
 }

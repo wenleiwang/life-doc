@@ -233,3 +233,8 @@ D(x) = \begin{cases} \lim\limits_{x \to 0} \frac{a^x}{b+c}, & x<3 \\ \pi, & x=3 
 ```
 
 ![image-20230919174434874](./img/LaTeX的公式篇/image-20230919174434874.png)
+
+---
+#工具 #LateX #md #公式
+
+完~
