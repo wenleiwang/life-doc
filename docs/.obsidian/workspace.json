@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "54d01ede75d9d500",
+        "id": "c2a27a5be6199d9f",
         "type": "tabs",
         "children": [
           {
-            "id": "fb88a2f672b38152",
+            "id": "c3b4efc8447d1d0a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "private/学习笔记/系统架构师考试.md",
+                "file": "private/工作/工作文档.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "private/学习笔记/系统架构师考试.md",
+                "file": "private/工作/工作文档.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "private/学习笔记/系统架构师考试.md"
+                "file": "private/工作/工作文档.md"
               }
             }
           }
@@ -144,10 +144,16 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "fb88a2f672b38152",
+  "active": "c3b4efc8447d1d0a",
   "lastOpenFiles": [
-    "private/学习笔记/分布式数据库的两阶段提交协议.md",
     "private/学习笔记/系统架构师考试.md",
+    "private/学习笔记/img/270f05e577be37406adb64a8d5264aad.png",
+    "private/学习笔记/img/1be79112f802e09b97a7d84a4786758f.png",
+    "private/学习笔记/img/83975b476b40ed296f5dd7316c4f445e.png",
+    "private/note/2023-11-03.md",
+    "private/认知/开发中的钩子.md",
+    "private/obsidian的使用.md",
+    "private/学习笔记/分布式数据库的两阶段提交协议.md",
     "view/temp/JSR-310时间.md",
     "view/java/8_一些工具的使用/img/2022-01-24-22-46-00.png",
     "view/java/8_一些工具的使用/img/2022-01-24-23-28-11.png",
@@ -166,11 +172,7 @@
     "view/java/5_WebSocket/基于Netty搭建WebSocket服务.md",
     "view/java/5_WebSocket/readme.md",
     "view/java/5_WebSocket",
-    "view/java/4_servlet/img/readme/76beb15d2c840317b0cdfd2c50074018.png",
-    "view/java/4_servlet/img/Servlet/cf3da52e60b0a3929f6b1ff751e9e437.png",
-    "view/java/4_servlet/img/Servlet/76c89e5e14826461237e69635a42040e.png",
     "private/认知/什么是Netty.md",
-    "private/认知/开发中的钩子.md",
     "private/认知/img",
     "private/认知",
     "private/计算机/设计模式/设计模式.md",
@@ -189,9 +191,6 @@
     "private/工具/搭建梯子-服务端.md",
     "private/工具/IDEA快捷键.md",
     "private/工具/IDEA如何优雅的添加.ignore忽略不必要提交的文件.md",
-    "private/工具/git443解决方法.md",
-    "private/工作/工作文档.md",
-    "private/note/2023-11-01.md",
     "private/看板.canvas",
     "未命名.canvas",
     "未命名 1.canvas"
