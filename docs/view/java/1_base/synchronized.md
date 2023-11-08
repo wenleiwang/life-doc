@@ -40,7 +40,7 @@ protected Collection<ApplicationListener<?>> getApplicationListeners(
 
 又有看到两次判断
 
-![](./img/synchronized/2022-02-04-01-32-12.png)
+![](img/synchronized/162546fe7d95375eb9091dfe64999c1e.png)
 
 
 ## synchronized的使用

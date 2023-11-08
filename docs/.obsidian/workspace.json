@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "c2a27a5be6199d9f",
+        "id": "0f1090f88d5eb1bf",
         "type": "tabs",
         "children": [
           {
-            "id": "c3b4efc8447d1d0a",
+            "id": "fdb82362c8bef69f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "private/工作/工作文档.md",
+                "file": "view/java/1_base/synchronized.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "private/工作/工作文档.md",
+                "file": "view/java/1_base/synchronized.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "private/工作/工作文档.md"
+                "file": "view/java/1_base/synchronized.md"
               }
             }
           }
@@ -144,53 +144,53 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "c3b4efc8447d1d0a",
+  "active": "fdb82362c8bef69f",
   "lastOpenFiles": [
+    "view/java/1_base/threadLocal.md",
+    "view/algorithm/0_基础知识/1_寻找数组的中心索引.md",
+    "private/note/2023-11-08.md",
+    "view/java/1_base/img/1c766849445aa487ba16154fa9a0fb76.png",
+    "view/java/1_base/img/ab5d2508ebce572ed75ad7ed369b55b1.png",
+    "view/java/1_base/img/67b2358b9329f8491c7ec01e84181912.png",
+    "view/java/3_jvm/常用Java虚拟机调优参数.md",
+    "view/java/1_base/synchronized.md",
+    "view/spring/README.md",
+    "view/java/1_base/img/cb0d9d8aee1b699cfc56a21b63e77ac4.png",
+    "view/java/1_base/img/da1afc8892ac9d3bfb8db5416420c7b0.png",
+    "view/java/1_base/img/ef7780e08d49974fe200fa5e3cf0ec6d.png",
+    "view/algorithm/0_基础知识/0_集合列表数组.md",
+    "view/algorithm/0_基础知识/img/5cee7eb7d04e9d100f5310e5214fb094.png",
+    "view/algorithm/0_基础知识/img",
+    "view/algorithm/1_字符串/judge.md",
+    "private/note/2023-11-07.md",
+    "view/algorithm/0_基础知识",
+    "private/note/img/0088a4b9e62f545c9a9f69efed4e53a0.png",
+    "private/note/img/f52190f8a4be49ab4697fdfc1ff29831.png",
+    "private/工作/工作文档.md",
+    "private/计算机/消息队列/7种实现web实时消息推送的方案.md",
+    "private/计算机/消息队列/img",
+    "private/计算机/消息队列",
+    "private/计算机/消息队列/img/f772e9a12c1d94ceeddb34a0910a70c0.png",
+    "private/计算机/img",
+    "private/note/2023-11-06.md",
+    "private/计算机/设计模式/设计模式.md",
     "private/学习笔记/系统架构师考试.md",
-    "private/学习笔记/img/270f05e577be37406adb64a8d5264aad.png",
-    "private/学习笔记/img/1be79112f802e09b97a7d84a4786758f.png",
-    "private/学习笔记/img/83975b476b40ed296f5dd7316c4f445e.png",
     "private/note/2023-11-03.md",
     "private/认知/开发中的钩子.md",
     "private/obsidian的使用.md",
     "private/学习笔记/分布式数据库的两阶段提交协议.md",
     "view/temp/JSR-310时间.md",
-    "view/java/8_一些工具的使用/img/2022-01-24-22-46-00.png",
-    "view/java/8_一些工具的使用/img/2022-01-24-23-28-11.png",
-    "view/java/8_一些工具的使用/img/2022-01-24-22-32-52.png",
-    "view/java/8_一些工具的使用/img/2022-01-24-22-31-08.png",
     "view/java/8_一些工具的使用/jackson.md",
     "view/java/8_一些工具的使用/img",
     "view/java/8_一些工具的使用",
-    "view/java/6_看看Java源码/img/StockWalker/image-20230404151001427.png",
-    "view/java/6_看看Java源码/img/StockWalker/image-20230404145652756.png",
-    "view/java/6_看看Java源码/img/StockWalker/image-20230404144508926.png",
     "view/java/6_看看Java源码/img/StockWalker",
     "view/java/6_看看Java源码/StockWalker.md",
     "view/java/6_看看Java源码/img",
     "view/java/6_看看Java源码",
     "view/java/5_WebSocket/基于Netty搭建WebSocket服务.md",
     "view/java/5_WebSocket/readme.md",
-    "view/java/5_WebSocket",
     "private/认知/什么是Netty.md",
-    "private/认知/img",
-    "private/认知",
-    "private/计算机/设计模式/设计模式.md",
-    "private/计算机/设计模式/img",
     "private/计算机/前端/常用前端操作.md",
-    "private/计算机/设计模式",
-    "private/algorithm/sort/ShellSort.md",
-    "view/redis/readme.md",
-    "view/redis/base/resume.md",
-    "view/redis/use/uselist.md",
-    "private/note/2023-11-02.md",
-    "view/java/1_base/类文件结构.md",
-    "view/java/1_base/volatile.md",
-    "private/工具/数据库表结构查询.md",
-    "private/工具/五笔拆字原则.md",
-    "private/工具/搭建梯子-服务端.md",
-    "private/工具/IDEA快捷键.md",
-    "private/工具/IDEA如何优雅的添加.ignore忽略不必要提交的文件.md",
     "private/看板.canvas",
     "未命名.canvas",
     "未命名 1.canvas"

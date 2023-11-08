@@ -152,7 +152,7 @@ protected void registerDispatcherServlet(ServletContext servletContext) {
 
 但是不一样的是，注解驱动的此时候，我们的`ContextLoaderListener`对象已经持有`WebApplicationContext的引用了（但是还没有放进ServletContext里面去，需要注意）`，所以会稍微有点不一样。
 
-![image-20220330151844570](./img/springmvc_person/image-20220330151844570.png)
+![image-20220330151844570](img/springmvc_person/c1798fbe514cca88bbb56383d08fda41.png)
 
 
 

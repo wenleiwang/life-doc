@@ -17,11 +17,11 @@ Java自带
 
 ##### 类关系
 
-![image-20220510144606876](./img/proxy/image-20220510144606876.png)
+![image-20220510144606876](img/proxy/7ede31a9d18b6940781091a84617b405.png)
 
 图中显示很明显我们的类和接口加起来需要4个
 
-![image-20220510144646931](./img/proxy/image-20220510144646931.png)
+![image-20220510144646931](img/proxy/139eceebaf000a78667c5f74558617ff.png)
 
 ```java
 /**
@@ -82,7 +82,7 @@ public class Main {
 
 ##### 实现效果
 
-![image-20220510144722112](./img/proxy/image-20220510144722112.png)
+![image-20220510144722112](img/proxy/9ab843401b8961675f04bede310b8e71.png)
 
 #### 代理多个
 
@@ -185,7 +185,7 @@ public class Main {
 
 ##### 实现效果
 
-![image-20220510144947675](./img/proxy/image-20220510144947675.png)
+![image-20220510144947675](img/proxy/bf4acce1b5ae7ff7e525df7cc1b11059.png)
 
 ### 1.2JDK动态代理
 
@@ -197,7 +197,7 @@ public class Main {
 
 代理类实现`InvocationHandler`接口，重写`public Object invoke(Object proxy, Method method, Object[] args) throws Throwable{}`方法
 
-![image-20220510145118181](./img/proxy/image-20220510145118181.png)
+![image-20220510145118181](img/proxy/ed08b0a5027d5d79015b387d7e3ac645.png)
 
 ```java
 /**
@@ -286,7 +286,7 @@ public class Main {
 
 #### 实现效果
 
-![image-20220510145342846](./img/proxy/image-20220510145342846.png)
+![image-20220510145342846](img/proxy/df103bfcabcbd8a57d73c971b99efdb2.png)
 
 ### 1.3理解JDK动态代理
 
@@ -303,7 +303,7 @@ System.getProperties().setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles",
 
 运行程序后会发现在我们的根目录，出现了com的文件夹
 
-![image-20220510145514556](./img/proxy/image-20220510145514556.png)
+![image-20220510145514556](img/proxy/772b3f8beb1532d81cd820fca09dd899.png)
 
 #### 分析代理类代码
 
@@ -416,7 +416,7 @@ public final class $Proxy0 extends Proxy implements Product {
 
 让我们用时序图整理下思路
 
-![image-20220510145730346](./img/proxy/image-20220510145730346.png)
+![image-20220510145730346](img/proxy/2945e3539c5703a4ac4de82925490f61.png)
 
 整理下来发现：动态代理跟静态代理最终的原理一样。都是抽象类的两个聚合类，一个是代理，一个是实现。代理里调用了实现里面的方法。只是动态代理的代理类是动态生成的，可进行类的切换，切换后有Java进行生成代理类。
 

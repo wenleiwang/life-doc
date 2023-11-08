@@ -3,7 +3,7 @@
 
 ## 锁概念总结
 
-![](./img/lock/2022-07-11-21-06-02.png)
+![](img/lock/fe37ad43fb2bb6fc7cec4117cb1dce2d.png)
 
 <!-- 
 |序号|名称|应用|

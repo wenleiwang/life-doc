@@ -129,26 +129,26 @@ RabbitMQ 如果丢失了数据，主要是因为你消费的时候，刚消费�
 2. 出现顺序错乱的场景
     * rabbitmq
         - 一个queue，有多个consumer去消费，这样就会造成顺序的错误，consumer从MQ里面读取数据是有序的，但是每个consumer的执行时间是不固定的，无法保证先读到消息的consumer一定先完成操作，这样就会出现消息并没有按照顺序执行，造成数据顺序错误。
-        ![](./img/readme/2022-03-04-10-49-43.png)
+        ![](img/readme/8ec98e8cd17768457336c72320d49523.png)
         - 一个queue对应一个consumer，但是consumer里面进行了多线程消费，这样也会造成消息消费顺序错误。
-        ![](./img/readme/2022-03-04-10-55-52.png)
+        ![](img/readme/f66d3d47b496bd8948eb0e7c67a162bc.png)
     * kafka
         - kafka一个topic，一个partition，一个consumer，但是consumer内部进行多线程消费，这样数据也会出现顺序错乱问题。
-        ![](./img/readme/2022-03-04-10-57-29.png)
+        ![](img/readme/5566703826afa91de883489c70395f06.png)
         - 具有顺序的数据写入到了不同的partition里面，不同的消费者去消费，但是每个consumer的执行时间是不固定的，无法保证先读到消息的consumer一定先完成操作，这样就会出现消息并没有按照顺序执行，造成数据顺序错误。
-        ![](./img/readme/2022-03-04-10-58-02.png)
+        ![](img/readme/94481174a76d23c95fcb534212a426e5.png)
 
 3. 保证消息的消费顺序
     * rabbitmq
         - 拆分多个queue，每个queue一个consumer，就是多一些queue而已，确实是麻烦点；这样也会造成吞吐量下降，可以在消费者内部采用多线程的方式去消费。
-            ![](./img/readme/2022-03-04-11-00-34.png)
+            ![](img/readme/8890d11908ae24de26c332247e479ecc.png)
         - 或者就一个queue但是对应一个consumer，然后这个consumer内部用内存队列做排队，然后分发给底层不同的worker来处理
-            ![](./img/readme/2022-03-04-11-04-03.png)
+            ![](img/readme/b794b5080054332167d686e2ca997289.png)
     * kafka
         - 确保同一个消息发送到同一个partition，一个topic，一个partition，一个consumer，内部单线程消费。
-            ![](./img/readme/2022-03-04-11-04-56.png)
+            ![](img/readme/a310e36378a95f778edba803d6c9f40a.png)
         - 写N个内存queue，然后N个线程分别消费一个内存queue即可
-            ![](./img/readme/2022-03-04-11-06-11.png)
+            ![](img/readme/c8277d750e6b5d4fe18ea17731e56a0d.png)
 
 ## 消息积压在消息队列里怎么办
 * 如何解决消息队列的延时以及过期失效问题？
@@ -170,7 +170,7 @@ RabbitMQ 如果丢失了数据，主要是因为你消费的时候，刚消费�
 5. 这种做法相当于临时将queue资源和consumer资源扩大10倍，以正常速度的10倍来消费消息。
 6. 等快速消费完了之后，恢复原来的部署架构，重新用原来的consumer机器来消费消息
 
-![](./img/readme/2022-03-04-11-20-02.png)
+![](img/readme/577da55c371cf960c8bc4cbfd9527fcb.png)
 
 ### 消息设置了过期时间，过期就丢了怎么办
 假设你用的是rabbitmq，rabbitmq是可以设置过期时间的，就是TTL，如果消息在queue中积压超过一定的时间就会被rabbitmq给清理掉，这个数据就没了。那这就是第二个坑了。这就不是说数据会大量积压在mq里，而是大量的数据会直接搞丢。

@@ -35,7 +35,7 @@
 ## 1.使用哈希表
 ### 1.1思路
 
-![](../img/orderlevel.gif)
+![](../img/db21a58e4bf936801b260ac21fc158ef.gif)
 
 ### 1.2代码
 ```java

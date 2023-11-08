@@ -65,7 +65,7 @@ protected void initApplicationEventMulticaster() {
 如果没有有指定事件多播，那么容器自动注册一个`SimpleApplicationEventMulticaster`。因此若希望手动控制事件的发布，是可以@Autowired进来的。
 
 看下`SimpleApplicationEventMulticaster`的类图
-![](./img/springevent/2022-01-26-15-37-07.png)
+![](img/springevent/e3d8173c15ce4aa76ff39b709e4a76e3.png)
 可以看到`SimpleApplicationEventMulticaster`继承`AbstractApplicationEventMulticaster`，
 `AbstractApplicationEventMulticaster`实现了`ApplicationEventMulticaster`
 
@@ -140,7 +140,7 @@ protected void finishRefresh() {
 
 来看`publishEvent(new ContextRefreshedEvent(this));`这段代码
 `ContextRefreshedEvent`的类图
-![](./img/springevent/2022-01-27-11-24-07.png)
+![](img/springevent/acebe9c539d3e8414906a9352ce78f0a.png)
 这里实际上使用的是JDK1.1的`EventObject`
 在来看`publishEvent()`方法
 
@@ -257,12 +257,12 @@ private void doInvokeListener(ApplicationListener listener, ApplicationEvent eve
 注册一个`SimpleApplicationEventMulticaster`，调用SimpleApplicationEventMulticaster的add方法（SimpleApplicationEventMulticaster里面有个List<>用来收集实现ApplicationListener类的数据）。
 最后执行multicastEvent()方法处理应用程序事件。这个方法里的doInvokeListener方法会调用`ApplicationListener`接口的onApplicationEvent方法()处理应用程序事件。
 onApplicationEvent方法会带一个`ApplicationEvent`(这个类继承了EventObject)
-![](./img/springevent/2022-01-27-13-39-35.png)
+![](img/springevent/17cce3d80664db98fe0d0cd45ca532d9.png)
 
 ## 3.精简Spring里的逻辑，搞个例子出来学习下原理
 
 先来看下几个类之间的关系
-![](./img/springevent/2022-01-28-10-47-00.png)
+![](img/springevent/ac2f53dffdf5610ee0a2c3b864dfd459.png)
 全部代码
 
 ```java

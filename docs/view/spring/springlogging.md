@@ -3,10 +3,10 @@
 
 ## 1.执行过程
 在SpringBoot启动过程中有这么两句话，[点击查看详细启动过程](springbootstart.md)
-![](./img/springlogging/2022-02-03-14-32-34.png)
+![](img/springlogging/17b2d474d230e722880bef1600f6001f.png)
 
 在listeners.starting();执行中
-![](./img/springlogging/2022-02-03-14-38-20.png)
+![](img/springlogging/20b7a8fbc1b35bdea91cef436a25a143.png)
 getApplicationListeners(event, type)这个方法会获得LoggingApplicationListeners、BackgroundPreinitializer、DelegationgApplicationListener、LiquibaseServiceLocatorApplicationListener
 这4个Listener，其中LoggingApplicationListeners负责的就是
 
@@ -19,18 +19,18 @@ LOG_FILE设置为应该写入的日志文件的路径值（如果有）。
 
 
 类之间的关系很简单
-![](./img/springlogging/2022-02-03-14-48-06.png)
+![](img/springlogging/85526432730d2ec4391a4f38613a7a73.png)
 
 
 继承了ApplicationEvent，标志这个类是一个事件对象。这也就是为什么starting()方法为什么会调用到这个类的原因。
 随后执行到
-![](./img/springlogging/2022-02-03-15-27-13.png)
+![](img/springlogging/86e0ddd8278588343ad95fa7ec3bc00c.png)
 
 因为事件对象的关系随后就执行到`onApplicationEvent(ApplicationEvent event)`方法
-![](./img/springlogging/2022-02-03-15-23-51.png)
+![](img/springlogging/13c3d464dae230af52d2634276f9e2f3.png)
 
 进到`onApplicationStartingEvent(ApplicationStartingEvent event)`方法
-![](./img/springlogging/2022-02-03-15-29-28.png)
+![](img/springlogging/a0f5a51f202b908803bfb86946a59430.png)
 
 看下这个方法的详情`this.loggingSystem = LoggingSystem.get(event.getSpringApplication().getClassLoader());`
 这个方法在LoggingSystem这个类中
@@ -82,7 +82,7 @@ private static LoggingSystem get(ClassLoader classLoader, String loggingSystemCl
 ```
 
 我这里加载到的是`Log4J2LoggingSystem`类
-![](./img/springlogging/2022-02-03-15-20-56.png)
+![](img/springlogging/93aa1dfeae473a3814bdab3cd9d60430.png)
 
 `this.loggingSystem.beforeInitialize();`代码中注释是：将记录系统重置为限制输出。 该方法可以在initialize(LoggingInitializationContext, String, LogFile)之前调用，以减少日志噪音，直到系统完全初始化。
 到这里就全部执行完成，其余都是return了。

@@ -11,7 +11,7 @@
 ## 解题思路
 两个链表的状态只有2中，相交、不想交
 
-![](./img/FindFirstCommonNode/2022-06-13-14-49-34.png)
+![](img/FindFirstCommonNode/7a3d69a16838a773b9e32f813ad152b8.png)
 
 ### 空间复杂度O(n)版本
 通过上面分析得到第一交点，以后每个都是他们的交点

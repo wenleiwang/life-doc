@@ -6,11 +6,11 @@
 ### 插入
 输入set查看提示
 
-![输入set查看提](./img/unit2/2022-01-23-20-58-16.png)
+![输入set查看提](img/unit2/ebe01495939f8bf13ece1df287a24eb7.png)
 
 输入命令：`set name wenlei`
 
-![set name wenlei](./img/unit2/2022-01-23-21-31-15.png)
+![set name wenlei](img/unit2/7b9d92d15d209c7a8b6595e18aded02c.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -26,7 +26,7 @@ class SetString {
 ### 获取
 输入命令：`get name`
 
-![get name](./img/unit2/2022-01-23-21-35-07.png)
+![get name](img/unit2/44f99b0e89926bcd94b3e4a5e2b98f65.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -40,7 +40,7 @@ class SetString {
 ```
 
 ### 删除
-![](./img/unit2/2022-01-23-21-51-14.png)
+![](img/unit2/11d650b588faea72f45b5b82fb49dbe0.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -53,7 +53,7 @@ class SetString {
 }
 ```
 ### 过期
-![过期](./img/unit2/2022-01-24-00-00-28.png)
+![过期](img/unit2/710fcafd336357890ddb8b182a63a3d7.png)
 ```java
 public boolean set(String key, Object value, long time) {
     try {
@@ -72,7 +72,7 @@ public boolean set(String key, Object value, long time) {
 
 ## 批量键值对
 ### 批量插入
-![](./img/unit2/2022-01-23-21-59-47.png)
+![](img/unit2/c7240a697369f931bbdf991dc4d16946.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -115,10 +115,10 @@ public class RedisUtil {
 ```
 #### 插入效果展示
 db4是java插入，db1是CLI插入
-![](./img/unit2/2022-01-23-22-43-38.png)
+![](img/unit2/471709094bb69d330632c8545634043c.png)
 
 ### 批量查询
-![CLI批量查询](./img/unit2/2022-01-23-22-47-12.png)
+![CLI批量查询](img/unit2/250f52e85214aa942347dd51400acc71.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -150,7 +150,7 @@ public List<Object> mGet(List<String> keys) {
     return list;
 }
 ```
-![Java批量查询](./img/unit2/2022-01-23-23-50-48.png)
+![Java批量查询](img/unit2/c784bf5e005ed1b8d78761068bd7a487.png)
 ::: danger 注意
 Java的RedisConfig中的序列化配置会影响插入和查询
 

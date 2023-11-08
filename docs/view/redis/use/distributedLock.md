@@ -192,7 +192,7 @@ public class RedissonConfig {
 
 原理图：
 
-![](./img/distributedLock/2022-05-18-14-56-10.png)
+![](img/distributedLock/4ed8752a6de4f7b8e936ba12a90a06a0.png)
 
 
 
