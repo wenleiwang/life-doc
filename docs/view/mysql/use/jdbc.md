@@ -5,8 +5,8 @@
 JDBC代表Java连接数据库。它是用于Java编程语言和数据库之间的数据库无关连接的标准Java API
 
 ## JDBC架构
-![](img/jdbc/e4faf004626753e6592dc7e2975fea6c.png)
 
+![](img/1be36fc05545a7acfc47be261d71dcea.png)
 ## 常见JDBC组件
 * DriverManager：此类管理数据库驱动程序列表。 使用通信子协议将来自java应用程序的连接请求与适当的数据库驱动程序进行匹配。在JDBC下识别某个子协议的第一个驱动程序将用于建立数据库连接。
 * Driver：此接口处理与数据库服务器的通信。我们很少会直接与Driver对象进行交互。 但会使用DriverManager对象来管理这种类型的对象。 它还提取与使用Driver对象相关的信息。

@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "8b57755deecd9b87",
+        "id": "7f7f4f510fe01155",
         "type": "tabs",
         "children": [
           {
-            "id": "1b14a7d69e90db55",
+            "id": "7147b1eb14d9dc53",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "private/note/2023-11-13.md",
+                "file": "view/mysql/use/druidDataSource.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "private/note/2023-11-13.md",
+                "file": "view/mysql/use/druidDataSource.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "private/note/2023-11-13.md"
+                "file": "view/mysql/use/druidDataSource.md"
               }
             }
           }
@@ -144,8 +144,22 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "1b14a7d69e90db55",
+  "active": "0130a46c067152a4",
   "lastOpenFiles": [
+    "view/mysql/use/Java项目防止SQL注入的四种方案.md",
+    "view/mysql/use/jdbc.md",
+    "view/mysql/use/img/1be36fc05545a7acfc47be261d71dcea.png",
+    "view/mysql/use/druidDataSource.md",
+    "view/mysql/use/img/c182213bf9abb4cdeba076b294f96ce5.png",
+    "view/mysql/use/img/dc684abb8218313adc22c0ac7fcc450e.png",
+    "view/mysql/use/img",
+    "view/mysql/索引.md",
+    "view/mysql/base.md",
+    "view/mysql/interview.md",
+    "view/mysql/readme.md",
+    "view/mysql/transaction.md",
+    "private/计算机/AI/什么是AI.md",
+    "private/note/2023-11-13.md",
     "private/工具/img/f9a6fb9d16e9a2a6f578dfa8f09cdd34.png",
     "private/计算机/algorithm/sort/ShellSort.md",
     "private/计算机/algorithm/sort",
@@ -156,10 +170,6 @@
     "view/java/1_base/img/threadLocal/40e0764a91215a17778bfad1ef28b1bf.png",
     "view/java/1_base/img/threadLocal/f19361839d5ac4395c8909504e0d9140.png",
     "view/spring/img/spring_autowire/3fecd78ad073a7c4d2cfb92d5bc18519.png",
-    "view/spring/img/spring_autowire/73dd49f686e9ea256649d40135a3358d.png",
-    "view/spring/img/spring_beanfactoryorfactorybean/2457817a9332b2302e7a42e892245d1e.png",
-    "view/spring/img/spring_circularDependecies/b56f709d9c081109f96ba095cd343d2e.png",
-    "view/spring/img/spring_transaction/62a34ec3386f59e28750250be25344f8.png",
     "private/计算机/消息队列/7种实现web实时消息推送的方案.md",
     "private/计算机/消息队列/img",
     "private/计算机/消息队列",
@@ -177,21 +187,10 @@
     "private/note/2023-11-04.md",
     "private/note/2023-11-03.md",
     "private/学习笔记/系统架构师考试.md",
-    "private/note/2023-11-13.md",
     "private/obsidian的使用.md",
-    "view/java/1_base/NIO.md",
-    "view/java/1_base/Guava中这些Map的骚操作，让我的代码量减少了百分之50.md",
-    "view/java/1_base/Jackson.md",
-    "private/学习笔记/分布式数据库的两阶段提交协议.md",
-    "view/temp/JSR-310时间.md",
-    "view/java/8_一些工具的使用/jackson.md",
     "view/java/8_一些工具的使用/img",
     "view/java/8_一些工具的使用",
     "view/java/6_看看Java源码/img/StockWalker",
-    "view/java/6_看看Java源码/StockWalker.md",
-    "view/java/6_看看Java源码/img",
-    "view/java/5_WebSocket/基于Netty搭建WebSocket服务.md",
-    "view/java/5_WebSocket/readme.md",
     "private/看板.canvas",
     "未命名.canvas",
     "未命名 1.canvas"

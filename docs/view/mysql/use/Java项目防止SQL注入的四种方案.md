@@ -1,7 +1,6 @@
 # Java项目防止SQL注入的四种方案
 
-![image-20230919175810934](img/Java项目防止SQL注入的四种方案/74e766ef93a81773174c130ceb126e66.png)
-
+![](img/dc684abb8218313adc22c0ac7fcc450e.png)
 - 一、什么是SQL注入？
 
 - 二、Java项目防止SQL注入方式
