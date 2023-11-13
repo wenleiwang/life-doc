@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7f7f4f510fe01155",
+        "id": "3d9d9fff964c1a88",
         "type": "tabs",
         "children": [
           {
-            "id": "7147b1eb14d9dc53",
+            "id": "de2da95ca8edcef9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "view/mysql/use/druidDataSource.md",
+                "file": "view/mysql/base.md",
                 "mode": "source",
                 "source": false
               }
@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -93,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "view/mysql/use/druidDataSource.md",
+                "file": "view/mysql/base.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "view/mysql/use/druidDataSource.md"
+                "file": "view/mysql/base.md"
               }
             }
           }
@@ -144,12 +145,17 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "0130a46c067152a4",
+  "active": "de2da95ca8edcef9",
   "lastOpenFiles": [
+    "view/mysql/img/ae1cdf4395018809a4124d3ae40b86a5.png",
+    "view/mysql/img/35c155197e1ce26ddddc88816fa4fa77.png",
+    "view/mysql/img/bcef6b40966c283f939dd2beb4a28202.png",
+    "view/mysql/img/866fd6b8383148dcaf2a609749a0fba7.png",
+    "view/mysql/img",
+    "view/mysql/use/druidDataSource.md",
     "view/mysql/use/Java项目防止SQL注入的四种方案.md",
     "view/mysql/use/jdbc.md",
     "view/mysql/use/img/1be36fc05545a7acfc47be261d71dcea.png",
-    "view/mysql/use/druidDataSource.md",
     "view/mysql/use/img/c182213bf9abb4cdeba076b294f96ce5.png",
     "view/mysql/use/img/dc684abb8218313adc22c0ac7fcc450e.png",
     "view/mysql/use/img",
@@ -167,9 +173,6 @@
     "view/algorithm/img/2ebb7f8f5baafc840e43494ec75d038c.png",
     "view/algorithm/img/7ae1a8afbda3045edcf0284a47dfd873.png",
     "view/algorithm/img/877d8dbb41f46b927476df1c8362dda5.png",
-    "view/java/1_base/img/threadLocal/40e0764a91215a17778bfad1ef28b1bf.png",
-    "view/java/1_base/img/threadLocal/f19361839d5ac4395c8909504e0d9140.png",
-    "view/spring/img/spring_autowire/3fecd78ad073a7c4d2cfb92d5bc18519.png",
     "private/计算机/消息队列/7种实现web实时消息推送的方案.md",
     "private/计算机/消息队列/img",
     "private/计算机/消息队列",
@@ -190,7 +193,6 @@
     "private/obsidian的使用.md",
     "view/java/8_一些工具的使用/img",
     "view/java/8_一些工具的使用",
-    "view/java/6_看看Java源码/img/StockWalker",
     "private/看板.canvas",
     "未命名.canvas",
     "未命名 1.canvas"
