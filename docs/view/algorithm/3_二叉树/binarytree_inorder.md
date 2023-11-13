@@ -6,7 +6,7 @@
 ### 1.1思路
 依照递归结构，在第二区域输出即为中序遍历。
 
-![](../img/a178782e83f8db015ad010235e7260bf.png)
+![](img/47695989ba7bddb4d5b5dfddccdc4dff.png)
 
 ### 1.2代码
 ```java
@@ -80,8 +80,7 @@ public class Main {
 2. 弹出就打印
 3. 把右结点的整棵树按照如上流程周而复始
 
-![](../img/fd13b977547d835a4a4a2a10bd20d669.gif)
-
+![](./img/fd13b977547d835a4a4a2a10bd20d669.gif)
 
 ### 2.2代码
 ```java

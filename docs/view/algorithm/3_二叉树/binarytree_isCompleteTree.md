@@ -9,13 +9,16 @@
 数据范围：节点数满足 1 <= n <= 100
 
 样例图1：
-![](../img/ae31be642ca3882dc79e72a751d25ce2.png)
+
+![](img/f8b547feb70faac822dbb4a11ef3ce04.png)
 
 样例图2：
-![](../img/24c3cd0aefbcb0d67f5300642299926e.png)
+
+![](img/58aee4c14113646f074bc53b10db1c07.png)
 
 样例图3：
-![](../img/9ff77c7696a2152fd39c82234e156c51.png)
+
+![](img/4440ad54824f396c73a9b6a73e7186ef.png)
 
 
 示例1

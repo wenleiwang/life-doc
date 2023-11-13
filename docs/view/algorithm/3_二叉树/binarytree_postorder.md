@@ -6,7 +6,7 @@
 ### 1.1思路
 递归树在第三区直接打印，即为后序遍历
 
-![](../img/3fefe999af61dd515438cf5de7d307b4.png)
+![](img/5d5bf815a5e922756ebffbaaea34d4a3.png)
 
 ### 1.2代码
 ```java

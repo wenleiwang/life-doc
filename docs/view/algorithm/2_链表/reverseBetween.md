@@ -10,7 +10,7 @@
 数据范围： 链表长度 0 < size <= 10000<size≤1000，0 < m <= n <= size0<m≤n≤size，链表中每个节点的值满足 |val| <= 1000∣val∣≤1000
 ## 思路
 
-![](img/reverseBetween/5e1cc781386c99f6b0856bfe97a1bb52.png)
+![](img/457cf3d74a2d87970a6dfd0ff9e2c40f.png)
 
 ## 解法
 ```java

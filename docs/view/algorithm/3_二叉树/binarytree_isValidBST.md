@@ -7,9 +7,10 @@
 
 例：
 
-![](../img/fbc29c377b4ac94f53d3fb3ae15452f6.png)图1
+![](img/13472cf5ff1238d2dfead130e0b12787.png)
+图1
 
-![](../img/835f6fbad130db5c2183e94c59cde6f5.png)图2
+![](img/6233bd0344d4e514a354ff2bf4cc0b0d.png)图2
 
 示例1
 ```

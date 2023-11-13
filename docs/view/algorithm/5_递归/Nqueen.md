@@ -8,7 +8,7 @@ N 皇后问题是指在 n * n 的棋盘上要摆 n 个皇后，
 
 数据范围: 1≤n≤9
 
-![](img/62f6bfe4df9a88a0c4d95e8edd450c75.png)
+![](img/6a6caac2c17c51de093b595481db0900.png)
 
 ## 解题思路
 
