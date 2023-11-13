@@ -10,7 +10,7 @@
 内核线程（KLT）：系统内核管理线程，内核保存线程的状态和上下文，线程阻塞不会引起进程阻塞，在多处理器系统上，多线程在处理器上并行运行，线程创建、调度和管理由内核完成，效率要比ULT慢，比进程操作快。
 直观感受下内核线程：如果创建的是内核线程，那么这个数字会增多。
 
-![](img/threadpool/57335d9fa62a9c00e7c3686c482c62cf.png)
+![](img/Pasted%20image%2020231114010846.png)
 
 Java线程创建是依赖于系统内核，通过JVM调用系统库创建内核线程，内核线程与Java-Thread是1:1关系
 
@@ -51,7 +51,7 @@ handler：阻塞队列已满，且线程数达到最大，所采用的饱和策�
 用工作原理说线程池的几个参数
 先上图镇楼
 
-![](img/threadpool/29530851432ee659708fdced8e79109e.png)
+![](img/Pasted%20image%2020231114010856.png)
 
 来了通过execute提交过来任务先进入corePool
 当corePoll满了进入阻塞队列
@@ -74,7 +74,7 @@ handler：阻塞队列已满，且线程数达到最大，所采用的饱和策�
 ### 9、饱和策略的选择
 Java提供四种，最后一个是Tomcat的
 
-![](img/threadpool/49fd4e721c79d2681fcae2076d26588a.png)
+![](img/Pasted%20image%2020231114010910.png)
 
 #### 1.默认AbortPolicy
 终止策略：使用该策略在饱和时会抛出RejectedExectionExcetion（继承自RuntimeException），调用者可以捕捉该异常自行处理
@@ -110,7 +110,7 @@ public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
 
 ### 10、生命周期
 
-![](img/threadpool/ba6767128fc318dbaaec049aaacda7a9.png)
+![](img/Pasted%20image%2020231114010917.png)
 
 
 ## 三、应用

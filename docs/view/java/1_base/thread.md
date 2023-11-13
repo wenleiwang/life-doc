@@ -3,7 +3,7 @@
 
 ## 线程状态转换
 
-![](img/thread/0d9f00e54c80fbfeadf30ce5bac7b7f5.png)
+![](img/c162cf3ed7f0fa9fc9d02f2e8d9da3b6.png)
 
 ## 线程的创建
 1. 继承Thread
