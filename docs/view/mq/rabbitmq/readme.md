@@ -141,9 +141,9 @@ RabbitMQ 如果丢失了数据，主要是因为你消费的时候，刚消费�
 3. 保证消息的消费顺序
     * rabbitmq
         - 拆分多个queue，每个queue一个consumer，就是多一些queue而已，确实是麻烦点；这样也会造成吞吐量下降，可以在消费者内部采用多线程的方式去消费。
-            ![](img/readme/8890d11908ae24de26c332247e479ecc.png)
-        - 或者就一个queue但是对应一个consumer，然后这个consumer内部用内存队列做排队，然后分发给底层不同的worker来处理
             ![](img/527aeaf283dab63975eb00089d6c599a.png)
+        - 或者就一个queue但是对应一个consumer，然后这个consumer内部用内存队列做排队，然后分发给底层不同的worker来处理
+            ![](img/c3a06e6c9a7a7612c1710baf9b67b26f.png)
     * kafka
         - 确保同一个消息发送到同一个partition，一个topic，一个partition，一个consumer，内部单线程消费。
             ![](img/38f5db80ecb6d77b459f154723e88329.png)
