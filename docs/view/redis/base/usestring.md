@@ -118,7 +118,8 @@ public class RedisUtil {
 ```
 #### 插入效果展示
 db4是java插入，db1是CLI插入
-![](img/unit2/471709094bb69d330632c8545634043c.png)
+
+![](img/9a7a3f66a8093185d99211a9ded737c4.png)
 
 ### 批量查询
 ![](img/7a030da92d43a8d2e8c1a3816bea7c41.png)
