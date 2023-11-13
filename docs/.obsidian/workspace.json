@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "private/学习笔记/系统架构师考试.md",
+                "file": "private/note/2023-11-13.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "private/学习笔记/系统架构师考试.md",
+                "file": "private/note/2023-11-13.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "private/学习笔记/系统架构师考试.md"
+                "file": "private/note/2023-11-13.md"
               }
             }
           }
@@ -146,8 +146,13 @@
   },
   "active": "fb88a2f672b38152",
   "lastOpenFiles": [
-    "private/学习笔记/分布式数据库的两阶段提交协议.md",
     "private/学习笔记/系统架构师考试.md",
+    "private/note/2023-11-13.md",
+    "private/obsidian的使用.md",
+    "view/java/1_base/NIO.md",
+    "view/java/1_base/Guava中这些Map的骚操作，让我的代码量减少了百分之50.md",
+    "view/java/1_base/Jackson.md",
+    "private/学习笔记/分布式数据库的两阶段提交协议.md",
     "view/temp/JSR-310时间.md",
     "view/java/8_一些工具的使用/img/2022-01-24-22-46-00.png",
     "view/java/8_一些工具的使用/img/2022-01-24-23-28-11.png",
@@ -187,11 +192,6 @@
     "private/工具/数据库表结构查询.md",
     "private/工具/五笔拆字原则.md",
     "private/工具/搭建梯子-服务端.md",
-    "private/工具/IDEA快捷键.md",
-    "private/工具/IDEA如何优雅的添加.ignore忽略不必要提交的文件.md",
-    "private/工具/git443解决方法.md",
-    "private/工作/工作文档.md",
-    "private/note/2023-11-01.md",
     "private/看板.canvas",
     "未命名.canvas",
     "未命名 1.canvas"
