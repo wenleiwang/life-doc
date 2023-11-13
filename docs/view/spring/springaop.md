@@ -69,7 +69,7 @@ Spring AOP也可以使用CGLIB代理。这是代理类而不是接口所必需�
 
 先使用Maven添加包支持，去这个网站找：https://mvnrepository.com/
 
-![image-20220510150200411](img/springaop/1e9fb924787251d9a65ed16202a6cfc6.png)
+![](img/2a2552acc5df40aabaaaf235b5d8650d.png)
 
 找个用的人多的
 
@@ -195,7 +195,7 @@ public class PerformSpendTimeAspect {
 
 *运行展示：*
 
-![image-20220510150224096](img/springaop/281ba35a2b52d725247a32145145c9f3.png)
+![](img/82ca44814f3c5ceed992c49015aa8168.png)
 
 
 

@@ -6,7 +6,7 @@
 
 
 ## Spring 注册BeanDefintion时序图
-![](img/springioc/a39b41aae20ab4135321d9118c870c80.jpg)
+![](img/bffe262bfc5634906fc09cbac22f3b66.png)
 
 
 
@@ -80,7 +80,7 @@
 >
 > 看[Servlet是什么？]()
 
-![image-20220506111239159](img/springioc/8f78a39952e2a88cc7b5988b45785e83.png)
+![](img/9e04b0e28c7e7b17ee09f68e09a45020.png)
 
 ## 销毁回调
 
@@ -132,7 +132,7 @@
 ## 控制反转流程
 
 Spring如何管理Bean的，如下Spring生成一个Bean的流程
-![](img/springioc/51fb67be442d4729e7c8fe37822cbea1.png)
+![](img/2947b20e4eea62d9970404905d5e9db5.png)
 
 `BeanPostProcessor`接口定义了您可以实现的回调方法，以提供您自己的（或覆盖容器的默认）实例化逻辑、依赖关系解析逻辑等。<span style="color:green">如果你想在 Spring 容器完成实例化、配置和初始化 bean 之后实现一些自定义逻辑，你可以插入一个或多个自定义`BeanPostProcessor`实现</span>。
 

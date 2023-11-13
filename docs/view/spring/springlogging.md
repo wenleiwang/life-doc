@@ -3,10 +3,11 @@
 
 ## 1.执行过程
 在SpringBoot启动过程中有这么两句话，[点击查看详细启动过程](springbootstart.md)
-![](img/springlogging/17b2d474d230e722880bef1600f6001f.png)
+
+![](img/91ad28fcc1e8c65eaa41bccdae5895ad.png)
 
 在listeners.starting();执行中
-![](img/springlogging/20b7a8fbc1b35bdea91cef436a25a143.png)
+![](img/7acafc5adf65bedcdfeafcc1444c3d0e.png)
 getApplicationListeners(event, type)这个方法会获得LoggingApplicationListeners、BackgroundPreinitializer、DelegationgApplicationListener、LiquibaseServiceLocatorApplicationListener
 这4个Listener，其中LoggingApplicationListeners负责的就是
 
@@ -19,7 +20,7 @@ LOG_FILE设置为应该写入的日志文件的路径值（如果有）。
 
 
 类之间的关系很简单
-![](img/springlogging/85526432730d2ec4391a4f38613a7a73.png)
+![](img/f82fe311e32bdcbef15d3626b4a4f7c2.png)
 
 
 继承了ApplicationEvent，标志这个类是一个事件对象。这也就是为什么starting()方法为什么会调用到这个类的原因。
@@ -82,7 +83,8 @@ private static LoggingSystem get(ClassLoader classLoader, String loggingSystemCl
 ```
 
 我这里加载到的是`Log4J2LoggingSystem`类
-![](img/springlogging/93aa1dfeae473a3814bdab3cd9d60430.png)
+
+![](img/aab6b4c739f8ce8252dd70504afd0ecf.png)
 
 `this.loggingSystem.beforeInitialize();`代码中注释是：将记录系统重置为限制输出。 该方法可以在initialize(LoggingInitializationContext, String, LogFile)之前调用，以减少日志噪音，直到系统完全初始化。
 到这里就全部执行完成，其余都是return了。

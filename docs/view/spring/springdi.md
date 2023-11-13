@@ -104,7 +104,7 @@ public class Main {
 BeanFactory接口定义了SpringIoC容器的基本功能规范。BeanFactory接口中定义了几个getBean()方法，用于用户向IoC容器索取被管理的Bean的方法。
 BeanFactory是接口，具体情况看他的实现AbstractBeanFactory，类图如下：
 
-![](img/springdi/842bc7ef7e0e314daf3dda1e7ff329e9.png)
+![](img/6253248e9f4dde7334b87860ed1f1412.png)
 
 ```java
 @Override
