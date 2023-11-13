@@ -7,29 +7,29 @@
 
 使用`docker search rabbitmq`命令查看仓库中rabbitmq的版本
 
-![image-20230807101442126](img/0_安装RabbitMQ/b97c91da78af9458f168e1879cbf3cd3.png)
+![](img/f1405182b066ad185c24424f7afde008.png)
 
 ### 使用pull命令拉取镜像
 
 使用`docker pull rabbitmq`，这个命令会拉到最新版本的rabbit mq
 
-![image-20230807101959353](img/0_安装RabbitMQ/d727014d44fc3d97605809976be2e0bd.png)
+![](img/fca122d79869238e91177d98cedc5aa5.png)
 
 如下为下载成功效果
 
-![image-20230807102531895](img/0_安装RabbitMQ/3191f03e7c1851a5c1b03a22af637614.png)
+![](img/7b8d2afe17202dc185cd782059e0e8ca.png)
 
 ### 查看镜像
 
 使用`docker images`查看本地的镜像列表，
 
-![image-20230807102454894](img/0_安装RabbitMQ/f03374144fcb382ab9ac6610fd176a43.png)
+![](img/5ae9350d01129bc9316303a0e12206af.png)
 
 ### 启动镜像
 
 使用`docker run -d --hostname my-rabbit --name rabbit -p 15672:15672 -p 5672:5672 rabbitmq`命令后台启动容器
 
-![image-20230807102906928](img/0_安装RabbitMQ/4f8ac9a7ad08d707d3baf820f6bcdd16.png)
+![](img/6527c1beda72fb65a8e92b6b9645437d.png)
 
 可以看到一串字符，这是一个46个16进制的字符（256位二进制）
 
@@ -39,13 +39,13 @@
 
 用`docker ps`命令查看启动后效果
 
-![image-20230807103551454](img/0_安装RabbitMQ/d9f8be2f1e8e8f42e5fd6b9179ea17d6.png)
+![](img/04d985e5e3a23ff8cd3c319810c57ddf.png)
 
 ### 查看Rabbit MQ管理端控制台
 
 首先打开防火墙的端口，这个很重要不然访问不了。我这里是腾讯云，找到对应服务器的防火墙添加规则就好
 
-![image-20230807104014903](img/0_安装RabbitMQ/9bcd193489520741da776ce6ff2c8784.png)
+![](img/0af930c6d87ba685d9ed03663bec387c.png)
 
 15672端口为管理端服务端，访问ip:15672进入Rabbit MQ管理端
 
@@ -65,11 +65,11 @@ cd sbin
 
 rabbitmq-plugins enable rabbitmq_management
 
-![image-20230807113258712](img/0_安装RabbitMQ/17dad6940f800547dda750d1b4802a18.png)
+![](img/64e050866246cbb05a085aa29a087f69.png)
 
 再次访问，可以进入
 
-![image-20230807113323275](img/0_安装RabbitMQ/ef03c6e71373ef6d45747e797d5367f2.png)
+![](img/74d1cd70716accff212c0a8781050c04.png)
 
 ## 安全
 
@@ -89,8 +89,7 @@ RabbitMQ默认账号名是guest，密码也是guest。这意味着访问者无�
 
 使用命令：`rabbitmqctl list_users`
 
-![image-20230807114602159](img/0_安装RabbitMQ/da78b4a877902908fd05fa6faee6d057.png)
-
+![](img/a188cc753a9c48cb96d3447bcf34161d.png)
 #### 修改密码
 
 命令：`rabbitmqctl change_password [username] '[NewPassword]'`
@@ -100,7 +99,7 @@ RabbitMQ默认账号名是guest，密码也是guest。这意味着访问者无�
 
 效果如下：
 
-![image-20230807114716395](img/0_安装RabbitMQ/825effd35b5d3ddd7f8ca78314c60b93.png)
+![](img/8b4af65c663f128b8c82a3d3882bf5e2.png)
 
 ### docker启动时直接设置用户密码
 

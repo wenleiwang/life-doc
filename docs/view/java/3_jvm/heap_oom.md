@@ -6,7 +6,7 @@
 ## 参数准备
 > -Xms20m -Xmm20m -XX:+HeapDumpOnOutOfMemoryError
 
-![](img/heap_oom/592ebbe0d6a9cf57faf7ac6f90dd46e3.png)
+![](img/343704a86943c4b1cfb161f002848bb1.png)
 
 ## 代码准备
 ```java
@@ -52,7 +52,7 @@ Process finished with exit code 1
 
 在IDEA中直接双击就可以分析查看
 
-![](img/heap_oom/61bbb89de5e2f1638c1c30cbef75caaa.png)
+![](img/9424396e83ba5ea7c0ca9580eb6209b7.png)
 
 第一步首先确认是内存泄漏（memory Leak）还是内存溢出（Memory Overflow）
 
