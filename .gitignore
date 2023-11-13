@@ -5,3 +5,4 @@ docs/.vuepress/dist
 .idea
 docs/.obsidian
 docs/.trash
+.obsidian.mobile
