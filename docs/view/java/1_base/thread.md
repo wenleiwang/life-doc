@@ -3,7 +3,7 @@
 
 ## 线程状态转换
 
-![](./img/thread/2022-06-05-09-30-02.png)
+![](img/thread/0d9f00e54c80fbfeadf30ce5bac7b7f5.png)
 
 ## 线程的创建
 1. 继承Thread

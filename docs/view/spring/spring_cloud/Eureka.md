@@ -17,7 +17,7 @@ Eureka Client：Eureka客户端，通常指的是微服务系统中各个微服�
 > 通常情况下是客户端向服务器端发送心跳包，服务端用于判断客户端是否在线。
 
 ## Eureka 服务注册与发现
-![](./img/Eureka/2022-07-20-10-08-29.png)
+![](img/Eureka/301e4559d51149d6557e7a944b81d5e6.png)
 
 上图中共涉及到以下 3 个角色：
 * 服务注册中心（Register Service）：它是一个 Eureka Server，用于提供服务注册和发现功能。

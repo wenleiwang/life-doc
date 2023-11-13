@@ -25,7 +25,7 @@ Thread 线程；Local 本地的，局部的。`ThreadLocal`是线程本地变量
 
 ThreadLocal对外开放的方法
 
-![image-20220408211255737](./img/threadLocal/image-20220408211255737.png)
+![image-20220408211255737](img/threadLocal/f19361839d5ac4395c8909504e0d9140.png)
 
 分别代表：
 
@@ -38,7 +38,7 @@ ThreadLocal对外开放的方法
 
 说明：虽然每个绑定关系都是使用的WeakReference，但是还是建议显示的做好remove()移除动作，否则容易造成内存泄漏。
 
-![image-20220408211323007](./img/threadLocal/image-20220408211323007.png)
+![image-20220408211323007](img/threadLocal/40e0764a91215a17778bfad1ef28b1bf.png)
 
 一般我们使用ThreadLocal是作为 `private static final`字段来使用的~
 
@@ -379,3 +379,219 @@ get数据，线程名称：main数据为：2021-11-24
 
 
 然而，对于这种全局通用的变量，使用ThreadLocal管理和维护一份即可，大大的降低了维护成本和他人的使用成本。
+
+## ThreadLocal内存溢出演示和原因分析！
+
+#内存溢出
+> **什么是内存溢出？**
+> 内存溢出（Memory Overflow），指的是在程序运行过程中，申请的内存资源不再被使用，但没有被正确释放，导致占用的内存不断增加，最终耗尽系统的可用内存。当程序尝试分配更多的内存空间时，由于内存不足，会抛出 OutOfMemoryError 异常，导致程序终止或崩溃的现象就叫做内存溢出。
+
+### 内存溢出代码演示
+在开始演示 ThreadLocal 内存溢出的问题之前，我们先使用“-Xmx50m”的参数来设置一下 Idea，它表示将程序运行的最大内存设置为 50m，如果程序的运行超过这个值就会出现内存溢出的问题，设置方法如下：
+[了解常用调优参数](../3_jvm/常用Java虚拟机调优参数.md)
+![](img/cb0d9d8aee1b699cfc56a21b63e77ac4.png)
+
+![](img/ef7780e08d49974fe200fa5e3cf0ec6d.png)
+设置后的最终效果这样的：
+![](img/da1afc8892ac9d3bfb8db5416420c7b0.png)
+
+配置完 Idea 之后，接下来我们来实现一下业务代码。在代码中我们会创建一个大对象，这个对象中会有一个 10m 大的数组，然后我们将这个大对象存储在 ThreadLocal 中，再使用线程池执行大于 5 次添加任务，因为设置了最大运行内存是 50m，所以理想的情况是执行 5 次添加操作之后，就会出现内存溢出的问题，实现代码如下：
+
+```java
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+publicclass ThreadLocalOOMExample {
+    
+    /**
+     * 定义一个 10m 大的类
+     */
+    staticclass MyTask {
+        // 创建一个 10m 的数组（单位转换是 1M -> 1024KB -> 1024*1024B）
+        privatebyte[] bytes = newbyte[10 * 1024 * 1024];
+    }
+    
+    // 定义 ThreadLocal
+    privatestatic ThreadLocal<MyTask> taskThreadLocal = new ThreadLocal<>();
+
+    // 主测试代码
+    public static void main(String[] args) throws InterruptedException {
+        // 创建线程池
+        ThreadPoolExecutor threadPoolExecutor =
+                new ThreadPoolExecutor(5, 5, 60,
+                        TimeUnit.SECONDS, new LinkedBlockingQueue<>(100));
+        // 执行 10 次调用
+        for (int i = 0; i < 10; i++) {
+            // 执行任务
+            executeTask(threadPoolExecutor);
+            Thread.sleep(1000);
+        }
+    }
+
+    /**
+     * 线程池执行任务
+     * @param threadPoolExecutor 线程池
+     */
+    private static void executeTask(ThreadPoolExecutor threadPoolExecutor) {
+        // 执行任务
+        threadPoolExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("创建对象");
+                // 创建对象（10M）
+                MyTask myTask = new MyTask();
+                // 存储 ThreadLocal
+                taskThreadLocal.set(myTask);
+                // 将对象设置为 null，表示此对象不在使用了
+                myTask = null;
+            }
+        });
+    }
+}
+```
+
+以上程序的执行结果如下：
+![](img/67b2358b9329f8491c7ec01e84181912.png)
+
+### 原因分析
+内存溢出的问题和解决方案比较简单，重点在于“原因分析”，我们要通过内存溢出的问题搞清楚，为什么 ThreadLocal 会这样？是什么原因导致了内存溢出？
+
+要搞清楚这个问题（内存溢出的问题），我们需要从 ThreadLocal 源码入手，所以我们首先打开 set 方法的源码（在示例中使用到了 set 方法），如下所示：
+```java
+public void set(T value) {
+    // 得到当前线程
+    Thread t = Thread.currentThread();
+    // 根据线程获取到 ThreadMap 变量
+    ThreadLocalMap map = getMap(t);
+    if (map != null)
+        map.set(this, value); // 将内容存储到 map 中
+    else
+        createMap(t, value); // 创建 map 并将值存储到 map 中
+}
+```
+
+从上述代码我们可以看出 Thread、ThreadLocalMap 和 set 方法之间的关系：**每个线程 Thread 都拥有一个数据存储容器 ThreadLocalMap，当执行 ThreadLocal.set  方法执行时，会将要存储的值放到 ThreadLocalMap 容器中**，所以接下来我们再看一下 ThreadLocalMap 的源码：
+
+```java
+staticclass ThreadLocalMap {
+    // 实际存储数据的数组
+    private Entry[] table;
+    // 存数据的方法
+    private void set(ThreadLocal<?> key, Object value) {
+        Entry[] tab = table;
+        int len = tab.length;
+        int i = key.threadLocalHashCode & (len-1);
+        for (Entry e = tab[i];
+                e != null;
+                e = tab[i = nextIndex(i, len)]) {
+            ThreadLocal<?> k = e.get();
+            // 如果有对应的 key 直接更新 value 值
+            if (k == key) {
+                e.value = value;
+                return;
+            }
+            // 发现空位插入 value
+            if (k == null) {
+                replaceStaleEntry(key, value, i);
+                return;
+            }
+        }
+        // 新建一个 Entry 插入数组中
+        tab[i] = new Entry(key, value);
+        int sz = ++size;
+        // 判断是否需要进行扩容
+        if (!cleanSomeSlots(i, sz) && sz >= threshold)
+            rehash();
+    }
+    // ... 忽略其他源码
+}
+```
+
+从上述源码我们可以看出：**ThreadMap 中有一个 Entry[] 数组用来存储所有的数据，而 Entry 是一个包含 key 和 value 的键值对，其中 key 为 ThreadLocal 本身，而 value 则是要存储在 ThreadLocal 中的值**。
+
+根据上面的内容，我们可以得出 ThreadLocal 相关对象的关系图，如下所示：
+![](img/ab5d2508ebce572ed75ad7ed369b55b1.png)
+也就是说**它们之间的引用关系是这样的：Thread -> ThreadLocalMap -> Entry -> Key,Value，因此当我们使用线程池来存储对象时，因为线程池有很长的生命周期，所以线程池会一直持有 value 值，那么垃圾回收器就无法回收 value，所以就会导致内存一直被占用，从而导致内存溢出问题的发生**。
+
+### 解决方案
+ThreadLocal 内存溢出的解决方案很简单，我们只需要在使用完 ThreadLocal 之后，执行 remove 方法就可以避免内存溢出问题的发生了，比如以下代码：
+```java
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+publicclass App {
+
+    /**
+     * 定义一个 10m 大的类
+     */
+    staticclass MyTask {
+        // 创建一个 10m 的数组（单位转换是 1M -> 1024KB -> 1024*1024B）
+        privatebyte[] bytes = newbyte[10 * 1024 * 1024];
+    }
+
+    // 定义 ThreadLocal
+    privatestatic ThreadLocal<MyTask> taskThreadLocal = new ThreadLocal<>();
+
+    // 测试代码
+    public static void main(String[] args) throws InterruptedException {
+        // 创建线程池
+        ThreadPoolExecutor threadPoolExecutor =
+                new ThreadPoolExecutor(5, 5, 60,
+                        TimeUnit.SECONDS, new LinkedBlockingQueue<>(100));
+        // 执行 n 次调用
+        for (int i = 0; i < 10; i++) {
+            // 执行任务
+            executeTask(threadPoolExecutor);
+            Thread.sleep(1000);
+        }
+    }
+
+    /**
+     * 线程池执行任务
+     * @param threadPoolExecutor 线程池
+     */
+    private static void executeTask(ThreadPoolExecutor threadPoolExecutor) {
+        // 执行任务
+        threadPoolExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("创建对象");
+                try {
+                    // 创建对象（10M）
+                    MyTask myTask = new MyTask();
+                    // 存储 ThreadLocal
+                    taskThreadLocal.set(myTask);
+                    // 其他业务代码...
+                } finally {
+                    // 释放内存
+                    taskThreadLocal.remove();
+                }
+            }
+        });
+    }
+}
+```
+
+以上程序的执行结果如下：
+![](img/1c766849445aa487ba16154fa9a0fb76.png)
+
+从上述结果可以看出我们只需要在 finally 中执行 ThreadLocal 的 remove 方法之后就不会在出现内存溢出的问题了。
+
+### remove的秘密
+那 remove 方法为什么会有这么大的魔力呢？我们打开 remove 的源码看一下：
+```java
+public void remove() {
+    ThreadLocalMap m = getMap(Thread.currentThread());
+    if (m != null)
+        m.remove(this);
+}
+```
+
+从上述源码中我们可以看出，当调用了 remove 方法之后，会直接将 Thread 中的 ThreadLocalMap 对象移除掉，这样 Thread 就不再持有 ThreadLocalMap 对象了，所以即使 Thread 一直存活，也不会造成因为（ThreadLocalMap）内存占用而导致的内存溢出问题了。
+
+
+---
+
+#Thread

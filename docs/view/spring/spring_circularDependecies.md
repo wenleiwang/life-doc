@@ -37,7 +37,7 @@ Unlike the typical case (with no circular dependencies), a circular dependency b
 ## 对象的创建过程
 对象的创建分为实例化和初始化两个部分，Java在这不明显
 
-![](./img/spring_circularDependecies/2022-07-01-10-09-55.png)
+![](img/spring_circularDependecies/b56f709d9c081109f96ba095cd343d2e.png)
 
 在Spring中，对象的实例化是通过反射实现的，而对象的属性则是在对象实例化之后通过一定的方式设置的。
 

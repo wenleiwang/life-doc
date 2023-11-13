@@ -85,7 +85,7 @@ class Solution {
 
 ### 2.1思路
 
-![image-20230626095134076](./img/pivotInteger/image-20230626095134076.png)
+![image-20230626095134076](img/pivotInteger/85217320e846a284bd5acc7147d412ee.png)
 
 ### 2.2代码
 

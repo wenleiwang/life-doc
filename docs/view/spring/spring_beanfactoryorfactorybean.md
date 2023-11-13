@@ -13,4 +13,4 @@ FactoryBean是管理Bean的仓库。
 
 下面截图中“使用实例工厂方法进行实例化”  DefaultServiceLocator进入到Spring就是一个BeanFactory啊。
 
-![image-20220422094651352](./img/spring_beanfactoryorfactorybean/image-20220422094651352.png)
+![image-20220422094651352](img/spring_beanfactoryorfactorybean/2457817a9332b2302e7a42e892245d1e.png)

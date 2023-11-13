@@ -66,7 +66,7 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
 
 自己的实现，Servlet会找到
 
-![image-20220330110027391](./img/springmvc_start/image-20220330110027391.png)
+![image-20220330110027391](img/springmvc_start/f627271e6fdaa86cc45db9ee39b793b2.png)
 
 
 
@@ -86,7 +86,7 @@ https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/web.
 
 我们看看Spring-web包jar包内：Servlet也会找到
 
-![image-20220330110741432](./img/springmvc_start/image-20220330110741432.png)
+![image-20220330110741432](img/springmvc_start/a9b592d23e92b1595eab30d76ed8d59e.png)
 
 显然的发现，Spring MVC也是通过这种方式和Servlet容器进行整合的。web容器在启动的时候，就会自动去加载`org.springframework.web.SpringServletContainerInitializer`这个类。
 
@@ -159,11 +159,11 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 
    
 
-   ![image-20220330112214286](./img/springmvc_start/image-20220330112214286.png)
+   ![image-20220330112214286](img/springmvc_start/58925b4313e2040cae5fcb5d803c7cde.png)
 
 
 
-![image-20220330113002421](./img/springmvc_start/image-20220330113002421.png)
+![image-20220330113002421](img/springmvc_start/b4f3e121bd431fb47262b583c202bea2.png)
 
 * AbstractContextLoaderInitializer：创建根容器；createRootApplicationContext()；
 * AbstractDispatcherServletInitializer：
@@ -181,7 +181,7 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 
 在Spring MVC中Spring容器推荐使用父子容器概念：
 
-![image-20220330124700490](./img/springmvc_start/image-20220330124700490.png)
+![image-20220330124700490](img/springmvc_start/8296491af3830f0967ab7d75dd4edbdb.png)
 
 
 
@@ -314,7 +314,7 @@ Spring MVC是通过web.xml加载Servlet，Servlet使用ServletContainerInitializ
 
 其次： 实现`WebMvcConfigurer`接口。通过这个接口我们可以发现，里面有很多方法，但大多数情况下我们并不需要配置这么多项，因此Spring MVC也考虑到了这一点，提供给我们一个`WebMvcConfigurerAdapter`来extends就行，Adapter都是空实现~，这样我们需要配置什么，复写对应方法就行
 
-![image-20220330130414373](./img/springmvc_start/image-20220330130414373.png)
+![image-20220330130414373](img/springmvc_start/bb4a0d6487d690c0f1e8b470b20ed949.png)
 
 从上可以看出，如果你的项目是构建在Spring5.0(基于java8)以上的，直接实现接口即可。不用再继承此Adapter了
 
@@ -413,7 +413,7 @@ Filter1_ApiLog.java
 
 Spring Boot 在启动时会打印
 
-![image-20220330132346470](./img/springmvc_start/image-20220330132346470.png)
+![image-20220330132346470](img/springmvc_start/07a15051d1518088214dbe7b6e201bec.png)
 
 这个`s`，说明SpringBoot铁定是支持监听多个端口的
 
@@ -453,5 +453,5 @@ public class ServerConfig implements EmbeddedServletContainerCustomizer {
 }
 ```
 
-![image-20220330132513070](./img/springmvc_start/image-20220330132513070.png)
+![image-20220330132513070](img/springmvc_start/a31060105da8b4aabf4362ef20cd90f1.png)
 

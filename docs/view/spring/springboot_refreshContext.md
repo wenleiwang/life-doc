@@ -301,7 +301,7 @@ protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactor
 ```
 这里注册了3个
 
-![](./img/springrefresh/2022-02-11-16-28-59.png)
+![](img/springrefresh/dbeeea002d1c1c80db52366f5c7cd8a1.png)
 
 * SharedMetadataReaderFactoryContextInitializer$CachingetadataReaderFactoryPostProcessor
 在definition的propertyValues中添加 metadataReaderFactory ：org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
@@ -483,7 +483,7 @@ public static void invokeBeanFactoryPostProcessors(
 调用 Bean 定义注册表后处理器，详情经过连续下钻到这个方法
 下面代码`String[] candidateNames = registry.getBeanDefinitionNames();`得到的结果：
 
-![](./img/springrefresh/2022-02-19-10-36-49.png)
+![](img/springrefresh/9756df566907b1ca1cff7d99e7c590a9.png)
 
 ```java
 /**
@@ -597,7 +597,7 @@ public void processConfigBeanDefinitions(BeanDefinitionRegistry registry) {
 
 SpringBoot使用GenericBeanDefinition类作为BeanDefinition的实现类，看下类之间关系
 
-![](./img/springrefresh/2022-02-11-16-22-05.png)
+![](img/springrefresh/370e29d37e6b24336dc97d034978b031.png)
 
 #### 注册BeanDefinition
 ```java
@@ -699,7 +699,7 @@ Register bean processors that intercept bean creation.
 
 这里取到9个BeanPorcessors 
 
-![](./img/springrefresh/2022-02-20-10-52-58.png)
+![](img/springrefresh/2f3377a50b154934dc971ceb31d04adf.png)
 
 ```java
 // 实例化并注册所有 BeanPostProcessor bean，如果给定，则尊重显式顺序。必须在应用程序 bean 的任何实例化之前调用

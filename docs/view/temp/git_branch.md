@@ -25,7 +25,7 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 分别使用四个种类的分支来进行开发。
 
-![image-20230223135212332](./img/git_branch/image-20230223135212332.png)
+![image-20230223135212332](img/git_branch/cbb526523c4c095d3a72675574e04259.png)
 
 
 

@@ -27,7 +27,7 @@ InstantiationAwareBeanPostProcessor接口是BeanPostProcessor的子接口，通�
 
 调用顺序
 
-![](./img/InstantiationAwareBeanPostProcessor/2022-07-16-16-27-45.png)
+![](img/InstantiationAwareBeanPostProcessor/40f1493453236494ba14aba987f9c2a9.png)
 
 ```java
 public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {

@@ -34,7 +34,7 @@
 
 `AutowiredAnnotationBeanPostProcessor`类实现了`InstantiationAwareBeanPostProcessors`接口
 
-![](./img/spring_autowire/2022-07-06-13-19-46.png)
+![](img/spring_autowire/73dd49f686e9ea256649d40135a3358d.png)
 
 ```java
 @Override
@@ -504,7 +504,7 @@ protected AutoConfigurationEntry getAutoConfigurationEntry(AnnotationMetadata an
 
 列举其中一个例子：
 
-![image-20220424152651088](./img/spring_autowire/image-20220424152651088.png)
+![image-20220424152651088](img/spring_autowire/3fecd78ad073a7c4d2cfb92d5bc18519.png)
 
 <span style="color:green">META-INF/spring.factories这个文件不是只是一个文件，每个start都有一个</span>
 

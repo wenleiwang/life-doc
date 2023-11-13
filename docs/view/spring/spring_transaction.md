@@ -109,7 +109,7 @@ Spring 事务管理器的接口是： PlatformTransactionManager 。
 通过这个接口，Spring 为各个平台如 JDBC(DataSourceTransactionManager)、Hibernate(HibernateTransactionManager)、
 JPA(JpaTransactionManager)等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。
 
-![](./img/spring_transaction/2022-07-14-16-21-38.png)
+![](img/spring_transaction/62a34ec3386f59e28750250be25344f8.png)
 
 PlatformTransactionManager接口中定义了三个方法：
 ```java

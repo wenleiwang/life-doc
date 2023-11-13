@@ -107,16 +107,16 @@ ApplicationContextInitalizer和ApplicationListener。这两个spring.factories�
 
 在spring-boot-autoconfigure-2.3.3.RELEASE.jar下
 
-![](./img/springbootstart/2022-01-25-14-09-31.png)
+![](img/springbootstart/c9e61849375af871a77d35c1824bb814.png)
 
 在spring-boot-2.3.3.RELEASE.jar下
 
-![](./img/springbootstart/2022-02-08-15-01-21.png)
+![](img/springbootstart/4e31a9ee19090b457f2bd6b16b1bb5d1.png)
 
 蒙了这加载哪个，Spring是怎么做的呢？
 来验证下结果，上面两个文件里一个有10个，一个有1个，总计11个。看Spring最终有加载到内存有多少个我们把断点打在获取完的List上
 
-![](./img/springbootstart/2022-02-08-15-11-11.png)
+![](img/springbootstart/bfde295cacd2f4d64455a2a0f8002d5b.png)
 
 可以看见加载了11个。Spring会把所有spring.factories里解析出来的键值对都放在一个`Map<String,List<String>>`里
 ```yml
@@ -132,7 +132,7 @@ org.springframework.boot.autoconfigure.BackgroundPreinitializer
 ```
 上面SpringApplication构造方法里
 getSpringFactoriesInstances(ApplicationListener.class)实现接口的类如下：
-![](./img/springbootstart/2022-01-24-13-14-50.png)
+![](img/springbootstart/5381fe39fa0de42a536e15505de6a649.png)
 单独看下getSpringFactoriesInstances()这个方法
 ```java
 private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {
@@ -281,7 +281,7 @@ public ConfigurableApplicationContext run(String... args) {
 
 默认的运行环境
 
-![](./img/springbootstart/2022-02-01-20-17-22.png)
+![](img/springbootstart/869c82e13e86078bfe007bb336049c18.png)
 
 > 这里扩展Environment接口的概念：集成在容器中的抽象，它对应用程序环境的两个关键方面进行建模：配置文件和属性。
 >
@@ -346,11 +346,11 @@ private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners
 #### 上面执行监听器详情
 `listeners.environmentPrepared(environment);`这步的解析
 
-![](./img/springbootstart/2022-02-04-01-54-15.png)
+![](img/springbootstart/f53921c0841c8213d9d2df3876b9f3c8.png)
 
 就像上面starting()一样从下面11个监听器中选出。
 
-![](./img/springbootstart/2022-02-04-01-42-37.png)
+![](img/springbootstart/d15ef380f1f5e1a150863be2f18da389.png)
 
 判断条件看注释说：
 确定给定的侦听器是否支持给定的事件。默认实现检测SmartApplicationListener和GenericApplicationListener接口。
@@ -369,7 +369,7 @@ protected boolean supportsEvent(
 ```
 完成过滤后剩余7个监听器
 
-![](./img/springbootstart/2022-02-04-02-03-08.png)
+![](img/springbootstart/d9dd0ba9c78c4affe319e1f5fee3498c.png)
 
 * ConfigFileApplicationListener：@since 1.0.0。算是重要的一个监听器。
 * AnsiOutputApplicationListener：@since 1.2.0。让你的终端（可以是控制台、可以是日志文件）支持Ansi彩色输出，使其更具可读性。
@@ -397,7 +397,7 @@ private void configureIgnoreBeanInfo(ConfigurableEnvironment environment) {
 打印旗帜
 如果没有设置，就默认
 
-![](./img/springbootstart/2022-02-08-11-15-18.png)
+![](img/springbootstart/5988f3de47ee520bae531485864c1aa7.png)
 
 
 ### createApplicationContext()
@@ -439,7 +439,7 @@ protected ConfigurableApplicationContext createApplicationContext() {
 ```
 在实例化时做了reader和scaner的初始化
 
-![](./img/springbootstart/2022-02-10-17-15-22.png)
+![](img/springbootstart/5d5bea8ed9bf435d8e40f9fb7a455385.png)
 
 #### AnnotationConfigServletWebServerApplicationContext类
 从这里就开始涉及到Spring IOC的知识
@@ -447,7 +447,7 @@ protected ConfigurableApplicationContext createApplicationContext() {
 
 先来用类图看下类之间的关系
 
-![](./img/springbootstart/2022-02-08-11-25-54.png)
+![](img/springbootstart/3e2db7ded8edc0e2fb9bdc76dbc730f8.png)
 
 可以说是非常庞大，但不着急。
 从一个点入手逐渐了解
@@ -462,7 +462,7 @@ exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.cla
 ```
 FailureAnalyzers是SpringBootExceptionReporter接口的唯一实现类
 
-![](./img/springbootstart/2022-02-08-16-57-37.png)
+![](img/springbootstart/0a7ea92cf892cd46876b7d8d287b1075.png)
 
 ### prepareContext()
 ```java
@@ -529,7 +529,7 @@ protected void applyInitializers(ConfigurableApplicationContext context) {
 #### listeners.contextPrepared(context)
 触发这个事件<span style="color: red">ApplicationContextInitializedEvent</span>
 
-![](./img/springbootstart/2022-02-08-17-48-09.png)
+![](img/springbootstart/35548841edc45e61cefd939db63cf40a.png)
 
 他们进入后都没满足判断条件，无动作
 
@@ -544,7 +544,7 @@ protected void applyInitializers(ConfigurableApplicationContext context) {
 #### beanFactory.registerSingleton
 2get注册单例Bean，springApplicationArguments、springBootBanner。(就是说可以使用@Autowired注入)
 
-![](./img/springbootstart/2022-02-09-09-13-50.png)
+![](img/springbootstart/c572f6a8157f80f22fcca98decce70c7.png)
 
 最终操作了Context里的4个变量
 ```java
@@ -581,7 +581,7 @@ public Set<Object> getAllSources() {
 ```
 这里就一条返回
 
-![](./img/springbootstart/2022-02-09-09-29-50.png)
+![](img/springbootstart/05bfff55ae465afb582a0cf6c3bc2b3b.png)
 
 将 bean 加载到应用程序上下文中
 ```java
@@ -642,7 +642,7 @@ private BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext cont
 }
 ```
 
-![](./img/springbootstart/2022-02-09-09-41-38.png)
+![](img/springbootstart/18798745c79a64c11addd6fc509cdf3b.png)
 
 我们这里启动上下文是 AnnotationConfigServletWebServerApplicationContext 
 从类图上看是实现了BeanDefinitionRegistry 所以直接`(BeanDefinitionRegistry) context`
@@ -650,7 +650,7 @@ private BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext cont
 #### listeners.contextLoaded(context)
 调用监听器<span style="color :red " >ApplicationPreparedEvent</span>
 
-![](./img/springbootstart/2022-02-09-10-32-44.png)
+![](img/springbootstart/c4f2390cf392ccb19bb5b4775e67c967.png)
 
 * CloudFoundryVcapEnvironmentPostProcessor：
 * ConfigFileApplicationListener：向上下文注册一个new PropertySourceOrderingPostProcessor(context)。

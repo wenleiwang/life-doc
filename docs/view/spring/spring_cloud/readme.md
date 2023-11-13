@@ -14,7 +14,7 @@ Spring Cloud 本身并不是一个拿来即可用的框架，它是一套微服�
 * Spring Cloud Netflix 是 Spring Cloud 的第一代实现，主要由 Eureka、Ribbon、Feign、Hystrix 等组件组成。
 * Spring Cloud Alibaba 是 Spring Cloud 的第二代实现，主要由 Nacos、Sentinel、Seata 等组件组成。
 
-![](./img/readme/2022-07-14-23-52-54.png)
+![](img/readme/4b49c2b5336ce7be88924f66b783d782.png)
 
 Nacos读音为/nɑ:kəʊs/ ，是Dynamic Naming and Configuration Service 的首字母简称；
 
