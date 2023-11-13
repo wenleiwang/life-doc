@@ -6,11 +6,11 @@
 ### 插入
 输入set查看提示
 
-![输入set查看提](img/unit2/ebe01495939f8bf13ece1df287a24eb7.png)
+![](img/23b9afcb9a63603264ade0adc1076b13.png)
 
 输入命令：`set name wenlei`
 
-![set name wenlei](img/unit2/7b9d92d15d209c7a8b6595e18aded02c.png)
+![](img/75ed56e655b8da00451107e3203eb6ca.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -26,7 +26,7 @@ class SetString {
 ### 获取
 输入命令：`get name`
 
-![get name](img/unit2/44f99b0e89926bcd94b3e4a5e2b98f65.png)
+![](img/3c46d32501e2841378e925c762d057cc.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -40,7 +40,8 @@ class SetString {
 ```
 
 ### 删除
-![](img/unit2/11d650b588faea72f45b5b82fb49dbe0.png)
+
+![](img/cccabc4df71a47753c0915740ec0da78.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -53,7 +54,8 @@ class SetString {
 }
 ```
 ### 过期
-![过期](img/unit2/710fcafd336357890ddb8b182a63a3d7.png)
+
+![](img/331f9f5cce864bce4b42affdc62f67bd.png)
 ```java
 public boolean set(String key, Object value, long time) {
     try {
@@ -72,7 +74,8 @@ public boolean set(String key, Object value, long time) {
 
 ## 批量键值对
 ### 批量插入
-![](img/unit2/c7240a697369f931bbdf991dc4d16946.png)
+
+![](img/75727876cac67bcd3fac494149760835.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -118,7 +121,7 @@ db4是java插入，db1是CLI插入
 ![](img/unit2/471709094bb69d330632c8545634043c.png)
 
 ### 批量查询
-![CLI批量查询](img/unit2/250f52e85214aa942347dd51400acc71.png)
+![](img/7a030da92d43a8d2e8c1a3816bea7c41.png)
 ```java
 @SpringBootTest
 class SetString {
@@ -150,7 +153,7 @@ public List<Object> mGet(List<String> keys) {
     return list;
 }
 ```
-![Java批量查询](img/unit2/c784bf5e005ed1b8d78761068bd7a487.png)
+![](img/342bafdcf202a2f11b60119269c1e9b6.png)
 ::: danger 注意
 Java的RedisConfig中的序列化配置会影响插入和查询
 

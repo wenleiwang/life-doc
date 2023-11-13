@@ -9,7 +9,7 @@ next : '/redis/base/usestring.md'
 ### 0.1.使用Xshell链接上服务器
 我这里是双十一买了3年的最基础版本的服务器
 
-![登录后的Xshell](img/unit1/2b7cf16e67ffec0990791a53e9b320f0.png)
+![](img/5a8d36fd5b4e534cbf612a7ebdf20cf9.png)
 
 ### 0.2.准备服务器环境
 在服务器上安装好Docker
@@ -17,29 +17,29 @@ next : '/redis/base/usestring.md'
 ## 1.启动体验
 ### 1.1.查询redis列表
 `docker search redis`
-![](img/unit1/4dedb5cbdd421dc8b14a18a6a017ed57.png)
+![](img/85e3bdc6d7f74e5ba48793c07ee61643.png)
 
 ### 1. 2.拉取最新版本
 `docker pull redis:latest`
-![](img/unit1/65d3d98933b69797faad894ec505618d.png)
+![](img/c16ee3e64070de821ce758c81510b9a3.png)
 出现如上字样，标志拉去成功
 
 ### 1. 3.查看Redis镜像
 `docker images` 查看全部镜像命令
-![](img/unit1/f0e15501cf2f58ca8b5a614e941993eb.png)
+![](img/0978fd7700e3e0fd3fcfa949e9ae3939.png)
 
 ### 1. 4.开始运行Redis
 `docker run -itd --name docker-redis -p 6379:6379 redis`
 docker-redis为自己命名的docker容器名
 -p表示docker6379的端口映射给自己服务器6379端口，这个是必须的不然无法访问
 `docker ps` 查看docker运行中的容器，加上-a可以查看所有容器
-![](img/unit1/95126f9781257e0db89d6edbf9634912.png)
+![](img/633f379bef87a1df2d1c43ad1ac4acc6.png)
 
 ### 1. 5.使用通过 redis-cli 连接测试使用 redis 服务
 `docker exec -it docker-redis /bin/bash`
 `redis-cli`
 `ping`
-![](img/unit1/5fbfbd803a549461f56d4a0da5adb73f.png)
+![](img/afc01228c9d5685e6e8c6e2cca0438da.png)
 可以看到可以使用redis了
 使用`shutdown`退出docker-cli
 再使用exit退出
@@ -75,11 +75,11 @@ requirepass root2
 :::
 
 在用户目录下创建了一个software文件夹，把配置文件放在了个文件夹下
-![](img/unit1/6cbc67328ffaf5f18aff3f85d5fb8e48.png)
+![](img/0dce8b05c0b8654dd81402a1e86f3b23.png)
 
 ### 2.4启动Redis
 `docker run -v /home/wenlei/software/redis.conf:/usr/local/etc/redis/redis.conf --name myredis -d -p 6379:6379 redis redis-server /usr/local/etc/redis/redis.conf`
-![](img/unit1/abb4aed2b078b46f6ae9044f9f25c1d0.png)
+![](img/0dce8b05c0b8654dd81402a1e86f3b23.png)
 
 启动命令说明
 * -v
@@ -96,10 +96,10 @@ OK大功告成~
 提取码 ：51bl
 
 链接方式:
-![](img/unit1/e7a2ac47aed1e3ac249327a86b77ce71.png)
+![](img/1a7aa72e23b95a4769c5fd37115e2d48.png)
 
 进入后效果：
-![](img/unit1/bf53e62735fdf95f29f9edf08d72233e.png)
+![](img/2f3383391b4d98e98af96d0c12e4da7a.png)
 
 ## 3.在Java中使用Redis
 
@@ -839,13 +839,13 @@ public class RedisController {
 }
 ```
 ### 3.7调用接口试下
-![](img/unit1/fb6fbe05508f8ae6afd62137905b4f68.png)
+![](img/443e330b55fae1d869240faae388c99f.png)
 
 ### 3.8可视化工具看下
-![](img/unit1/e6151c217f35db3b8777a18bca217742.png)
+![](img/30d0fc6c1e6dfefbfc192debda67d3e2.png)
 
 ### 3.9调用get接口看看
-![](img/unit1/ae88fd6862d3210bda310f2a97972060.png)
+![](img/b7350618c20202ec57c5673befef46d1.png)
 
 ----
 本节完~

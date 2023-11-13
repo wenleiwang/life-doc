@@ -68,7 +68,7 @@ slaveof IP PORT #设置本服务为从服务器
 slaveof no one  #使服务器切换为独立主机
 ```
 
-![](img/masterSlaveSync/c6338dbc853a7e19e0e41bef09d5c34b.png)
+![](img/9270c03f432c68f10744b820ca7b98e0.png)
 
 我这里有一个服务器，开启了3redis的docker进程。相当于我部署了3个redis
 
@@ -120,7 +120,7 @@ MASTER aborted replication with an error: NOAUTH Authentication required.
 主节点中本身有一个k1已经复制，再添加一个
 控制台再上次成功的基础上再次添加日志
 
-![](img/masterSlaveSync/43ca72750cfb2daf4932362ef814a99c.png)
+![](img/61dbeae9ab949d9fbcdeac03aec9ef23.png)
 
 查看从节点keys发现果然同步过来
 ```
@@ -133,7 +133,7 @@ MASTER aborted replication with an error: NOAUTH Authentication required.
 ### 使用配置文件基本一致
 在搜索配置文件时，没有slaveof发现新的`replicaof <masterip> <masterport>`
 
-![](img/masterSlaveSync/69233b9f093301aabae7ff149d217d29.png)
+![](img/0a807143fd855b9315f46e75cecf2794.png)
 
 就使用这个配置
 ```
