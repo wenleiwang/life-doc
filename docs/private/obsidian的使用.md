@@ -15,10 +15,16 @@ Calendar 日历
 Clear Unused Images 清除没有链接的图片
 Unique attachments 重命名图片让格式统一
 consistent attachments and links 移动文章附件跟着一起移动
+mage Toolkit点击图片放大之类的功能，比较像一般的图片浏览器的工具栏。
+Find and replace in selection：如字面意思，只在选中的区域进行查找和替换。
+Remember Cursor Position：记住上次打开文件时光标的位置。当然了笔记是不推荐太长的，不过如果你比较习惯这样子可以试试
 
+Recent Files：增加一个最近打开文件的面板，可以自己设置显示几个。
 
+ExcaliDraw：把 [excalidraw](https://www.zhihu.com/search?q=excalidraw&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2794628275%7D) 装进 obsidian, 画示意图流程图等非常方便，把 .[excialdraw](https://www.zhihu.com/search?q=excialdraw&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2794628275%7D) 文件以双链形式引入即可转成png图片引入，这个强推，平时做[方案设计](https://www.zhihu.com/search?q=%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2794628275%7D)/原型设计可以直接在 obsidian 内完成，减少工作流的上下文切换。**强推**
+![](img/7934a86e6af82e445d6cdb358b4f40ae.png)
 
-
+memos
 
 Cubox作为Ob的最强搭档
 

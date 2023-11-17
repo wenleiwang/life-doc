@@ -26,7 +26,9 @@ https://www.python.org/
 
 ![](img/03227ac7b9e34b7392bb4c8cfa51b22f.png)
 
+![](img/db9ce13f2a0a7fb44c301436922a9f30.png)
 
+> 特别要注意勾上`Add python.exe to PATH`，然后点“Install Now”即可完成安装。这个截图是我后不补上去的
 
 选择好自己的文件夹，一路向下就好
 
@@ -36,6 +38,8 @@ https://www.python.org/
 
 ![](img/c4e9581a68b7d6e7ceb6315caf62740e.png)
 
+cmd敲python命令会跳转到应用商店，解决办法：在电脑搜索框输入应用执行别名，将应用安装程序取消就可以了，取消之后就可以恢复正常了。
+![](img/fb88870847ed4422dd22fae148d1c3c7.png)
 ### 初体验
 
 打开这个
