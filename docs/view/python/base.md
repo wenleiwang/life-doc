@@ -90,6 +90,42 @@ print(keyword.kwlist)
 
 ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
+|保留字|作用|
+|--|--|
+|and||
+|as||
+|assert||
+|break||
+|class||
+|continue||
+|def||
+|elif||
+|else||
+|except||
+|finally||
+|for||
+|from||
+|if||
+|import||
+|in||
+|is||
+|lambda||
+|not||
+|or||
+|pass||
+|raise||
+|return||
+|try||
+|while||
+|with||
+|yield||
+|del||
+|global||
+|nonlocal||
+|True||
+|Flase||
+|None||
+
 ### 标识符
 
 标识符：变量、函数、类、模块和其他对象的名字
@@ -102,7 +138,47 @@ print(keyword.kwlist)
 * 严格区分大小写
 
 
+## 数据类型
+### 整数类型
+整数，有正整数和负整数
 
+### 浮点类型
+小数
+### 字符串类型
+字符串序号体系
+![](img/5c0c960790f8133b0474d35efc17d749.png)
+* 索引：返回字符串中单个字符`tempStr[-1]`
+* 切片：返回字符串中一段字符子串 `TempStr[0,-1]`
+
+### 列表类型
+用`[]`表示，采用逗号分隔元素
+
+可以使用in片段一个元素是否在列表中
+
+## 输入输出
+### 输入
+格式为：
+<变量> = input(<提示信息字符串>)
+```python
+TempStr = input("请输入温度")
+```
+### 输出
+
+#### 语法
+print(<拟输出字符串或字符串变量>)
+
+```python
+print('hello python')
+```
+
+#### 格式化输出
+{}标识槽，后续变量填充到槽中
+```python
+print("转换后的温度是{:.2f}C".format(1.2323212))
+```
+
+#### 不换行
+> print()中增加end=""参数表示输出后不增加换行，多个print()可以连续输出。
 ## 流程控制工具
 
 ### if语句
@@ -691,6 +767,18 @@ True
 
 换句话说，仅限位置形参的名称可以在 `**kwds` 中使用，而不产生歧义。
 
+### 常用的函数
+#### 评估函数eval()
+去掉参数最外侧引号并执行余下的语句的函数。
+
+> 能将任何字符串形式的信息变成python语句
+
+```python
+eval("1") # 数字1
+eval("1+2") # 数字3
+eval('"1+2"') # 字符串'1+2'
+```
+
 ## 解包实参列表
 
 函数调用要求独立的位置参数，但实参在列表或元组里时，要执行相反的操作。例如，内置的 [`range()`](https://docs.python.org/zh-cn/3.10/library/stdtypes.html#range) 函数要求独立的 *start* 和 *stop* 实参。如果这些参数不是独立的，则要在调用函数时，用 `*` 操作符把实参从列表或元组解包出来：
@@ -852,7 +940,16 @@ $ python fibo.py 50
 导入模块时，不运行这些代码：
 
 ```
->>>                             import fibo
+import fibo
 ```
 
 这种操作常用于为模块提供便捷用户接口，或用于测试（把模块当作执行测试套件的脚本运行）。
+### import基础语法[](http://localhost:8890/notebooks/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0.ipynb#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95)
+
+import <库名>
+
+> 不会出现函数重名问题
+
+### 2.1.2  使用不用带库名[](http://localhost:8890/notebooks/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0.ipynb#%E4%BD%BF%E7%94%A8%E4%B8%8D%E7%94%A8%E5%B8%A6%E5%BA%93%E5%90%8D)
+
+使用 from和import保留字完成 from <库名> import <函数名> form <库名> import *

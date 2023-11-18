@@ -26,7 +26,13 @@ ExcaliDraw：把 [excalidraw](https://www.zhihu.com/search?q=excalidraw&search_
 
 memos
 
+Editing Toolbar这个插件提供了一个编辑工具栏，让用户可以快速执行各种编辑操作。在工具栏上可以找到常用的格式化、剪切、复制、粘贴等操作按钮。
+
+
+
+
 Cubox作为Ob的最强搭档
+
 
 
 ## 大纲线段

@@ -1,4 +1,4 @@
-# python
+# python安装及IDE
 [[toc]]
 
 ## 简介

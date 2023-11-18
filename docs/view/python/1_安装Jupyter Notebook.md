@@ -140,6 +140,11 @@ Files页面是用于管理和创建文件相关的类目。
 
 菜单栏涵盖了笔记本的所有功能，即便是工具栏的功能，也都可以在菜单栏的类目里找到。然而，并不是所有功能都是常用的，比如Widgets，Navigate。Kernel类目的使用，主要是对内核的操作，比如中断、重启、连接、关闭、切换内核等，由于我们在创建笔记本时已经选择了内核，因此切换内核的操作便于我们在使用笔记本时切换到我们想要的内核环境中去。由于其他的功能相对比较常规，根据图中的注解来尝试使用笔记本的功能已经非常便捷，因此不再做详细讲解。
 
+### 快捷键
+
+找到help找到keyboard shortcuts
+![](img/cbcde363168bba7fd014c6bf3fe1b19c.png)
+或者直接在命令模式按 H 字母
 ### 笔记本重命名的两种方式
 
 1. 笔记本内部重命名
@@ -187,6 +192,28 @@ conda install -c conda-forge jupyter_contrib_nbextensions
 
 - 执行上述命令后，启动Jupyter Notebook，你会发现导航栏多了“Nbextensions”的类目，点击“Nbextensions”，勾选“Table  of Contents”
 ![](img/fa767fe45e70eb3c388b81b06c223775.png)
+
+#### 遇到的问题
+
+有一个新的conda版本存在
+![](img/7840917de7491393a2585ca3a7ced891.png)
+按照意见执行下命令
+```python 
+conda update -n base -c defaults conda
+```
+
+![](img/fafa224fb93fde5113e7bb069d94e824.png)
+
+#### 显示不全
+
+首先依次敲三个命令
+conda remove jupyter_nbextensions_configurator
+conda install -c conda-forge jupyter_nbextensions_configurator
+conda install -c conda-forge jupyter_contrib_nbextensions
+重新运行jupyter，如果发现还是没有变化，就再依次敲下面两个命令
+jupyter contrib nbextension install --user
+jupyter nbextensions_configurator enable --user
+
 
 ## **增加内核——“ipykernel” ☆**
 
