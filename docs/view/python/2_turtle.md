@@ -42,3 +42,13 @@ setheading简称seth
 
 向左或向右
 ![](img/img_20231118_3.png)
+
+### 绘制一个汉字
+
+.write('年', font=("Arial", 18, "normal")) # 字体
+.pencolor("blue") # 颜色
+.fd(40) # 大小
+## 绘制七段数码管
+
+![](img/img_20231119_4.png)
+
