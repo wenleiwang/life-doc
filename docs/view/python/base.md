@@ -46,8 +46,8 @@ print('hello','world','Python')
 \t 回车
 \b 退一个字符
 
-\\ 一个\
-\\\\ 两个\\
+\ 一个\
+\\ 两个\
 \' 一个'
 ```
 
@@ -1036,6 +1036,54 @@ eval('"1+2"') # 字符串'1+2'
 
 Python 解析器不会删除 Python 中多行字符串字面值的缩进，因此，文档处理工具应在必要时删除缩进。这项操作遵循以下约定：文档字符串第一行 *之后* 的第一个非空行决定了整个文档字符串的缩进量（第一行通常与字符串开头的引号相邻，其缩进在字符串中并不明显，因此，不能用第一行的缩进），然后，删除字符串中所有行开头处与此缩进“等价”的空白符。不能有比此缩进更少的行，但如果出现了缩进更少的行，应删除这些行的所有前导空白符。转化制表符后（通常为 8 个空格），应测试空白符的等效性。
 
+### 文件的使用
+文件是数据的抽象和集合
+* 由单一特定编码组成的文件，如UTF-8
+* 由于存在编码，也被看成是存储着长字符串
+
+#### 文件的打开关闭
+文件的操作步骤：打开-操作-关闭
+
+```python
+# 打开 第一个参数文件的路径，第二个参数打开模式。赋值给一个变量称为句柄
+# 一般用 / 代替 路径中的 \ 
+a = open('a.txt') # 只能读不能写
+a = open('a.txt', 'rt') # 只能读不能写，与上面一个意思
+a = open('a.txt', 'w') # 覆盖写
+a = open('a.txt', 'a+') # 追加写且程序能够读取文件
+a = open('a.txt', 'x') # 创建写
+a = open('a.txt', 'b') # 二进制读
+a = open('a.txt', 'wb') # 二进制写覆盖模式
+
+a.read(size)
+a.readline(size)
+a.readlines(hint)
+
+a.write(s)
+a.writelines(lines)
+a.seek(offset)
+
+# 文件关闭
+a.close()
+```
+
+* ‘r’ ：只读模式，默认值。如果文件不存在，返回FileNotFoundError
+*  ‘w’：覆盖写模式，文件不存在则创建，存在则完全覆盖
+* ‘x’：创建写模式，文件不存在则创建，文件存在，则返回FileExistsError
+* ‘a’：追增写模式，文件不存在则创建，存在则在文件后面追加
+* ‘b’：二进制文件模式
+* ‘t’：文本文件模式，默认值
+* ‘+’：与r/w/x/a一同使用，在原功能的基础上增加同时读写功能
+
+#### 文件内容的读取
+* .read(size=-1)：读入全部内容，如果给出参数，读取前size长度
+* .readline(size=-1)：读入一行，如果给出参数，读入该行前size长度
+* readlines(hint=-1)：读入文件所有行，以每行为元素形成列表，如果给出参数，读入前hint行
+#### 数据的文件写
+ * .write(s)：向文件写入一个字符串或字符流
+ * .writelines(lines)：将一个元素权威字符串的列表写入文件
+ * .seek(offset)：改变当前文件操作指针的位置，offset含义0-文件开头；1-当前位置；2-文件结尾
+
 ## 函数注解
 
 [函数注解](https://docs.python.org/zh-cn/3.10/reference/compound_stmts.html#function) 是可选的用户自定义函数类型的元数据完整信息（详见 [**PEP 3107**](https://www.python.org/dev/peps/pep-3107) 和 [**PEP 484**](https://www.python.org/dev/peps/pep-0484) ）。
@@ -1138,13 +1186,13 @@ import fibo
 ```
 
 这种操作常用于为模块提供便捷用户接口，或用于测试（把模块当作执行测试套件的脚本运行）。
-### import基础语法[](http://localhost:8890/notebooks/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0.ipynb#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95)
+### import基础语法
 
 import <库名>
 
 > 不会出现函数重名问题
 
-### 2.1.2  使用不用带库名[](http://localhost:8890/notebooks/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0.ipynb#%E4%BD%BF%E7%94%A8%E4%B8%8D%E7%94%A8%E5%B8%A6%E5%BA%93%E5%90%8D)
+### 使用不用带库名
 
 使用 from和import保留字完成 from <库名> import <函数名> form <库名> import *
 
@@ -1166,3 +1214,31 @@ pyinstaller -F <文件名.py>
 * -D,--onedir 默认值，生成在dist文件夹
 * -F,--onefile 在dist文件夹中只生成独立的打包文件
 * -i <图标文件名称.ico> 指定打包程序使用图标(ico)文件
+
+
+## 更大的Python世界
+
+python123.io
+
+python社区 https://pypi.org/  可以搜索任何主题的第三方库
+
+### pip安装方法
+99% 以上的安装方法，需要链接网络
+```python
+pip install -U
+pip uninstall
+pip download
+pip show 
+pip search
+pip list
+```
+
+### 集成安装方法
+Anaconda开发集成环境，包含800+依赖环境
+
+### 第三方库文件安装方法
+pip下载后需要编译在安装，有的第三方作者没有上传编译后的包
+
+> http://www.lfd.uci.edu/~gohlke/ypthonlibs/
+
+这个网页提供了一匹没有编译的包的安装方法
