@@ -4,7 +4,7 @@
 ## Spring事务管理和数据库事务的关系
 通过对Spring事务操作来达到Java代码不同逻辑的使用数据库事务。
 
-Java变成语言连接和使用数据库是通过JDBC(一个标准Java API)
+Java编程语言连接和使用数据库是通过JDBC(一个标准Java API)
 
 ## 数据库事务
 一组操作，要么都执行，要么都不执行。
@@ -12,18 +12,18 @@ Java变成语言连接和使用数据库是通过JDBC(一个标准Java API)
 [详情查看](../mysql/transaction.md)
 
 ## 事务的特性(ACID)
-### 原子性
+### 原子性(Atomicity)
 一个事务中的所有操作，或者全部完成、或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚到事务开始的状态。
 
 事务不可分割、不可约减
 
-### 一致性
+### 一致性(Consistency)
 事务开始之前和结束以后，数据库完整性没有配破坏
 
-### 隔离性
+### 隔离性(Isolation)
 数据库允许并发执行事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据不一致。
 
-### 持久性
+### 持久性(Durability)
 事务处理结束后，对数据的修改就是永久的
 
 ## Spring支持两种方式的事务管理
@@ -129,7 +129,7 @@ public interface PlatformTransactionManager {
 
 ### TransactionDefinition
 事务管理器接口 PlatformTransactionManager 通过 getTransaction(TransactionDefinition definition) 方法来得到一个事务，
-这个方法里面的参数是 TransactionDefinition 类 ，这个类就定义了一些基本的事务属性（事务属性可以理解成事务的一些基本配置，描述了事务策略如何应用到方法上。）。
+这个方法里面的参数是 TransactionDefinition 类 ，这个类定义了一些基本的事务属性（事务属性可以理解成事务的一些基本配置，描述了事务策略如何应用到方法上）。
 
 接口中定义了 5 个方法以及一些表示事务属性的常量比如隔离级别、传播行为等等
 
@@ -158,7 +158,7 @@ public interface TransactionStatus{
 
 
 ## TransactionDefinition中属性
-际业务开发中，大家一般都是使用 @Transactional 注解来开启事务，很多人并不清楚这个参数里面的参数是什么意思，有什么用
+实际业务开发中，大家一般都是使用 @Transactional 注解来开启事务，          并不清楚这个参数里面的参数是什么意思，有什么用。我这里梳理记录一下
 ### 事务传播行为
 事务传播行为是为了解决业务层方法之间互相调用的事务问题。
 
