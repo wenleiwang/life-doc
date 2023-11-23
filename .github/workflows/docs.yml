@@ -10,8 +10,6 @@ on:
 jobs:
   docs:
     runs-on: ubuntu-latest
-    paths-ignore:
-      - '**/.temp/**'
 
     steps:
       - uses: actions/checkout@v4
