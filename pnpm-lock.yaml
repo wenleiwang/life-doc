@@ -4,17 +4,21 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  markdown-it-katex:
-    specifier: ^2.0.3
-    version: registry.npmmirror.com/markdown-it-katex@2.0.3
-
 devDependencies:
+  '@vuepress/client':
+    specifier: 2.0.0-rc.0
+    version: registry.npmmirror.com/@vuepress/client@2.0.0-rc.0
   '@vuepress/plugin-toc':
     specifier: ^2.0.0-rc.0
     version: registry.npmmirror.com/@vuepress/plugin-toc@2.0.0-rc.0
+  markdown-it-katex:
+    specifier: ^2.0.3
+    version: registry.npmmirror.com/markdown-it-katex@2.0.3
+  vue:
+    specifier: ^3.3.6
+    version: registry.npmmirror.com/vue@3.3.6
   vuepress:
-    specifier: ^2.0.0-rc.0
+    specifier: 2.0.0-rc.0
     version: registry.npmmirror.com/vuepress@2.0.0-rc.0(@vuepress/client@2.0.0-rc.0)(vue@3.3.6)
   vuepress-plugin-md-enhance:
     specifier: ^2.0.0-rc.0
@@ -2653,7 +2657,7 @@ packages:
     hasBin: true
     dependencies:
       match-at: registry.npmmirror.com/match-at@0.1.1
-    dev: false
+    dev: true
 
   registry.npmmirror.com/lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==, tarball: https://registry.npmmirror.com/lilconfig/-/lilconfig-2.1.0.tgz}
@@ -2713,7 +2717,7 @@ packages:
     version: 2.0.3
     dependencies:
       katex: registry.npmmirror.com/katex@0.6.0
-    dev: false
+    dev: true
 
   registry.npmmirror.com/markdown-it@13.0.2:
     resolution: {integrity: sha512-FtwnEuuK+2yVU7goGn/MJ0WBZMM9ZPgU9spqlFs7/A/pDIUNSOQZhUgOqYCficIuR2QaFnrt8LHqBWsbTAoI5w==, tarball: https://registry.npmmirror.com/markdown-it/-/markdown-it-13.0.2.tgz}
@@ -2732,7 +2736,7 @@ packages:
     resolution: {integrity: sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==, tarball: https://registry.npmmirror.com/match-at/-/match-at-0.1.1.tgz}
     name: match-at
     version: 0.1.1
-    dev: false
+    dev: true
 
   registry.npmmirror.com/medium-zoom@1.1.0:
     resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==, tarball: https://registry.npmmirror.com/medium-zoom/-/medium-zoom-1.1.0.tgz}
