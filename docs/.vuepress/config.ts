@@ -47,8 +47,8 @@ export default defineUserConfig(
                     colorMode: 'auto',
                 },
             },
-            displayAllHeaders: true, // 显示所有页面的标题链接
-            activeHeaderLinks: true,// 显示活动的标题链接
+            // displayAllHeaders: true, // 显示所有页面的标题链接
+            // activeHeaderLinks: true,// 显示活动的标题链接
             sidebarDepth: 0,
             repo: 'https://github.com/wenleiwang/life-doc',
         }),
@@ -56,8 +56,6 @@ export default defineUserConfig(
             mdEnhancePlugin({
                 // 使用 KaTeX 启用 TeX 支持
                 katex: true,
-                // 使用 mathjax 启用 TeX 支持
-                mathjax: true,
             }),
             tocPlugin({
                 // 配置项
