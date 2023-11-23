@@ -11,9 +11,9 @@ devDependencies:
   '@vuepress/plugin-toc':
     specifier: ^2.0.0-rc.0
     version: 2.0.0-rc.0
-  markdown-it-katex:
-    specifier: ^2.0.3
-    version: 2.0.3
+  katex:
+    specifier: 0.16.9
+    version: 0.16.9
   vue:
     specifier: ^3.3.6
     version: 3.3.8
@@ -21,8 +21,8 @@ devDependencies:
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0(@vuepress/client@2.0.0-rc.0)(vue@3.3.8)
   vuepress-plugin-md-enhance:
-    specifier: ^2.0.0-rc.0
-    version: 2.0.0-rc.0(@types/js-yaml@4.0.9)(vuepress@2.0.0-rc.0)
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0(@types/js-yaml@4.0.9)(katex@0.16.9)(vuepress@2.0.0-rc.0)
 
 packages:
 
@@ -643,7 +643,7 @@ packages:
       upath: 2.0.1
     dev: true
 
-  /@mdit/plugin-katex@0.6.5(markdown-it@13.0.2):
+  /@mdit/plugin-katex@0.6.5(katex@0.16.9)(markdown-it@13.0.2):
     resolution: {integrity: sha512-viAovlZhZTske9GqDEyMbibCebdykASJt0Yx182w6GjM4XNuuvsfDqWFe3yANQN7CMTNfYxfaJ/ZSO2UnEc5Lg==}
     engines: {node: '>= 18'}
     peerDependencies:
@@ -658,6 +658,7 @@ packages:
       '@mdit/plugin-tex': 0.6.5(markdown-it@13.0.2)
       '@types/katex': 0.16.7
       '@types/markdown-it': 13.0.7
+      katex: 0.16.9
       markdown-it: 13.0.2
     dev: true
 
@@ -1579,6 +1580,11 @@ packages:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
     dev: true
 
+  /commander@8.3.0:
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
+    engines: {node: '>= 12'}
+    dev: true
+
   /connect-history-api-fallback@2.0.0:
     resolution: {integrity: sha512-U73+6lQFmfiNPrYbXqr6kZ1i1wiRqXnp2nhMsINseWXO8lDau0LGEffJ8kQi4EjLZympVgRdvqjAgiZ1tgzDDA==}
     engines: {node: '>=0.8'}
@@ -1983,11 +1989,11 @@ packages:
       graceful-fs: 4.2.11
     dev: true
 
-  /katex@0.6.0:
-    resolution: {integrity: sha512-rS4mY3SvHYg5LtQV6RBcK0if7ur6plyEukAOV+jGGPqFImuzu8fHL6M752iBmRGoUyF0bhZbAPoezehn7xYksA==}
+  /katex@0.16.9:
+    resolution: {integrity: sha512-fsSYjWS0EEOwvy81j3vRA8TEAhQhKiqO+FQaKWp0m39qwOzHVBgAUBIXWj1pB+O2W3fIpNa6Y9KSKCVbfPhyAQ==}
     hasBin: true
     dependencies:
-      match-at: 0.1.1
+      commander: 8.3.0
     dev: true
 
   /kind-of@6.0.3:
@@ -2052,12 +2058,6 @@ packages:
     resolution: {integrity: sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ==}
     dev: true
 
-  /markdown-it-katex@2.0.3:
-    resolution: {integrity: sha512-nUkkMtRWeg7OpdflamflE/Ho/pWl64Lk9wNBKOmaj33XkQdumhXAIYhI0WO03GeiycPCsxbmX536V5NEXpC3Ng==}
-    dependencies:
-      katex: 0.6.0
-    dev: true
-
   /markdown-it@13.0.2:
     resolution: {integrity: sha512-FtwnEuuK+2yVU7goGn/MJ0WBZMM9ZPgU9spqlFs7/A/pDIUNSOQZhUgOqYCficIuR2QaFnrt8LHqBWsbTAoI5w==}
     hasBin: true
@@ -2067,10 +2067,6 @@ packages:
       linkify-it: 4.0.1
       mdurl: 1.0.1
       uc.micro: 1.0.6
-    dev: true
-
-  /match-at@0.1.1:
-    resolution: {integrity: sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==}
     dev: true
 
   /mdurl@1.0.1:
@@ -2553,7 +2549,7 @@ packages:
       '@vue/shared': 3.3.8
     dev: true
 
-  /vuepress-plugin-md-enhance@2.0.0-rc.0(@types/js-yaml@4.0.9)(vuepress@2.0.0-rc.0):
+  /vuepress-plugin-md-enhance@2.0.0-rc.0(@types/js-yaml@4.0.9)(katex@0.16.9)(vuepress@2.0.0-rc.0):
     resolution: {integrity: sha512-sDP7gEp62phCkPuTtJaLwzKI53b94zqLQ2zajlPkDGTswPyxjOOvCdt2M3bcYM2gnSAV6szZhWuh7VCs1i5D7g==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -2610,7 +2606,7 @@ packages:
       '@mdit/plugin-img-mark': 0.6.5(markdown-it@13.0.2)
       '@mdit/plugin-img-size': 0.6.5(markdown-it@13.0.2)
       '@mdit/plugin-include': 0.6.5(markdown-it@13.0.2)
-      '@mdit/plugin-katex': 0.6.5(markdown-it@13.0.2)
+      '@mdit/plugin-katex': 0.6.5(katex@0.16.9)(markdown-it@13.0.2)
       '@mdit/plugin-mark': 0.6.5(markdown-it@13.0.2)
       '@mdit/plugin-mathjax': 0.6.5(markdown-it@13.0.2)
       '@mdit/plugin-stylize': 0.6.5(markdown-it@13.0.2)
@@ -2628,6 +2624,7 @@ packages:
       '@vueuse/core': 10.6.1(vue@3.3.8)
       balloon-css: 1.2.0
       js-yaml: 4.1.0
+      katex: 0.16.9
       markdown-it: 13.0.2
       vue: 3.3.8
       vue-router: 4.2.5(vue@3.3.8)
