@@ -769,7 +769,7 @@ public Object instantiate(@Nullable Constructor<?> ctor, Object... args) {
 ### 2.3 填充属性
 下面原码之前先来了解下Spring之InstantiationAwareBeanPostProcessor接口，不然看的会有点懵。
 
-[Spring之InstantiationAwareBeanPostProcessor接口，介绍对象创建过程中用到的几个回调方法](replenish/InstantiationAwareBeanPostProcessor.md)
+[Spring之InstantiationAwareBeanPostProcessor接口，介绍对象创建过程中用到的几个回调方法](补充/InstantiationAwareBeanPostProcessor.md)
 
 ```java {16}
 protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable BeanWrapper bw) {

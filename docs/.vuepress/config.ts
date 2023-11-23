@@ -8,7 +8,7 @@ const customElement = ['maction','math','menclose','merror','mfenced','mfrac','m
 
 export default {
   base: '/life-doc/',
-  lang: 'zh-CH',
+  lang: 'zh-CN',
   title: '文文的技术笔记',
   description: '只为了记录',
   head:[
@@ -19,6 +19,7 @@ export default {
   theme: defaultTheme({
     logoDark : null,
     logo: '/logo.png',
+    lang: 'zh-CN',
     locales: {
       '/': {
         // navbar
@@ -43,8 +44,8 @@ export default {
         // 作者
         contributors: true,
         contributorsText: '作者',
-        toggleDarkMode: '切换夜间模式'
-
+        toggleDarkMode: '切换夜间模式',
+        colorMode: 'auto',
       },
     },
     displayAllHeaders: true, // 显示所有页面的标题链接

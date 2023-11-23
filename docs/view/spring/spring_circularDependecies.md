@@ -30,7 +30,7 @@ Unlike the typical case (with no circular dependencies), a circular dependency b
 
 完全熟悉这篇文章可能需要
 
-[1.关于InstantiationAwareBeanPostProcessor介绍看这篇文章，介绍对象创建过程中用到的几个回调方法](replenish/InstantiationAwareBeanPostProcessor.md)
+[1.关于InstantiationAwareBeanPostProcessor介绍看这篇文章，介绍对象创建过程中用到的几个回调方法](补充/InstantiationAwareBeanPostProcessor.md)
 
 [2.如果需要详细知道流程，看这篇文章Spring DI 流程](springdi.md)
 
