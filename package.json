@@ -17,5 +17,9 @@
     "@vuepress/plugin-toc": "^2.0.0-rc.0",
     "vuepress-plugin-md-enhance": "^2.0.0-rc.0",
     "markdown-it-katex": "^2.0.3"
+  },
+  "packageManager": "pnpm@8.10.5",
+  "engines": {
+    "node": ">=18.16.0"
   }
 }
