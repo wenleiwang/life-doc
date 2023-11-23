@@ -4,15 +4,33 @@
     padding-right: 320px;
   }
   .table-of-contents {
-    top: 70px;
+    font-size: 16px;
+    width: var(--sidebar-width);
     position: fixed;
-    right: 20px;
-    max-width: 320px;
-    overflow: hidden;
-    padding: 10px;
-  }
-  .table-of-contents:hover{
-    overflow: auto;
+    z-index: 10;
+    margin: 0;
+    top: var(--navbar-height);
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    border-right: 1px solid var(--c-border);
+    overflow-y: auto;
+    scrollbar-color: var(--c-brand) var(--c-border);
+    background-color: var(--c-bg-sidebar);
+    transition: transform var(--t-transform), background-color var(--t-color), border-color var(--t-color);
+    // 这个是用来设置超出的滚动条不显示的
+    &::-webkit-scrollbar{
+      width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: var(--c-brand);
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 8px;
+      background-color: var(--c-border);
+      border: 1px solid var(--c-border);
+    }
   }
 }
 
