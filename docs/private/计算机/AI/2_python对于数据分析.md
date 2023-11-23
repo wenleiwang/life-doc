@@ -54,6 +54,43 @@
 
 > [Mayavi官网地址：http://docs.enthought.com/mayavi/mayavi/](http://docs.enthought.com/mayavi/mayavi/)
 
+## Python库文本处理
 
+### 处理PDF文件的工具集PyPDF2
+* 提供了一批处理PDF文件的计算功能
+* 支持获取信息、分割/整合文件、加密解密等
+* 完全Python实现，不需要额外依赖，功能稳定
+> [PyPDF2官网地址：http://mstamy2.github.io/PyPDF2](http://mstamy2.github.io/PyPDF2)
 
+### 自然语言文本处理第三方库NLTK
+* 提供了一批简单易用的自然语言文本处理功能
+* 支持语言分类、标记、语法句法、语义分析等
+* 最优秀的Python自然语言处理库
+形成一个树形结构，然后分析语句逻辑
 
+> [NLTK官网地址：http://nltk.org/](http://nltk.org/)
+
+### Microsoft Word文件的第三方库
+* 其中最优秀的是Python-docx
+* 提供创建和更新.doc、.docx等文件的计算功能
+* 增加并配置段落、图片、表格、文字等，功能全面
+
+## Python库机器学习
+### 机器学习方法工具集Scikit-learn
+* 提供一批统一化的机器学习方法功能接口
+* 提供聚类、分类、回归、强化学习等计算功能
+* 机器学习最基本且最优秀的Python第三方库
+
+> [Scikit-learn官方网站：http://scikit-learn.org](http://scikit-learn.org)
+
+### AlphaGo背后的机器学习计算框架TensorFlow
+* 谷歌公司推动的开源机器学习框架
+* 将数据流图作为基础，图节点代表运算，边代表张量，进而形成机器学习的整体模式
+* 应用机器学习方法的一种方式，支撑谷歌人工智能应用
+
+> [TensorFlow官方网站：https://www.tensorflow.org/](https://www.tensorflow.org/)
+
+### 深度学习计算框架MXNet
+* 提供可扩展的神经网络及深度学习计算功能
+* 可用于自动驾驶、机器翻译、语音识别等众多领域
+* 是Python最重要的深度学习计算框架

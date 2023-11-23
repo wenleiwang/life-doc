@@ -1,5 +1,7 @@
 # 安装Jupyter Notebook
 
+[[toc]]
+
 [文章摘自](https://zhuanlan.zhihu.com/p/33105153)加自己实际操作
 
 ## 前言

@@ -1,3 +1,5 @@
+# random模块的使用
+
 ## random模块的使用
 
 是使用随机数的Python标准库
