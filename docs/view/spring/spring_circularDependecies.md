@@ -127,7 +127,7 @@ protected  T doGetBean(final String name, @Nullable final Class requiredType,
 
 
 
-> 第二个关注方法的第二个参数传的就是一个ObjectFactory类型的对象，这里是使用Java8的lamada表达式书写的回调方法。[使用查看：Java回调函数 + 使用案例](../java//base/callback.md)
+> 第二个关注方法的第二个参数传的就是一个ObjectFactory类型的对象，这里是使用Java8的lamada表达式书写的回调方法。[使用查看：Java回调函数 + 使用案例](../java/1_base/callback.md)
 
 ### 第一个关注方法
 
