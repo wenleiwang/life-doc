@@ -90,7 +90,7 @@ public class Student {
 在jackson中是作为Model生效的，Model需要注册。
 
 1. 先引入jsr310的包
-[了解看下格林威治时间、GMT、UTC、CST、ISO、JSR310](../../temp/JSR-310时间.md)
+[了解看下格林威治时间、GMT、UTC、CST、ISO、JSR310](../../temp/宇宙探索/JSR-310时间.md)
 
 ```xml
 <dependency>
