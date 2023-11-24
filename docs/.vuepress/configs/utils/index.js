@@ -74,7 +74,7 @@ const filehelper = {
                 if (SuffixIncludes.includes(split[split.length - 1])) {
                     //  过滤readme.md文件
                     if (file === 'readme.md' || file === 'README.md') {
-                        file = ''
+                        file = '0_readme'
                     } else {
                         //  截取MD文档后缀名
                         file = file.replace('.md', '')
@@ -137,33 +137,6 @@ const filehelper = {
 // 侧边栏创建工具
 const sideBarTool = {
     /**
-     * 创建一个侧边栏,支持多层级递归
-     * @param {String} RootPath 目录路径
-     * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
-     * @param {Array} SuffixIncludes 需要处理的文件后缀
-     * @returns {Object} 返回一个对象,如下所示
-     *
-     * {
-     * '/view/GFW/': [ 'index' ],
-     * '/view/git/': [ 'index' ],
-     * '/view/html/': [ 'day1', 'day2', 'day3', 'day4', 'day5' ],
-     * }
-     *
-     */
-    genSideBar: (RootPath, unDirIncludes, SuffixIncludes) => {
-        let sidebars = {}
-        let allDirs = filehelper.getAllDirs(RootPath, unDirIncludes)
-        allDirs.forEach(item => {
-            let dirFiles = filehelper.getAllFiles(item, unDirIncludes, SuffixIncludes)
-            let dirname = item.replace(RootPath, "")
-            dirname = dirname.replace(/\\/g, '/')
-            if (dirFiles.length > 0) {
-                sidebars[dirname] = dirFiles
-            }
-        })
-        return sidebars
-    },
-    /**
      * 创建一个侧边栏(带分组),支持多层级递归
      * @param {String} RootPath 目录路径
      * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
@@ -207,7 +180,7 @@ const sideBarTool = {
 
             if (children) {
                 children.forEach(item => {
-                    if (item) {
+                    if (item !== '0_readme') {
                         onePages.push('/view' + dirname + item + '.md')
                     } else {
                         onePages.push('/view' + dirname)
@@ -225,7 +198,7 @@ const sideBarTool = {
                     if (twoFiles) {
                         let twoPages = []
                         twoFiles.forEach(twoName => {
-                            if (twoName) {
+                            if (twoName !== '0_readme') {
                                 twoPages.push('/view' + dirTwo + twoName + '.md')
                             } else {
                                 twoPages.push('/view' + dirTwo)
@@ -233,8 +206,11 @@ const sideBarTool = {
                         })
                         dirTwo = dirTwo.replace(titleTemp, "")
                         title = dirTwo.split("/")[dirTwo.split("/").length - 2]
+                        let isNumberRegex = /^-?\d+(\.\d+)?$/
                         let Obj = {
-                            text: title.indexOf("_") !== -1 ? title.substring(title.indexOf("_") + 1) : title,
+                            // 有_且是数字
+                            text: title.indexOf("_") !== -1 && isNumberRegex.test(title.substring(0, title.indexOf("_"))) ?
+                                title.substring(title.indexOf("_") + 1) : title,
                             collapsible: true,
                             sidebarDepth: 2,
                             children: twoPages

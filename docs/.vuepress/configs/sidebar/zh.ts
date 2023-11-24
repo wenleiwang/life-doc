@@ -13,7 +13,7 @@ let SuffixIncludes = ['md', 'html']
 // 侧边栏
 const rootPath = dirname(resolve(__dirname, '../../')) + '/view'
 const reRootPath = rootPath.replace(/\\/g, '/')
-console.log('rootPath',reRootPath)
+// console.log('rootPath',reRootPath)
 let sidebar = sideBarTool.genSideBarGroup(reRootPath, unDirIncludes, SuffixIncludes, {})
 
 
