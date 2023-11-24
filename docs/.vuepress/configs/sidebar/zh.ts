@@ -11,15 +11,48 @@ let unDirIncludes = ['node_modules', 'assets', 'public', '网络工程','dest','
 let SuffixIncludes = ['md', 'html']
 //使用方法生生成侧边栏
 // 侧边栏
-const rootPath = dirname(resolve(__dirname, '../../')) + '/view'
-const reRootPath = rootPath.replace(/\\/g, '/')
-// console.log('rootPath',reRootPath)
-let sidebar = sideBarTool.genSideBarGroup(reRootPath, unDirIncludes, SuffixIncludes, {})
+const base = dirname(resolve(__dirname, '../../'))
+const rootBase = base + '/'
+const rootPath = base + '/view/'
+let sidebarList = []
+sideBarTool.genSideBarGroup(rootBase, rootPath, unDirIncludes, SuffixIncludes, sidebarList)
 
+let sidebarAll = {}
+sidebarList.forEach(item => {
+    let info = item.children.find(i => /^\/.*\/$/.test(i))
+    if (info) {
+        sidebarAll[info] = item.children
+    }
+})
+
+let sidebar = {}
+Object.keys(sidebarAll).forEach(key => {
+    let newPath = key.substring(0, findIndex(key, 3) + 1)
+    if (key.substring(1,key.length - 2).split("/").length > 2 && sidebar[newPath]) {
+        sidebar[newPath].push(sidebarAll[key])
+    } else {
+        sidebar[newPath] = sidebarAll[key]
+    }
+});
 
 // console.log('最终生成：',sidebar)
 export const zh: SidebarConfig = sidebar
 
+
+function findIndex(inputString, num) {
+    const regex = /\//g;
+    let match;
+    let count = 0;
+
+    while ((match = regex.exec(inputString)) !== null) {
+        count++;
+        if (count === num) {
+            return match.index;
+        }
+    }
+
+    return -1; // 如果找不到第三个逗号，返回 -1
+}
 // export const zh: SidebarConfig = {
 //   '/java/': [
 //     {

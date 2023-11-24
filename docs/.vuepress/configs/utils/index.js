@@ -57,17 +57,19 @@ function sortDir (a, b) {
 const filehelper = {
     /**
      *
-     * @param {String} rpath 目录路径
+     * @param {String} myPath 目录路径
      * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
      * @param {Array} SuffixIncludes 需要处理的文件后缀
      * @returns
      */
-    getAllFiles: (rpath, unDirIncludes, SuffixIncludes) => {
+    getAllFiles: (myPath, unDirIncludes, SuffixIncludes) => {
+        const fileNames = fs.readdirSync(myPath)
+        if (!fileNames) {
+            return []
+        }
         let filenameList = []
-        rpath = rpath.replace(/\\/g,"/").replace(/\/\//g,"/")
-        const fileNames = fs.readdirSync(rpath)
         fileNames.forEach((file) => {
-            let fileInfo = fs.statSync(rpath + file)
+            let fileInfo = fs.statSync(myPath + file)
             if (fileInfo.isFile() && !unDirIncludes.includes(file) && !str.contains(file, "img", true)) {
                 // 只处理固定后缀的文件
                 let split = file.split('.')
@@ -96,7 +98,7 @@ const filehelper = {
     getAllDirs: function getAllDirs (mypath = ".", unDirIncludes,) {
         // 获取目录数据
         const items = fs.readdirSync(mypath)
-        let result = []
+        let result = null
         // 遍历目录中所有文件夹
         items.map(item => {
             let temp = join(mypath, item)
@@ -112,120 +114,113 @@ const filehelper = {
 
     /**
      *
-     * @param {String} mypath 当前的目录路径
+     * @param {String} myPath 当前的目录路径
      * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
      * @returns {Array} result 所有的目录
      */
-    getOneAllDirs: function getOneAllDirs (mypath = ".", unDirIncludes,) {
-        mypath = mypath.replace(/\\/g,"/").replace(/\/\//g,"/")
+    getOneAllDirs: function getOneAllDirs (myPath = ".", unDirIncludes,) {
         // 获取目录数据
-        const items = fs.readdirSync(mypath)
+        const items = fs.readdirSync(myPath)
+        if (!items) {
+            return []
+        }
         let result = []
         // 遍历目录中所有文件夹
         items.map(item => {
-            let temp = join(mypath, item)
+            let temp = join(myPath, item)
             // isDirectory() 不接收任何参数,如果是目录(文件夹)返回true,否则返回false
             // 如果是目录,且不包含如下目录
             if (fs.statSync(temp).isDirectory() && !item.startsWith(".") && !unDirIncludes.includes(item)) {
-                result.push(mypath + '\\' + item + '\\')
+                result.push(myPath + item + '/')
             }
         })
         return result
-    }
+    },
 }
 
 // 侧边栏创建工具
 const sideBarTool = {
-    /**
-     * 创建一个侧边栏(带分组),支持多层级递归
-     * @param {String} RootPath 目录路径
-     * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
-     * @param {Array} SuffixIncludes 需要处理的文件后缀
-     * @param {Object} param3 暂未用上(分组相关配置参数)
-     * @returns {Array} 返回一个数组,如下所示
-     * [{
-     *  "title": "",
-     *  "collapsable": true,
-     *  "sidebarDepth": 2,
-     *  "children": ["/view/"]
-     *   },
-     *  {
-     *  "title": "GFW",
-     *   "collapsable": true,
-     *   "sidebarDepth": 2,
-     *  "children": ["/view/GFW/"]
-     *  },
-     *  {
-     *  "title": "html",
-     *  "collapsable": true,
-     *  "sidebarDepth": 2,
-     *  "children": [
-     *      ["/view/html/day1", "day1"],
-     *      ["/view/html/day2", "day2"],
-     *      ["/view/html/day3", "day3"],
-     *      ["/view/html/day4", "day4"],
-     *      ["/view/html/day5", "day5"]
-     *    ]
-     * }]
-     */
-    genSideBarGroup: (RootPath, unDirIncludes, SuffixIncludes, { title = '', children = [''], collapsable = true, sidebarDepth = 2 }) => {
-        console.log('RootPath',RootPath)
+    genSideBarGroup : (rootPath, path, unDirIncludes, SuffixIncludes, sidebarsList) => {
+        rootPath = rootPath.replace(/\\/g,"/").replace(/\/\//g,"/")
+        path = path.replace(/\\/g,"/").replace(/\/\//g,"/")
+        // console.log('rootPath',rootPath)
+        let titlePath = path.replace(rootPath, "")
+        let pageList = []
+        let title = titlePath.split('/')[titlePath.split("/").length - 2]
+        let isNumberRegex = /^-?\d+(\.\d+)?$/
+        title.indexOf("_") !== -1 && isNumberRegex.test(title.substring(0, title.indexOf("_"))) ?
+            title.substring(title.indexOf("_") + 1) : title
+        let childrenSidebars = {
+            text: title,
+            collapsible: true,
+            sidebarDepth: 2,
+            children: pageList
+        }
+
+        // console.log('RootPath',titlePath)
+        let files = filehelper.getAllFiles(path, unDirIncludes, SuffixIncludes)
+        // console.log('files', files)
+        if (files && files.length > 0) {
+            files.forEach(item => {
+                if (item !== '0_readme') {
+                    pageList.push('/' + titlePath + item + '.md')
+                } else {
+                    pageList.push('/' + titlePath)
+                }
+            })
+        }
+
         // 准备接收
-        let sidebars = {}
-        let allDirs = filehelper.getOneAllDirs(RootPath, unDirIncludes)
-        allDirs.forEach((item) => {
-            let dirname = item.replace(RootPath, "").replace(/\\/g, '/')
-            let children = filehelper.getAllFiles(item, unDirIncludes, SuffixIncludes)
-            let onePages = []
-
-            if (children) {
-                children.forEach(item => {
-                    if (item !== '0_readme') {
-                        onePages.push('/view' + dirname + item + '.md')
-                    } else {
-                        onePages.push('/view' + dirname)
-                    }
-                })
-            }
-
-            let nextFile = filehelper.getOneAllDirs(item, unDirIncludes)
-            if (nextFile) {
-                let titleTemp = item.replace(RootPath + '\\view', "").replace(/\\/g, '')
-
-                nextFile.forEach(i => {
-                    let dirTwo = i.replace(RootPath, "").replace(/\\/g, '/').replace(/\/\//g, '/')
-                    let twoFiles = filehelper.getAllFiles(i, unDirIncludes, SuffixIncludes)
-                    if (twoFiles) {
-                        let twoPages = []
-                        twoFiles.forEach(twoName => {
-                            if (twoName !== '0_readme') {
-                                twoPages.push('/view' + dirTwo + twoName + '.md')
-                            } else {
-                                twoPages.push('/view' + dirTwo)
-                            }
-                        })
-                        dirTwo = dirTwo.replace(titleTemp, "")
-                        title = dirTwo.split("/")[dirTwo.split("/").length - 2]
-                        let isNumberRegex = /^-?\d+(\.\d+)?$/
-                        let Obj = {
-                            // 有_且是数字
-                            text: title.indexOf("_") !== -1 && isNumberRegex.test(title.substring(0, title.indexOf("_"))) ?
-                                title.substring(title.indexOf("_") + 1) : title,
-                            collapsible: true,
-                            sidebarDepth: 2,
-                            children: twoPages
-                        }
-                        onePages.push(Obj)
-                    }
-
-                })
-
-            }
-            sidebars['/view' + dirname] = onePages
-            // sidebars.push(Obj)
-        })
-        return sidebars
+        let allDirs = filehelper.getOneAllDirs(path, unDirIncludes)
+        // console.log('allDirs', allDirs)
+        if (allDirs && allDirs.length > 0) {
+            allDirs.forEach((item) => {
+                // console.log('item', item)
+                let list = pageList && pageList.length > 0 ? pageList : sidebarsList
+                sideBarTool.genSideBarGroup(rootPath, item, unDirIncludes, SuffixIncludes, list)
+            })
+        }
+        if (pageList && pageList.length > 0) {
+            sidebarsList.push(childrenSidebars)
+        }
     }
+}
+
+/**
+ * 创建一个侧边栏(带分组),支持多层级递归
+ * @param {String} path 目录路径
+ * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
+ * @param {Array} SuffixIncludes 需要处理的文件后缀
+ * @param {Array} sidebarsList 递归使用保存sidebar对象
+ * @param {Number} sidebarDepth 递归使用保存sidebar对象
+ * @returns {Array} 返回一个数组,如下所示
+ * [{
+ *  "title": "",
+ *  "collapsable": true,
+ *  "sidebarDepth": 2,
+ *  "children": ["/view/"]
+ *   },
+ *  {
+ *  "title": "GFW",
+ *   "collapsable": true,
+ *   "sidebarDepth": 2,
+ *  "children": ["/view/GFW/"]
+ *  },
+ *  {
+ *  "title": "html",
+ *  "collapsable": true,
+ *  "sidebarDepth": 2,
+ *  "children": [
+ *      ["/view/html/day1", "day1"],
+ *      ["/view/html/day2", "day2"],
+ *      ["/view/html/day3", "day3"],
+ *      ["/view/html/day4", "day4"],
+ *      ["/view/html/day5", "day5"]
+ *    ]
+ * }]
+ */
+function genSideBarGroup (path, unDirIncludes, SuffixIncludes, sidebarsList, sidebarDepth = 2) {
+
 }
 
 module.exports = { str, filehelper, sideBarTool }
