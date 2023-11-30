@@ -79,7 +79,7 @@ protected void registerContextLoaderListener(ServletContext servletContext) {
 
 > 监听器是是干啥的：未来会通过这个叫监听器的东西搞些事情
 >
-> [发布订阅模式](springevent.md)
+> [发布订阅模式](spring事件驱动机制.md)
 
 
 

@@ -852,7 +852,7 @@ protected void initApplicationEventMulticaster() {
     }
 }
 ```
-[SimpleApplicationEventMulticaster](springevent.md)
+[SimpleApplicationEventMulticaster](spring事件驱动机制.md)
 
  
 ### 第9步：onRefresh();

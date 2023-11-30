@@ -2,7 +2,7 @@
 [[toc]]
 
 ## 1.执行过程
-在SpringBoot启动过程中有这么两句话，[点击查看详细启动过程](springbootstart.md)
+在SpringBoot启动过程中有这么两句话，[点击查看详细启动过程](2_springbootstart.md)
 
 ![](img/91ad28fcc1e8c65eaa41bccdae5895ad.png)
 

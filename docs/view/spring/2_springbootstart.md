@@ -671,7 +671,7 @@ private BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext cont
 
 ### refreshContext(context);解析
 重要
-[refreshContext(context);](springboot_refreshContext.md) 
+[refreshContext(context);](3_springboot_refreshContext.md) 
 
 ### afterRefresh(context, applicationArguments);
 在刷新上下文后调用。

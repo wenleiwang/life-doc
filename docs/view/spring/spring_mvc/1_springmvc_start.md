@@ -11,7 +11,7 @@ Servlet3.0是一次Java EE规范的一次重要升级。支持到可以全部采
 
 > Spring Boot中集成和使用Spring MVC会方便得多得多，因为它都已经帮我们配置好了，但理解了这篇文章的原理，再去理解Boot，可谓就非常顺畅了~
 
-## 1. ServletContainerInitializer
+## 1.ServletContainerInitializer
 
 首先来了解一个概念`ServletContainerInitializer`
 
@@ -346,13 +346,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 }
 ```
 
-## 5. Spring MVC中WebMvcConfigurerAdapter、WebMvcConfigurationSupport与WebMvcConfigurer
+## 5.Spring MVC中WebMvcConfigurerAdapter、WebMvcConfigurationSupport与WebMvcConfigurer
 
 我们还能看到还有一个类：`WebMvcConfigurationSupport`。小伙伴们查看很多文章，但此处我只推荐一个老铁的文章，说到了点上：[WebMvcConfigurationSupport与WebMvcConfigurer的关系](https://www.jianshu.com/p/d47a09532de7)
 
 **结论可以摆在此处**：最佳实践还是继承直接实现接口WebMvcConfigurer(或WebMvcConfigurerAdapter，Adapter在5.0开始弃用),只不过要多加一个@EnableWebMvc注解而已。备注：若是SpringBoot环境，请不要加@EnableWebMvc注解，因为springboot已经实例化了WebMvcConfigurationSupport，如果添加了该注解，默认的WebMvcConfigurationSupport配置类是不会生效的
 
-## 5. HandlerInterceptor与WebRequestInterceptor的异同
+## 5.HandlerInterceptor与WebRequestInterceptor的异同
 
 > `WebRequestInterceptor`间接**实现了**`HandlerInterceptor`，只是他们之间使用`WebRequestHandlerInterceptorAdapter`适配器类联系。
 
@@ -367,7 +367,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 
 
-## 6. Filter的执行顺序问题
+## 6.Filter的执行顺序问题
 
 在web.xml中，我们知道，执行顺序是谁在前边执行谁。但是现在没有这个web.xml了，肿么定这个执行顺序呢？
 

@@ -908,7 +908,7 @@ protected Object initializeBean(String beanName, Object bean, @Nullable RootBean
 2. 任何 InstantiationAwareBeanPostProcessors 给Bean设置属性
 
 扩展会所有的BeanPostProcessors，其中就包括`AutowiredAnnotationBeanPostProcessor`。
-`postProcessProperties()`处理面有一步`descriptor.getResolvableType()`方法使用了`getBean()`。[细节:@Autowire具体如何获取到对象](spring_autowire.md#注解autowired)
+`postProcessProperties()`处理面有一步`descriptor.getResolvableType()`方法使用了`getBean()`。[细节:@Autowire具体如何获取到对象](4_spring_autowire.md#注解autowired)
 
 
 ## 拓展 
