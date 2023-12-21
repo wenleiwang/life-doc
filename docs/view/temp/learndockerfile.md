@@ -41,4 +41,4 @@ docker-compose是 docker 官方的开源项目，使用 python 编写，实现�
 3. 修改执行权限`chmod +x /usr/local/bin/docker-compose`
 4. 查看版本号判断是否可用`docker-compose --version`
 
-[实践看Sentinel搭建](../redis/cluster/sentinel.md#一台服务器搭建一主二从三哨兵的集群)
+[实践看Sentinel搭建](../redis/2_集群/sentinel.md#一台服务器搭建一主二从三哨兵的集群)

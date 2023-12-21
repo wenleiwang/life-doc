@@ -135,4 +135,4 @@ $
 * Redis分布式锁，可以使用命令SET EX PX NX + 唯一流水号实现，分布式锁的key必须为业务的唯一标识哈
 * Redis执行设置key的动作时，要设置过期时间哈，这个过期时间不能太短，太短拦截不了重复请求，也不能设置太长，会占存储空间。
 
-> [关于Redis分布式锁可以看这篇文章](../redis/use/distributedLock.md)
+> [关于Redis分布式锁可以看这篇文章](../redis/3_使用/distributedLock.md)
