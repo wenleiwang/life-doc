@@ -29,7 +29,7 @@ Recent Files：增加一个最近打开文件的面板，可以自己设置显�
 ExcaliDraw：把 [excalidraw](https://www.zhihu.com/search?q=excalidraw&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2794628275%7D) 装进 obsidian, 画示意图流程图等非常方便，把 .[excialdraw](https://www.zhihu.com/search?q=excialdraw&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2794628275%7D) 文件以双链形式引入即可转成png图片引入，这个强推，平时做[方案设计](https://www.zhihu.com/search?q=%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2794628275%7D)/原型设计可以直接在 obsidian 内完成，减少工作流的上下文切换。**强推**
 ![](img/7934a86e6af82e445d6cdb358b4f40ae.png)
 
-memos
+memos：类似于fumo的插件
 
 Editing Toolbar这个插件提供了一个编辑工具栏，让用户可以快速执行各种编辑操作。在工具栏上可以找到常用的格式化、剪切、复制、粘贴等操作按钮。
 
