@@ -175,6 +175,8 @@ varchar会根据存储的内容改变长度，char是定长，如果长度不够
 单实例或单节点组，不担心网络爬虫获取数据量，推荐使用自增id，性能更好
 分布式场景。20个节点下的小规模分布式场景，推荐uuid。20~200个节点的中规模分布式场景，推荐自增id+步长的策略。200以上节点，推荐推特雪花算法的全局自增ID
 
+#UUID #唯一标识
+
 ## Mysql 有哪些数据类型，使用的时候有没有什么注意点
 * 整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、INT、BIG INT
 * 浮点数类型：FLOAT、DOUBLE、DECIMAL

@@ -9,7 +9,7 @@ Java编程语言连接和使用数据库是通过JDBC(一个标准Java API)
 ## 数据库事务
 一组操作，要么都执行，要么都不执行。
 
-[详情查看](../mysql/transaction.md)
+[详情查看](../mysql/事务.md)
 
 ## 事务的特性(ACID)
 ### 原子性(Atomicity)
