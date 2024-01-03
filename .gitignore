@@ -6,6 +6,7 @@ docs/.vuepress/dist
 docs/.obsidian
 docs/.trash
 .obsidian.mobile
+.obsidian
 
 package-lock.json
 yarn.lock
