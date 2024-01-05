@@ -13,7 +13,7 @@
 # 好用的插件
 Calendar 日历
 Clear Unused Images 清除没有链接的图片
-Unique attachments 重命名图片让格式统一
+Unique attachments 重命名图片让格式统一  **这个放弃**
 consistent attachments and links 移动文章附件跟着一起移动
 mage Toolkit点击图片放大之类的功能，比较像一般的图片浏览器的工具栏。
 Find and replace in selection：如字面意思，只在选中的区域进行查找和替换。
