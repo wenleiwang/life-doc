@@ -82,3 +82,5 @@ Java HotSpot(TM) 64-Bit Server VM (build 12.0.2+10, mixed mode, sharing)
 > 
 > [Quick Start · ScoopInstaller/Scoop Wiki (github.com)](https://github.com/ScoopInstaller/Scoop/wiki/Quick-Start)
 
+
+#JDK管理
