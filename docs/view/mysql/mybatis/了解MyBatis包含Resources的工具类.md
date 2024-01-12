@@ -1,4 +1,4 @@
-#  了解MyBatis 包含 Resources 的工具类
+#  了解 MyBatis 包含 Resources 的工具类
 
 ## 作用
 

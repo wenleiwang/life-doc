@@ -25,5 +25,5 @@ SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(input
 
 #Java文件读取
 
- > [了解MyBatis 包含 Resources 的工具类](./了解MyBatis 包含 Resources 的工具类.md)
+ > [了解MyBatis 包含 Resources 的工具类](了解MyBatis包含Resources的工具类.md)
 
