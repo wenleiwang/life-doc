@@ -15,13 +15,16 @@ Calendar 日历
 Clear Unused Images 清除没有链接的图片
 Unique attachments 重命名图片让格式统一  **这个放弃**
 consistent attachments and links 移动文章附件跟着一起移动
+设置如下：
+![](img/obsidian的使用_20240112_1.png)
+
 mage Toolkit点击图片放大之类的功能，比较像一般的图片浏览器的工具栏。
 Find and replace in selection：如字面意思，只在选中的区域进行查找和替换。
 Remember Cursor Position：记住上次打开文件时光标的位置。当然了笔记是不推荐太长的，不过如果你比较习惯这样子可以试试
 
 paste image rename:粘贴图片重新命名
 设置如下：
-![](img/img_20231208.png)
+![](img/obsidian的使用_20240112.png)
 
 
 Recent Files：增加一个最近打开文件的面板，可以自己设置显示几个。

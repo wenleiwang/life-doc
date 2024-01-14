@@ -11,7 +11,9 @@ export const zh: NavbarConfig = [
             {text: '数据库MySQL', link: '/view/mysql/'},
             {text: 'NOSQL数据库Redis', link: '/view/redis/'},
             // { text: 'RabbitMQ', link: '/rabbitmq/', target:'_blank' },
-            {text: '消息队列MQ', link: '/view/mq/'}
+            {text: '消息队列', link: '/view/mq/'},
+            {text: '前端开发', link: '/view/vue/'},
+            {text: '设计模式', link: '/view/design/'},
         ]
     },
     {
