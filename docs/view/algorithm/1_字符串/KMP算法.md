@@ -58,20 +58,6 @@ KMP算法的核心是利用匹配失败后的信息，尽量减少模式串与�
 
 > http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/
 
-
-
-## 实现一下
-
-```java
-
-```
-
-
-
-![](https://cdn.jsdelivr.net/gh/wenleiwang/life-img/note-img/v2-988c7f256e91c00976cdfa463678790e_720w.webp)
-
-
-
 ## 暴力破解版
 
 实现思路：两层循环，外层循环控制主串，内层循环控制模式串。所以需要两个变量 i 和 j ，它们都是从 0  开始。如果如果匹配上就都往后走一步，依次。没有匹配上模式串重头开始，主串返回到开始匹配的下一个字符，重新遍历。直到都匹配上返回匹配的起点或都没有匹配上返回 -1 。
