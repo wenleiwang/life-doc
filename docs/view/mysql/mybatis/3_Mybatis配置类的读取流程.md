@@ -324,6 +324,10 @@ private void typeAliasesElement(XNode parent) {
 
 引入插件
 
+通过动态代理实现责任链设计模式
+
+#责任链设计模式
+
 ```java
 private void pluginElement(XNode parent) throws Exception {  
   if (parent != null) {  
@@ -347,6 +351,8 @@ private void pluginElement(XNode parent) throws Exception {
 ### 详看9：reflectorFactory（反射工厂）
 
 ### ### 详看10：settingsElement(settings); 
+
+做了大量的设置配置
 
 ### 详看11：environments（环境信息）
 

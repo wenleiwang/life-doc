@@ -48,3 +48,15 @@ Style Settings
 ## 大纲线段
 
 https://forum-zh.obsidian.md/t/topic/24049
+
+
+使用picgo上传：Image auto upload Plugin
+
+
+## 日记按照年月日归档
+
+日记插件那里写一下 ： YYYY/MM/YYYY-MM-DD
+
+![](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402052201426.png)
+
+
