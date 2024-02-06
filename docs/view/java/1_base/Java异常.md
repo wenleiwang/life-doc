@@ -1,4 +1,4 @@
-# 异常
+# Java异常
 异常的种类
 
 ![](img/exception/09eba2f487bd16c15a722cd6aab443e3.png)
