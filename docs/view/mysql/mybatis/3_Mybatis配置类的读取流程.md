@@ -356,6 +356,11 @@ private void pluginElement(XNode parent) throws Exception {
 
 ### 详看11：environments（环境信息）
 
+#### 构造事务工厂引入事务管理器
+
+#### 构造数据源工厂引入数据源
+工厂方法设计模式
+
 ### 详看12：databaseIdProvider（厂商）
 
 ### 详看13：typeHandlers（类型处理器）
