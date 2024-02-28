@@ -1,44 +1,55 @@
 # Win 包管理器
 
 
-检查
+检查`$PSversionTable.PSVersion # has to be >= 5.1` 。检查版本是否大于等于5.1
 
-![](img/img_20240103_4.png)
+![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281801292.png)
 
 
-![](img/img_20240103_3.png)
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+![打算|950](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281801047.png)
+
 
 执行如下命令会在当前目录下下载一个`install.ps1`的文件
+`irm get.scoop.sh -outfile 'install.ps1'`
+![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281803217.png)
 
-![](img/img_20240103.png)
 
-
-![](img/img_20240103_1.png)
+查看帮助`.\install.ps1 -?`
+![image.png|950](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281803960.png)
 
 自定义安装
+`.\install.ps1 -ScoopDir 'D:\Scoop\bin' -ScoopGlobalDir 'D:\Scoop\pakges' -NoProxy`
+![image.png|950](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281803199.png)
 
-![](img/img_20240103_2.png)
 
 查看帮助命令:
 
-![](img/img_20240103_5.png)
+![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281803035.png)
+
 
 搜索JDK有各个版本的JDK
 
-![](img/img_20240103_6.png)
+![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281804987.png)
+
 
 搜索到后，直接安装。报没有找到
 根据[Java · ScoopInstaller/Scoop Wiki (github.com)](https://github.com/ScoopInstaller/Scoop/wiki/Java) 指引添加上java的bucket
+```text
+scoop bucket add java
+```
+![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281804201.png)
 
-![](img/img_20240103_7.png)
 
 再次尝试，时间卡在快凌晨估计网络问题，前两次失败，第三次成功
 
-![](img/img_20240104.png)
+![image.png|950](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281804019.png)
+
 
 查看下java版本
 
-![](img/img_20240104_1.png)
+![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281804330.png)
+
 
 关于多个Java版本管理
 [Home · ScoopInstaller/Java Wiki --- 首页 ·ScoopInstaller/Java 维基 (github.com)](https://github.com/ScoopInstaller/Java/wiki)
