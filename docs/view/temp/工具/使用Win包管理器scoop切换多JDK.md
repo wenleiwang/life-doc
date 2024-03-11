@@ -23,9 +23,9 @@
 `.\install.ps1 -ScoopDir 'D:\Scoop\bin' -ScoopGlobalDir 'D:\Scoop\pakges' -NoProxy`
 ![image.png|950](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281803199.png)
 安装 Scoop 用的依赖软件
-```
+```powershell
 scoop install git # Scoop 依赖 git 安装软件
-scoop install aria2 # aria2 多线程下载
+scoop install aria2 # aria2 多线程下载 
 ```
 
 查看帮助命令:
@@ -40,7 +40,7 @@ scoop install aria2 # aria2 多线程下载
 
 搜索到后，直接安装。报没有找到
 根据[Java · ScoopInstaller/Scoop Wiki (github.com)](https://github.com/ScoopInstaller/Scoop/wiki/Java) 指引添加上java的bucket
-```text
+```powershell
 scoop bucket add java
 ```
 ![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402281804201.png)
@@ -57,7 +57,7 @@ scoop bucket add java
 
 ## 配合IDEA使用
 使用一下指令查找JDK位置。默认情况下，where 搜索当前目录和 PATH 环境变量中指定的路径。
-```
+```powershell
 where.exe java
 
 where.exe /r E:\ java
@@ -71,7 +71,7 @@ where.exe /r E:\ java
 ## 切换多个Java版本
 [Home · ScoopInstaller/Java Wiki --- 首页 ·ScoopInstaller/Java 维基 (github.com)](https://github.com/ScoopInstaller/Java/wiki)
 
-```
+```powershell
 PS C:> scoop install oraclejdk
 Installing 'oraclejdk' (12.0.2-10) [64bit]
 
@@ -112,36 +112,36 @@ scoop 有 bucket 的概念，每个bucket 都像是一组套件的资料夹.
 
 所以首先想要确认本地安装了哪些 bucket 就输入一下命令
 
-```
+```powershell
 scoop bucket list
 ```
 ![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402290931595.png)
 
 如果想查询有哪些已知的 bucket（本地及远端） 就输入以下指令
-```
+```powershell
 scoop bucket known
 ```
 ![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402290933062.png)
 
 但这个列表也行已过时，这时候需要输入更新scoop后，再做查询
-```
+```powershell
 scoop update
 ```
 ![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402290934970.png)
 
 如果想要安装指定 bucket 到本地
-```
+```powershell
 scoop bucket add games
 ```
 ![image.png|650](https://img-life.oss-cn-beijing.aliyuncs.com/doc/202402290936342.png)
 
 移除 bucket
-```
+```powershell
 scoop bucket rm games
 ```
 
 bucket上榜目录
-```
+```powershell
 # 官方额外 bucket
 scoop bucket add extras
 
@@ -157,7 +157,7 @@ scoop bucket add dorado https://github.com/h404bi/dorado
 
 ## 用 Scoop 安装软件
 ### 日常软件
-```
+```powershell
 scoop install extras/winrar # winrar 解压
 scoop install dorado/utools # 快捷栏
 scoop install extras/sublime-text # 文本编辑
@@ -168,7 +168,7 @@ scoop install extras/potplayer # 视频播放器
 scoop install extras/bitwarden # bitwarden 密钥管理器
 ```
 ### 开发工具
-```
+```powershell
 scoop install extras/github # github desktop
 scoop install dorado/redis-desktop-manager # redis 图形工具
 scoop install JetBrains/IntelliJ-IDEA-Ultimate # IDEA
@@ -177,20 +177,20 @@ scoop install extras/vscode # vscode
 ```
 
 ### 命令行工具
-```
+```powershell
 scoop install sudo
 scoop install vim
 scoop install neofetch
 ```
 开发环境
-```
+```powershell
 scoop install mysql
 scoop install nodejs
 scoop install java/ojdkbuild11
 scoop install maven
 ```
 锁定更新
-```
+```powershell
 ### 开发环境建议 hold 住，平时不要更新
 
 scoop hold mysql
@@ -242,7 +242,35 @@ ventoy 1.0.64 [extras]
 wechat nightly-20201231 [dorado]  
 xmind8 3.7.9 [extras]
 ```
+## 设置代理
+```powershell
+scoop config proxy 127.0.0.1:8390
 
+# 取消代理
+scoop config rm proxy
+```
+
+## 重装系统后恢复 Scoop
+
+重装系统后，只需重新设置一下环境变量，不需要重新下载 Scoop。注意下面的路径要设置成你原来的路径。
+
+```powershell
+[Environment]::SetEnvironmentVariable('SCOOP', 'D:\Users\DemoUser\Scoop', 'User')
+[Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', 'D:\Scoop', 'Machine')
+[Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path', 'User') + "; " + [Environment]::GetEnvironmentVariable('SCOOP', 'User') + "\shims", 'User')
+# 注意下面的命令需要管理员权限。
+[Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path', 'Machine') + "; " + [Environment]::GetEnvironmentVariable('SCOOP_GLOBAL', 'Machine') + "\shims", 'Machine')
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+恢复所有 Scoop 安装的软件。
+
+```powershell
+scoop reset *
+```
+
+
+然后你就会发现，原来使用 Scoop 安装的所有软件都恢复了。
 
 ---
 
