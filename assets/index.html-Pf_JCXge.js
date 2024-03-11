@@ -1,0 +1,1 @@
+import{_ as n,o as t,c as a,b as e,d as c}from"./app-7rGY8hGP.js";const o={},s=e("h1",{id:"nginx的使用",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#nginx的使用","aria-hidden":"true"},"#"),c(" Nginx的使用")],-1),i=e("p",null,"Nginx的文件和目录",-1),r=[s,i];function _(d,l){return t(),a("div",null,r)}const x=n(o,[["render",_],["__file","index.html.vue"]]);export{x as default};

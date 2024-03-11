@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-1e55b3ae","path":"/view/java/5_WebSocket/","title":"WebSocket介绍","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1698834504000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/java/5_WebSocket/readme.md"}');export{e as data};

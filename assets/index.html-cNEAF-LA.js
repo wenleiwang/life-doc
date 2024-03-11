@@ -1,0 +1,1 @@
+import{_ as t,o as a,c,b as e,d as n}from"./app-7rGY8hGP.js";const o={},s=e("h1",{id:"补充",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#补充","aria-hidden":"true"},"#"),n(" 补充")],-1),r=e("p",null,"在获取知识的路上是碎片化的，认知中忽然接触到一个概念记录在这。",-1),_=[s,r];function d(i,l){return a(),c("div",null,_)}const f=t(o,[["render",d],["__file","index.html.vue"]]);export{f as default};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-50680dc0","path":"/view/java/1_base/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3.html","title":"抽象类和接口","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1706791254000,"contributors":[{"name":"wenleiwang","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/java/1_base/抽象类和接口.md"}');export{e as data};

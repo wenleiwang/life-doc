@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-09a5b74e","path":"/view/java/2_featrue/java12.html","title":"Java12新特性","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1696649531000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":2}]},"filePathRelative":"view/java/2_featrue/java12.md"}');export{a as data};

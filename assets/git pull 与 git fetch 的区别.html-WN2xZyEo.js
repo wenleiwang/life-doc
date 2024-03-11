@@ -1,0 +1,11 @@
+import{_ as a,r as n,o as r,c as l,b as e,d as t,e as s,a as d}from"./app-7rGY8hGP.js";const c="/life-doc/assets/img_20240107-UCEbytmx.png",o={},g=d('<h1 id="git-pull-与-git-fetch-的区别" tabindex="-1"><a class="header-anchor" href="#git-pull-与-git-fetch-的区别" aria-hidden="true">#</a> git pull 与 git fetch 的区别</h1><h2 id="一张图说明" tabindex="-1"><a class="header-anchor" href="#一张图说明" aria-hidden="true">#</a> 一张图说明</h2><p><img src="'+c+`" alt=""></p><h2 id="简单的概括" tabindex="-1"><a class="header-anchor" href="#简单的概括" aria-hidden="true">#</a> 简单的概括</h2><p>git fetch是将远程主机的最新内容拉到本地，用户在检查了以后决定是否合并到工作本机分支中。</p><p>而git pull 则是将远程主机的最新内容拉下来后直接合并，即：git pull = git fetch + git merge，这样可能会产生冲突，需要手动解决。</p><h2 id="说明" tabindex="-1"><a class="header-anchor" href="#说明" aria-hidden="true">#</a> 说明</h2><p>git fetch 相当于是从远程获取最新到本地，不会自动merge，如下指令：</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>git fetch orgin master //将远程仓库的master分支下载到本地当前branch中
+
+git log -p master  ..origin/master //比较本地的master分支和origin/master分支的差别
+
+git merge origin/master //进行合并
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>也可以用以下指令：</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>git fetch origin master:tmp //从远程仓库master分支获取最新，在本地建立tmp分支
+
+git diff tmp //將當前分支和tmp進行對比
+
+git merge tmp //合并tmp分支到当前分支
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>git pull：相当于是从远程获取最新版本并merge到本地</p><p><code>git pull origin master</code></p><p>git pull 相当于从远程获取最新版本并merge到本地</p><p>在实际使用中，git fetch更安全一些</p>`,15),p={href:"https://blog.csdn.net/a734797702/article/details/123812717",target:"_blank",rel:"noopener noreferrer"};function m(h,u){const i=n("ExternalLinkIcon");return r(),l("div",null,[g,e("p",null,[t("文章抄录于："),e("a",p,[t("GIT fetch 和 pull之间的区别_fetch和pull区别-CSDN博客"),s(i)])])])}const v=a(o,[["render",m],["__file","git pull 与 git fetch 的区别.html.vue"]]);export{v as default};

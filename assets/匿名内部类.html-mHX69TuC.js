@@ -1,0 +1,4 @@
+import{_ as a,o as e,c as n,a as s}from"./app-7rGY8hGP.js";const i={},l=s(`<h1 id="匿名内部类" tabindex="-1"><a class="header-anchor" href="#匿名内部类" aria-hidden="true">#</a> 匿名内部类</h1><p>匿名内部类的创建格式为：</p><div class="language-java line-numbers-mode" data-ext="java"><pre class="language-java"><code><span class="token keyword">new</span> 父类构造器（参数列表）<span class="token operator">|</span>实现接口（）<span class="token punctuation">{</span>
+    <span class="token comment">//匿名内部类的类体实现</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol><li>使用匿名内部类时，必须继承一个类或实现一个接口</li><li>匿名内部类由于没有名字，因此不能定义构造函数</li><li>匿名内部类中不能含有静态成员变量和静态方法</li></ol>`,4),t=[l];function c(o,d){return e(),n("div",null,t)}const p=a(i,[["render",c],["__file","匿名内部类.html.vue"]]);export{p as default};

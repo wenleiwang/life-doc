@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-34860884","path":"/view/develop/UML/","title":"UML概述","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1706838613000,"contributors":[{"name":"wenleiwang","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/develop/UML/readme.md"}');export{e as data};

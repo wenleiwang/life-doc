@@ -1,0 +1,1 @@
+import{_ as t,o as a,c,b as e,d as n}from"./app-7rGY8hGP.js";const o={},s=e("h1",{id:"记录生活点滴",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#记录生活点滴","aria-hidden":"true"},"#"),n(" 记录生活点滴")],-1),r=e("p",null,"记录生活的点滴感动",-1),_=[s,r];function d(i,l){return a(),c("div",null,_)}const f=t(o,[["render",d],["__file","index.html.vue"]]);export{f as default};

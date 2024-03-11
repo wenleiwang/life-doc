@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-50fdb54d","path":"/view/spring/rest_template/RestTempalate_base.html","title":"RestTempalate的基本使用","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1696649531000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":2}]},"filePathRelative":"view/spring/rest_template/RestTempalate_base.md"}');export{e as data};

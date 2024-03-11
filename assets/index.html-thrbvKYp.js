@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-23544e4c","path":"/view/note/","title":"记录生活点滴","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1705247916000,"contributors":[{"name":"Owen","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/note/readme.md"}');export{e as data};

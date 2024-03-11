@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-e993399e","path":"/view/algorithm/","title":"算法模块前言","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1705493538000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":2},{"name":"Owen","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/algorithm/readme.md"}');export{e as data};

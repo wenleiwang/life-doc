@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-771f4886","path":"/view/note/20231009.html","title":"信息孤岛","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1696834307000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/note/20231009.md"}');export{e as data};

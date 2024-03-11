@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-415939fc","path":"/view/note/%E4%BB%8E%E4%BD%95%E8%80%8C%E6%9D%A5/","title":"从何而来要去往哪里","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1705247916000,"contributors":[{"name":"Owen","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/note/从何而来/readme.md"}');export{e as data};

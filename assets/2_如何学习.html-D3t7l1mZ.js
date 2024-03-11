@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-154e6c08","path":"/view/bigdata/AI%E5%88%9D%E6%8E%A2/2_%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0.html","title":"如何学习","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1700819215000,"contributors":[{"name":"Owen","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/bigdata/AI初探/2_如何学习.md"}');export{e as data};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-27e6cd8e","path":"/view/develop/design/","title":"设计模式","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1706838613000,"contributors":[{"name":"wenleiwang","email":"wenleiwang@126.com","commits":1}]},"filePathRelative":"view/develop/design/readme.md"}');export{e as data};

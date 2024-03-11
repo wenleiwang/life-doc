@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-0b5a8fed","path":"/view/java/2_featrue/java13.html","title":"Java13新特性","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1696649531000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":2}]},"filePathRelative":"view/java/2_featrue/java13.md"}');export{a as data};

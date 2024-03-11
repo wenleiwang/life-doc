@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-3b1ee1aa","path":"/view/spring/rest_template/RESTful.html","title":"理解RESTful架构","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1696649531000,"contributors":[{"name":"wangwenlei","email":"wenleiwang@126.com","commits":2}]},"filePathRelative":"view/spring/rest_template/RESTful.md"}');export{e as data};

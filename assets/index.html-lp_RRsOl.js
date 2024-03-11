@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0b7a56cc","path":"/view/mysql/mybatis/","title":"前言","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"开始位置","slug":"开始位置","link":"#开始位置","children":[]}],"git":{"updatedTime":1705055645000,"contributors":[{"name":"Owen","email":"wenleiwang@126.com","commits":2}]},"filePathRelative":"view/mysql/mybatis/readme.md"}');export{e as data};
