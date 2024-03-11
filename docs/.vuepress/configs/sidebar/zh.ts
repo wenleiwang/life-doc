@@ -19,6 +19,7 @@ sideBarTool.genSideBarGroup(rootBase, rootPath, unDirIncludes, SuffixIncludes, s
 
 let sidebarAll = {}
 sidebarList.forEach(item => {
+    // 以斜杠开头并以斜杠结尾
     let info = item.children.find(i => /^\/.*\/$/.test(i))
     if (info) {
         sidebarAll[info] = item.children
@@ -26,6 +27,7 @@ sidebarList.forEach(item => {
 })
 
 let sidebar = {}
+console.log('生成：',sidebarList)
 Object.keys(sidebarAll).forEach(key => {
     let newPath = key.substring(0, findIndex(key, 3) + 1)
     if (key.substring(1,key.length - 2).split("/").length > 2 && sidebar[newPath]) {

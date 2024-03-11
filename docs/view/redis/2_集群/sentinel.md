@@ -49,7 +49,7 @@ sentinel哨兵模式已经被集成在redis2.4之后的版本中。
 一般建议sentinel采取奇数台，防止某一台sentinel无法连接到master导致误切换。
 ### 1.创建一个文件夹redis
 里面放置3个文件。一个启动redis的docker配置文件；1一个主redis服务的配置文件，2个从redis服务的配置文件；
-文件1：docker-compose.yml，这个文件时docker用来方便创建集群操作的配置文件。[详情可以查看](../../temp/learndockerfile.md#docker-compose)
+文件1：docker-compose.yml，这个文件时docker用来方便创建集群操作的配置文件。[详情可以查看](../../develop/Linux/learndockerfile.md#docker-compose)
 ```yml
 services:
   redis1:
@@ -317,7 +317,7 @@ docker-compose up -d
 ### 2.创建一个文件夹sentinel
 里面放置4个文件。一个启动哨兵的docker配置文件；3个哨兵服务的配置文件。
 
-文件1：docker-compose.yml，这个文件时docker用来方便创建集群操作的配置文件。[详情可以查看](../../temp/learndockerfile.md#docker-compose)
+文件1：docker-compose.yml，这个文件时docker用来方便创建集群操作的配置文件。[详情可以查看](../../develop/Linux/learndockerfile.md#docker-compose)
 ```yml
 services:
   sentinel1:

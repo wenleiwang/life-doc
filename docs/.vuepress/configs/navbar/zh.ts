@@ -14,6 +14,7 @@ export const zh: NavbarConfig = [
             {text: '消息队列', link: '/view/mq/'},
             {text: '前端开发', link: '/view/vue/'},
             {text: '程序员的自我修养', link: '/view/develop/'},
+            {text: '计算机基础', link: '/view/computer_base/'},
         ]
     },
     {

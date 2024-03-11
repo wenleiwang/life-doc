@@ -148,10 +148,10 @@ const sideBarTool = {
         let pageList = []
         let title = titlePath.split('/')[titlePath.split("/").length - 2]
         let isNumberRegex = /^-?\d+(\.\d+)?$/
-        title.indexOf("_") !== -1 && isNumberRegex.test(title.substring(0, title.indexOf("_"))) ?
+        let text = title.indexOf("_") !== -1 && isNumberRegex.test(title.substring(0, title.indexOf("_"))) ?
             title.substring(title.indexOf("_") + 1) : title
         let childrenSidebars = {
-            text: title,
+            text: text,
             collapsible: true,
             sidebarDepth: 2,
             children: pageList
